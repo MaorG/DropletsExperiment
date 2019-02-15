@@ -1,0 +1,25 @@
+classdef Parser
+    methods
+        
+        function conf = getConfiguration(obj, configFileName)
+
+            T = readtable(configFileName,'Delimiter',',');
+            conf = table2struct(T);
+            
+            
+            for i = 1:numel(conf)
+
+                for fieldName = fieldnames(conf)
+                    i
+                    conf(i).(fieldName{1}) = eval(conf(i).(fieldName{1}));
+                end
+
+                
+            end
+       
+        end
+        
+
+    end
+
+end
