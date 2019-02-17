@@ -1,9 +1,0 @@
-function temp
-init
-
-em = ExperimentManager();
-
-em = em.configure();
-
-end
-
