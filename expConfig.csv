@@ -1,3 +1,2 @@
 name, stage, pixelSize, 		load,								prep	
 'exp0', {'load' 'prep'}, 0.16,  'C:\school2\matlab\DropletExperiment\DropletsExperiment\exp_p1t2_v2.csv'	,'C:\school2\matlab\DropletExperiment\DropletsExperiment\expPrep.csv'
-
