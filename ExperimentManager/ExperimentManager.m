@@ -5,9 +5,6 @@ classdef ExperimentManager < handle
        dm
        configFileName
        conf
-       rawData
-       perpData
-       
     end
     
     methods
@@ -36,7 +33,7 @@ classdef ExperimentManager < handle
             if (strcmp(stageName,'load'))
                 obj.doLoad()
             elseif (strcmp(stageName,'prep'))
-                disp('prep stage');
+                obj.doPerp()
             end
             
         end
@@ -46,6 +43,14 @@ classdef ExperimentManager < handle
             loadConf = obj.pm.getConfiguration(obj.conf.load);
             
             obj.dm.loadData(loadConf)
+            
+        end
+        
+        function doPrep(obj)
+            
+            prepConf = obj.pm.getConfiguration(obj.conf.prep);
+            
+            obj.dm.prepData(prepConf)
             
         end
         
