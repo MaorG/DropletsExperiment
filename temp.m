@@ -4,7 +4,7 @@ init
 
 em = ExperimentManager();
 
-em = em.configure();
+em.configure();
 
 em.doWork();
 
