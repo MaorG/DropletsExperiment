@@ -34,7 +34,7 @@ classdef DataManager < handle
             fields = fieldnames(loadConfigRow);
             data = struct;
             for i = 1:numel(fields)
-                fieldName = fields(i)
+                fieldName = fields(i);
                 val = loadConfigRow.(fieldName{1});
                 if isnumeric(val)
                     data.(fieldName{1}) = val;
