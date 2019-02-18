@@ -48,12 +48,6 @@ classdef ExperimentManager < handle
             obj.dm.loadData(loadConf)
             
         end
-            
-        
- 
-
-            
-    
         
     end
 
