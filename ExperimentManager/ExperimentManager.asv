@@ -1,4 +1,4 @@
-classdef ExperimentManager < handle
+classdef ExperimentManager
     
     properties
        pm
@@ -19,35 +19,33 @@ classdef ExperimentManager < handle
             obj.configFileName = [path configFileName];
         end
         
-        function configure(obj)
+        function obj = configure(obj)
             
 
             obj.conf = obj.pm.getConfiguration(obj.configFileName);
 
         end
         
-        function doWork(obj)
+        function obj = doWork(obj)
             for i = 1:numel(obj.conf.stage)
                 obj.doStage(obj.conf.stage{i})
             end
         end
         
-        function doStage(obj, stageName)
+        function obj = doStage(obj, stageName)
             if (strcmp(stageName,'load'))
-                obj.doLoad()
+                doLoad()
             elseif (strcmp(stageName,'prep'))
                 disp('prep stage');
             end
             
         end
         
-        function doLoad(obj)
+        function obj = doLoad(obj)
             
-            loadConf = obj.pm.getConfiguration(obj.conf.load);
+            loadConf = obj.pm.getConfiguration(conf.l);
             
-            obj.dm.loadData(loadConf)
-            
-        end
+            dm.loadData(conf.
             
         
  
