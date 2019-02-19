@@ -34,7 +34,7 @@ classdef DataManager < handle
             fields = fieldnames(loadConfigRow);
             data = struct;
             for i = 1:numel(fields)
-                fieldName = fields(i)
+                fieldName = fields(i);
                 val = loadConfigRow.(fieldName{1});
                 if isnumeric(val)
                     data.(fieldName{1}) = val;
@@ -63,10 +63,13 @@ classdef DataManager < handle
         
         function doPrepRowOnAllData(obj, prepConfigRow)
             
+            parameters = prepConfigRow.parameters;
+            
             [obj.allData.(prepConfigRow.resName)] = deal([]);
             for i = 1:numel(obj.allData)
                 data = obj.allData(i);
-                obj.allData.(prepConfigRow.resName) = ...
+
+                obj.allData(i).(prepConfigRow.resName) = ...
                     eval([prepConfigRow.funcName, '(data, parameters)']);
             end
         end

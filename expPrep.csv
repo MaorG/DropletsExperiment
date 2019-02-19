@@ -1,3 +1,3 @@
 resName, funcName, parameters
-'R_minus_bg', 'subtractMean', {'src' 'R' 'bg' 'Rbg'}
-'G_minus_bg', 'subtractMean', {'src' 'G' 'bg' 'Gbg'}
+ 'R_minus_bg', 'subtractMean', {'src' 'RName' 'bg' 'Rbg'}
+'G_minus_bg', 'subtractMean', {'src' 'GName' 'bg' 'Gbg'}

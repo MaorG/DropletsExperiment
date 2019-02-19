@@ -1,4 +1,4 @@
-function temp
+function em = temp
 
 init
 
