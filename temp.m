@@ -6,9 +6,7 @@ em = ExperimentManager();
 
 em.configure();
 
-%em.doWork();
-em.doLoad();
-em.doPrep();
+em.doWork();
 
 end
 

@@ -50,28 +50,7 @@ classdef DataManager < handle
             end
         end
         
-        function prepData(obj, prepConfig)
-            disp(prepConfig)
-            for i = 1:numel(prepConfig)
-                disp(prepConfig(i));
-                
-                obj.doPrepRowOnAllData(prepConfig(i))
-                
-            end
-
-        end
         
-        function doPrepRowOnAllData(obj, prepConfigRow)
-            
-            [obj.allData.(prepConfigRow.resName)] = deal([]);
-            for i = 1:numel(obj.allData)
-                data = obj.allData(i);
-                parameters = prepConfigRow.parameters;
-
-                obj.allData(i).(prepConfigRow.resName) = ...
-                    eval([prepConfigRow.funcName, '(data, parameters)']);
-            end
-        end
     end
 end
 

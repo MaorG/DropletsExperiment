@@ -1,4 +1,4 @@
-classdef DataManager < handle
+classdef DataManager
     % DataManager handles all data manupulations and transformation
     % (loading, adding fields, saving)
     
@@ -11,19 +11,17 @@ classdef DataManager < handle
         function obj = DataManager()
             %DataManager: Construct an instance of this class
             
-            obj.allData = [];
+            allData = [];
         end
         
-        function loadData(obj, loadConfigArray)
+        function allData = loadData(obj, loadConfigArray)
             %loadData() loads data from a struct array, one 'data' per row.
             % see loadDataRow for details
-            allData = [];
+            
             for i = 1:numel(loadConfigArray)
                 data = obj.loadDataRow(loadConfigArray(i));
                 allData = [allData; data];
             end
-            
-            obj.allData = allData;
         end
         
         function data = loadDataRow(obj,loadConfigRow)
@@ -36,38 +34,13 @@ classdef DataManager < handle
             for i = 1:numel(fields)
                 fieldName = fields(i)
                 val = loadConfigRow.(fieldName{1});
-                if isnumeric(val)
-                    data.(fieldName{1}) = val;
+                [path,name,ext] = fileparts(val);
+                if (isempty(path) || isempty(name) || isempty(ext))
+                    data.(fields(i)) = val;
                 else
-                    [path,name,ext] = fileparts(val);
-                    if (isempty(path) || isempty(name) || isempty(ext))
-                        data.(fieldName{1}) = val;
-                    else
-                        I = imread([path,'\',name,ext]);
-                        data.(fieldName{1}) = I;
-                    end
+                    I = imread([path,'\',name,ext]);
+                    data.(fields(i)) = I;
                 end
-            end
-        end
-        
-        function prepData(obj, prepConfig)
-            disp(prepConfig)
-            for i = 1:numel(prepConfig)
-                disp(prepConfig(i));
-                
-                obj.doPrepRowOnAllData(prepConfig(i))
-                
-            end
-
-        end
-        
-        function doPrepRowOnAllData(obj, prepConfigRow)
-            
-            [obj.allData.(prepConfigRow.resName)] = deal([]);
-            for i = 1:numel(obj.allData)
-                data = obj.allData(i);
-                obj.allData.(prepConfigRow.resName) = ...
-                    eval([prepConfigRow.funcName, '(data, parameters)']);
             end
         end
     end
