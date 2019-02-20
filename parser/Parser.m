@@ -6,10 +6,18 @@ classdef Parser
             T = readtable(configFileName,'Delimiter',',');
             conf = table2struct(T);
             
-            %TODO  - ignore lines beggining with #!!
+            fields = fieldnames(conf)';
+            
+            % remove from data all rows where first field begins with #
+            % (before the '')
+            fieldN = 1;
+            expToRem = '^#';
+            colVals = {conf.(fields{fieldN})};
+            conf = conf(cellfun(@isempty, regexp(colVals, expToRem)));
+            
             for i = 1:numel(conf)
                 
-                for fieldName = fieldnames(conf)'
+                for fieldName = fields
                     conf(i).(fieldName{1}) = obj.customeval(conf(i).(fieldName{1}));
                 end
                 
