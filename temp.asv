@@ -6,14 +6,9 @@ em = ExperimentManager();
 
 em.configure();
 
-em.doLoad();
+%em.doWork();
+em.loadData();
 
-
-disp(em.dm.allData(1));
-
-em.doPrep();
-
-disp(em.dm.allData(1));
 
 end
 

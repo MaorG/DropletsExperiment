@@ -1,2 +1,2 @@
 name, stage, pixelSize,load,								prep
-'exp0', {'load' 'prep'},0.16,'C:\Users\Owner\Documents\GitHub\DropletsExperiment\exp_p1t2_v2_michael.csv','C:\school2\matlab\prepConfig.csv'
+'exp0', {'load' 'prep'},0.16,'C:\Users\Owner\Documents\GitHub\DropletsExperiment\exp_p1t2_v2_michael.csv','C:\Users\Owner\Documents\GitHub\DropletsExperiment\expPrep.csv'
