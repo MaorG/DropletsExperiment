@@ -1,3 +1,4 @@
 resName, funcName, parameters
 'R_minus_bg', 'subtractMean', {'src' 'R' 'bg' 'Rbg'}
 'G_minus_bg', 'subtractMean', {'src' 'G' 'bg' 'Gbg'}
+'DropMask', segDropsByDAPI, {'src', 'DAPI', 'valTh', 'DAPITh', 'gradientTh', 'DAPIgTh'}
