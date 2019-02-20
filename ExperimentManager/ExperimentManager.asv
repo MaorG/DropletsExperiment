@@ -33,7 +33,7 @@ classdef ExperimentManager < handle
             if (strcmp(stageName,'load'))
                 obj.doLoad()
             elseif (strcmp(stageName,'prep'))
-                disp('prep stage');
+                obj.doPerp()
             end
             
         end
@@ -45,6 +45,28 @@ classdef ExperimentManager < handle
             obj.dm.loadData(loadConf)
             
         end
+        
+        function doPrep(obj)
+            
+            prepConf = obj.pm.getConfiguration(obj.conf.prep);
+            
+            obj.dm.prepData(prepConf)
+            
+        end
+        
+        function savePrep(obj)
+            
+            folderPath = uigetdir(); % folder to save the csv file and its processed images in subfolders inside
+            ext = 'tif'; % extension for image files
+            csvFile = 'expSavedPrep.csv'; % will be saved to folderPath
+            fields = {'DropMaskName', 'CellMaskName', 'GName', 'RName', 'repeat', 'time', 'well', 'R_minus_BG', 'G_minus_bg'};
+            
+            if (strcmp(class(folderPath), 'char'))
+                obj.dm.writeData(folderPath, ext, csvFile, fields);
+            end
+            
+        end
+        
         
     end
 
