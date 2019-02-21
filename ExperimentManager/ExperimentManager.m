@@ -54,12 +54,14 @@ classdef ExperimentManager < handle
             
         end
         
-        function savePrep(obj)
+        function savePrep(obj, saveFields)
             
-            folderPath = uigetdir(); % folder to save the csv file and its processed images in subfolders inside
+            [csvFile, folderPath] = uiputfile('*.csv', 'Type a .csv file after selecting the main folder');
+            
+            %folderPath = uigetdir(); % folder to save the csv file and its processed images in subfolders inside
             ext = 'tif'; % extension for image files
-            csvFile = 'expSavedPrep.csv'; % will be saved to folderPath
-            saveFields = {'DropMaskName', 'CellMaskName', 'GName', 'RName', 'repeat', 'time', 'well', 'R_minus_bg', 'G_minus_bg'};
+            %csvFile = 'expSavedPrep.csv'; % will be saved to folderPath
+            %saveFields = {'DropMaskName', 'CellMaskName', 'GName', 'RName', 'repeat', 'time', 'well', 'R_minus_bg', 'G_minus_bg'};
             
             if (strcmp(class(folderPath), 'char'))
                 obj.dm.writeData(folderPath, ext, csvFile, saveFields);

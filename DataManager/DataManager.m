@@ -73,7 +73,7 @@ classdef DataManager < handle
                     eval([prepConfigRow.funcName, '(data, parameters)']);
             end
         end
-        
+                
         function writeData(obj, folderPath, ext, csvFile, saveFields)
             
             % folderPath - the main folder to save the data to
