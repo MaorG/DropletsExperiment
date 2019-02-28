@@ -8,7 +8,7 @@ classdef Parser
             
             %TODO  - ignore lines beggining with #!!
             for i = 1:numel(conf)
-                
+                conf(i)
                 for fieldName = fieldnames(conf)'
                     conf(i).(fieldName{1}) = obj.customeval(conf(i).(fieldName{1}));
                 end

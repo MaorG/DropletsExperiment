@@ -7,8 +7,8 @@ em = ExperimentManager();
 em.configure();
 
 %em.doWork();
-em.loadData();
-
+em.doLoad();
+em.doPrep();
 
 end
 

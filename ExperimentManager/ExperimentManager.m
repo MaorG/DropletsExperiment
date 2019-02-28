@@ -3,6 +3,7 @@ classdef ExperimentManager < handle
     properties
        pm
        dm
+       enm
        configFileName
        conf
     end
@@ -12,6 +13,8 @@ classdef ExperimentManager < handle
         function obj = ExperimentManager(obj)
             obj.dm = DataManager;
             obj.pm = Parser;
+            % obj.enm = EntityManager(obj.dm);
+            % TODO - right now done on doEntities(), choose to delete or uncomment
             [configFileName,path] = uigetfile('*.csv');
             obj.configFileName = [path configFileName];
         end
@@ -54,6 +57,13 @@ classdef ExperimentManager < handle
             
         end
         
+        function doEntities(obj)
+            obj.enm = EntityManager(obj.dm);
+            entityConf = obj.pm.getConfiguration(obj.conf.entities);
+            
+            obj.enm.doEntities(entityConf)
+            
+        end
     end
 
 end

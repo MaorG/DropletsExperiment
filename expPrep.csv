@@ -1,4 +1,6 @@
-resName, funcName, parameters,,,,,
-'R_minus_bg', 'subtractMean', {'src' 'R' 'bg' 'Rbg'},,,,,
-'G_minus_bg', 'subtractMean', {'src' 'G' 'bg' 'Gbg'},,,,,
-'DropMask', segDropsByDAPI, {'src', 'DAPI', 'valTh', 'DAPITh', 'gradientTh', 'DAPIgTh'}
+resName, funcName, parameters
+'R_minus_bg', 'subtractMean', {'src' 'R' 'bg' 'Rbg'}
+'G_minus_bg', 'subtractMean', {'src' 'G' 'bg' 'Gbg'}
+'Rmask', 'thresholdByValue', {'src' 'R' 'threshold' 'Rth'}
+'Gmask', 'thresholdByValue', {'src' 'G' 'threshold' 'Gth'}
+'CellMask', 'booleanOp', {'src1' 'Gmask' 'src2' 'Rmask' 'op' 'union'}
