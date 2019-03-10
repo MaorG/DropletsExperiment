@@ -2,7 +2,7 @@ function [entityProps] = createEntitiesFromSeg(entities, data, parameters)
 
 props = parseParams(parameters);
 
-seg = data.(props.seg);
+seg = data.(props.seg) > 0;
 
 s = regionprops(seg,props.properties);
 

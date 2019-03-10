@@ -55,8 +55,19 @@ classdef EntityManager < dynamicprops
                     targetName = entityConfigRow.targetName;
                     data = obj.dm.getDataByUniqueID(entities.uniqueID);
 
-
-                    allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                    if (~isempty(resName))
+                        allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                    else
+                        % should only get here when creating entities for
+                        % the first time
+                        res = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                        
+                        fns = fieldnames(res);
+                        for fn = fns'
+                            allEntities(i).(fn{1}) = res.(fn{1});
+                        end
+                        
+                    end
 
                 end
                 obj.(entityConfigRow.targetName) = allEntities;

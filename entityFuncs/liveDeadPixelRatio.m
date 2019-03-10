@@ -6,7 +6,7 @@ Ilive = data.(props.liveIntensity);
 Idead = data.(props.deadIntensity);
 
 
-regions = entities.props.regions;
+regions = entities.regions;
 
 liveRatio = zeros(size(regions));
 

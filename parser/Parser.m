@@ -7,12 +7,20 @@ classdef Parser
             conf = table2struct(T);
             
             %TODO  - ignore lines beggining with #!!
-            for i = 1:numel(conf)
+            for i = numel(conf):-1:1
                 conf(i)
+                fn = fieldnames(conf)
+                if strncmp(conf(i).(fn{1}),'#',1)
+                    conf(i)=[];
+                end
+            end                                
+            
+            
+            for i = 1:numel(conf)
+                    
                 for fieldName = fieldnames(conf)'
                     conf(i).(fieldName{1}) = obj.customeval(conf(i).(fieldName{1}));
                 end
-                
                 
             end
             

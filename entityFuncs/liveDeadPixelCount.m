@@ -1,4 +1,4 @@
-function [liveRatio] = liveDeadPixelRatio(entities, data, parameters)
+function [liveDeadCount] = liveDeadPixelCount(entities, data, parameters)
 
 props = parseParams(parameters);
 
@@ -6,17 +6,19 @@ Ilive = data.(props.liveIntensity);
 Idead = data.(props.deadIntensity);
 
 
-regions = entities.props.regions;
+regions = entities.regions;
 
-liveRatio = zeros(size(regions))
+liveCount = zeros(size(regions));
+deadCount = zeros(size(regions));
 
 for i=1:numel(regions)
     pList = regions(i).PixelIdxList;
     totalCount = numel(pList);
-    liveCount = sum(Ilive(pList) > Idead(pList));
-    liveRatio(i) = liveCount / totalCount;
+    liveCount(i) = sum(Ilive(pList) > Idead(pList));
+    deadCount(i) = totalCount - liveCount(i);
 end
 
+liveDeadCount = cat(2,liveCount,deadCount);
 
 end
 

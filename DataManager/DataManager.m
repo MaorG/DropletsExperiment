@@ -2,7 +2,6 @@ classdef DataManager < handle
     % DataManager handles all data manupulations and transformation
     % (loading, adding fields, saving)
     
-    
     properties
         allData
     end
@@ -11,6 +10,10 @@ classdef DataManager < handle
         function obj = DataManager()
             %DataManager: Construct an instance of this class
             
+            obj.allData = [];
+        end
+        
+        function clearData(obj)
             obj.allData = [];
         end
         
@@ -28,8 +31,8 @@ classdef DataManager < handle
         end
         
         function data = loadDataRow(obj,loadConfigRow)
-            %loadDataRow() takes a map (struct) and does the following:
-            % if the value is a fileName, it 'imread's the file
+            % loadDataRow() takes a map (struct) and does the following:
+            % if the value is a fileName, it 'imread's the file 
             % otherwise, it just copies the value
             
             fields = fieldnames(loadConfigRow);
@@ -38,14 +41,20 @@ classdef DataManager < handle
                 fieldName = fields(i)
                 val = loadConfigRow.(fieldName{1});
                 if isnumeric(val)
-                    data.(fieldName{1}) = val;
+                    data.params.(fieldName{1}) = val;
                 else
                     [path,name,ext] = fileparts(val);
                     if (isempty(path) || isempty(name) || isempty(ext))
-                        data.(fieldName{1}) = val;
+                        data.params.(fieldName{1}) = val;
                     else
                         I = imread([path,'\',name,ext]);
-                        data.(fieldName{1}) = I;
+                        if (size(I,3)==2)
+                            % TODO:
+                            % why would it even get here?!?!
+                            data.(fieldName{1}) = I(:,:,1);
+                        else
+                            data.(fieldName{1}) = I;
+                        end
                     end
                 end
             end
