@@ -1,4 +1,4 @@
-function temp
+function em = temp
 
 init
 
@@ -10,7 +10,7 @@ em.configure();
 em.doLoad();
 em.doPrep();
 em.doEntities();
-
+em.doAnalysis();
 
 end
 

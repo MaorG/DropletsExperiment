@@ -1,0 +1,84 @@
+function result = cellSurvivalVsDropletSize(entities, parameters)
+
+    result = [];
+    props = parseParams(parameters);
+        
+    % get param names
+    fns = fieldnames(entities(1).dataParams)
+
+    % TODO: struct creation is messy...
+    for ei = numel(entities):-1:1
+        res(ei) = entities(ei).dataParams;
+    end 
+    
+    [res.val] = deal([]);
+    
+    for ei = numel(entities):-1:1
+        res(ei).val = getCellSurvivalVsDropletSize(entities(ei), props);
+    end
+    
+    nd = createNDResultTable(res, 'val', fns);
+    
+    % TODO: use some func for this
+    for ti = 1:numel(nd.T)
+        if (~isempty(nd.T{ti}))
+            vv = nd.T{ti}{1};
+            for ri = 2:numel(nd.T{ti})
+               vv.area = [vv.area; nd.T{ti}{ri}.area];
+               vv.survival = [vv.survival; nd.T{ti}{ri}.survival];
+            end
+            nd.T{ti} = cell(0);
+            nd.T{ti}{1} = vv;
+        end
+    end
+
+    % TODO: and for this
+	for ti = 1:numel(nd.T)
+        if (~isempty(nd.T{ti}))
+            
+        end
+    end
+
+    % TODO: and for removing dimension of size 1 (? what will happen to a
+    % single datum
+    
+end
+
+function res = getCellSurvivalVsDropletSize(entityStruct, props)
+
+    dropletArea = entityStruct.(props.dropletArea);
+    cellArea = entityStruct.(props.cellArea);
+    cellSurvival = entityStruct.(props.cellSurvival);
+    
+    totalSurvival = zeros(size(dropletArea));
+    for i = 1:numel(totalSurvival)
+        totalSurvival(i) = sum((cellArea{i}.*cellSurvival{i})./sum(cellArea{i}));
+    end
+    
+    res.area = dropletArea;
+    res.survival = totalSurvival;
+    
+end
+
+function props = parseParams(v)
+% default:
+props = struct(...
+    'cellArea','cArea', ...
+    'cellSurvival','cLDRatio', ...
+    'dropletArea','area', ...
+    'dropletAreaBins',[1 10^2 10^3 10^4 10^5 inf] ...
+    );
+
+for i = 1:numel(v)
+    if (strcmp(v{i}, 'cellArea'))
+        props.cellArea = v{i+1};
+    elseif (strcmp(v{i}, 'cellSurvival'))
+        props.cellSurvival = v{i+1};
+    elseif (strcmp(v{i}, 'dropletArea'))
+        props.dropletArea = v{i+1};
+    elseif (strcmp(v{i}, 'dropletAreaBins'))
+        props.dropletAreaBins = v{i+1};
+    end
+end
+
+end

@@ -21,6 +21,8 @@ elseif strcmp(props.op, 'open')
     res = imopen(s, SE);
 elseif strcmp(props.op, 'close')
     res = imclose(s, SE);
+elseif strcmp(props.op, 'areaOpen')
+    res = bwareaopen(s,props.dist);
 end
 
 end

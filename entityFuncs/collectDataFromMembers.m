@@ -10,14 +10,15 @@ members = entities{2};
 memberIndices = hosts.(props.members);
 memberParameters = members.(props.parameters);
 
-res = zeros(size(memberIndices,1),size(memberParameters,2));
+res = cell(size(memberIndices,1),1); % result for all hosts: cell vector H-by-1
 for hi = 1:numel(memberIndices)
-    temp = zeros(1,size(memberParameters,2));
+    temp = zeros(numel(memberIndices{hi}),size(memberParameters,2));
     membersIndicesInHost = memberIndices{hi};
-    for mi = membersIndicesInHost
-        temp = temp + memberParameters(mi,:);
+    for mi = 1:numel(membersIndicesInHost)
+        midx = membersIndicesInHost(mi);
+        temp(mi,:) = memberParameters(midx,:);
     end
-    res(hi,:) = temp;
+    res{hi} = temp;
 end
 
 end

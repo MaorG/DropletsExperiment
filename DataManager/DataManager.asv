@@ -28,9 +28,6 @@ classdef DataManager < handle
             end
             
             obj.allData = allData;
-            
-            
-            
         end
         
         function data = loadDataRow(obj,loadConfigRow)
@@ -120,9 +117,7 @@ classdef DataManager < handle
         
         function doPrepRowOnAllData(obj, prepConfigRow)
             
-            if (~isfield(obj.allData,prepConfigRow.resName))
-                [obj.allData.(prepConfigRow.resName)] = deal([]);
-            end
+            ([obj.allData.(prepConfigRow.resName)] = deal([]);
             
             for i = 1:numel(obj.allData)
                 data = obj.allData(i);

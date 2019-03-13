@@ -47,20 +47,13 @@ classdef ExperimentManager < handle
             loadConf = obj.pm.getConfiguration(obj.conf.load);
             obj.dm.loadData(loadConf)
             
-            passGlobalParameters(obj);
-            
-        end
-        
-        function passGlobalParameters(obj)
-        % add experiment parameters to all individual data entries :/
+            % add experiment parameters to all individual data entries :/
             for i = 1:numel(obj.dm.allData)
                 for vi = 1:2:numel(obj.conf.parameters)
-                    obj.dm.allData(i).params.(obj.conf.parameters{vi}) ...
-                        = obj.conf.parameters{vi+1};        
-                end
+                    obj.dm.allData(1).params.(obj.conf.parameters{vi}) = obj.conf.parameters{vi};        
             end
         end
-
+        
         function doPrep(obj)
             prepConf = obj.pm.getConfiguration(obj.conf.prep);
             obj.dm.prepData(prepConf)
