@@ -5,6 +5,7 @@ classdef ExperimentManager < handle
        dm
        enm
        am
+       om
        configFileName
        conf
     end
@@ -77,6 +78,12 @@ classdef ExperimentManager < handle
             analysisConf = obj.pm.getConfiguration(obj.conf.analysis);
             obj.am.doAnalysis(analysisConf)
         end
+        
+        function doOutput(obj)
+            obj.om = OutputManager(obj.am);
+            outputConf = obj.pm.getConfiguration(obj.conf.output);
+            obj.om.doOutput(outputConf)
+        end    
     end
 
 end

@@ -8,4 +8,6 @@ addpath([pwd,'/prepFuncs']);
 addpath([pwd,'/entityFuncs']);
 addpath([pwd,'/analysisFuncs']);
 addpath([pwd,'/NDResultTable']);
+addpath([pwd,'/OutputManager']);
+addpath([pwd,'/outputFuncs']);
 end

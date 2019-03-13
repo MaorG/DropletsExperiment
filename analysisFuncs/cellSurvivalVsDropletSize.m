@@ -18,7 +18,8 @@ function result = cellSurvivalVsDropletSize(entities, parameters)
         res(ei).val = getCellSurvivalVsDropletSize(entities(ei), props);
     end
     
-    nd = createNDResultTable(res, 'val', fns);
+    %nd = createNDResultTable(res, 'val', fns);
+    nd = NDResultTable(res, 'val', fns);
     
     % TODO: use some func for this
     for ti = 1:numel(nd.T)

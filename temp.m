@@ -11,6 +11,7 @@ em.doLoad();
 em.doPrep();
 em.doEntities();
 em.doAnalysis();
+em.doOutput();
 
 end
 

@@ -51,7 +51,8 @@ end
 resultTable.T = T;
 
 for i = 1:numel(allData)
-   resultTable = add2T(resultTable, fieldName, allData(i)); 
+   resultTable = add2T(resultTable, fieldName, allData(i)); strv
+   
 end
 
 end
