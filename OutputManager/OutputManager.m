@@ -1,12 +1,16 @@
 classdef OutputManager < dynamicprops
-
+    
     properties
+        dm
+        enm
         am
     end
     
     methods
-        function obj = OutputManager(am)
+        function obj = OutputManager(dm, enm, am)
             obj.am = am;
+            obj.dm = dm;
+            obj.enm = enm;
         end
         
         function doOutput(obj, outputConfig)
@@ -18,13 +22,66 @@ classdef OutputManager < dynamicprops
         end
         
         function doOutputRow(obj, outputConfigRow)
-
+            
+            if strcmpi('analysis', outputConfigRow.stage)
+                doOutputRowAnalysis(obj, outputConfigRow)
+            else
+                doOutputRowData(obj, outputConfigRow)
+            end
+        end
+        
+        function doOutputRowData(obj, outputConfigRow)
+            parameters = outputConfigRow.parameters;
+            %src = obj.am.(outputConfigRow.srcName);
+            funcName = outputConfigRow.funcName;
+            filter = outputConfigRow.filter;
+            
+            fData = obj.dm.filterData(filter);
+            
+            for i = 1:numel(fData)
+                entry = fData(i);
+                str = obj.getTitle(entry, filter(1:2:end));
+                figure('Name', str);
+                eval([funcName '(entry, parameters)'])
+                title(str);
+            end
+        end
+        
+        function str = getTitle(obj, entry, filterNames)
+            % TODO: make static and paramatrize "params" field
+            str = "";
+            fns = fieldnames(entry.params);
+            for fi = 1:numel(fns)
+                if (sum(contains(filterNames, fns(fi))) > 0)
+                    if isnumeric(entry.params.(fns{fi}))
+                        str = strcat(str, " | ", fns{fi}, ': ', num2str(entry.params.(fns{fi})));
+                    else
+                        str = strcat(str, " | ", fns{fi}, ': ', entry.params.(fns{fi}));
+                    end
+                end
+            end
+            
+        end
+        
+        
+        function doOutputRowAnalysis(obj, outputConfigRow)
+            
             parameters = outputConfigRow.parameters;
             src = obj.am.(outputConfigRow.srcName);
             filter = outputConfigRow.filter;
             
-            
-            tableUI(src, str2func(outputConfigRow.funcName),[])
+            if isempty(filter)
+                tableUI(src, str2func(outputConfigRow.funcName),[], parameters)
+            else
+                entries = src.getEntriesByFilter(filter);
+                for ei = 1:numel(entries)
+                    str = obj.getTitle(entries(ei), filter(1:2:end));
+                    figure('Name', str);
+                    entry = entries(ei).data;
+                    eval([outputConfigRow.funcName, '(entry, parameters)']);
+                    title(strcat(outputConfigRow.srcName, ' ', str));
+                end
+            end
             
             %filteredRT = src.filter(filter);
             
@@ -40,9 +97,9 @@ classdef OutputManager < dynamicprops
             % and pass is to the func
             % -> so now 'filter' is a separate column. other parameters can
             % be passed into the display func
-
+            
         end
-      
+        
     end
 end
 

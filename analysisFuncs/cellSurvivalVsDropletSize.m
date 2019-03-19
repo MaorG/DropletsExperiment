@@ -5,8 +5,6 @@ function result = cellSurvivalVsDropletSize(entities, parameters)
     % get param names
     fns = fieldnames(entities(1).dataParams);
     
-    pA = (entities(1).dataParams.pixelSize)^2;
-
     % TODO: struct creation is messy...
     for ei = numel(entities):-1:1
         res(ei) = entities(ei).dataParams;
@@ -29,7 +27,7 @@ function result = cellSurvivalVsDropletSize(entities, parameters)
                vv.area = [vv.area; nd.T{ti}{ri}.area];
                vv.survival = [vv.survival; nd.T{ti}{ri}.survival];
             end
-            vv.area = vv.area * pA;
+            vv.area = vv.area;
             nd.T{ti} = cell(0);
             nd.T{ti}{1} = vv;
         end
@@ -65,8 +63,9 @@ end
 
 function res = getCellSurvivalVsDropletSize(entityStruct, props)
 
-    dropletArea = entityStruct.(props.dropletArea);
-    cellArea = entityStruct.(props.cellArea);
+    pA = (entityStruct.dataParams.pixelSize)^2;
+    dropletArea = entityStruct.(props.dropletArea) * pA;
+    cellArea = entityStruct.(props.cellArea); % no need to multiply by pA since relative
     cellSurvival = entityStruct.(props.cellSurvival);
     
     totalSurvival = zeros(size(dropletArea));

@@ -6,6 +6,7 @@ classdef NDResultTable < handle
         vals;
         strvals;
         T;
+        Tidx;
     end
     
     methods
@@ -41,6 +42,8 @@ classdef NDResultTable < handle
             T = cell(dims);
             T = cellfun(@(t) cell(0), T, 'UniformOutput', false);
             
+            Tidx = cell(dims);
+            Tidx = cellfun(@(t) cell(0), T, 'UniformOutput', false);
             
             resultTable.title = fieldName;
             resultTable.dims = dims;
@@ -60,6 +63,7 @@ classdef NDResultTable < handle
                 resultTable.strvals{ii} = strs;
             end
             resultTable.T = T;
+            resultTable.Tidx = Tidx;
             
             for i = 1:numel(allData)
                 resultTable = resultTable.add2T(resultTable, fieldName, allData(i));
@@ -88,7 +92,7 @@ classdef NDResultTable < handle
         function RT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
             if isnumeric(sliceVals)
-                sliceIdx = ismember(RT.vals{dimensionIdx}, sliceVals);
+                sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
             else
                 sliceIdxs = contains(RT.vals{dimensionIdx}, sliceVals);
             end
@@ -96,12 +100,50 @@ classdef NDResultTable < handle
         end
         
         function RT = keepSlices(RT, dimensionIdx, sliceIdxs)
-            RT.dims(dimensionIdx) = RT.dims(dimensionIdx) - 1;
-            sliceIdx2keep;
-            vals = RT.vals(dimensionIdx);
-            vals{1}{2}=[];
+%             RT.dims(dimensionIdx) = RT.dims(dimensionIdx) - 1;
+%             sliceIdx2keep;
+%             vals = RT.vals(dimensionIdx);
+%             vals{1}{2}=[];
         end
         
+        
+        function entries = getEntriesByFilter(RT, filterProps)
+            filterPairs = reshape(filterProps,2,numel(filterProps)/2)';
+            dimIdxs = find(contains(RT.names, {filterPairs{:,1}}'));
+            
+            tindices = [];
+            entries = [];
+            for ti = 1:numel(RT.Tidx)
+                if isempty(RT.Tidx{ti})
+                    continue
+                end
+                m_vals = {};
+                cindices = RT.Tidx{ti};
+                for i=1:numel(RT.Tidx{ti})
+                    m_vals{i} = RT.vals{i}(cindices(i));
+                end
+                sp = struct;
+                for i = 1:numel(RT.names)
+                    sp.(RT.names{i}) = m_vals{i};
+                end
+                
+                toKeep = 1;
+                for fi = 1:size(filterPairs,1)
+                    if isfield(sp, filterPairs{fi,1})
+                        if sum(contains(sp.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
+                            toKeep = 0;
+                        end
+                    end
+                end
+                
+                if (toKeep)
+                    tindices = [tindices, ti];
+                    entry = struct('params', sp, 'data', RT.T{ti});
+                    entries = [entries, entry];
+                end
+            end
+
+        end
     end
     
     
@@ -109,6 +151,7 @@ classdef NDResultTable < handle
         function [index] = computeIndex(tSize, indices)
             index = cumprod([1 tSize(1:end-1)]) * (indices(:) - [0; ones(numel(indices)-1, 1)]);
         end
+        
         function [resultTable] = add2T(resultTable, fieldName, data)
             
             indices = zeros(size(resultTable.names));
@@ -124,6 +167,7 @@ classdef NDResultTable < handle
             index = resultTable.computeIndex(resultTable.dims, indices);
             
             resultTable.T{index} = [resultTable.T{index}; data.(fieldName)];
+            resultTable.Tidx{index} = indices;
             %resultTable.T{index} = [data.(fieldName)];
             
         end

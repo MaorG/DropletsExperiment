@@ -150,6 +150,28 @@ classdef DataManager < handle
                     eval([prepConfigRow.funcName, '(data, parameters)']);
             end
         end
+        
+        function filteredData = filterData(obj, filter)
+                        
+            filteredData = [];
+            filterPairs = reshape(filter,2,numel(filter)/2)';
+            
+            for di = 1:numel(obj.allData)
+                toKeep = 1;
+                for fi = 1:size(filterPairs,1)
+                    if isfield(obj.allData(di).params, filterPairs{fi,1})
+                        if sum(contains(obj.allData(di).params.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
+                            toKeep = 0;
+                        end
+                    end
+                end
+                if (toKeep)
+                    filteredData = [filteredData, obj.allData(di)];
+                end
+            end
+            
+            
+        end
     end
 end
 

@@ -33,7 +33,7 @@ props = struct(...
 
 for i = 1:numel(v)
     if (strcmp(v{i}, 'members'))
-        props.seg = v{i+1};
+        props.members = v{i+1};
     elseif (strcmp(v{i}, 'parameters'))
         props.parameters = v{i+1};
     end

@@ -1,4 +1,4 @@
-function tableUI(rt, showfunc, appliedfuncs, varargin)
+function tableUI(rt, showfunc, appliedfuncs, properties, varargin)
 
 props = parseVarargin(varargin);
 
@@ -23,8 +23,9 @@ myhandles.bo = 'none';
 
 myhandles.sliderVals = ones(size(rt.names));
 myhandles.showfunc = showfunc;
+myhandles.properties = properties;
 
-if nargin > 2
+if nargin > 3
     myhandles.appliedfuncs = appliedfuncs;
 else
     myhandles.appliedfuncs = cell(0);
@@ -124,6 +125,10 @@ for i = 1:N
         'Units','normalized',...
         'Position', [0,0.1*i, 1,0.1],...
         'Callback', @slider_callback);
+    
+    if numel(rt.vals{i}) == 1
+        sld(i).Enable = 'off';
+    end
 end
 sg.Visible = 'on';
 end
@@ -256,6 +261,7 @@ for ii = 1:numel(vg.Children)
 end
 
 showfunc = myhandles.showfunc;
+properties = myhandles.properties;
 appliedfuncs = myhandles.appliedfuncs;
 delete(findall(gcf,'type','axes'));
 
@@ -408,6 +414,8 @@ if ~strcmp(bx,'none') && ~strcmp(by,'none') && strcmp(bo,'none')
 end
 
 if ~strcmp(bx,'none') && ~strcmp(by,'none') && ~strcmp(bo,'none')
+    
+    
     indx = find(cellfun(@(t) strcmp(t, bx), rt.names));
     indy = find(cellfun(@(t) strcmp(t, by), rt.names));
     indo = find(cellfun(@(t) strcmp(t, bo), rt.names));
@@ -450,7 +458,7 @@ else
         hndbg = axes('Units','normalized',...
             'Position',[0.3,0,0.7,1]);
         if ~isempty(a)
-            showfunc(a{1}{1});
+            showfunc(a{1}{1}, properties);
         else
             showfunc(0)
         end
@@ -504,7 +512,7 @@ end
             set(hnd, 'YTick', []);
             colorbar;
         else
-            showfunc(b);size(b)
+            showfunc(b, properties);size(b)
         end
         for k = 1:numel(appliedfuncs)
             %appliedfuncs{k}(hnd);
@@ -533,9 +541,9 @@ end
                                 continue
                             end
                             if (nargin(showfunc) == 1)
-                                showfunc(a{index}{1});
+                                showfunc(a{index}{1}, properties);
                                 if (indo ~= 0)
-                                    %legend(rt.strvals{indo},'best')
+                                    legend(rt.strvals{indo},'best')
                                 end
                             else
                                 showfunc(a{index}{1}, colors(k,:))

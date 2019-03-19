@@ -47,7 +47,6 @@ classdef AnalysisManager < dynamicprops
             entities = obj.enm.(analysisConfigRow.entities);
             
             obj.(resName) = eval([analysisConfigRow.funcName, '(entities, parameters)']);
-
         end
         
         function createAnalysisStruct(obj, analysisConfigRow)

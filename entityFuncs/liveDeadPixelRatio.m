@@ -13,8 +13,10 @@ liveRatio = zeros(size(regions));
 for i=1:numel(regions)
     pList = regions(i).PixelIdxList;
     totalCount = numel(pList);
-    liveCount = sum(Ilive(pList) > Idead(pList));
-    liveRatio(i) = liveCount / totalCount;
+    liveCount(i) = sum(Ilive(pList) > 0 & Ilive(pList) > Idead(pList));
+    deadCount(i) = sum(Idead(pList) > 0 & Idead(pList) > Ilive(pList));
+
+    liveRatio(i) = liveCount(i) / (liveCount(i) + deadCount(i));
 end
 
 

@@ -80,7 +80,7 @@ classdef ExperimentManager < handle
         end
         
         function doOutput(obj)
-            obj.om = OutputManager(obj.am);
+            obj.om = OutputManager(obj.dm, obj.enm, obj.am);
             outputConf = obj.pm.getConfiguration(obj.conf.output);
             obj.om.doOutput(outputConf)
         end    

@@ -11,7 +11,7 @@ dX = data.params.pixelSize;
 
 s = data.(props.src)>0;
 
-disk = getDisk(floor(props.dist / dX));
+disk = getDisk(props.dist / dX);
 
 SE = strel('arbitrary',disk);
 

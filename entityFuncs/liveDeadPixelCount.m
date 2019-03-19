@@ -14,8 +14,8 @@ deadCount = zeros(size(regions));
 for i=1:numel(regions)
     pList = regions(i).PixelIdxList;
     totalCount = numel(pList);
-    liveCount(i) = sum(Ilive(pList) > Idead(pList));
-    deadCount(i) = totalCount - liveCount(i);
+    liveCount(i) = sum(Ilive(pList) > 0 & Ilive(pList) > Idead(pList));
+    deadCount(i) = sum(Idead(pList) > 0 & Idead(pList) > Ilive(pList));
 end
 
 liveDeadCount = cat(2,liveCount,deadCount);
