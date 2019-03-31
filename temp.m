@@ -6,7 +6,7 @@ em = ExperimentManager();
 em.configure();
 
 em.doLoad();
-% em.doPrep();
+em.doPrep();
 % em.doEntities();
 % em.doAnalysis();
 % em.doOutput();

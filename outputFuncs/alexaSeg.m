@@ -4,6 +4,17 @@ function res = alexaSeg(data,parameters)
     
     s = data.(props.src);
 
+    g = imgradient(s);
+    
+    tic
+    [Mrdg, Mriv, Medg] = getContours(s);
+    toc
+    
+    figure;
+    imshow(cat(3,mat2gray(g,[0,1000]),mat2gray(s),0*mat2gray(g)));
+    figure;
+    imshow(double(cat(3,Mrdg,Mriv,Medg)));
+    
     res = [];
 end
 

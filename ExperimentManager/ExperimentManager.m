@@ -55,9 +55,9 @@ classdef ExperimentManager < handle
         function passGlobalParameters(obj)
         % add experiment parameters to all individual data entries :/
             for i = 1:numel(obj.dm.allData)
-                for vi = 1:2:numel(obj.conf.parameters)
-                    obj.dm.allData(i).params.(obj.conf.parameters{vi}) ...
-                        = obj.conf.parameters{vi+1};        
+                for vi = 1:2:numel(obj.conf.global)
+                    obj.dm.allData(i).params.(obj.conf.global{vi}) ...
+                        = obj.conf.global{vi+1};        
                 end
             end
         end
