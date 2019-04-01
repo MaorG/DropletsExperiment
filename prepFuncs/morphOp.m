@@ -7,7 +7,7 @@ function res = morphOp(data,parameters)
 
 props = parseParams(parameters);
 
-dX = data.params.pixelSize;
+dX = data.parameters.pixelSize;
 
 s = data.(props.src)>0;
 

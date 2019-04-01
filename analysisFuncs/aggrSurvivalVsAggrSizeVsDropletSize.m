@@ -3,11 +3,11 @@ function result = aggrSurvivalVsAggrSizeVsDropletSize(entities, parameters)
     props = parseParams(parameters);
         
     % get param names
-    fns = fieldnames(entities(1).dataParams);
+    fns = fieldnames(entities(1).dataParameters);
     
     % TODO: struct creation is messy...
     for ei = numel(entities):-1:1
-        res(ei) = entities(ei).dataParams;
+        res(ei) = entities(ei).dataParameters;
     end 
     
     [res.val] = deal([]);
@@ -81,7 +81,7 @@ end
 
 function res = getAggrSurvivalVsAggrSizeVsDropletSize(entityStruct, props)
 
-    pA = (entityStruct.dataParams.pixelSize)^2;
+    pA = (entityStruct.dataParameters.pixelSize)^2;
     dropletArea = entityStruct.(props.dropletArea); 
     aggrArea = entityStruct.(props.aggrArea);
     aggrSurvival = entityStruct.(props.aggrSurvival);

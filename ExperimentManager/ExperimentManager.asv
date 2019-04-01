@@ -86,7 +86,7 @@ classdef ExperimentManager < handle
                         
                         % TODO yeah the whole properties vs params shows up
                         % here again.. a case for a class for data entry?
-                        obj.dm.allData(i).parameters.(obj.conf.xGlobal{vi}) ...
+                        obj.dm.allData(i).pa.(obj.conf.xGlobal{vi}) ...
                             = obj.conf.xGlobal{vi+1}; 
                     end
                 end

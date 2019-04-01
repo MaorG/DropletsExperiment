@@ -3,6 +3,8 @@ classdef DataManager < handle
     % (loading, adding fields, saving)
     
     properties
+        rootName
+        parameterSpaceNames
         allData
     end
     
@@ -15,6 +17,20 @@ classdef DataManager < handle
         
         function clearData(obj)
             obj.allData = [];
+        end
+        
+        function setRootName(obj, rootName)
+            
+            % TODO: support linux
+            if isempty(rootName)
+                obj.rootName = '';
+            else
+                obj.rootName = rootName;
+            end
+        end
+        
+        function setExperimentParameterSpace(obj, parameterSpaceNames)
+            obj.parameterSpaceNames = parameterSpaceNames;
         end
         
         function loadData(obj, loadConfigArray)
@@ -44,13 +60,13 @@ classdef DataManager < handle
                 fieldName = fields(i)
                 val = loadConfigRow.(fieldName{1});
                 if isnumeric(val)
-                    data.params.(fieldName{1}) = val;
+                    data.properties.(fieldName{1}) = val;
                 else
                     [path,name,ext] = fileparts(val);
                     if (isempty(path) || isempty(name) || isempty(ext))
-                        data.params.(fieldName{1}) = val;
+                        data.properties.(fieldName{1}) = val;
                     else
-                        I = imread([path,'\',name,ext]);
+                        I = imread([obj.rootName, path,'\',name,ext]);
                         if (size(I,3)==2)
                             % TODO:
                             % why would it even get here?!?!
@@ -59,6 +75,9 @@ classdef DataManager < handle
                             data.(fieldName{1}) = I;
                         end
                     end
+                end
+                if contains(obj.parameterSpaceNames,loadConfigRow.(fieldName{1}))
+                    
                 end
             end
         end

@@ -130,6 +130,7 @@ classdef NDResultTable < handle
                 toKeep = 1;
                 for fi = 1:size(filterPairs,1)
                     if isfield(sp, filterPairs{fi,1})
+                        % TODO: strcmp instead of contains? probably yes.
                         if sum(contains(sp.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
                             toKeep = 0;
                         end

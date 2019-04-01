@@ -50,13 +50,13 @@ classdef OutputManager < dynamicprops
         function str = getTitle(obj, entry, filterNames)
             % TODO: make static and paramatrize "params" field
             str = "";
-            fns = fieldnames(entry.params);
+            fns = fieldnames(entry.parameters);
             for fi = 1:numel(fns)
                 if (sum(contains(filterNames, fns(fi))) > 0)
-                    if isnumeric(entry.params.(fns{fi}))
-                        str = strcat(str, " | ", fns{fi}, ': ', num2str(entry.params.(fns{fi})));
+                    if isnumeric(entry.parameters.(fns{fi}))
+                        str = strcat(str, " | ", fns{fi}, ': ', num2str(entry.parameters.(fns{fi})));
                     else
-                        str = strcat(str, " | ", fns{fi}, ': ', entry.params.(fns{fi}));
+                        str = strcat(str, " | ", fns{fi}, ': ', entry.parameters.(fns{fi}));
                     end
                 end
             end

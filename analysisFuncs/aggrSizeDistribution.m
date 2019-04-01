@@ -3,17 +3,17 @@ function result = aggrSizeDistribution(entities, parameters)
     props = parseParams(parameters);
         
     % get param names
-    fns = fieldnames(entities(1).dataParams);
+    fns = fieldnames(entities(1).dataParameters);
     
     % TODO: struct creation is messy...
     for ei = numel(entities):-1:1
-        res(ei) = entities(ei).dataParams;
+        res(ei) = entities(ei).dataParameters;
     end 
     
     [res.val] = deal([]);
     
     for ei = numel(entities):-1:1
-        pA = (entities(ei).dataParams.pixelSize)^2;
+        pA = (entities(ei).dataParameters.pixelSize)^2;
 
         res(ei).val = entities(ei).(props.aggrArea)*pA;
     end

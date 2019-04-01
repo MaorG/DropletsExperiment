@@ -2,7 +2,7 @@ function res = thresholdByValue(data,parameters)
 
 props = parseParams(parameters);
 
-th = (data.(props.threshold));
+th = (data.properties.(props.threshold));
 
 res = data.(props.src) >= th;
 
