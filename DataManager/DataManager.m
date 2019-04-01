@@ -179,8 +179,14 @@ classdef DataManager < handle
                 toKeep = 1;
                 for fi = 1:size(filterPairs,1)
                     if isfield(obj.allData(di).parameters, filterPairs{fi,1})
-                        if sum(contains(obj.allData(di).parameters.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
-                            toKeep = 0;
+                        if isnumeric(obj.allData(di).parameters.(filterPairs{fi,1}))
+                            if sum(obj.allData(di).parameters.(filterPairs{fi,1}) == filterPairs{fi,2}{1}) == 0
+                                toKeep = 0;
+                            end
+                        else
+                            if sum(contains(obj.allData(di).parameters.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
+                                toKeep = 0;
+                            end
                         end
                     end
                 end

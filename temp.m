@@ -7,9 +7,9 @@ em.configure();
 
 em.doLoad();
 em.doPrep();
-% em.doEntities();
-% em.doAnalysis();
-% em.doOutput();
+em.doEntities();
+em.doAnalysis();
+em.doOutput();
 
 end
 

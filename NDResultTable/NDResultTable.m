@@ -130,16 +130,21 @@ classdef NDResultTable < handle
                 toKeep = 1;
                 for fi = 1:size(filterPairs,1)
                     if isfield(sp, filterPairs{fi,1})
-                        % TODO: strcmp instead of contains? probably yes.
-                        if sum(contains(sp.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
-                            toKeep = 0;
+                        if isnumeric(sp.(filterPairs{fi,1}))
+                            if sum(sp.(filterPairs{fi,1}) == filterPairs{fi,2}{1}) == 0
+                                toKeep = 0;
+                            end
+                        else
+                            if sum(strcmp(sp.(filterPairs{fi,1}), filterPairs{fi,2})) == 0
+                                toKeep = 0;
+                            end
                         end
                     end
                 end
                 
                 if (toKeep)
                     tindices = [tindices, ti];
-                    entry = struct('params', sp, 'data', RT.T{ti});
+                    entry = struct('parameters', sp, 'data', RT.T{ti});
                     entries = [entries, entry];
                 end
             end
