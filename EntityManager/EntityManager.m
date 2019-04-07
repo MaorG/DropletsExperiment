@@ -112,6 +112,7 @@ classdef EntityManager < dynamicprops
             for i = 1:numel(obj.dm.allData)
                 st(i).uniqueID = obj.dm.allData(i).uniqueID;
                 st(i).dataParameters = obj.dm.allData(i).parameters;
+                st(i).dataProperties = obj.dm.allData(i).properties;
             end
             obj.(entName) = st;
         end

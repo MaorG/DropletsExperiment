@@ -531,7 +531,7 @@ end
 
                 hnd(i,j)= axes('Units','normalized',...
                     'Position',[x1,y1,0.63/w,0.93/h]);
-                if ~isempty(a{i,j,1})
+                if 1 || ~isempty(a{i,j,1})
                     hold on;
                     try
                         colors = hsv(z);

@@ -52,13 +52,13 @@ classdef OutputManager < dynamicprops
             str = "";
             fns = fieldnames(entry.parameters);
             for fi = 1:numel(fns)
-                if (sum(contains(filterNames, fns(fi))) > 0)
+                %if (sum(contains(filterNames, fns(fi))) > 0)
                     if isnumeric(entry.parameters.(fns{fi}))
                         str = strcat(str, " | ", fns{fi}, ': ', num2str(entry.parameters.(fns{fi})));
                     else
                         str = strcat(str, " | ", fns{fi}, ': ', entry.parameters.(fns{fi}));
                     end
-                end
+                %end
             end
             
         end

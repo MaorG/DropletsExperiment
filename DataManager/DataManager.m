@@ -57,7 +57,7 @@ classdef DataManager < handle
             fields = fieldnames(loadConfigRow);
             data = struct;
             for i = 1:numel(fields)
-                fieldName = fields(i)
+                fieldName = fields(i);
                 val = loadConfigRow.(fieldName{1});
                 if isnumeric(val)
                     data.properties.(fieldName{1}) = val;
@@ -66,6 +66,7 @@ classdef DataManager < handle
                     if (isempty(path) || isempty(name) || isempty(ext))
                         data.properties.(fieldName{1}) = val;
                     else
+                        [obj.rootName, path,'\',name,ext]
                         I = imread([obj.rootName, path,'\',name,ext]);
                         if (size(I,3)==2)
                             % TODO:
