@@ -1,0 +1,2 @@
+name, stage, parameters, load, prep, output
+'alexa101', {'load' 'prep' 'output'}, {'pixelSize' 0.16}, 'C:\school\microscopy\drops\18.3.19\load.csv', 'C:\school\microscopy\drops\18.3.19\prep.csv', 'C:\school\microscopy\drops\18.3.19\output.csv'

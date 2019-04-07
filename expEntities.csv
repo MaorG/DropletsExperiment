@@ -1,0 +1,6 @@
+targetName, resName, funcName, parameters
+'cells', 'props', 'createEntitiesFromSeg', {'seg' 'CellMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'cells', 'ldratio', 'liveDeadPixelRatio', {'liveIntensity' 'G_minus_bg' 'deadIntensity' 'R_minus_bg'}
+'droplets', 'props', 'createEntitiesFromSeg', {'seg' 'DropMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'}}
+{'droplets' 'cells'}, 'cellMembers', 'assignMembers', {'verbose' 1}
+{'cells' 'droplets'}, 'dropletHost', 'assignMembers', {'verbose' 1}
