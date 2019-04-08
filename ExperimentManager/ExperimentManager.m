@@ -8,14 +8,9 @@ classdef ExperimentManager < handle
        om
        configFileName
        conf
-<<<<<<< HEAD
-       rawData
-       perpData
-       
-=======
        rootName
        parameterSpace
->>>>>>> refs/remotes/origin/maor
+
     end
     
     methods
@@ -81,9 +76,8 @@ classdef ExperimentManager < handle
                 
         function passGlobalParameters(obj)
         % add global experiment parameters to all individual data entries :/
+
         
-<<<<<<< HEAD
-=======
         % funny bug (or just undocumented behaviour) - matlab converts the
         % 'global' column name into 'xGlobal'
             if isfield(obj.conf, 'xGlobal')
@@ -123,7 +117,7 @@ classdef ExperimentManager < handle
             outputConf = obj.pm.getConfiguration([obj.rootName, obj.conf.output]);
             obj.om.doOutput(outputConf)
         end    
->>>>>>> refs/remotes/origin/maor
+
     end
 
 end
