@@ -1,10 +1,9 @@
 function em = temp
 
 init
-em = ExperimentManager();
 
-conf = '\\qnap01\LongTerm\Maor\droplets\bioreporter 31.3.19\conf time handling\exp_biorep_31.3.csv'
-em.configure(conf);
+em = ExperimentManager();
+em.configure();
 
 em.doLoad();
 em.doPrep();
