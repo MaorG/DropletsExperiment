@@ -1,4 +1,4 @@
-function result = cellSurvivalVsDropletSize(entities, parameters)
+function result = michael_func(entities, parameters)
 
     props = parseParams(parameters);
         
@@ -26,7 +26,7 @@ function result = cellSurvivalVsDropletSize(entities, parameters)
             vv = nd.T{ti}{1};
             for ri = 2:numel(nd.T{ti})
                vv.area = [vv.area; nd.T{ti}{ri}.area];
-               vv.survival = [vv.survival; nd.T{ti}{ri}.survival];
+               vv.pop = [vv.pop; nd.T{ti}{ri}.pop];
             end
             vv.area = vv.area;
             nd.T{ti} = cell(0);
@@ -35,24 +35,20 @@ function result = cellSurvivalVsDropletSize(entities, parameters)
     end
 
     % TODO: and for this
-    
 	for ti = 1:numel(nd.T)
         if (~isempty(nd.T{ti}))
             % actual work
             vv = nd.T{ti}{1};
-            area = vv.area * 1;
-            survival = vv.survival;
-            [N,~,areabin] = histcounts(area,props.dropletAreaBins);
-            for i = 1:numel(N)
-                X(i) = props.dropletAreaBins(i);
-                Ylist = survival(areabin == i);
-                Y(i) = (nanmean((Ylist)));
-                Yste(i) = nanstd(Ylist) ./ sqrt(numel(Ylist));
-            end
+            area = vv.area;
+            pop = vv.pop;
+            [areaSorted, areaOrder] = sort(area);
+            popSorted = pop(areaOrder);
+            popFracSorted = cumsum(popSorted,'reverse') ./ sum(popSorted);
             
-            vv.X = X;
-            vv.Y = Y;
-            vv.Yste = Yste;
+            vv.X = areaSorted;
+            vv.Y = popFracSorted;
+            vv.props = props;
+            
             nd.T{ti}{1} = vv;
         end
     end
@@ -66,18 +62,22 @@ end
 
 function res = getCellSurvivalVsDropletSize(entityStruct, props)
 
-    pA = (entityStruct.dataParameters.pixelSize)^2;
-    dropletArea = entityStruct.(props.dropletArea) * pA;
-    cellArea = entityStruct.(props.cellArea); % no need to multiply by pA since relative
-    cellSurvival = entityStruct.(props.cellSurvival);
-    
-    totalSurvival = zeros(size(dropletArea));
-    for i = 1:numel(totalSurvival)
-        totalSurvival(i) = sum((cellArea{i}.*cellSurvival{i})./sum(cellArea{i}));
-    end
-    
-    res.area = dropletArea;
-    res.survival = totalSurvival;
+pA = (entityStruct.dataParameters.pixelSize)^2;
+
+dropletArea = entityStruct.(props.dropletArea) * pA;
+cellArea = entityStruct.(props.cellArea);
+sumCellArea = cellfun(@(x) sum(x), cellArea);
+sumCellArea = sumCellArea * pA;
+
+minAreaInds = dropletArea > 31;
+dropletArea = dropletArea(minAreaInds);
+sumCellArea = sumCellArea(minAreaInds);
+
+
+
+
+res.area = dropletArea;
+res.pop = sumCellArea;
     
 end
 

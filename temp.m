@@ -1,4 +1,4 @@
-function em = temp
+%function em = temp
 
 init
 
@@ -11,5 +11,5 @@ em.doEntities();
 em.doAnalysis();
 em.doOutput();
 
-end
+%end
 
