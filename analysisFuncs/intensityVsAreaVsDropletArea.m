@@ -26,7 +26,8 @@ function result = intensityVsAreaVsDropletArea(entities, parameters)
         area = area*pA;
         dropArea = dropArea*pA;
         intensity = entities(ei).(props.intensity);
-        res(ei).val = cat(2, area, dropArea, intensity);
+        eccentricity = entities(ei).ecce;
+        res(ei).val = cat(2, area, dropArea, intensity, eccentricity);
     end
     
     %nd = createNDResultTable(res, 'val', fns);
