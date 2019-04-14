@@ -99,13 +99,18 @@ classdef ExperimentManager < handle
                 leanData(i).linkage = struct('uID',obj.dm.allData(i).uniqueID,'order',obj.dm.allData(i).parameters.(linkName));
             end
             
-            [obj.dm.allData.next] = deal([]);
-            [obj.dm.allData.prev] = deal([]);
+%             [obj.dm.allData.nextUID] = deal([]);
+%             [obj.dm.allData.prevUID] = deal([]);
             
             nd = NDResultTable(leanData, 'linkage', parameters);
             
             % TODO: could be done by "colate table" functionality of the old
-            % version of NDtable
+            % version of NDtable?
+            % TODO - another case where calling some cellfun on nd.T could
+            % have been more elegant
+
+            allDataIDs = cat(1,obj.dm.allData.uniqueID);
+
             for ti = 1:numel(nd.T)
                 if (~isempty(nd.T{ti}))
                     entries = nd.T{ti};
@@ -117,7 +122,19 @@ classdef ExperimentManager < handle
                     end
                     [~, idxOrder] = sort(order);
                     for oi = 2:numel(idxOrder)
-
+                        % get allData index from uID for "current" and
+                        % "prev"
+                        prevSeriesIdx = idxOrder(oi-1);
+                        prevDataUID = uids(prevSeriesIdx);
+                        currSeriesIdx = idxOrder(oi);
+                        currDataUID = uids(currSeriesIdx);
+                        
+                        prevAllDataIdx = find(allDataIDs == prevDataUID);
+                        currAllDataIdx = find(allDataIDs == currDataUID);
+                        
+                        obj.dm.allData(currAllDataIdx).properties.prevUID = prevDataUID;
+                        obj.dm.allData(prevAllDataIdx).properties.nextUID = currDataUID;
+                        
                     end
                                        
                 end
@@ -125,6 +142,7 @@ classdef ExperimentManager < handle
             end
             
         end
+   
         
         function passGlobalParameters(obj)
             % add global experiment parameters to all individual data entries :/
