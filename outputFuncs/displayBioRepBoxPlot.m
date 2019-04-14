@@ -5,9 +5,8 @@ function displayBioRepBoxPlot(m, properties)
 %     set(gca,'xscale','log');
 %     view([1,0,1])
 
-    
     cellbin = [1, 2];
-    idx = find(m(:,1) > cellbin(1) & m(:,1) < cellbin(2) & m(:,4) > 0.7); 
+    idx = find(m(:,1) > cellbin(1) & m(:,1) < cellbin(2)); 
     a1 = m(idx,1);
     a2 = m(idx,2);
     a3 = m(idx,3);
