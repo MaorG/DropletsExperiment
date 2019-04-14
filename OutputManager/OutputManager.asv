@@ -77,8 +77,6 @@ classdef OutputManager < dynamicprops
                 noHoldDimensions = src.names(noHoldDimensionIndices);
             end
             
-            src2 = src.colateTable(dimensionToHold);
-            
             if isempty(filter) && isempty(dimensionToHold)
                 tableUI(src, str2func(outputConfigRow.funcName),[], parameters)
             else
