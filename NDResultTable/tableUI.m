@@ -8,7 +8,7 @@ myhandles = guihandles(figHandle);
 myhandles.rt = rt;
 myhandles.props = props;
 
-createTitle(rt);
+%createTitle(rt);
 createNameTexts(rt);
 myhandles.bgx = createXButtons(rt);
 myhandles.bgy = createYButtons(rt);

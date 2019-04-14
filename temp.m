@@ -3,7 +3,7 @@ function em = temp
 init
 em = ExperimentManager();
 
-conf = '\\qnap01\LongTerm\Maor\droplets\bioreporter 31.3.19\conf time handling\exp_biorep_31.3.csv'
+conf = 'C:\school\DropletsExperiment\configurations\biorep 31.3.19\exp_biorep_31.3.csv'
 em.configure(conf);
 
 em.doLoad();
