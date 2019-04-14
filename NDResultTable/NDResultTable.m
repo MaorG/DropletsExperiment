@@ -131,7 +131,7 @@ classdef NDResultTable < handle
                 for fi = 1:size(filterPairs,1)
                     if isfield(sp, filterPairs{fi,1})
                         if isnumeric(sp.(filterPairs{fi,1}))
-                            if sum(sp.(filterPairs{fi,1}) == filterPairs{fi,2}{1}) == 0
+                            if sum(sp.(filterPairs{fi,1}) == cell2mat(filterPairs{fi,2})) == 0
                                 toKeep = 0;
                             end
                         else

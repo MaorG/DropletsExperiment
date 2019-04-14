@@ -85,6 +85,10 @@ classdef ExperimentManager < handle
         end
         
         % todo: should this be a func of data manager?!
+     function passGlobalParameters(obj)
+        % add global experiment parameters to all individual data entries :/
+        
+        % todo: should this be a func of data manager?!
         function doLinking(obj)
             
             parameters = obj.conf.parameterSpace;
