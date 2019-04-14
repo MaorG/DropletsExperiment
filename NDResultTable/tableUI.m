@@ -540,7 +540,7 @@ end
                             if (isempty(a{index}))
                                 continue
                             end
-                            if (nargin(showfunc) == 1)
+                            if true | (nargin(showfunc) == 1)
                                 showfunc(a{index}{1}, properties);
                                 if (indo ~= 0)
                                     legend(rt.strvals{indo},'best')
