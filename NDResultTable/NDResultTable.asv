@@ -106,7 +106,7 @@ classdef NDResultTable < handle
             %             vals{1}{2}=[];
         end
         
-        function RT = colateTable(RT, dimToColate)
+        function RTout = colateTable(RT, dimToColate)
             
             dimIndex = cellfun(@(x) strcmp(x, dimToColate), RT.names);
             
@@ -116,6 +116,7 @@ classdef NDResultTable < handle
             newNames = RT.names(newDimOrder(1:end-1));
             newVals = RT.vals(newDimOrder(1:end-1));
             newStrvals = RT.strvals(newDimOrder(1:end-1));
+            newTidx = RT.Tidx(newDimOrder(1:end-1));
             
             X =  cell2mat(RT.vals(dimIndex));
             
@@ -129,8 +130,8 @@ classdef NDResultTable < handle
             for i = 1:N
                 newSub = cell(size(newDims));
                 [newSub{:}] = ind2sub(newDims, i);
-                Y = zeros(size(X));
-                for j = 1:M
+                
+                for j = 1:numel(RT.vals(dimIndex))
                     permutedSub = [newSub, j];
                     args = cell([numel( RT.dims) + 1, 1]);
                     args{1} = permutedDims;
@@ -140,20 +141,24 @@ classdef NDResultTable < handle
                     
                     indn = sub2ind(args{:});
                     ~isempty(cell2mat(permutedT{indn}))
-                    if (~isempty(cell2mat(permutedT{indn})) & ~isnan(permutedT{indn}{1}))
-                        Y(j) = cell2mat(permutedT{indn});
-                    else
-                        
-                    end
+                    
+                    newT{i} = [newT{i}, {permutedT{indn}{1}}]
+%                     if (~isempty(cell2mat(permutedT{indn})) & ~isnan(permutedT{indn}{1}))
+%                         Y(j) = cell2mat(permutedT{indn});
+%                     else
+%                         
+%                     end
                 end
-                newT{i} = {[X ; Y]};
+
             end
             
-            RT.dims = newDims;
-            RT.names = newNames;
-            RT.vals = newVals;
-            RT.strvals = newStrvals;
-            RT.T = newT;
+            RTout = RT;
+            RTout.dims = newDims;
+            RTout.names = newNames;
+            RTout.vals = newVals;
+            RTout.strvals = newStrvals;
+            RTout.Tidx = newTidx;
+            RTout.T = newT;
             
         end
         

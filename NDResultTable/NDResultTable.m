@@ -1,4 +1,4 @@
-classdef NDResultTable < handle
+classdef NDResultTable
     properties
         title;
         dims;
@@ -106,57 +106,6 @@ classdef NDResultTable < handle
             %             vals{1}{2}=[];
         end
         
-        function RT = colateTable(RT, dimToColate)
-            
-            dimIndex = cellfun(@(x) strcmp(x, dimToColate), RT.names);
-            
-            [~,newDimOrder] = sort(dimIndex);
-            
-            newDims = RT.dims(newDimOrder(1:end-1));
-            newNames = RT.names(newDimOrder(1:end-1));
-            newVals = RT.vals(newDimOrder(1:end-1));
-            newStrvals = RT.strvals(newDimOrder(1:end-1));
-            
-            X =  cell2mat(RT.vals(dimIndex));
-            
-            permutedDims = RT.dims(newDimOrder);
-            permutedT = permute(RT.T, newDimOrder);
-            newT = cell(newDims);
-            
-            N = prod(newDims);
-            M = numel(X);
-            
-            for i = 1:N
-                newSub = cell(size(newDims));
-                [newSub{:}] = ind2sub(newDims, i);
-                Y = zeros(size(X));
-                for j = 1:M
-                    permutedSub = [newSub, j];
-                    args = cell([numel( RT.dims) + 1, 1]);
-                    args{1} = permutedDims;
-                    for k = 1:numel(permutedSub)
-                        args(k+1) = permutedSub(k);
-                    end
-                    
-                    indn = sub2ind(args{:});
-                    ~isempty(cell2mat(permutedT{indn}))
-                    if (~isempty(cell2mat(permutedT{indn})) & ~isnan(permutedT{indn}{1}))
-                        Y(j) = cell2mat(permutedT{indn});
-                    else
-                        
-                    end
-                end
-                newT{i} = {[X ; Y]};
-            end
-            
-            RT.dims = newDims;
-            RT.names = newNames;
-            RT.vals = newVals;
-            RT.strvals = newStrvals;
-            RT.T = newT;
-            
-        end
-        
         
         function entries = getEntriesByFilter(RT, filterProps)
             filterPairs = reshape(filterProps,2,numel(filterProps)/2)';
@@ -195,7 +144,7 @@ classdef NDResultTable < handle
                 
                 if (toKeep)
                     tindices = [tindices, ti];
-                    entry = struct('parameters', sp, 'data', RT.T{ti});
+                    entry = {struct('parameters', sp, 'data', RT.T{ti})};
                     entries = [entries, entry];
                 end
             end
@@ -228,6 +177,70 @@ classdef NDResultTable < handle
             %resultTable.T{index} = [data.(fieldName)];
             
         end
+        
+        function RTout = colateTable(RT, dimToColate)
+            
+            dimIndex = cellfun(@(x) strcmp(x, dimToColate), RT.names);
+            
+            [~,newDimOrder] = sort(dimIndex);
+            
+            newDims = RT.dims(newDimOrder(1:end-1));
+            newNames = RT.names(newDimOrder(1:end-1));
+            newVals = RT.vals(newDimOrder(1:end-1));
+            newStrvals = RT.strvals(newDimOrder(1:end-1));
+            
+            
+            
+%            X =  cell2mat(RT.vals(dimIndex));
+            
+            permutedDims = RT.dims(newDimOrder);
+            permutedT = permute(RT.T, newDimOrder);
+            
+            newT = cell(newDims);
+            newTidx = cell(newDims);
+            
+            N = prod(newDims);
+
+            
+            for i = 1:N
+                newSub = cell(size(newDims));
+                [newSub{:}] = ind2sub(newDims, i);
+                newTidx{i} = cat(1,newSub{:});
+                for j = 1:numel(RT.vals{dimIndex})
+                    permutedSub = [newSub, j];
+                    args = cell([numel( RT.dims) + 1, 1]);
+                    args{1} = permutedDims;
+                    for k = 1:numel(permutedSub)
+                        args(k+1) = permutedSub(k);
+                    end
+                    
+                    indn = sub2ind(args{:})
+                    ~isempty(cell2mat(permutedT{indn}))
+                    
+                    if ~isempty(permutedT{indn})
+                        newT{i} = [newT{i}, {permutedT{indn}{1}}]
+                    end
+                    %                     if (~isempty(cell2mat(permutedT{indn})) & ~isnan(permutedT{indn}{1}))
+                    %                         Y(j) = cell2mat(permutedT{indn});
+                    %                     else
+                    %
+                    %                     end
+                end
+                
+            end
+            
+            RTout = RT;
+            RTout.dims = newDims;
+            RTout.names = newNames;
+            RTout.vals = newVals;
+            RTout.strvals = newStrvals;
+            RTout.Tidx = newTidx;
+            RTout.T = newT;
+            
+        end
+        
+        
+        
         
         function [index] = flattenField(allData, fieldName, newFieldName, vararg)
             index = cumprod([1 tSize(1:end-1)]) * (indices(:) - [0; ones(numel(indices)-1, 1)]);

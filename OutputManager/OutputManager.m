@@ -71,24 +71,26 @@ classdef OutputManager < dynamicprops
             filter = outputConfigRow.filter;
             dimensionToHold = [];
             noHoldDimensions = src.names;
-            if isfield(outputConfigRow, 'hold')
+            if isfield(outputConfigRow, 'hold') && ~isempty(outputConfigRow.hold)
                 dimensionToHold = outputConfigRow.hold;
                 noHoldDimensionIndices = find(~(strcmp(src.names, dimensionToHold)));
                 noHoldDimensions = src.names(noHoldDimensionIndices);
+                src = src.colateTable(src, dimensionToHold);
             end
             
-            src2 = src.colateTable(dimensionToHold);
             
             if isempty(filter) && isempty(dimensionToHold)
                 tableUI(src, str2func(outputConfigRow.funcName),[], parameters)
             else
-                entries = src.getEntriesByFilter(filter);
-                holdHandles = struct();
-                for ei = 1:numel(entries)
-                    str = obj.getTitle(entries(ei), filter(1:2:end));
+                entryGroups = src.getEntriesByFilter(filter);
+                for gi = 1:numel(entryGroups)
+                    str = obj.getTitle(entryGroups{gi}(1), filter(1:2:end));
                     h = figure('Name', str);
-                    entry = entries(ei).data;
-                    eval([outputConfigRow.funcName, '(entry, parameters)']);
+                    hold on;
+                    for ei = 1:numel(entryGroups{gi})
+                        entry = entryGroups{gi}(ei).data;
+                        eval([outputConfigRow.funcName, '(entry, parameters)']);
+                    end
                     title(strcat(outputConfigRow.srcName, ' ', str));
                 end
             end
