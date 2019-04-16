@@ -72,44 +72,14 @@ classdef NDResultTable
             
         end
         
-        function fRT = filter(RT, filterProps)
-            
-            fRT = RT;
-            
-            % get filter in nicer form
-            filterPairs = reshape(filterProps,2,2)';
-            
-            for fi = 1:size(filterPairs,1)
-                % for each filtered field
-                % remove (N-1) dimension slice if they are not included
-                
-                %@(fRT) (find(strcmp('mode', fRT.names)))
-                
-                fRT = keepSlicesByNames(fRT, filterPairs{fi,1}, filterPairs{fi,2});
-            end
-        end
-        
-        function RT = keepSlicesByNames(RT, dimensionName, sliceVals)
-            dimensionIdx = find(strcmp(dimensionName, RT.names));
-            if isnumeric(sliceVals)
-                sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
-            else
-                sliceIdxs = contains(RT.vals{dimensionIdx}, sliceVals);
-            end
-            RT = removeSlices(RT, dimensionIdx, sliceIdxs);
-        end
-        
-        function RT = keepSlices(RT, dimensionIdx, sliceIdxs)
-            %             RT.dims(dimensionIdx) = RT.dims(dimensionIdx) - 1;
-            %             sliceIdx2keep;
-            %             vals = RT.vals(dimensionIdx);
-            %             vals{1}{2}=[];
-        end
-        
-        
         function entries = getEntriesByFilter(RT, filterProps)
+            
             filterPairs = reshape(filterProps,2,numel(filterProps)/2)';
-            dimIdxs = find(contains(RT.names, {filterPairs{:,1}}'));
+            if(numel(filterProps) == 0)
+                dimIdxs = [];
+            else
+                dimIdxs = find(strcmp(RT.names, {filterPairs{:,1}}'));
+            end
             
             tindices = [];
             entries = [];
@@ -189,10 +159,6 @@ classdef NDResultTable
             newVals = RT.vals(newDimOrder(1:end-1));
             newStrvals = RT.strvals(newDimOrder(1:end-1));
             
-            
-            
-%            X =  cell2mat(RT.vals(dimIndex));
-            
             permutedDims = RT.dims(newDimOrder);
             permutedT = permute(RT.T, newDimOrder);
             
@@ -200,7 +166,7 @@ classdef NDResultTable
             newTidx = cell(newDims);
             
             N = prod(newDims);
-
+            
             
             for i = 1:N
                 newSub = cell(size(newDims));
@@ -240,6 +206,76 @@ classdef NDResultTable
         end
         
         
+        function fRT = filter(RT, filterProps)
+            
+            fRT = RT;
+            
+            % get filter in nicer form
+            filterPairs = reshape(filterProps,2,numel(filterProps)/2)';
+            
+            for fi = 1:size(filterPairs,1)
+                % for each filtered field
+                % remove (N-1) dimension slice if they are not included
+                
+                %@(fRT) (find(strcmp('mode', fRT.names)))
+                
+                fRT = RT.keepSlicesByNames(fRT, filterPairs{fi,1}, filterPairs{fi,2});
+            end
+        end
+        
+        function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
+            dimensionIdx = find(strcmp(dimensionName, RT.names));
+            if isnumeric(sliceVals)
+                sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
+            else
+                disp('!!!')
+                sliceIdxs = strcmp(RT.vals{dimensionIdx}, sliceVals);
+            end
+            %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
+            fRT = RT.keepSlices(RT, dimensionName, sliceIdxs);
+        end
+        
+        function fRT = keepSlices(RT, dimensionName, sliceIdxs)
+            
+            dimIndex = cellfun(@(x) strcmp(x, dimensionName), RT.names);
+            
+            %[~,newDimOrder] = sort(dimIndex);
+            
+            newDims = RT.dims;
+            newDims(find(dimIndex)) = sum(sliceIdxs);
+            newNames = RT.names;
+            newVals = RT.vals;
+            newVals{find(dimIndex)} = newVals{find(dimIndex)}(sliceIdxs);
+            newStrvals = RT.strvals;
+            newStrvals{find(dimIndex)} = RT.strvals{find(dimIndex)}(sliceIdxs);
+            
+            [~,permuteDimToEnd] = sort(dimIndex);
+            permuteDimToOri(permuteDimToEnd) = 1:length(permuteDimToEnd);
+            permutedDims = newDims(permuteDimToEnd);
+            
+            indicesToKeep = repmat(sliceIdxs(:),prod(permutedDims(1:end-1)),1);
+            
+            permutedT = permute(RT.T, permuteDimToEnd);
+            permutedTidx = permute(RT.Tidx, permuteDimToEnd);
+            
+            filteredT = permutedT(indicesToKeep);
+            filteredTidx = permutedTidx(indicesToKeep);
+            
+            permutedT = reshape(filteredT,permutedDims);
+            permutedTidx = reshape(filteredTidx,permutedDims)
+            
+            newT = permute(permutedT,permuteDimToOri);
+            newTidx = permute(permutedTidx,permuteDimToOri)
+            
+            fRT = RT;
+            fRT.dims = newDims;
+            fRT.names = newNames;
+            fRT.vals = newVals;
+            fRT.strvals = newStrvals;
+            fRT.Tidx = newTidx;
+            fRT.T = newT;
+            
+        end
         
         
         function [index] = flattenField(allData, fieldName, newFieldName, vararg)
