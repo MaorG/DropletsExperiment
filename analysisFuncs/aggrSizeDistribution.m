@@ -15,7 +15,11 @@ function result = aggrSizeDistribution(entities, parameters)
     for ei = numel(entities):-1:1
         pA = (entities(ei).dataParameters.pixelSize)^2;
 
-        res(ei).val = entities(ei).(props.aggrArea)*pA;
+        if (isempty(entities(ei).(props.aggrArea)))
+            res(ei).val = 0;
+        else
+            res(ei).val = entities(ei).(props.aggrArea)*pA;
+        end
     end
     
     %nd = createNDResultTable(res, 'val', fns);
