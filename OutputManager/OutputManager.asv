@@ -70,8 +70,9 @@ classdef OutputManager < dynamicprops
             src = obj.am.(outputConfigRow.srcName);
             filter = [];
             dimensionToHold = [];
+            noHoldDimensions = src.names;
 
-            if isfield(outputConfigRow, 'filter') && ~isempty(outputConfigRow.filter) 
+            if isfield(outputConfigRow, 'filter') && ~isempty(filter) 
                 filter = outputConfigRow.filter;
                 src = src.filter(src, outputConfigRow.filter);
             end
@@ -89,10 +90,6 @@ classdef OutputManager < dynamicprops
                 %entryGroups = src.getEntriesByFilter(filter);
                 entryGroups = src.getEntriesByFilter({});
                 for gi = 1:numel(entryGroups)
-                    
-                    % TODO: !!!
-                    % hmmm title depends on filter, can now be based on
-                    % src.vals(src.Tidx) or something like that
                     str = obj.getTitle(entryGroups{gi}(1), filter(1:2:end));
                     h = figure('Name', str);
                     hold on;
