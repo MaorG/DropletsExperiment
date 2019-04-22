@@ -34,7 +34,10 @@ while userinput ~= 13
     button = 1;
     continueToBigLoop = false;
     while ~continueToBigLoop
-        title( [ '{q/a}-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--{w/s}  {up/down} jump: ', num2str(jump), ',  {left/right} threshold: ', num2str(th)] );
+        title( [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
+            num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
+            '  zoom<--<z,x>  ok<Enter>']);
+
         continueToBigLoop = false;
         [x,y,button]=ginput(1)
         if isempty(button)
