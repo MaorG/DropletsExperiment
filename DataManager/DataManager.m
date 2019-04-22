@@ -267,7 +267,7 @@ classdef DataManager < handle
                 end
             end
             
-            [~,idOrder] = sort(uIDs)
+            [~,idOrder] = sort(uIDs);
             fileNames = fileNames(idOrder);
 
         end
