@@ -1,4 +1,4 @@
-function result = michael_func(entities, parameters)
+function result = fracPopAreaAnalyze(entities, parameters)
 
     props = parseParams(parameters);
         

@@ -27,11 +27,29 @@ end
 
 plot (xq, yq, 'Color', props.color, 'LineStyle', props.style, 'LineWidth',props.LineWidth);
 
-
+% default plot configuration
 xlabel('drop area');
 ylabel('fraction of pop');
 set(gca, 'xscale','log')
 ylim([0,1]);
+
+% plot beautification
+% Create ylabel
+ylabel('Fraction of population','FontWeight','bold');
+% Create xlabel
+xlabel('Droplet area [\mum^2]','FontWeight','bold');
+axes1 = gca;
+doFormat()
+% legend(' Aggregated\it P. putida',' Solitary\it P. putida',' Beads', 'Location', 'NorthEast')
+% legend('boxoff')
+set(axes1,...
+    'XTick',[100 1000 10000 100000],  ...
+    'XTickLabel',{'10^2','10^3','10^4','10^5'}  ...
+    );
+xlim([10^1.4,10^5.5])
+% saveas(gcf,'figures v4 alt bins/cumulative frac - aggs beads.fig')
+% print('figures v4 alt bins/cumulative frac - aggs beads','-dtiff','-r300')
+
 
 end
 

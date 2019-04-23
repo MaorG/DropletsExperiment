@@ -65,7 +65,7 @@ classdef DataManager < handle
                     data.properties.(fieldName{1}) = val;
                 else
                     [path,name,ext] = fileparts(val);
-                    if (isempty(path) || isempty(name) || isempty(ext) || ~any(strcmp(ext, readExts))) % add as plain text if the file extension is not an image
+                    if (isempty(path) || isempty(name) || isempty(ext))
                         data.properties.(fieldName{1}) = val;
                     else
                         [obj.rootName, path,'\',name,ext]

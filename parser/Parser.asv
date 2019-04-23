@@ -61,7 +61,6 @@ classdef Parser
             rline = fgetl(fid);
             lineNum = 0;
             while ischar(rline)
-                disp(rline)
                 
                 if (~strncmp(rline, commentLinePrefix, 1) && ~isempty(rline)) % ignore lines that start with '#'
                     
