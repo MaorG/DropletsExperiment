@@ -10,6 +10,7 @@ else
     AL = zeros(size(BF));
 end
 
+AL = logical(AL);
 
 imDesc = [];
 imParsFields = fieldnames(data.parameters);
@@ -77,10 +78,10 @@ while userinput ~= 13
             case 122
                 %rectUI = getrect;
                 coor = getrect;
-                row_from = coor(2);
-                col_from = coor(1);
-                row_to = coor(2) + coor(4);
-                col_to = coor(1) + coor(3);
+                row_from = floor(coor(2));
+                col_from = floor(coor(1));
+                row_to = floor(coor(2) + coor(4));
+                col_to = floor(coor(1) + coor(3));
                 disp(coor);
                 AL(row_from:row_to, col_from:col_to) = 1;
                 %rectUI = rectUI([2,1,4,3])

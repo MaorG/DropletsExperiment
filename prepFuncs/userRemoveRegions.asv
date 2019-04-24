@@ -10,6 +10,7 @@ else
     AL = zeros(size(BF));
 end
 
+AL = logical(AL);
 
 imDesc = [];
 imParsFields = fieldnames(data.parameters);
@@ -17,7 +18,7 @@ for i = 1 : numel(imParsFields)
     if (~isempty(imDesc))
         imDesc = [imDesc, ' '];
     end
-    imDesc = [imDesc, imParsFields(i), ' ', data.parameters.(imParsFields(i){1})];
+    imDesc = [imDesc, imParsFields{i}, ' ', num2str(data.parameters.(imParsFields{i}))];
 end
 
 %th = 1000;
@@ -77,10 +78,10 @@ while userinput ~= 13
             case 122
                 %rectUI = getrect;
                 coor = getrect;
-                row_from = coor(2);
-                col_from = coor(1);
-                row_to = coor(2) + coor(4);
-                col_to = coor(1) + coor(3);
+                row_from = floor(coor(2));
+                col_from = floor(coor(1));
+                row_to = floor(coor(2) + coor(4));
+                col_to = floor(coor(1) + coor(3));
                 disp(coor);
                 AL(row_from:row_to, col_from:col_to) = 1;
                 %rectUI = rectUI([2,1,4,3])
