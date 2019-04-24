@@ -6,6 +6,7 @@ classdef DataManager < handle
         rootName
         parameterSpaceNames
         allData
+        loadConfigArray
     end
     
     methods
@@ -36,6 +37,11 @@ classdef DataManager < handle
         function loadData(obj, loadConfigArray)
             %loadData() loads data from a struct array, one 'data' per row.
             % see loadDataRow for details
+            
+            % saving loadConfigArray in case there's an export 
+            obj.loadConfigArray = loadConfigArray;
+            
+            % loading
             allData = [];
             for i = 1:numel(loadConfigArray)
                 data = obj.loadDataRow(loadConfigArray(i));
@@ -132,31 +138,170 @@ classdef DataManager < handle
             disp(prepConfig)
             for i = 1:numel(prepConfig)
                 disp(prepConfig(i));
-                
-                
                 obj.doPrepRowOnAllData(prepConfig(i))
-                
             end
 
         end
         
         function doPrepRowOnAllData(obj, prepConfigRow)
             
-            if (~isfield(obj.allData,prepConfigRow.resName))
-                [obj.allData.(prepConfigRow.resName)] = deal([]);
-            end
-            
-            for i = 1:numel(obj.allData)
-                data = obj.allData(i);
-                parameters = prepConfigRow.parameters;
+            if isempty(prepConfigRow.resName)
+               obj.doSpecialPerpRow(prepConfigRow)
+            else
+                if (~isfield(obj.allData,prepConfigRow.resName))
+                    [obj.allData.(prepConfigRow.resName)] = deal([]);
+                end
 
-                obj.allData(i).(prepConfigRow.resName) = ...
-                    eval([prepConfigRow.funcName, '(data, parameters)']);
+                for i = 1:numel(obj.allData)
+                    data = obj.allData(i);
+                    parameters = prepConfigRow.parameters;
+
+                    obj.allData(i).(prepConfigRow.resName) = ...
+                        eval([prepConfigRow.funcName, '(data, parameters)']);
+                end
             end
             
         end
 
+        function doSpecialPerpRow(obj, prepConfigRow)
+            if (strcmp(prepConfigRow.funcName, 'ExportImages'))
+                doExportImages(obj, prepConfigRow)
+            end
+        end
         
+        function doExportImages(obj, prepConfigRow)
+            
+            props = obj.doExportImagesParameterExtraction(prepConfigRow.parameters);
+            
+            allFileNames = cell(numel(props.Images), numel(obj.allData));
+            for ni = 1:numel(props.Images)
+                imagesFieldName = props.Images{ni};
+                dstPath = props.targetDir;
+            
+                fileNames = obj.doFileNameingAndExport(imagesFieldName, dstPath);
+                allFileNames(ni,:) = fileNames(:);
+            end
+            
+                
+             writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad]);
+        end
+        
+        function writeNewLoadFile(obj, fieldNames, allFileNames, loadFileName)
+            
+            loadConfig = obj.loadConfigArray;
+            
+            for ni = 1:numel(fieldNames)
+                imagesFieldName = fieldNames{ni};
+                [loadConfig.(imagesFieldName)] = deal(allFileNames{ni,:});
+            end
+            
+            % big todo:
+            % adding quotes to strings... better move to the parser?
+            % and if so, perhaps just fix the reverse..
+            % since we're only doing the load phase, it's possible the
+            % "eval" stuff is unneeded.. just use isnumber
+            
+            allFieldNames = fieldnames(loadConfig);
+            for di = 1:numel(loadConfig)
+                for ni = 1:numel(allFieldNames)
+                    if ~isnumeric(loadConfig(di).(allFieldNames{ni}))
+                        loadConfig(di).(allFieldNames{ni}) = ['''', loadConfig(di).(allFieldNames{ni}), ''''];
+                    end
+                end
+            end
+            
+            
+            T = struct2table(loadConfig);
+            
+            writetable(T, loadFileName);
+        end
+
+        function fileNames = doFileNameingAndExport(obj, imagesFieldName, dstPath)
+
+            if (isempty(dstPath) || dstPath(end) ~= '\') 
+            	dstPath = [dstPath '\'];
+            end
+            
+            mkdir([obj.rootName,dstPath]);
+            
+            dataParameters = obj.parameterSpaceNames;
+            
+            for di = numel(obj.allData):-1:1
+                for dpi = 1:numel(dataParameters)
+                    res(di).(dataParameters{dpi}) = obj.allData(di).parameters.(dataParameters{dpi});
+                end
+                res(di).(imagesFieldName) = obj.allData(di).(imagesFieldName);
+                res(di).uid = obj.allData(di).uniqueID;
+            end
+
+            ndImage = NDResultTable(res, imagesFieldName, dataParameters);
+            ndID = NDResultTable(res, 'uid', dataParameters);
+
+            fileNames = cell(0);
+            uIDs = [];
+    
+            % using ND table to create nice filenames, where the names are
+            % determined by the parameter space, and repeats are numbered
+            % - naming and actual saving of the images done 
+            %   within the loop :( to avoid copying huge files
+            for ti = 1:numel(ndImage.T)
+                if (~isempty(ndImage.T{ti}))
+                    fileName = [dstPath,imagesFieldName];
+                    pindices = ndImage.Tidx{ti};
+                    for pii = 1:numel(pindices)
+                        % add to filename the parmaters and their values
+                        fileName = strjoin({fileName,ndImage.names{pii},ndImage.strvals{pii}{ndImage.Tidx{ti}(pii)}});
+                    end
+                    for ri = 1:numel(ndImage.T{ti})
+                        % add repeat index (for identical entries)
+                        final_fileName = strjoin({fileName,num2str(ri)});
+
+                        % add repeat index (for identical entries)
+                        final_fileName = strjoin({final_fileName,'.tif'});
+                        
+                        final_uID = ndID.T{ti}{ri};
+                        
+                        fileNames = [fileNames, final_fileName];
+                        uIDs = [uIDs, final_uID];
+                        
+                        imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
+                    end
+                end
+            end
+            
+            [~,idOrder] = sort(uIDs);
+            fileNames = fileNames(idOrder);
+
+        end
+        
+        function props = doExportImagesParameterExtraction(obj, v)
+
+            props = struct(...
+                'Images', {'R'},...
+                'targetDir', 'new tif\',...
+                'updatedLoad', 'newload.csv');
+
+            for i = 1:numel(v)
+
+                if (strcmp(v{i}, 'Images'))
+                    props.Images = v{i+1};
+                elseif (strcmp(v{i}, 'targetDir'))
+                    props.targetDir = v{i+1};
+                elseif (strcmp(v{i}, 'updatedLoad'))
+                    props.updatedLoad = v{i+1};
+                end
+            end
+
+        end
+        
+        
+        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%    *sketch* for parallelization
+%%%%    - performance should be tested!
+%%%%    - useful for EntityManager as well
+
+
         function doPrepRowOnAllDataParallel(obj, prepConfigRow)
             
             [obj.allData.(prepConfigRow.resName)] = deal([]);
