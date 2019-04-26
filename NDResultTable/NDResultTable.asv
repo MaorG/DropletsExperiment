@@ -229,16 +229,13 @@ classdef NDResultTable
             if (~iscell(sliceVals))
                 sliceVals = {sliceVals};
             end
-            sliceIdxs = repmat(0, 1, numel(RT.vals{dimensionIdx}));
-            
+            sliceIdx
             for i = 1 : numel(sliceVals)
-                val = sliceVals{i};
-                if isnumeric(val)
-                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, val);
-                else
-                    disp('!!!')
-                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, val);
-                end   
+            if isnumeric(sliceVals)
+                sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
+            else
+                disp('!!!')
+                sliceIdxs = strcmp(RT.vals{dimensionIdx}, sliceVals);
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
             fRT = RT.keepSlices(RT, dimensionName, sliceIdxs);
