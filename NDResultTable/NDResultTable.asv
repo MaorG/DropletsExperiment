@@ -225,17 +225,13 @@ classdef NDResultTable
         
         function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
-            sliceIdxs = zeros(size(RT.vals{dimensionIdx}));
             if isnumeric(sliceVals)
-                for i = 1:numel(sliceVals)
-                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, sliceVals(i));
-                end
+                sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
             else
+                disp('!!!')
+                sliceIdx = zeros(size(sliceVals))
                 for i = 1:numel(sliceVals)
-                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, sliceVals{i});
-                end
-                %sliceIdxs = find(sliceIdxs);
-                %sliceIdxs = sliceIdxs'
+                sliceIdxs = strcmp(RT.vals{dimensionIdx}, sliceVals);
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
             fRT = RT.keepSlices(RT, dimensionName, sliceIdxs);
@@ -259,8 +255,7 @@ classdef NDResultTable
             permuteDimToOri(permuteDimToEnd) = 1:length(permuteDimToEnd);
             permutedDims = newDims(permuteDimToEnd);
             
-            indicesToKeep = repmat(sliceIdxs(:)',prod(permutedDims(1:end-1)),1);
-            indicesToKeep = indicesToKeep(:);
+            indicesToKeep = repmat(sliceIdxs(:),prod(permutedDims(1:end-1)),1);
             
             permutedT = permute(RT.T, permuteDimToEnd);
             %permutedTidx = permute(RT.Tidx, permuteDimToEnd);

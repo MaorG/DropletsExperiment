@@ -90,17 +90,19 @@ classdef OutputManager < dynamicprops
                 entryGroups = src.getEntriesByFilter({});
                 for gi = 1:numel(entryGroups)
                     
-                    % TODO: !!!
-                    % hmmm title depends on filter, can now be based on
-                    % src.vals(src.Tidx) or something like that
-                    str = obj.getTitle(entryGroups{gi}(1), filter(1:2:end));
-                    h = figure('Name', str);
-                    hold on;
-                    for ei = 1:numel(entryGroups{gi})
-                        entry = entryGroups{gi}(ei).data;
-                        eval([outputConfigRow.funcName, '(entry, parameters)']);
+                    if ~isempty(entryGroups{gi})
+                        % TODO: !!!
+                        % hmmm title depends on filter, can now be based on
+                        % src.vals(src.Tidx) or something like that
+                        str = obj.getTitle(entryGroups{gi}(1), filter(1:2:end));
+                        h = figure('Name', str);
+                        hold on;
+                        for ei = 1:numel(entryGroups{gi})
+                            entry = entryGroups{gi}(ei).data;
+                            eval([outputConfigRow.funcName, '(entry, parameters)']);
+                        end
+                        title(strcat(outputConfigRow.srcName, ' ', str));
                     end
-                    title(strcat(outputConfigRow.srcName, ' ', str));
                 end
             end
             
