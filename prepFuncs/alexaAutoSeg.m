@@ -46,7 +46,7 @@ userinput = 0
 clim = [1,2^16 - 1];
 
 BFUI = BF;
-jump = 100;
+jump = 8;
 rectUI = [1,1,size(BF,1),size(BF,2)];
 
 interrupted = false;
@@ -69,7 +69,7 @@ while userinput ~= 13
     button = 1;
     continueToBigLoop = false;
     while ~continueToBigLoop
-        title( [ '{q/a}-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--{w/s}  {up/down} jump: ', num2str(jump), ',  {left/right} threshold: ', num2str(th)] );
+        title( [ '{q/a}-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--{w/s}  {z/x} zoom  {up/down} jump: ', num2str(jump), ',  {left/right} threshold: ', num2str(th)] );
 
         continueToBigLoop = false;
         try
@@ -90,10 +90,10 @@ while userinput ~= 13
                 th = th / jump
                 continueToBigLoop = true;
             case 31
-                jump = ceil(jump/10);
+                jump = ceil(jump/2);
                 %continueToBigLoop = true;
             case 30
-                jump = jump*10;
+                jump = jump*2;
                 %continueToBigLoop = true;
 
             case 13
