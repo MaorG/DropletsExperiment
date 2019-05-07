@@ -225,16 +225,16 @@ classdef NDResultTable
         
         function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
-            
-            if (~iscell(sliceVals))
-                sliceVals = {sliceVals};
-            end
-            sliceIdx
-            for i = 1 : numel(sliceVals)
+
+
             if isnumeric(sliceVals)
                 sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
             else
                 disp('!!!')
+
+                sliceIdx = zeros(size(sliceVals))
+                for i = 1:numel(sliceVals)
+
                 sliceIdxs = strcmp(RT.vals{dimensionIdx}, sliceVals);
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
@@ -262,16 +262,28 @@ classdef NDResultTable
             indicesToKeep = repmat(sliceIdxs(:),prod(permutedDims(1:end-1)),1);
             
             permutedT = permute(RT.T, permuteDimToEnd);
-            permutedTidx = permute(RT.Tidx, permuteDimToEnd);
+
+            %permutedTidx = permute(RT.Tidx, permuteDimToEnd);
             
             filteredT = permutedT(indicesToKeep);
-            filteredTidx = permutedTidx(indicesToKeep);
+            %filteredTidx = permutedTidx(indicesToKeep);
             
             permutedT = reshape(filteredT,permutedDims);
-            permutedTidx = reshape(filteredTidx,permutedDims)
+            %permutedTidx = reshape(filteredTidx,permutedDims)
             
             newT = permute(permutedT,permuteDimToOri);
-            newTidx = permute(permutedTidx,permuteDimToOri)
+            %newTidx = permute(permutedTidx,permuteDimToOri)
+            
+            
+            % getting the content of Tidx "empirically"
+            newTidx = cell(newDims);
+            N = prod(newDims);
+            for i = 1:N
+                newSub = cell(size(newDims));
+                [newSub{:}] = ind2sub(newDims, i);
+                newTidx{i} = cat(1,newSub{:});
+            end
+
             
             fRT = RT;
             fRT.dims = newDims;

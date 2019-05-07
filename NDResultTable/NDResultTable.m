@@ -225,20 +225,22 @@ classdef NDResultTable
         
         function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
+
             
             if (~iscell(sliceVals))
                 sliceVals = {sliceVals};
             end
-            sliceIdxs = repmat(0, 1, numel(RT.vals{dimensionIdx}));
-            
-            for i = 1 : numel(sliceVals)
-                val = sliceVals{i};
-                if isnumeric(val)
-                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, val);
-                else
-                    disp('!!!')
-                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, val);
-                end   
+
+            sliceIdxs = zeros(size(RT.vals{dimensionIdx}));
+            if isnumeric(sliceVals)
+                for i = 1:numel(sliceVals)
+                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, sliceVals(i));
+                end
+            else
+                for i = 1:numel(sliceVals)
+                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, sliceVals{i});
+                end
+
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
             fRT = RT.keepSlices(RT, dimensionName, sliceIdxs);
@@ -262,19 +264,30 @@ classdef NDResultTable
             permuteDimToOri(permuteDimToEnd) = 1:length(permuteDimToEnd);
             permutedDims = newDims(permuteDimToEnd);
             
-            indicesToKeep = repmat(sliceIdxs(:),prod(permutedDims(1:end-1)),1);
+            indicesToKeep = repmat(sliceIdxs(:)',prod(permutedDims(1:end-1)),1);
+            indicesToKeep = indicesToKeep(:);
             
             permutedT = permute(RT.T, permuteDimToEnd);
-            permutedTidx = permute(RT.Tidx, permuteDimToEnd);
+            %permutedTidx = permute(RT.Tidx, permuteDimToEnd);
             
             filteredT = permutedT(indicesToKeep);
-            filteredTidx = permutedTidx(indicesToKeep);
+            %filteredTidx = permutedTidx(indicesToKeep);
             
             permutedT = reshape(filteredT,permutedDims);
-            permutedTidx = reshape(filteredTidx,permutedDims)
+            %permutedTidx = reshape(filteredTidx,permutedDims)
             
             newT = permute(permutedT,permuteDimToOri);
-            newTidx = permute(permutedTidx,permuteDimToOri)
+            %newTidx = permute(permutedTidx,permuteDimToOri)
+            
+            
+            % getting the content of Tidx "empirically"
+            newTidx = cell(newDims);
+            N = prod(newDims);
+            for i = 1:N
+                newSub = cell(size(newDims));
+                [newSub{:}] = ind2sub(newDims, i);
+                newTidx{i} = cat(1,newSub{:});
+            end
             
             fRT = RT;
             fRT.dims = newDims;
