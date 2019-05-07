@@ -4,9 +4,17 @@ classdef Parser
         function conf = getConfiguration(obj, configFileName)
             
             T = readtable(configFileName,'Delimiter',',');
-            conf = table2struct(T);
+            % TODO: ignore columns beggining with #!
+            % problem: readtable automatically changes '#BF' to 'x_BF'
+            % theoretically it's possible to ignore all columns that start
+            % with 'x_', but it also changes 'global' to 'x_Global' and
+            % 'global' is a column name in the exp config
             
-            %TODO  - ignore lines beggining with #!!
+            
+            conf = table2struct(T);
+
+            
+            %ignore lines beggining with #
             for i = numel(conf):-1:1
                 conf(i)
                 fn = fieldnames(conf)
@@ -14,7 +22,8 @@ classdef Parser
                     conf(i)=[];
                 end
             end                                
-            
+
+
             
             for i = 1:numel(conf)
                     
