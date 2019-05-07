@@ -3,6 +3,7 @@ classdef Parser
         
         function conf = getConfiguration(obj, configFileName)
             
+
             % get configuration file using comma as a field separator
             % ignore lines that begin with #
             % don't use commas as a separator if they're enclosed in double
@@ -10,6 +11,7 @@ classdef Parser
             
             commaTo = char(65535); % special character that shouldn't be used regularly in the file
             commentLinePrefix = '#';
+            commentColumnPrefix = '@'; % characters that can prefix field columns to specify which columns to ignore
             
             conf = obj.createStructFromCsvFile(obj, configFileName, commaTo, commentLinePrefix);
 
@@ -27,6 +29,7 @@ classdef Parser
 %                 end
 %             end                                
             
+
             
             for i = 1:numel(conf)
                     
@@ -57,10 +60,13 @@ classdef Parser
             conf = struct;
             fields = {};
             
+            colsIgnore = [];
+            
             fid = fopen(filepath);
             rline = fgetl(fid);
             lineNum = 0;
             while ischar(rline)
+                disp(rline)
                 
                 if (~strncmp(rline, commentLinePrefix, 1) && ~isempty(rline)) % ignore lines that start with '#'
                     
@@ -73,7 +79,11 @@ classdef Parser
                         token = strrep(strrep(token, commaTo, ','), '"', ''); % remove quote marks and replace special character back to comma
                         
                         if (lineNum == 1)
-                            fields = [fields, token];
+                            if (strncmp(rline, commentColumnPrefix, 1))
+                                colsIgnore = [colsIgnore, i);
+                            else
+                                fields = [fields, token];
+                            end
                         else
                             conf(lineNum-1).(fields{i}) = token;
                         end

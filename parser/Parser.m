@@ -11,8 +11,9 @@ classdef Parser
             
             commaTo = char(65535); % special character that shouldn't be used regularly in the file
             commentLinePrefix = '#';
+            commentColumnPrefix = '!'; % characters that can prefix field columns to specify which columns to ignore
             
-            conf = obj.createStructFromCsvFile(obj, configFileName, commaTo, commentLinePrefix);
+            conf = obj.createStructFromCsvFile(obj, configFileName, commaTo, commentLinePrefix, commentColumnPrefix);
 
                         
             %TODO - ignore commas within double quote marks!
@@ -54,16 +55,18 @@ classdef Parser
         end
         
         
-        function conf = createStructFromCsvFile(obj, filepath, commaTo, commentLinePrefix)
+        function conf = createStructFromCsvFile(obj, filepath, commaTo, commentLinePrefix, commentColumnPrefix)
             
             conf = struct;
             fields = {};
+            
+            colsIgnore = [];
             
             fid = fopen(filepath);
             rline = fgetl(fid);
             lineNum = 0;
             while ischar(rline)
-                disp(rline)
+                %disp(rline)
                 
                 if (~strncmp(rline, commentLinePrefix, 1) && ~isempty(rline)) % ignore lines that start with '#'
                     
@@ -76,8 +79,13 @@ classdef Parser
                         token = strrep(strrep(token, commaTo, ','), '"', ''); % remove quote marks and replace special character back to comma
                         
                         if (lineNum == 1)
-                            fields = [fields, token];
-                        else
+                            if (strncmp(token, commentColumnPrefix, 1))
+                                colsIgnore = [colsIgnore, i];
+                                fields = [fields, 'none'];
+                            else
+                                fields = [fields, token];
+                            end
+                        elseif (~any(i == colsIgnore))
                             conf(lineNum-1).(fields{i}) = token;
                         end
                     end
