@@ -558,8 +558,9 @@ end
 
                         end
 
-                    catch
+                    catch exception
                         ':('
+                        disp(exception)
                     end
                     
                     % hide ticks for "inner" plots by default

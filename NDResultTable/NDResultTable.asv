@@ -225,12 +225,16 @@ classdef NDResultTable
         
         function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
+
+
             if isnumeric(sliceVals)
                 sliceIdxs = ismember(RT.vals{dimensionIdx}, sliceVals);
             else
                 disp('!!!')
+
                 sliceIdx = zeros(size(sliceVals))
                 for i = 1:numel(sliceVals)
+
                 sliceIdxs = strcmp(RT.vals{dimensionIdx}, sliceVals);
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
@@ -258,6 +262,7 @@ classdef NDResultTable
             indicesToKeep = repmat(sliceIdxs(:),prod(permutedDims(1:end-1)),1);
             
             permutedT = permute(RT.T, permuteDimToEnd);
+
             %permutedTidx = permute(RT.Tidx, permuteDimToEnd);
             
             filteredT = permutedT(indicesToKeep);
@@ -278,6 +283,7 @@ classdef NDResultTable
                 [newSub{:}] = ind2sub(newDims, i);
                 newTidx{i} = cat(1,newSub{:});
             end
+
             
             fRT = RT;
             fRT.dims = newDims;

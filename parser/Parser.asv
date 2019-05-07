@@ -3,7 +3,6 @@ classdef Parser
         
         function conf = getConfiguration(obj, configFileName)
             
-
             % get configuration file using comma as a field separator
             % ignore lines that begin with #
             % don't use commas as a separator if they're enclosed in double
@@ -28,7 +27,6 @@ classdef Parser
 %                 end
 %             end                                
             
-
             
             for i = 1:numel(conf)
                     
@@ -63,7 +61,6 @@ classdef Parser
             rline = fgetl(fid);
             lineNum = 0;
             while ischar(rline)
-                disp(rline)
                 
                 if (~strncmp(rline, commentLinePrefix, 1) && ~isempty(rline)) % ignore lines that start with '#'
                     

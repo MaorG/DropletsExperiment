@@ -225,20 +225,23 @@ classdef NDResultTable
         
         function fRT = keepSlicesByNames(RT, dimensionName, sliceVals)
             dimensionIdx = find(strcmp(dimensionName, RT.names));
+
             
             if (~iscell(sliceVals))
                 sliceVals = {sliceVals};
             end
-            sliceIdxs = zeros(1, numel(RT.vals{dimensionIdx}));
-            
-            for i = 1 : numel(sliceVals)
-                val = sliceVals{i};
-                if isnumeric(val)
-                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, val);
-                else
-                    disp('!!!')
-                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, val);
-                end   
+
+            sliceIdxs = zeros(size(RT.vals{dimensionIdx}));
+            if isnumeric(sliceVals)
+                for i = 1:numel(sliceVals)
+                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, sliceVals(i));
+                end
+            else
+                for i = 1:numel(sliceVals)
+                    sliceIdxs = sliceIdxs | strcmp(RT.vals{dimensionIdx}, sliceVals{i});
+                end
+
+
             end
             %fRT = keepSlices(RT, dimensionIdx, sliceIdxs);
             fRT = RT.keepSlices(RT, dimensionName, sliceIdxs);

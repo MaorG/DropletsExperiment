@@ -60,6 +60,8 @@ classdef DataManager < handle
             % if the value is a fileName, it 'imread's the file 
             % otherwise, it just copies the value into 
             
+            readExts = {'.tif' '.tiff'}; % specifies which extensions to imread()
+            
             fields = fieldnames(loadConfigRow);
             data = struct;
             for i = 1:numel(fields)
@@ -69,11 +71,12 @@ classdef DataManager < handle
                     data.properties.(fieldName{1}) = val;
                 else
                     [path,name,ext] = fileparts(val);
-                    if (isempty(path) || isempty(name) || isempty(ext))
+                    if (isempty(path) || isempty(name) || isempty(ext) || ~any(strcmp(ext, readExts))) % add as plain text if the file extension is not an image
                         data.properties.(fieldName{1}) = val;
                     else
-                        [obj.rootName, path,'\',name,ext]
-                        I = imread([obj.rootName, path,'\',name,ext]);
+                        readPath = appendPaths(obj.rootName, [path, '\', name, ext]);
+                        readPath
+                        I = imread(readPath);
                         if (size(I,3)==2)
                             % TODO:
                             % why would it even get here?!?!
