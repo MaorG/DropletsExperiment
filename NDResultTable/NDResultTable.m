@@ -232,9 +232,9 @@ classdef NDResultTable
             end
 
             sliceIdxs = zeros(size(RT.vals{dimensionIdx}));
-            if isnumeric(sliceVals)
+            if isnumeric(sliceVals{1})
                 for i = 1:numel(sliceVals)
-                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, sliceVals(i));
+                    sliceIdxs = sliceIdxs | ismember(RT.vals{dimensionIdx}, sliceVals{i});
                 end
             else
                 for i = 1:numel(sliceVals)
