@@ -4,10 +4,12 @@ init
 
 em = ExperimentManager();
 
-conf = '\\qnap01\LongTerm\Maor\droplets\bioreporter 31.3.19\conf time handling\exp_biorep_31.3.csv'
-conf = '\\qnap01\LongTerm\Michael\drops\alexa seg\exp_alexa_auto.csv';
-conf = '\\qnap01\LongTerm\Michael\drops\exp alexa_22.4.19\exp_alexa_auto.csv';
-conf = '\\qnap01\LongTerm\Michael\drops\paper\pipeline conf\expConfig.csv';
+conf = '\\QNAP01\LongTerm\Maor\14.5.19 p130519mix1\exp_mix_201_manual.csv'
+conf = '\\QNAP01\LongTerm\Maor\14.5.19 p130519mix1\exp_mix_201_phase2.csv'
+conf = '\\QNAP01\LongTerm\Maor\14.5.19 p130519mix1\exp_mix_201_phase3.csv'
+
+conf = '\\QNAP01\LongTerm\Maor\14.5.19 p130519mix1\exp_mix_201_manual_second_dry.csv'
+
 em.configure(conf);
 
 em.doLoad();
@@ -17,6 +19,4 @@ em.doAnalysis();
 em.doOutput();
 
 %end
-
-
 
