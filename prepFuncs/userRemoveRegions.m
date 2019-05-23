@@ -78,10 +78,10 @@ while userinput ~= 13
             case 122
                 %rectUI = getrect;
                 coor = getrect;
-                row_from = max(floor(coor(2)),1);
-                col_from = max(floor(coor(1)),1);
                 row_to = min(floor(coor(2) + coor(4)),size(BF,2));
                 col_to = min(floor(coor(1) + coor(3)),size(BF,1));
+                row_from = max(floor(coor(2)),1);
+                col_from = max(floor(coor(1)),1);
                 disp(coor);
                 AL(row_from:row_to, col_from:col_to) = 1;
                 %rectUI = rectUI([2,1,4,3])
