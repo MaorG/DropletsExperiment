@@ -201,17 +201,27 @@ classdef DataManager < handle
         end
         
         function doRegisterSeries(obj, seriesUIDHead, seriesUIDTail, props)
-            disp(seriesUIDHead)
-            disp(seriesUIDTail)
+            disp(seriesUIDHead);
+            disp(seriesUIDTail);
+            
+            [optimizer, metric] = imregconfig('monomodal')
 
+            fixedData = obj.getDataByUniqueID(seriesUIDHead);
+            for destUID = seriesUIDTail
+                movingData = obj.getDataByUniqueID(destUID);
+                movingRegistered = imregister(moving, fixed, 'translation';
+            end
+
+            return;
+            
+            
+            
             fixedData = obj.getDataByUniqueID(seriesUIDHead);
             fixedPoints = [fixedData.properties.(props.point1); fixedData.properties.(props.point2)];
             for destUID = seriesUIDTail
                 movingData = obj.getDataByUniqueID(destUID);
                 movingPoints = [movingData.properties.(props.point1); movingData.properties.(props.point2)];
-                tform = fitgeotrans(movingPoints,fixedPoints,'NonreflectiveSimilarity');
-                destUID
-                tform.T
+                tform = fitgeotrans(movingPoints,fixedPoints,'NonreflectiveSimilarity')
                 
             end
             

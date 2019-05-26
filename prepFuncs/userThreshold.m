@@ -49,7 +49,7 @@ while userinput ~= 13
                 th = th - jump;
                 continueToBigLoop = true;
             case 29
-                th = th + jump
+                th = th + jump;
                 continueToBigLoop = true;
             case 31
                 jump = ceil(jump/10);
