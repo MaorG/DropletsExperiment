@@ -543,7 +543,7 @@ end
                             if true | (nargin(showfunc) == 1)
                                 showfunc(a{index}{1}, properties);
                                 if (indo ~= 0)
-                                    legend(rt.strvals{indo},'best')
+                                    %legend(rt.strvals{indo},'best')
                                 end
                             else
                                 showfunc(a{index}{1}, colors(k,:))
