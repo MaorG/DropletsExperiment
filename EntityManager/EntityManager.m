@@ -53,7 +53,33 @@ classdef EntityManager < dynamicprops
                     data = obj.dm.getDataByUniqueID(entities.uniqueID);
 
                     if (~isempty(resName))
-                        allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                        %allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                         
+                        % TODO:
+                        % some function ( :(  i.e. tracking ) require access to more than
+                        % one entity list. so the ugly solution here is to
+                        % try calling them with an extra 'obj' argument,
+                        % and if it fails (as it ususally does, for most other funcs), 
+                        % call them with fewer arguments.
+                        % possible beautifications:
+                        % 1. call all entity funcs with the extra arg
+                        % 2. make 'entitiesEntry' a class (and same for 'dataEntry') 
+                        % with pointers/handles.
+                        % a proper rewrite for the second (better) option
+                        % is required... forgive me future reader, this whole 
+                        % thing would have been better if written in
+                        % python.
+                        try
+                            allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters, obj)']);
+                            'hi'
+                        catch ME
+                            if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
+                                allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                            else
+                                rethrow(ME)
+                            end
+                        end
+
                     else
                         % should only get here when creating entities for
                         % the first time
@@ -113,8 +139,21 @@ classdef EntityManager < dynamicprops
                 st(i).uniqueID = obj.dm.allData(i).uniqueID;
                 st(i).dataParameters = obj.dm.allData(i).parameters;
                 st(i).dataProperties = obj.dm.allData(i).properties;
+                st(i).entName = entName;
             end
             obj.(entName) = st;
+        end
+        
+        function entitiesEntry = getEntitiesByDataUID(obj, entName, dataUID)
+            
+           entitiesEntry = [];
+           entities = obj.(entName);
+           IDs = [];
+           for i = 1:numel(entities)
+               IDs(i) = entities(i).uniqueID;
+           end
+           idx = IDs == dataUID;
+           entitiesEntry = entities(idx);
         end
 
 

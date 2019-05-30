@@ -181,7 +181,7 @@ classdef ExperimentManager < handle
         end
         
         function doEntities(obj)
-            obj.enm = EntityManager(obj.dm);
+            %obj.enm = EntityManager(obj.dm);
             entityConf = obj.pm.getConfiguration([obj.rootName, obj.conf.entities]);
             obj.enm.doEntities(entityConf)
         end

@@ -1,0 +1,91 @@
+function displayEvoTemp(m, parameters)
+
+props = parseParams(parameters);
+
+
+if isempty(m)
+    return
+end
+
+cmap = [colormap('autumn'); flip(colormap('summer'),1)];
+colormap(cmap);
+hold on;
+
+%filter out
+% midx = find(m(:,2,2));
+% m = m(midx,:,:);
+
+if (props.plottype == 1)
+    caxis([0,1]);
+    dims = size(m);
+    
+    hold on;
+    for ci = 1:dims(1)
+        
+        
+        x = [m(ci,1,1), m(ci,1,2)];
+        y = [m(ci,2,1), m(ci,2,2)];
+        z = [1,2];
+        col = [m(ci,3,1), m(ci,3,2)];
+        surface([x;x],[y;y],[z;z],[col;col],...
+            'facecol','no',...
+            'edgecol','interp',...
+            'linew',1);
+    end
+    set(gca,'xscale','log')
+    set(gca,'yscale','log')
+    view([-1,-1,1]);
+else
+    maxRatio = 1000;
+    %caxis(log10([1/maxRatio,maxRatio]));
+    
+    
+    dims = size(m);
+    
+    clamp(x, minx, maxx)
+    
+    
+    x = m(:,1,1);
+    y = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,2,2) ./ m(:,2,1) )));
+    col = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,3,2) ./ m(:,3,1) )));
+
+    x = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,1,2) ./ m(:,1,1) )));
+    y = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,2,2) ./ m(:,2,1) )));
+    col =  log10(m(:,1,1));
+
+    x = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,1,2) ./ m(:,1,1) )));
+    y = max(log10(1/maxRatio), min(log10(maxRatio), log10( m(:,2,2) ./ m(:,2,1) )));
+    col =  log10(m(:,1,1));
+
+    
+    scatter(x,y,50,col,'filled')
+    hold on
+    plot([log10(1/maxRatio), log10(maxRatio)], [0,0],'k');
+    plot([0,0], [log10(1/maxRatio), log10(maxRatio)],'k');
+    
+    xlim([log10(1/maxRatio), log10(maxRatio)]);
+    xlim([-0.5,0.5]);
+    ylim([log10(1/maxRatio), log10(maxRatio)]);
+    
+    box on;
+    colorbar
+    
+    %set(gca,'xscale','log')
+    %set(gca,'yscale','log')
+    %view([-1,-1,1]);
+end
+end
+
+function props = parseParams(v)
+% default:
+props = struct(...
+    'plottype',1 ...
+    );
+
+for i = 1:numel(v)
+    if (strcmp(v{i}, 'plottype'))
+        props.plottype = v{i+1};
+    end
+end
+
+end

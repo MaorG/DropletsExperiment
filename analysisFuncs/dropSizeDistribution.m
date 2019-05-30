@@ -10,7 +10,7 @@ function result = dropSizeDistribution(entities, parameters)
 % identical FoVs are combined by weight, proportional to their area
 
 
-
+    
 
     props = parseParams(parameters);
         
@@ -27,14 +27,17 @@ function result = dropSizeDistribution(entities, parameters)
     for ei = numel(entities):-1:1
         pA = (entities(ei).dataParameters.pixelSize)^2;
         res(ei).val = entities(ei).(props.dropArea)*pA;
-        res(ei).totArea = entities(ei).pixelCount*pA;
+        
+        pixelCount = numel(entities(ei).seg);
+        res(ei).totArea = pixelCount*pA;
     end
     
     nd = NDResultTable(res, 'val', fns);
     ndta = NDResultTable(res, 'totArea', fns);
     
     bins = props.dropletAreaBins;% [0,logspace(props.bins_min,props.bins_max+props.bins_step,2+(props.bins_max - props.bins_min)/props.bins_step)];
-    totalArea = entities(ei).pixelCount
+    
+
     
     
     for ti = 1:numel(nd.T)
@@ -52,7 +55,7 @@ function result = dropSizeDistribution(entities, parameters)
                
             end
             
-            NDensity
+
             nd.T{ti} = cell(0);
             nd.T{ti}{1} = vv;
         end

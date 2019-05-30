@@ -1,11 +1,11 @@
-function [res] = collectDataFromMembers(entities, data, parameters)
+function [res] = collectDataFromMembers(entities, data, parameters, entitiesManager)
 % collectDataFromMembers 
 % get information from 
 
 props = parseParams(parameters);
 
-hosts = entities{1};
-members = entities{2};
+hosts = entities;
+members = entitiesManager.getEntitiesByDataUID((props.members), entities.uniqueID);
 
 memberIndices = hosts.(props.members);
 memberParameters = members.(props.parameters);
