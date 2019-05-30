@@ -25,12 +25,17 @@ classdef OutputManager < dynamicprops
             
             if strcmpi('analysis', outputConfigRow.stage)
                 doOutputRowAnalysis(obj, outputConfigRow)
-            else
+            elseif strcmpi('data', outputConfigRow.stage)
                 doOutputRowData(obj, outputConfigRow)
+            elseif strcmpi('default', outputConfigRow.stage)
+                
             end
+            
+            % TODO: add 'data' stage, for defaultParameters
         end
         
         function doOutputRowData(obj, outputConfigRow)
+            
             parameters = outputConfigRow.parameters;
             %src = obj.am.(outputConfigRow.srcName);
             funcName = outputConfigRow.funcName;
@@ -65,7 +70,9 @@ classdef OutputManager < dynamicprops
         
         
         function doOutputRowAnalysis(obj, outputConfigRow)
-            
+
+            % TODO: merge default and user parameters
+
             parameters = outputConfigRow.parameters;
             src = obj.am.(outputConfigRow.srcName);
             filter = [];

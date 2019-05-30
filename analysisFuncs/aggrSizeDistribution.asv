@@ -58,7 +58,7 @@ function result = aggrSizeDistribution(entities, parameters)
     result = nd;
     
     % ndDataParams = getDataParams(entities, fns)
-    % results = uniteNDtables(nd, ndDataParmas)
+    % results = uniteNDtables(nd. ndDataParmas)
 
     % TODO: and for removing dimension of size 1 (? but what will happen to a
     % single data entry ?)
