@@ -53,6 +53,7 @@ classdef EntityManager < dynamicprops
                     data = obj.dm.getDataByUniqueID(entities.uniqueID);
 
                     if (~isempty(resName))
+                        addprop(allEntities(i), resName);
                         allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
                     else
                         % should only get here when creating entities for
@@ -61,6 +62,7 @@ classdef EntityManager < dynamicprops
                         
                         fns = fieldnames(res);
                         for fn = fns'
+                            addprop(allEntities(i), fn{1});
                             allEntities(i).(fn{1}) = res.(fn{1});
                         end
                         
@@ -90,6 +92,7 @@ classdef EntityManager < dynamicprops
                     end
                     data = obj.dm.getDataByUniqueID(entities{1}.uniqueID);
 
+                    addprop(allEntities{1}(i), resName);
                     [allEntities{1}(i).(resName)] = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
 
 
@@ -107,7 +110,15 @@ classdef EntityManager < dynamicprops
             
             addprop(obj,entName);
             
-            %obj.(entName) = struct();
+%             obj.(entName) = struct();
+%             st = obj.(entName);
+%             for i = 1:numel(obj.dm.allData)
+%                 st(i).uniqueID = obj.dm.allData(i).uniqueID;
+%                 st(i).dataParameters = obj.dm.allData(i).parameters;
+%                 st(i).dataProperties = obj.dm.allData(i).properties;
+%             end
+%             obj.(entName) = st;
+            
             % create an array of objects instead
             ents = [];
             for i = 1:numel(obj.dm.allData)
@@ -115,9 +126,11 @@ classdef EntityManager < dynamicprops
                 st.uniqueID = obj.dm.allData(i).uniqueID;
                 st.dataParameters = obj.dm.allData(i).parameters;
                 st.dataProperties = obj.dm.allData(i).properties;
-                ents = [ents, st];
+                ents = [ents; st];
             end
             obj.(entName) = ents;
+            %
+            
         end
 
 
