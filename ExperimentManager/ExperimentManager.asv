@@ -136,8 +136,10 @@ classdef ExperimentManager < handle
                         obj.dm.allData(prevAllDataIdx).properties.nextUID = currDataUID;
                         
                         % store handles for prev and next too
-                        obj.dm.allData(currAllDataIdx).properties.prev = obj.dm.allData(prevAllDataIdx);
-                        obj.dm.allData(prevAllDataIdx).properties.next = obj.dm.allData(currAllDataIdx);
+                        %%%%
+                        % TODO: find a way to use handles for next and prev
+                        % obj.dm.allData(currAllDataIdx).prev = obj.dm.allData(prevDataUID);
+                        obj.dm.allData(currAllDataIdx).prev = obj.dm.allData(prevDataUID) 
                         
                     end
                                        
