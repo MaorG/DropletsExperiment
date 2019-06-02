@@ -7,6 +7,7 @@ classdef DataManager < handle
         parameterSpaceNames
         allData
         loadConfigArray
+        defaultOutputParams
     end
     
     methods
@@ -64,6 +65,7 @@ classdef DataManager < handle
             
             fields = fieldnames(loadConfigRow);
             data = struct;
+            %data = DataEntry();
             for i = 1:numel(fields)
                 fieldName = fields(i);
                 val = loadConfigRow.(fieldName{1});

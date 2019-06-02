@@ -66,9 +66,9 @@ for i = 1:numel(v)
     if (strcmpi(v{i}, 'style'))
         props.style = v{i+1};
     elseif (strcmpi(v{i}, 'LineWidth'))
-        props.LineWidth = v{i+1};
+        props.cellSurvival = v{i+1};
     elseif (strcmpi(v{i}, 'color'))
-        props.color = v{i+1};
+        props.dropletArea = v{i+1};
     end
 end
 
