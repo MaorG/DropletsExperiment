@@ -10,4 +10,5 @@ addpath([pwd,'/analysisFuncs']);
 addpath([pwd,'/NDResultTable']);
 addpath([pwd,'/OutputManager']);
 addpath([pwd,'/outputFuncs']);
+addpath([pwd,'/utils']);
 end
