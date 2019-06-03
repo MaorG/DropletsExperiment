@@ -1,4 +1,7 @@
-function displayBioRepBoxPlot(m, properties)
+function displayBioRepBoxPlot(m, parameters)
+
+    props = parseParams(parameters);
+
 
 %    scatter3(m(:,1),m(:,2),m(:,3),'r')
 %     set(gca,'yscale','log');
@@ -13,7 +16,7 @@ function displayBioRepBoxPlot(m, properties)
     %scatter3(em.am.IvAvDA.T{i}{1}(idx,1),em.am.IvAvDA.T{i}{1}(idx,2),em.am.IvAvDA.T{i}{1}(idx,3))
     %set(gca,'yscale','log');
 
-    dropbins = [0,30,10000,inf];
+    dropbins = props.dropBins;
     [N,edges,bin] = histcounts(a2,dropbins);
     
     boxplot(a3,bin,'Labels',(dropbins(bin+1)));
@@ -28,3 +31,19 @@ function displayBioRepBoxPlot(m, properties)
 %     ylabel('drop')
     
 end
+
+function props = parseParams(v)
+% default:
+props = struct(...
+    'dropBins',[0,30,10000,inf] ...
+    );
+
+for i = 1:numel(v)
+    if (strcmp(v{i}, 'dropBins'))
+        props.dropBins = v{i+1};
+    end
+end
+
+end
+
+

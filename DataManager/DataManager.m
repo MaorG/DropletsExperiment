@@ -102,6 +102,12 @@ classdef DataManager < handle
            data = obj.allData(idx);
         end
         
+        function setDataByUniqueID(obj, uniqueID, data)
+           IDs = cat(1,obj.allData.uniqueID);
+           idx = IDs == uniqueID;
+           obj.allData(idx) = data;
+        end
+        
         % TODO: sort out parallel issues. 
         %       make parallel runs configurable
 
@@ -175,8 +181,178 @@ classdef DataManager < handle
         function doSpecialPerpRow(obj, prepConfigRow)
             if (strcmp(prepConfigRow.funcName, 'ExportImages'))
                 doExportImages(obj, prepConfigRow)
+            elseif (strcmp(prepConfigRow.funcName, 'registerImages'))
+                doRegisterImages(obj, prepConfigRow)
             end
         end
+
+        function doRegisterImages(obj, prepConfigRow)
+
+            
+            props = obj.doRegisterImagesParameterExtraction(prepConfigRow.parameters);
+            
+            for i = 1:numel(obj.allData)
+                if (~isfield(obj.allData(i).properties,'prevUID'))
+                    if isfield(obj.allData(i).properties,'nextUID')
+                        seriesUIDHead = obj.allData(i).uniqueID;
+                        seriesUIDTail = []; 
+                        nextID = obj.allData(i).properties.nextUID;
+                        reachedEnd = false;
+                        while (~reachedEnd)
+                            seriesUIDTail = [seriesUIDTail, nextID];
+                            currID = nextID;
+                            currEntry = obj.getDataByUniqueID(currID)
+                            if isfield(currEntry.properties,'nextUID')
+                                nextID = currEntry.properties.nextUID;
+                            else 
+                                reachedEnd = true;
+                            end
+                        end
+                        obj.doRegisterSeries(seriesUIDHead, seriesUIDTail, props)
+                    end
+                end
+            end
+        end
+        
+        function doRegisterSeries(obj, seriesUIDHead, seriesUIDTail, props)
+            disp(seriesUIDHead)
+            disp(seriesUIDTail)
+
+            fixedData = obj.getDataByUniqueID(seriesUIDHead);
+            fixedPoints = [fixedData.properties.(props.point1); fixedData.properties.(props.point2)];
+            for destUID = seriesUIDTail
+                movingData = obj.getDataByUniqueID(destUID);
+                movingPoints = [movingData.properties.(props.point1); movingData.properties.(props.point2)];
+                initialtform = fitgeotrans(movingPoints,fixedPoints,'NonreflectiveSimilarity');
+                
+                initialtform.T(1:2,1:2) = [1,0;0,1];
+                translation = initialtform.T(3,1:2);
+                
+                
+                fixed = single(fixedData.(props.registerBy));
+                moving = single(movingData.(props.registerBy));
+                
+%                fixed = imgaussfilt(fixed,props.radius);
+%                moving = imgaussfilt(moving,props.radius);
+
+                H = fspecial('disk',props.radius);
+                fixed = imfilter(fixed,H,'same');
+                moving = imfilter(moving,H,'same');
+                
+                % todo: parametrize 
+                [optimizer, metric] = imregconfig('monomodal');
+                 %optimizer.MaximumStepLength = 0.1;
+                 optimizer.MaximumIterations = 30;
+                 optimizer.GradientMagnitudeTolerance = optimizer.GradientMagnitudeTolerance/20;
+                transformType = 'translation';
+%                transformType = 'rigid';
+%                 tform = imregtform(moving,fixed,transformType,optimizer,metric, ...
+%                     'DisplayOptimization',true, ...
+%                     'PyramidLevels', 6);
+                
+                 tform = imregtform(moving,fixed,transformType,optimizer,metric, ...
+                             'InitialTransformation', initialtform, ...
+                             'DisplayOptimization',true, ...
+                             'PyramidLevels', 4);
+                
+                if (props.verbose)
+                        tform.T
+                        fixed = single(fixedData.(props.registerBy));
+                        moving = single(movingData.(props.registerBy));
+                        %moving_reg = imwarp(moving, tform); 
+                        % why doesn't this work?!?!?!
+                        
+%                         imref = imref2d(size(fixed));
+%                         moving_reg = imwarp(moving, tform, 'OutputView', imref); 
+                        
+                        moving_reg = imtranslate(moving, tform.T(3,1:2));
+                        figure
+                        imshow(cat(3,...
+                            fixed,...
+                            moving,...
+                            moving_reg))
+                            
+                end
+                
+                
+                for imageFieldName = props.Images
+                    %moved = imtranslate(movingData.(imageFieldName{1}),translation, 'FillValues', 0);
+
+%                    if strcmp(props.verbose, imageFieldName)
+%                         fixed = single(fixedData.(imageFieldName{1}));
+%                         moving = single(movingData.(imageFieldName{1}));
+%                         
+%                         fixed = imgaussfilt(fixed,100);
+%                         moving = imgaussfilt(moving,100);
+%                         
+%                         [optimizer, metric] = imregconfig('monomodal');
+%                         optimizer.MaximumStepLength = 0.1;
+%                         optimizer.MaximumIterations = 100;
+% %                         tform = imregtform(moving,fixed,transformType,optimizer,metric, ...
+% %                             'InitialTransformation', initialtform, ...
+% %                             'DisplayOptimization',true, ...
+% %                             'PyramidLevels', 6);
+%                         tform = imregtform(moving,fixed,transformType,optimizer,metric, ...
+%                             'DisplayOptimization',true, ...
+%                             'PyramidLevels', 6);
+% 
+%                         if (props.verbose)
+%                             
+%                         end
+%                         tform.T
+                        fixed = single(fixedData.(imageFieldName{1}));
+                        moving = single(movingData.(imageFieldName{1}));
+                        %moving_reg = imwarp(moving, tform); 
+                        % why doesn't this work?!?!?!
+                        
+                        moving_reg = imtranslate(moving, tform.T(3,1:2));
+                        
+
+%                         
+%                         figure
+%                         imshow(cat(3,...
+%                             fixed,...
+%                             moving,...
+%                             moving_reg))
+%                     end
+                    
+                    movingData.(imageFieldName{1}) = moving_reg;
+                end
+                obj.setDataByUniqueID(destUID, movingData)
+                
+            end
+            
+        end
+
+        function props = doRegisterImagesParameterExtraction(obj, v)
+
+            props = struct(...
+                'point1', 'P1',...
+                'point2', 'P2',...
+                'registerBy', {'CellMask'}, ...
+                'Images', {'CellMask'},...
+                'radius', 100, ...
+                'verbose', '0' ...
+            );  
+
+            for i = 1:numel(v)
+                if (strcmp(v{i}, 'point1'))
+                    props.point1 = v{i+1};
+                elseif (strcmp(v{i}, 'point2'))
+                    props.point2 = v{i+1};
+                elseif (strcmp(v{i}, 'Images'))
+                    props.Images = v{i+1};
+                elseif (strcmp(v{i}, 'registerBy'))
+                    props.registerBy = v{i+1};
+                elseif (strcmp(v{i}, 'radius'))
+                    props.radius = v{i+1};
+                elseif (strcmp(v{i}, 'verbose'))
+                    props.verbose = v{i+1};
+                end
+            end
+
+        end
+        
         
         function doExportImages(obj, prepConfigRow)
             
@@ -190,7 +366,6 @@ classdef DataManager < handle
                 fileNames = obj.doFileNameingAndExport(imagesFieldName, dstPath);
                 allFileNames(ni,:) = fileNames(:);
             end
-            
                 
              writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad]);
         end
@@ -273,7 +448,13 @@ classdef DataManager < handle
                         fileNames = [fileNames, final_fileName];
                         uIDs = [uIDs, final_uID];
                         
-                        imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
+                        
+                         if isfloat(ndImage.T{ti}{ri})
+                             %todo: bad!
+                             imwrite(ndImage.T{ti}{ri} > 0, [obj.rootName, final_fileName]);
+                         else
+                             imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
+                         end
                     end
                 end
             end

@@ -12,6 +12,7 @@ conf = '\\qnap01\LongTerm\Michael\drops\paper\pipeline conf\expConfig.csv';
 %conf = '\\qnap01\LongTerm\Michael\drops\registered\exp_memory101 - phase2 - registration.csv'
 conf = '\\qnap01\LongTerm\Michael\drops\registered\downd\exp_memory101 - phase3.csv';
 
+
 em.configure(conf);
 
 em.doLoad();
@@ -21,6 +22,4 @@ em.doAnalysis();
 em.doOutput();
 
 %end
-
-
 

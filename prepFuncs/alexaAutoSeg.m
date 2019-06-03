@@ -39,10 +39,10 @@ Jal = stdfilt(Kal,disk);
 %           bwperim(imfill((J < 0.001),'holes'))),'blend'))
 
 
-th = 0.0000001
+th = props.threshold;
 
 h = figure;
-userinput = 0
+userinput = 0;
 clim = [1,2^16 - 1];
 
 BFUI = BF;
@@ -100,7 +100,25 @@ while userinput ~= 13
                 continueToBigLoop = true;
             case 122
                 rectUI = getrect;
-                rectUI = rectUI([2,1,4,3])
+                rectUI = rectUI([2,1,4,3]);
+                if (rectUI(1)<1)
+                    rectUI(1) = 1;
+                end
+                if (rectUI(2)<1)
+                    rectUI(2) = 1;
+                end
+                if (rectUI(3)+rectUI(1)>size(BF,1))
+                    rectUI(3) = size(BF,1)-rectUI(1);
+                end
+                if (rectUI(4)+rectUI(2)>size(BF,2))
+                    rectUI(4) = size(BF,2)-rectUI(2);
+                end
+                if (rectUI(3)<1)
+                    rectUI(3) = 1;
+                end
+                if (rectUI(4)<1)
+                    rectUI(4) = 1;
+                end
                 continueToBigLoop = true;
             case 120
                 rectUI = [1,1,size(BF,1),size(BF,2)];
@@ -200,7 +218,8 @@ function props = parseParams(v)
 % default:
 props = struct(...
     'srcALX','ALX',...
-    'srcBF','BF'...
+    'srcBF','BF',...
+    'threshold', 0.0000001  ...
     );
 
 for i = 1:numel(v)
@@ -209,6 +228,8 @@ for i = 1:numel(v)
         props.srcALX = v{i+1};
     elseif (strcmp(v{i}, 'srcBF'))
         props.srcBF = v{i+1};
+    elseif (strcmp(v{i}, 'threshold'))
+        props.threshold = v{i+1};
     end
 end
 

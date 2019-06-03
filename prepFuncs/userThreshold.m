@@ -49,7 +49,7 @@ while userinput ~= 13
                 th = th - jump;
                 continueToBigLoop = true;
             case 29
-                th = th + jump
+                th = th + jump;
                 continueToBigLoop = true;
             case 31
                 jump = ceil(jump/10);
@@ -60,11 +60,27 @@ while userinput ~= 13
             case 13
                 continueToBigLoop = true;
             case 122
-                rectUItemp = getrect;
-                if rectUItemp(3) ~= 0 && rectUItemp(4) ~= 0 
-                    rectUI = rectUItemp([2,1,4,3]) + [rectUI(1),rectUI(2),0,0];
-                    continueToBigLoop = true;
+                rectUI = getrect;
+                rectUI = rectUI([2,1,4,3]);
+                if (rectUI(1)<1)
+                    rectUI(1) = 1;
                 end
+                if (rectUI(2)<1)
+                    rectUI(2) = 1;
+                end
+                if (rectUI(3)+rectUI(1)>size(BF,1))
+                    rectUI(3) = size(BF,1)-rectUI(1);
+                end
+                if (rectUI(4)+rectUI(2)>size(BF,2))
+                    rectUI(4) = size(BF,2)-rectUI(2);
+                end
+                if (rectUI(3)<1)
+                    rectUI(3) = 1;
+                end
+                if (rectUI(4)<1)
+                    rectUI(4) = 1;
+                end
+                continueToBigLoop = true;
             case 120
                 rectUI = [1,1,size(BF,1),size(BF,2)];
                 continueToBigLoop = true;

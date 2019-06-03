@@ -46,7 +46,24 @@ classdef AnalysisManager < dynamicprops
             resName = analysisConfigRow.resName;
             entities = obj.enm.(analysisConfigRow.entities);
             
-            obj.(resName) = eval([analysisConfigRow.funcName, '(entities, parameters)']);
+            %obj.(resName) = eval([analysisConfigRow.funcName, '(entities, parameters)']);
+            
+            % TODO: ugly
+            % mmm. could this be avoided by using classes o entities :( see
+            % entity manager for similar solution and todo comment
+            % 
+            try
+                obj.(resName) = eval([analysisConfigRow.funcName, '(entities, parameters, obj)']);
+                'hi'
+            catch ME
+                if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
+                    obj.(resName) = eval([analysisConfigRow.funcName, '(entities, parameters)']);
+                else
+                    rethrow(ME)
+                end
+            end
+
+            
         end
         
         function createAnalysisStruct(obj, analysisConfigRow)
