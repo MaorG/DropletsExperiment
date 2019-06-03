@@ -54,7 +54,9 @@ classdef EntityManager < dynamicprops
 
                     if (~isempty(resName))
 
-                        addprop(allEntities(i), resName);
+                        if (~isprop(allEntities(i), resName)) 
+                            addprop(allEntities(i), resName);
+                        end
 
                         %allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
                          
