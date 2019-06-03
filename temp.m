@@ -13,7 +13,8 @@ conf = 'C:\school\DropletsExperiment\configurations\memory 101\exp_memory101 - p
 conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2\exp_memory101 - phase2.csv'
 conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2\exp_memory101 - t3 seg.csv'
 
-conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2 - reg\exp_memory101 - phase3.csv'
+conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2 - reg\exp_memory101 - phase4.csv'
+conf = 'C:\school\DropletsExperiment\configurations\mixing\exp_mixing_202.csv'
 em.configure(conf);
 
 em.doLoad();

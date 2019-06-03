@@ -16,25 +16,36 @@ hold on;
 % m = m(midx,:,:);
 
 if (props.plottype == 1)
-    caxis([0,1]);
+    %caxis([0,1]);
     dims = size(m);
     
     hold on;
     for ci = 1:dims(1)
         
         
+        
         x = [m(ci,1,1), m(ci,1,2)];
         y = [m(ci,2,1), m(ci,2,2)];
         z = [1,2];
         col = [m(ci,3,1), m(ci,3,2)];
+        %col = log10([m(ci,1,1), m(ci,1,1)]);
+        
+        idx = find(m(ci,1,1) > 10)
+        x = x(idx,:);
+        y = y(idx,:);
+        z = z(idx,:);
+        col = col(idx,:);
+        
         surface([x;x],[y;y],[z;z],[col;col],...
             'facecol','no',...
             'edgecol','interp',...
             'linew',1);
+        scatter3(x(:,1),y(:,1),z(:,1),30,col(:,1), 'filled');
     end
     set(gca,'xscale','log')
     set(gca,'yscale','log')
     view([-1,-1,1]);
+    view([0,0,1]);
 else
     maxr = 1000;
     minr = 1/maxr;

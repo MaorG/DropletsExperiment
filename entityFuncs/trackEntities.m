@@ -6,11 +6,20 @@ props = parseParams(parameters);
 % TODO
 % just refactor entities as a handle class already!
 parents = entities;
-if (isfield(entities.dataProperties, 'nextUID'))
-    children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.nextUID)
+if props.forward
+    if (isfield(entities.dataProperties, 'nextUID'))
+        children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.nextUID);
+    else
+        members = [];
+        return;
+    end
 else
-    members = [];
-    return;
+    if (isfield(entities.dataProperties, 'prevUID'))
+        children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.prevUID);
+    else
+        members = [];
+        return;
+    end
 end
 
 
@@ -56,12 +65,15 @@ end
 function props = parseParams(v)
 % default:
 props = struct(...
+    'forward', 1, ...
     'verbose',0 ...
     );
 
 for i = 1:numel(v)
     
-    if (strcmp(v{i}, 'verbose'))
+    if (strcmp(v{i}, 'forward'))
+        props.forward = v{i+1};
+    elseif (strcmp(v{i}, 'verbose'))
         props.verbose = v{i+1};
     end
 end
