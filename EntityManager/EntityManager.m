@@ -124,11 +124,29 @@ classdef EntityManager < dynamicprops
             for i = 1:numel(obj.dm.allData)
                 st = EntityEntry();
                 st.uniqueID = obj.dm.allData(i).uniqueID;
+                st.handle = obj.dm.allData(i);
                 st.dataParameters = obj.dm.allData(i).parameters;
                 st.dataProperties = obj.dm.allData(i).properties;
                 ents = [ents; st];
             end
             obj.(entName) = ents;
+            %
+            
+            
+            % create prev and next for entities using the uniqueID of
+            % prevUID and nextUID of the data in the DataManager
+            % (obj.dm.allData)
+            allDataIDs = cat(1,obj.dm.allData.uniqueID);
+            for i = 1 : numel(ents)
+                if (isfield(ents(i).handle.properties, 'prevUID'))
+                    prevDataIdx = find(allDataIDs == ents(i).handle.properties.prevUID);
+                    ents(i).dataProperties.prevEntity = ents(prevDataIdx);
+                end
+                if (isfield(ents(i).handle.properties, 'nextUID'))
+                    nextDataIdx = find(allDataIDs == ents(i).handle.properties.nextUID);
+                    ents(i).dataProperties.nextEntity = ents(nextDataIdx);
+                end
+            end
             %
             
         end

@@ -2,6 +2,7 @@ classdef EntityEntry < dynamicprops
     
     properties
             uniqueID
+            handle
             dataParameters
             dataProperties
     end
