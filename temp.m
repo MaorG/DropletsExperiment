@@ -10,7 +10,7 @@ conf = '\\qnap01\LongTerm\Michael\drops\exp alexa_22.4.19\exp_alexa_auto.csv';
 conf = '\\qnap01\LongTerm\Michael\drops\paper\pipeline conf\expConfig.csv';
 
 %conf = '\\qnap01\LongTerm\Michael\drops\registered\exp_memory101 - phase2 - registration.csv'
-conf = '\\qnap01\LongTerm\Michael\drops\registered\downd\exp_memory101 - phase3.csv';
+%conf = '\\qnap01\LongTerm\Michael\drops\registered\downd\exp_memory101 - phase3.csv';
 
 
 em.configure(conf);
