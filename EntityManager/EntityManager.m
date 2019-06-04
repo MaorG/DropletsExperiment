@@ -77,9 +77,13 @@ classdef EntityManager < dynamicprops
                         try
                             allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters, obj)']);
                             'hi'
+                            %assignin('base', 'a', [evalin('base', 'a'); {allEntities(i).(resName)}]);
+                            % save in workspace to later compare between sequential runs
                         catch ME
                             if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
                                 allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                                %assignin('base', 'a', [evalin('base', 'a'); {allEntities(i).(resName)}]);
+                                % save in workspace to later compare between sequential runs
                             else
                                 rethrow(ME)
                             end
@@ -157,6 +161,7 @@ classdef EntityManager < dynamicprops
                 st.handle = obj.dm.allData(i);
                 st.dataParameters = obj.dm.allData(i).parameters;
                 st.dataProperties = obj.dm.allData(i).properties;
+                st.entName = entName;
                 ents = [ents; st];
             end
             obj.(entName) = ents;

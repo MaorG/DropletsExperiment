@@ -7,15 +7,21 @@ props = parseParams(parameters);
 % just refactor entities as a handle class already!
 parents = entities;
 if props.forward
-    if (isfield(entities.dataProperties, 'nextUID'))
-        children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.nextUID);
+    % get next object rather than look for UID
+    % if (isfield(entities.dataProperties, 'nextUID'))
+    if (isfield(entities.dataProperties, 'nextEntity'))
+        % children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.nextUID);
+        children = entities.dataProperties.nextEntity;
     else
         members = [];
         return;
     end
 else
-    if (isfield(entities.dataProperties, 'prevUID'))
-        children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.prevUID);
+    % get next object rather than look for UID
+    % if (isfield(entities.dataProperties, 'prevUID'))
+    if (isfield(entities.dataProperties, 'prevEntity'))
+        % children = entitiesManager.getEntitiesByDataUID(entities.entName, entities.dataProperties.prevUID);
+        children = entities.dataProperties.prevEntity;
     else
         members = [];
         return;

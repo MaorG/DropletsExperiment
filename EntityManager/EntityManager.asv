@@ -157,6 +157,7 @@ classdef EntityManager < dynamicprops
                 st.handle = obj.dm.allData(i);
                 st.dataParameters = obj.dm.allData(i).parameters;
                 st.dataProperties = obj.dm.allData(i).properties;
+                st.entName = entName;
                 ents = [ents; st];
             end
             obj.(entName) = ents;

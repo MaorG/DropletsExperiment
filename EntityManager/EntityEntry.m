@@ -5,6 +5,7 @@ classdef EntityEntry < dynamicprops
             handle
             dataParameters
             dataProperties
+            entName
     end
     
     methods
