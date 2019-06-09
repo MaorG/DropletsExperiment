@@ -5,7 +5,7 @@ function [res] = collectDataFromMembers(entities, data, parameters, entitiesMana
 props = parseParams(parameters);
 
 hosts = entities;
-members = entitiesManager.getEntitiesByDataUID((props.targetEntities), entities.uniqueID);
+members = entitiesManager.getEntitiesByDataUID((props.members), entities.uniqueID);
 
 memberIndices = hosts.(props.members);
 memberParameters = members.(props.parameters);

@@ -18,9 +18,7 @@ function result = fracPopAreaAnalyze(entities, parameters)
         % save data parameters too in val to later reference them for
         % customization of each plot according to parameters
         for i = 1 : numel(fns)
-            res(ei).val.dataParameters.(fns{i}) = res(ei).(fns{i});
-        end
-        
+            res(ei).val.dataParameters.(fns{i}) = 
     end
     
     %nd = createNDResultTable(res, 'val', fns);

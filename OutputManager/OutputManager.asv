@@ -83,10 +83,9 @@ classdef OutputManager < dynamicprops
             parameters = outputConfigRow.parameters;
             for i = 1 : numel(obj.defaultOutputParams)
                 defParams = obj.defaultOutputParams{i};
-                funcs = defParams{1}{1};
-                params = defParams{2}{1};
-                if (isempty(funcs) || any(strcmp(funcs, outputConfigRow.funcName)))
-                    parameters = mergeParams(params, parameters);
+                defParams
+                if (isempty(defParams{1}) || any(strcmp(defParams{1}, outputConfigRow.funcName)))
+                    parameters = mergeParams(defParams{2}, parameters);
                 end
             end
             

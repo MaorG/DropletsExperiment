@@ -116,15 +116,13 @@ if (~isempty(viewOrder) && exist('dataParams', 'var'))
     pos = posCurParamsEq(1);
     if (~isempty(pos))
         for i = 1 : numel(propsToChange)
-            curProp = propsToChange{i};
+            curProp = propsToCange{i};
             if (isfield(props, curProp))
                 curPropVal = props.(curProp);
-                if (iscell(curPropVal))
-                    if (pos <= numel(curPropVal))
-                        curPropVal = curPropVal{pos};
-                    else
-                        curPropVal = curPropVal{1};
-                    end
+                if (pos <= numel(curPropVal))
+                    curPropVal = curPropVal{pos};
+                elseif (iscell(curPropVal))
+                    curPropVal = curPropVal{1};
                 end
                 props.(curProp) = curPropVal;
             end

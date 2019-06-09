@@ -14,6 +14,7 @@ classdef DataManager < handle
             %DataManager: Construct an instance of this class
             
             obj.allData = [];
+            obj.defaultOutputParams = [];
         end
         
         function clearData(obj)

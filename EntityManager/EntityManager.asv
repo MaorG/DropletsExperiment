@@ -77,9 +77,13 @@ classdef EntityManager < dynamicprops
                         try
                             allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters, obj)']);
                             'hi'
+                            %assignin('base', 'a', [evalin('base', 'a'); {allEntities(i).(resName)}]);
+                            % save in workspace to later compare between sequential runs
                         catch ME
                             if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
                                 allEntities(i).(resName) = eval([entityConfigRow.funcName, '(entities, data, parameters)']);
+                                %assignin('base', 'a', [evalin('base', 'a'); {allEntities(i).(resName)}]);
+                                % save in workspace to later compare between sequential runs
                             else
                                 rethrow(ME)
                             end
@@ -154,7 +158,7 @@ classdef EntityManager < dynamicprops
             for i = 1:numel(obj.dm.allData)
                 st = EntityEntry();
                 st.uniqueID = obj.dm.allData(i).uniqueID;
-                st.handle = obj.dm.allData(i);
+                st.dataHandle = obj.dm.allData(i);
                 st.dataParameters = obj.dm.allData(i).parameters;
                 st.dataProperties = obj.dm.allData(i).properties;
                 st.entName = entName;
@@ -169,12 +173,12 @@ classdef EntityManager < dynamicprops
             % (obj.dm.allData)
             allDataIDs = cat(1,obj.dm.allData.uniqueID);
             for i = 1 : numel(ents)
-                if (isfield(ents(i).handle.properties, 'prevUID'))
-                    prevDataIdx = find(allDataIDs == ents(i).handle.properties.prevUID);
+                if (isfield(ents(i).dataHandle.properties, 'prevUID'))
+                    prevDataIdx = find(allDataIDs == ents(i).dataHandle.properties.prevUID);
                     ents(i).dataProperties.prevEntity = ents(prevDataIdx);
                 end
-                if (isfield(ents(i).handle.properties, 'nextUID'))
-                    nextDataIdx = find(allDataIDs == ents(i).handle.properties.nextUID);
+                if (isfield(ents(i).dataHandle.properties, 'nextUID'))
+                    nextDataIdx = find(allDataIDs == ents(i).dataHandle.properties.nextUID);
                     ents(i).dataProperties.nextEntity = ents(nextDataIdx);
                 end
             end
