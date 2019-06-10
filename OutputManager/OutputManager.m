@@ -81,6 +81,22 @@ classdef OutputManager < dynamicprops
             % TODO: merge default and user parameters
 
             parameters = outputConfigRow.parameters;
+%             sp = struct()
+%             for i = 1:2:numel(parameters)
+%                 sp.(parameters{i}) = parameters{i+1}
+%             end
+%             
+%             spd = struct()
+%             for i = 1:2:numel(obj.defaultOutputParams{1}{2}{1})
+%                 spd.(obj.defaultOutputParams{1}{2}{1}{i}) = obj.defaultOutputParams{1}{2}{1}{i}
+%             end
+%             
+%             spu = spd;
+%             for fn = fieldnames(sp)
+%                 spu.(fn{1}) = sp.(fn{1});
+%             end
+            
+            
             for i = 1 : numel(obj.defaultOutputParams)
                 defParams = obj.defaultOutputParams{i};
                 funcs = defParams{1}{1};
@@ -105,6 +121,7 @@ classdef OutputManager < dynamicprops
                     % TODO: colate table sensitive to order ?!?!?!
                     % TODO: take care of a "singleton" dimension
                     % (especially at the last position on dimOrder)
+               
                     src = src.colateTable(src, dimensionToHold);
                 end
             end

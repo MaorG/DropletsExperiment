@@ -5,10 +5,13 @@ props = parseParams(parameters);
 if isnumeric(props.threshold)
     th = props.threshold;
 else
-    th = (data.properties.(props.threshold));
+%    th = (data.properties.(props.threshold));
+    th = (data.(props.threshold));
 end
 
 res = data.(props.src) >= th;
+
+res = imfill(res, 'holes');
 
 end
 

@@ -14,7 +14,6 @@ classdef DataManager < handle
             %DataManager: Construct an instance of this class
             
             obj.allData = [];
-            obj.defaultOutputParams = [];
         end
         
         function clearData(obj)
@@ -181,6 +180,8 @@ classdef DataManager < handle
         function doSpecialPerpRow(obj, prepConfigRow)
             if (strcmp(prepConfigRow.funcName, 'ExportImages'))
                 doExportImages(obj, prepConfigRow)
+            elseif (strcmp(prepConfigRow.funcName, 'ExportFields'))
+                doExportFields(obj, prepConfigRow)                
             elseif (strcmp(prepConfigRow.funcName, 'registerImages'))
                 doRegisterImages(obj, prepConfigRow)
             end
@@ -370,6 +371,22 @@ classdef DataManager < handle
              writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad]);
         end
         
+        function doExportFields(obj, prepConfigRow)
+            
+            props = obj.doExportImagesParameterExtraction(prepConfigRow.parameters);
+            
+            allFileNames = cell(numel(props.Images), numel(obj.allData));
+            for ni = 1:numel(props.Images)
+                imagesFieldName = props.Images{ni};
+                dstPath = props.targetDir;
+                
+                fileNames = obj.doFileNameingAndExport(imagesFieldName, dstPath);
+                allFileNames(ni,:) = fileNames(:);
+            end
+            
+            writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad]);
+        end
+        
         function writeNewLoadFile(obj, fieldNames, allFileNames, loadFileName)
             
             loadConfig = obj.loadConfigArray;
@@ -445,16 +462,23 @@ classdef DataManager < handle
                         
                         final_uID = ndID.T{ti}{ri};
                         
-                        fileNames = [fileNames, final_fileName];
-                        uIDs = [uIDs, final_uID];
+                                                    uIDs = [uIDs, final_uID];
+                                                    
+                        val = ndImage.T{ti}{ri};
+                        if (size(val,1) >= 2 && size(val,2) >= 2) % indicates it is an image  
+                            
+                            fileNames = [fileNames, final_fileName];
+                            
+                            if isfloat(ndImage.T{ti}{ri})
+                                %todo: bad!
+                                imwrite(ndImage.T{ti}{ri} > 0, [obj.rootName, final_fileName]);
+                            else
+                                imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
+                            end
+                        else
+                            fileNames = [fileNames, val];
+                        end
                         
-                        
-                         if isfloat(ndImage.T{ti}{ri})
-                             %todo: bad!
-                             imwrite(ndImage.T{ti}{ri} > 0, [obj.rootName, final_fileName]);
-                         else
-                             imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
-                         end
                     end
                 end
             end

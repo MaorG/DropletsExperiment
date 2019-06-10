@@ -52,7 +52,7 @@ while userinput ~= 13
 %             '  zoom<--<z,x>  ok<Enter>']);
         titl = [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
             num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
-            '  zoom<--<z,x>  ok<Enter> ', treatTitle];
+            '  zoom<--<z,x>  ok<Enter>'];
         set(h,'Name',titl,'NumberTitle','off')
 
         continueToBigLoop = false;
@@ -129,7 +129,7 @@ close(h);
 % mask = AL > th; 
 % mask = imfill( mask ,'holes');
 
-res = th;
+res = mask;
 end
 
 function disk = getDisk(radius)

@@ -81,11 +81,28 @@ classdef OutputManager < dynamicprops
             % TODO: merge default and user parameters
 
             parameters = outputConfigRow.parameters;
+            sp = struct()
+            for i = 1:2:numel(parameters)
+                sp.(parameters{i}) = parameters{i+1}
+            end
+            
+            spd = struct()
+            for i = 1:2:numel(obj.defaultOutputParams{1}{2}{1})
+                spd.(obj.defaultOutputParams{1}{2}{1}{i}) = obj.defaultOutputParams{1}{2}{1}{i}
+            end
+            
+            spu = spd;
+            for fn = fieldnames(sp)
+                spu.(fn{1}) = sp.(fn{1});
+            end
+            
+            
             for i = 1 : numel(obj.defaultOutputParams)
                 defParams = obj.defaultOutputParams{i};
-                defParams
-                if (isempty(defParams{1}) || any(strcmp(defParams{1}, outputConfigRow.funcName)))
-                    parameters = mergeParams(defParams{2}, parameters);
+                funcs = defParams{1}{1};
+                params = defParams{2}{1};
+                if (isempty(funcs) || any(strcmp(funcs, outputConfigRow.funcName)))
+                    parameters = mergeParams(params, parameters);
                 end
             end
             

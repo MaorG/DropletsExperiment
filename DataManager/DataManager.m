@@ -178,8 +178,8 @@ classdef DataManager < handle
         
 
         function doSpecialPerpRow(obj, prepConfigRow)
-            if (strcmp(prepConfigRow.funcName, 'ExportImages'))
-                doExportImages(obj, prepConfigRow)
+            if (strcmp(prepConfigRow.funcName, 'ExportFields'))
+                doExportFields(obj, prepConfigRow)                
             elseif (strcmp(prepConfigRow.funcName, 'registerImages'))
                 doRegisterImages(obj, prepConfigRow)
             end
@@ -353,7 +353,7 @@ classdef DataManager < handle
         end
         
         
-        function doExportImages(obj, prepConfigRow)
+        function doExportFields(obj, prepConfigRow)
             
             props = obj.doExportImagesParameterExtraction(prepConfigRow.parameters);
             
@@ -368,6 +368,7 @@ classdef DataManager < handle
                 
              writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad]);
         end
+        
         
         function writeNewLoadFile(obj, fieldNames, allFileNames, loadFileName)
             
@@ -444,16 +445,23 @@ classdef DataManager < handle
                         
                         final_uID = ndID.T{ti}{ri};
                         
-                        fileNames = [fileNames, final_fileName];
                         uIDs = [uIDs, final_uID];
                         
+                        val = ndImage.T{ti}{ri};
+                        if (size(val,1) >= 2 && size(val,2) >= 2) % indicates it is an image  
+                            
+                            fileNames = [fileNames, final_fileName];
+                            
+                            if isfloat(ndImage.T{ti}{ri})
+                                %todo: bad!
+                                imwrite(ndImage.T{ti}{ri} > 0, [obj.rootName, final_fileName]);
+                            else
+                                imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
+                            end
+                        else
+                            fileNames = [fileNames, val];
+                        end
                         
-                         if isfloat(ndImage.T{ti}{ri})
-                             %todo: bad!
-                             imwrite(ndImage.T{ti}{ri} > 0, [obj.rootName, final_fileName]);
-                         else
-                             imwrite(ndImage.T{ti}{ri}, [obj.rootName, final_fileName]);
-                         end
                     end
                 end
             end

@@ -12,6 +12,7 @@ conf = '\\qnap01\LongTerm\Michael\drops\paper\pipeline conf\expConfig.csv';
 %conf = '\\qnap01\LongTerm\Michael\drops\registered\exp_memory101 - phase2 - registration.csv'
 %conf = '\\qnap01\LongTerm\Michael\drops\registered\downd\exp_memory101 - phase3.csv';
 
+conf = '\\qnap01\LongTerm\Tomer\22.5.19 p200519AEM1\exp_AEM.csv';
 
 em.configure(conf);
 
