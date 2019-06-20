@@ -1,4 +1,4 @@
-function displayRGB(m, parameters)
+function displayRGBBF(m, parameters)
 
 props = parseParams(parameters);
 
@@ -14,9 +14,11 @@ if (~isempty(props.G))
     cindices(2) = 1;
 end
 if (~isempty(props.B))
-    channels{3} = mat2gray(m.(props.B) > 50000, props.Bscale);
+    channels{3} = mat2gray(m.(props.B), props.Bscale);
     cindices(3) = 1;
 end
+
+BG = m.(props.BG);
 
 for i = 1:3
     if isempty(channels{i})
@@ -25,7 +27,8 @@ for i = 1:3
     end
 end
 
-imshow(cat(3,channels{1},channels{2},channels{3}));
+BG = mat2gray(BG);
+imshow(cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG));
 
 end
 
@@ -37,7 +40,8 @@ props = struct(...
     'G',[],...
     'Gscale',[0,1],...
     'B',[],...
-    'Bscale',[0,1] ...
+    'Bscale',[0,1], ...
+    'BG', [] ...
     );
 
 for i = 1:numel(v)
@@ -53,7 +57,11 @@ for i = 1:numel(v)
     elseif (strcmp(v{i}, 'B'))
         props.B = v{i+1};
     elseif (strcmp(v{i}, 'Bscale'))
-        props.Bscale = v{i+1};end
+        props.Bscale = v{i+1};
+	elseif (strcmp(v{i}, 'BG'))
+        props.BG = v{i+1};
+        
+    end
 end
 
 end

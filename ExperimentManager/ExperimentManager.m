@@ -10,18 +10,23 @@ classdef ExperimentManager < handle
         conf
         rootName
         parameterSpace
-        
+        matlab_ver
+        def_matlab_ver = 'maor';
     end
     
     methods
         
-        function obj = ExperimentManager(obj)
+        function obj = ExperimentManager(matlab_ver)
             obj.dm = DataManager;
             obj.pm = Parser;
             obj.enm = EntityManager(obj.dm);
             % obj.enm = EntityManager(obj.dm);
             % TODO - right now done on doEntities(), choose to delete or uncomment
-            
+            if (exist('matlab_ver', 'var'))
+                obj.matlab_ver = matlab_ver;
+            else
+                obj.matlab_ver = obj.def_matlab_ver;
+            end
             
         end
         

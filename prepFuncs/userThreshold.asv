@@ -14,7 +14,7 @@ if (isfield(props, 'treatTitle'))
         if (isnumeric(val))
            val = num2str(val);
         end
-        treatTitle = [treatTitle, val];
+        treatTitle = [treatTitle, ' ', val];
     end
 end
 
@@ -52,7 +52,7 @@ while userinput ~= 13
 %             '  zoom<--<z,x>  ok<Enter>']);
         titl = [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
             num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
-            '  zoom<--<z,x>  ok<Enter>'];
+            '  zoom<--<z,x>  ok<Enter>', treatTitle];
         set(h,'Name',titl,'NumberTitle','off')
 
         continueToBigLoop = false;
@@ -129,7 +129,7 @@ close(h);
 % mask = AL > th; 
 % mask = imfill( mask ,'holes');
 
-res = mask;
+res = th;
 end
 
 function disk = getDisk(radius)
@@ -154,6 +154,8 @@ for i = 1:numel(v)
         props.srcBF = v{i+1};
     elseif (strcmp(v{i}, 'treatTitle'))
         props.treatTitle = v{i+1};
+    elseif (strcmp(v{1}, 'windowTitle'))
+        props.windowTitle = v{i+1};
     end
 end
 

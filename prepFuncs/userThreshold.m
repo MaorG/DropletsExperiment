@@ -14,7 +14,7 @@ if (isfield(props, 'treatTitle'))
         if (isnumeric(val))
            val = num2str(val);
         end
-        treatTitle = [treatTitle, val];
+        treatTitle = [treatTitle, ' ', val];
     end
 end
 
@@ -47,14 +47,19 @@ while userinput ~= 13
     button = 1;
     continueToBigLoop = false;
     while ~continueToBigLoop
-%         title( [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
-%             num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
-%             '  zoom<--<z,x>  ok<Enter>']);
+
         titl = [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
             num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
-            '  zoom<--<z,x>  ok<Enter> ', treatTitle];
-        set(h,'Name',titl,'NumberTitle','off')
-
+            '  zoom<--<z,x>  ok<Enter>', treatTitle];
+        if (isfield(props, 'windowTitle') && props.windowTitle)
+            set(h,'Name',titl,'NumberTitle','off')
+        else
+%             title( [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
+%              num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
+%              '  zoom<--<z,x>  ok<Enter>']);
+            title(titl);
+        end
+         
         continueToBigLoop = false;
         [x,y,button]=ginput(1)
         if isempty(button)
@@ -154,6 +159,8 @@ for i = 1:numel(v)
         props.srcBF = v{i+1};
     elseif (strcmp(v{i}, 'treatTitle'))
         props.treatTitle = v{i+1};
+    elseif (strcmp(v{i}, 'windowTitle'))
+        props.windowTitle = v{i+1};
     end
 end
 

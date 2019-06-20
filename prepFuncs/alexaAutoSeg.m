@@ -5,6 +5,19 @@ props = parseParams(parameters);
 AL = data.(props.srcALX);
 BF = data.(props.srcBF);
 
+treatTitle = [];
+if (isfield(props, 'treatTitle'))
+    treatPars = props.treatTitle;
+    treatVals = data.parameters;
+    for t = 1 : numel(treatPars)
+        val = treatVals.(treatPars{t});
+        if (isnumeric(val))
+           val = num2str(val);
+        end
+        treatTitle = [treatTitle, ' ', val];
+    end
+end
+
 disk = getDisk(5);
 
 %ALs = double(imgaussfilt(AL, 10));
@@ -69,7 +82,21 @@ while userinput ~= 13
     button = 1;
     continueToBigLoop = false;
     while ~continueToBigLoop
-        title( [ '{q/a}-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--{w/s}  {z/x} zoom  {up/down} jump: ', num2str(jump), ',  {left/right} threshold: ', num2str(th)] );
+        
+        titl = [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
+            num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
+            '  zoom<--<z,x>  ok<Enter>', treatTitle];
+        
+        if (isfield(props, 'windowTitle') && props.windowTitle)
+            set(h,'Name',titl,'NumberTitle','off')
+        else
+%             title( [ '<q/a>-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--<w/s>  <up/down>-->jump: ', ...
+%                 num2str(jump), ',  <left/right>--> threshold: ', num2str(th), ...
+%                 '  zoom<--<z,x>  ok<Enter>']);
+            title(titl);
+        end
+        
+        %title( [ '{q/a}-->[', num2str(clim(1)), ', ', num2str(clim(2)), ']<--{w/s}  {z/x} zoom  {up/down} jump: ', num2str(jump), ',  {left/right} threshold: ', num2str(th)] );
 
         continueToBigLoop = false;
         try
@@ -230,6 +257,10 @@ for i = 1:numel(v)
         props.srcBF = v{i+1};
     elseif (strcmp(v{i}, 'threshold'))
         props.threshold = v{i+1};
+    elseif (strcmp(v{i}, 'treatTitle'))
+        props.treatTitle = v{i+1};
+    elseif (strcmp(v{i}, 'windowTitle'))
+        props.windowTitle = v{i+1};
     end
 end
 
