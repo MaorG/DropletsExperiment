@@ -122,9 +122,6 @@ classdef DataManager < handle
                 data = ad(idx);
                 ad2 = obj.doPrepOnData(data, prepConfig);
                 
-                for j = 1:1e10
-                    a=0;
-                end
                 toc(worker)
             end
             toc(pool)
