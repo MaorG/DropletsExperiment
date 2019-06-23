@@ -122,7 +122,7 @@ for i = 1:numel(v)
     if (strcmp(v{i}, 'cellArea'))
         props.cellArea = v{i+1};
     elseif (strcmp(v{i}, 'liveDeadRatio'))
-        props.cellSurvival = v{i+1};
+        props.liveDeadRatio = v{i+1};
     elseif (strcmp(v{i}, 'dropletArea'))
         props.dropletArea = v{i+1};
     elseif (strcmp(v{i}, 'dropletAreaBins'))
