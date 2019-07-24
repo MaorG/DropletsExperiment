@@ -10,14 +10,14 @@ bins = [props.bins_begin logspace(props.bins_min,props.bins_max+props.bins_step,
 
 % TODO: struct creation is messy...
 for ei = numel(entities):-1:1
-    res(ei) = entities(ei).dataParameters;
+    res(ei) = entities(ei).dataProperties;
 end
 
 [res.val] = deal([]);
 
 for ei = numel(entities):-1:1
     res(ei).val = getDropletDensityAnalyze(entities(ei), props);
-    res(ei).val.params = entities(ei).dataParameters;
+    res(ei).val.params = entities(ei).dataProperties;
 end
 
 %nd = createNDResultTable(res, 'val', fns);

@@ -36,9 +36,9 @@ childrenMap = children.seg>0;
 %      - or perhaps make a func to update seg
 
 CCp = bwconncomp(parentsMap);
-Lp = labelmatrix(CCp);
+Lp = uint16(labelmatrix(CCp));
 CCc = bwconncomp(childrenMap);
-Lc = labelmatrix(CCc);
+Lc = uint16(labelmatrix(CCc));
 
 Lpairs = cat(2,Lp(:),Lc(:));
 idx = find(Lpairs(:,1) & Lpairs(:,2));

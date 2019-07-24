@@ -5,6 +5,8 @@ classdef OutputManager < dynamicprops
         enm
         am
         defaultOutputParams
+        postOpsProps
+        postOps
     end
     
     methods
@@ -13,6 +15,7 @@ classdef OutputManager < dynamicprops
             obj.dm = dm;
             obj.enm = enm;
             obj.defaultOutputParams = [];
+            obj.postOpsProps = {'legend', 'title'};
         end
         
         function doOutput(obj, outputConfig)
@@ -142,11 +145,39 @@ classdef OutputManager < dynamicprops
                         str = obj.getTitle(entryGroups{gi}(1), filter(1:2:end));
                         h = figure('Name', str);
                         hold on;
+                        h = [];
+                        titl = [];
+                        obj.remPostOps();
                         for ei = 1:numel(entryGroups{gi})
                             entry = entryGroups{gi}(ei).data;
-                            eval([outputConfigRow.funcName, '(entry, parameters)']);
+                            
+                            try
+                                %if (~isempty(entry))
+                                    h = eval([outputConfigRow.funcName, '(entry, parameters)']);
+                                    obj.addPostOps(h);
+                                %end
+                            
+                            catch ME
+                               %if (~strcmp(ME.identifier, 'MATLAB:unassignedOutputs'))
+                               if (strcmp(ME.identifier, 'MATLAB:TooManyOutputs'))
+                                   eval([outputConfigRow.funcName, '(entry, parameters)']);
+                               else
+                                   rethrow(ME);
+                               end
+                            end
+                            
                         end
-                        title(strcat(outputConfigRow.srcName, ' ', str));
+                        
+                        if (isfield(obj.postOps, 'title') && ~isempty(obj.postOps.title)) 
+                            title(obj.postOps.title);
+                        else
+                            title(strcat(outputConfigRow.srcName, ' ', str));
+                        end
+                        
+                        if (isfield(obj.postOps, 'legend') && ~isempty(obj.postOps.legend))
+                            legend(obj.postOps.legend,'Location', 'NorthEast');
+                        end
+                        
                     end
                 end
             end
@@ -166,6 +197,20 @@ classdef OutputManager < dynamicprops
             % -> so now 'filter' is a separate column. other parameters can
             % be passed into the display func
             
+        end
+        
+        function addPostOps(obj, h)
+            for p = obj.postOpsProps
+                if (isfield(h, p{1}))
+                    obj.postOps.(p{1}) = [obj.postOps.(p{1}), h.(p{1})];
+                end
+            end
+        end
+        
+        function remPostOps(obj)
+            for p = obj.postOpsProps
+                obj.postOps.(p{1}) = [];
+            end
         end
         
     end

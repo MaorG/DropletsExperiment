@@ -30,7 +30,7 @@ fns = fieldnames(entities.regions);
 for i = 1:numel(fns)
     if strcmpi(fns(i), props.regionProp) 
         res = ca(i,:);
-        if (~ ( strcmpi(fns(i), 'PixelIdxList') || strcmpi(fns(i), 'PixelList') ) )
+        if (~  strcmpi(fns(i), 'PixelIdxList') && ~strcmpi(fns(i), 'Centroid') )
            res = cell2mat(res);
            res = reshape(res,numel(entities.regions),numel(res)/numel(entities.regions));
         else

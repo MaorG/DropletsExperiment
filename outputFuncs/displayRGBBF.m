@@ -1,4 +1,4 @@
-function displayRGBBF(m, parameters)
+function displayRGBBF(m, parameters, removedMask)
 
 props = parseParams(parameters);
 
@@ -18,6 +18,12 @@ if (~isempty(props.B))
     cindices(3) = 1;
 end
 
+colorPos = find(strcmp({'R' 'G' 'B'}, props.MarkColor));
+if (~isempty(props.Mark) && ~isempty(colorPos))
+    channels{colorPos}(props.Mark) = 1;
+end
+    
+    
 BG = m.(props.BG);
 
 for i = 1:3
@@ -28,7 +34,21 @@ for i = 1:3
 end
 
 BG = mat2gray(BG);
-imshow(cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG));
+
+if (exist('removedMask', 'var') && all(size(removedMask) == size(BG)))
+         % following gets too dark
+%         imshow(imfuse( ...
+%         cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG), ...
+%         cat(3,...
+%             (removedMask), ...
+%             0*removedMask, ...
+%             0*removedMask ) ...
+%         ,'blend') ...
+%         );
+    imshow(cat(3,channels{1}+BG+removedMask,channels{2}+BG,channels{3}+BG));
+else
+    imshow(cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG));
+end
 
 end
 
@@ -41,7 +61,9 @@ props = struct(...
     'Gscale',[0,1],...
     'B',[],...
     'Bscale',[0,1], ...
-    'BG', [] ...
+    'BG', [], ...
+    'Mark', [], ...
+    'MarkColor', 'R' ...
     );
 
 for i = 1:numel(v)
@@ -60,6 +82,10 @@ for i = 1:numel(v)
         props.Bscale = v{i+1};
 	elseif (strcmp(v{i}, 'BG'))
         props.BG = v{i+1};
+	elseif (strcmp(v{i}, 'Mark'))
+        props.Mark = v{i+1};        
+	elseif (strcmp(v{i}, 'MarkColor'))
+        props.MarkColor = v{i+1};  
         
     end
 end
