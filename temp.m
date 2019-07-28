@@ -19,6 +19,9 @@ conf = '\\qnap01\LongTerm\Tomer\22.5.19 p200519AEM1\exp_AEM.csv';
 conf = '\\qnap01\LongTerm\Tomer\13.6.19 p120619bac_beads\13.6.19 p120619bac\exp_13.6.19.csv';
 conf = '\\qnap01\LongTerm\Shifra\2019\7.19\7.7.19\screen b\exp_7.7.19_shifra_screen_b.csv';
 
+% sample experiment
+conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size.csv';
+
 em.configure(conf);
 
 em.doLoad();

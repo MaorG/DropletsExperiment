@@ -80,7 +80,7 @@ classdef DataManager < handle
                         readPath
                         I = imread(readPath);
                         addprop(data, fieldName{1});
-                        if (size(I,3)==2)
+                        if (size(I,3) > 1) 
                             % TODO:
                             % why would it even get here?!?!
                             data.(fieldName{1}) = I(:,:,1);

@@ -40,7 +40,8 @@ set(axes1,...
 
 set(gcf,'position',[50,50,1000,600])
 
-h.legend = {num2str(m.params.vol)};
+h = [];
+%h.legend = {num2str(m.params.vol)};
 
 % saveas(gcf,'figures v4 alt bins/droplet area distribution.fig')
 % print('figures v4 alt bins/droplet area distribution','-dtiff','-r300')
