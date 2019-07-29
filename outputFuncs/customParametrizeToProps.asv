@@ -68,7 +68,7 @@ for v = 1 : numel(viewOrderAll)
                             curPropVal = curPropVal{1};
                         end
                     end
-                    propsCopy.(curProp) = curPropVal;
+                    props.(curProp) = curPropVal;
                 end
             end
         end
@@ -76,7 +76,5 @@ for v = 1 : numel(viewOrderAll)
     end
 
 end
-
-props = propsCopy;
 
 end

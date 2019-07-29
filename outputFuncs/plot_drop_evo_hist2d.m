@@ -62,5 +62,6 @@ for i = 1:numel(v)
 end
 
 props = customParametrizeToProps(viewOrderAll, props, dataParams);
-    
+props = uncellProps(props, {'color' 'style' 'LineWidth' 'cellType'});
+
 end

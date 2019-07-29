@@ -80,6 +80,6 @@ for i = 1:numel(v)
 end
 
 props = customParametrizeToProps(viewOrderAll, props, dataParams);
-props = uncellProps(props, {'colors' 'styles' 'MarkerStyles' 'MarkerSizes' 'legend'});
+uncellProps
 
 end
