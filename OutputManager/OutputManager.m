@@ -178,6 +178,13 @@ classdef OutputManager < dynamicprops
                             legend(obj.postOps.legend,'Location', 'NorthEast');
                         end
                         
+                        if (isfield(outputConfigRow, 'figPostOps'))
+                            ops = outputConfigRow.figPostOps;
+                            for o = 1 : numel(ops)
+                                eval(ops{o});
+                            end
+                        end
+                        
                     end
                 end
             end
