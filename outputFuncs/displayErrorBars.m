@@ -3,9 +3,9 @@ function displayErrorBars(m, parameters)
 props = parseParams(parameters);
 
 if(isfield(m, 'Yste'))
-    errorbar(m.X,m.Y,m.Yste)
+    errorbar(m.X,m.Y,m.Yste,'-o','LineWidth', 2)
 else
-    errorbar(m.X,m.Y,m.Yerr)
+    errorbar(m.X,m.Y,m.Yerr,'-o','LineWidth', 2)
 end
 
 set(gca,'xscale',props.xscale);

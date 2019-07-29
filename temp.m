@@ -15,6 +15,9 @@ conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2\exp_m
 
 conf = 'C:\school\DropletsExperiment\configurations\15.5.19 p130519memory2 - reg\exp_memory101 - phase4.csv'
 conf = 'C:\school\DropletsExperiment\configurations\mixing\exp_mixing_202.csv'
+
+conf = 'D:\images\surfactant101\exp_surfactant_101c.csv'
+conf = 'D:\images\surfactant101\exp_surfactant_102.csv'
 em.configure(conf);
 
 em.doLoad();
