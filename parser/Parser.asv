@@ -12,7 +12,7 @@ classdef Parser
             commaTo = char(65535); % special character that shouldn't be used regularly in the file
             commentLinePrefix = '#';
             commentColumnPrefix = '!'; % characters that can prefix field columns to specify which columns to ignore
-            splitLineStr = '\.\.\.\s*$'; % this string regex pattern can optionally be used at the end of lines to append the current line to the next line (... in this case as used in matlab scripts syntax)
+            splitLineStr = '\.\.\.\s*$'; % this string regex pattern can optionally be used at the end of lines to append to next line the the current line (... in this case as used in matlab scripts syntax)
             
             conf = obj.createStructFromCsvFile(obj, configFileName, commaTo, commentLinePrefix, commentColumnPrefix, splitLineStr);
 
@@ -67,16 +67,15 @@ classdef Parser
             fid = fopen(filepath);
             rline = fgetl(fid);
             lineNum = 0;
-            prevLines = [];
             while ischar(rline)
                 %disp(rline)
                 
                 if (~strncmp(rline, commentLinePrefix, 1) && ~isempty(rline)) % ignore lines that start with '#'
+                    prevLines = [];
                     if (regexp(rline, splitLineStr))
                         prevLines = [prevLines, regexprep(rline, splitLineStr, '')];
                     else
                         fullLine = [prevLines, rline];
-                        prevLines = [];
                         
                         lineNum = lineNum + 1;
                         

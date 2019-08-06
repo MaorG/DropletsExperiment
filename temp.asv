@@ -3,7 +3,7 @@
 init
 
 matlab_ver = 'michael'; % maor or michael
-confAllAtOnce = true; % true to specify that the main configuration file includes all configuration files: load, prep, entities, analysis, output; each with its topic, e.g. <prep>
+confAllAtOnce = true; % true to get 
 
 em = ExperimentManager(matlab_ver);
 

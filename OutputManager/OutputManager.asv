@@ -192,7 +192,7 @@ classdef OutputManager < dynamicprops
                             % to be added to an output line (default are appended)
                             origOps = outputConfigRow.figPostOps;
                         else
-                            origOps = cell(0);
+                            origOps = [];
                         end
                         ops = origOps;
                         % use 'empty' in figPostOps when setting
