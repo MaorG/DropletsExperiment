@@ -3,9 +3,14 @@
 init
 
 matlab_ver = 'michael'; % maor or michael
-confAllAtOnce = true; % true to specify that the main configuration file includes all configuration files: load, prep, entities, analysis, output; each with its topic, e.g. <prep>
+expMainTopic = '<main>'; % looks for expMainTopic in the experiment main file as the main experiment configuration properties; used when all configuration files are in one file
+% note when all configuration files are in one file: in the main experiment
+% configuration, specify the values for the fields 'load', 'prep', 'entities', 'analysis'
+% and 'output' as '<load>', '<prep>', etc., instead of source files for
+% these sections, <> corresponding to the topics in the main experiment
+% file (conf here)
 
-em = ExperimentManager(matlab_ver);
+em = ExperimentManager(matlab_ver, expMainTopic);
 
 conf = '\\qnap01\LongTerm\Maor\droplets\bioreporter 31.3.19\conf time handling\exp_biorep_31.3.csv';
 conf = '\\qnap01\LongTerm\Michael\drops\alexa seg\exp_alexa_auto.csv';
@@ -22,6 +27,7 @@ conf = '\\qnap01\LongTerm\Shifra\2019\7.19\7.7.19\screen b\exp_7.7.19_shifra_scr
 
 % sample experiment
 conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size.csv';
+conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size_all_in_one.csv';
 
 em.configure(conf);
 

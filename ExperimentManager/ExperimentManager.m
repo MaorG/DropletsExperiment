@@ -11,12 +11,14 @@ classdef ExperimentManager < handle
         rootName
         parameterSpace
         matlab_ver
+        expMainTopic
         def_matlab_ver = 'maor';
+        def_expMainTopic = '<main>';
     end
     
     methods
         
-        function obj = ExperimentManager(matlab_ver)
+        function obj = ExperimentManager(matlab_ver, expMainTopic)
             obj.dm = DataManager;
             obj.pm = Parser;
             obj.enm = EntityManager(obj.dm);
@@ -26,6 +28,12 @@ classdef ExperimentManager < handle
                 obj.matlab_ver = matlab_ver;
             else
                 obj.matlab_ver = obj.def_matlab_ver;
+            end
+            
+            if (exist('expMainTopic', 'var'))
+                obj.expMainTopic = expMainTopic;
+            else
+                obj.expMainTopic = def_expMainTopic;
             end
             
         end
@@ -39,7 +47,8 @@ classdef ExperimentManager < handle
                 obj.configFileName = [path userConfigFileName];
             end
             
-            obj.conf = obj.pm.getConfiguration(obj.configFileName);
+            obj.conf = obj.pm.getConfiguration(obj.configFileName, '', obj.expMainTopic);
+            
             
             % passing info to DataManager.
             % TODO: Perhaps can be beautified
@@ -76,7 +85,7 @@ classdef ExperimentManager < handle
         end
         
         function doLoad(obj)
-            loadConf = obj.pm.getConfiguration([obj.rootName, obj.conf.load]);
+            loadConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.load], obj.conf.load);
             
             obj.dm.setRootName(obj.rootName);
             obj.dm.setExperimentParameterSpace(obj.parameterSpace);
@@ -185,25 +194,26 @@ classdef ExperimentManager < handle
         end
         
         function doPrep(obj)
-            prepConf = obj.pm.getConfiguration([obj.rootName, obj.conf.prep]);
+            prepConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.prep], obj.conf.prep);
+            
             obj.dm.prepData(prepConf)
         end
         
         function doEntities(obj)
             obj.enm = EntityManager(obj.dm);
-            entityConf = obj.pm.getConfiguration([obj.rootName, obj.conf.entities]);
+            entityConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.entities], obj.conf.entities);
             obj.enm.doEntities(entityConf)
         end
         
         function doAnalysis(obj)
             obj.am = AnalysisManager(obj.dm, obj.enm);
-            analysisConf = obj.pm.getConfiguration([obj.rootName, obj.conf.analysis]);
+            analysisConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.analysis], obj.conf.analysis);
             obj.am.doAnalysis(analysisConf)
         end
         
         function doOutput(obj)
             obj.om = OutputManager(obj.dm, obj.enm, obj.am);
-            outputConf = obj.pm.getConfiguration([obj.rootName, obj.conf.output]);
+            outputConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.output], obj.conf.output);
             obj.om.doOutput(outputConf)
         end
         
