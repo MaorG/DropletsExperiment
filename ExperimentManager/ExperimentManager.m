@@ -95,6 +95,7 @@ classdef ExperimentManager < handle
             
             if (isfield(obj.conf, 'link'))
                 obj.doLinking()
+                obj.dm.addPropertyToAll('link', obj.conf.link); 
             end
         end
         

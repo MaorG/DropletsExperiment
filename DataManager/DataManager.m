@@ -95,6 +95,13 @@ classdef DataManager < handle
             end
         end
         
+        function data = addPropertyToAll(obj, prop, val)
+            for i = 1 : numel(obj.allData)
+                data = obj.allData(i);
+                data.properties.(prop) = val;
+            end
+        end
+        
         function data = getDataByUniqueID(obj, uniqueID)
            IDs = cat(1,obj.allData.uniqueID);
            idx = IDs == uniqueID;
@@ -162,12 +169,20 @@ classdef DataManager < handle
                   addprop(obj.allData, prepConfigRow.resName);
                 end
 
+                nextFigPos = [];
                 for i = 1:numel(obj.allData)
                     data = obj.allData(i);
                     parameters = prepConfigRow.parameters;
-
+                    if (~isempty(nextFigPos))
+                        parameters = [parameters, 'figPos' nextFigPos];
+                    end
+                    
                     obj.allData(i).(prepConfigRow.resName) = ...
                         eval([prepConfigRow.funcName, '(data, parameters)']);
+                    if (isfield(obj.allData(i).(prepConfigRow.resName), 'nextFigPos'))
+                        nextFigPos = obj.allData(i).(prepConfigRow.resName).nextFigPos;
+                    end
+                    
                 end
             end
             
