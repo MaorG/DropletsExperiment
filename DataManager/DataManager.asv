@@ -403,12 +403,12 @@ classdef DataManager < handle
             for di = 1:numel(loadConfig)
                 for ni = 1:numel(allFieldNames)
                     entry = loadConfig(di).(allFieldNames{ni});
-                    if ~isnumeric(entry) || isempty(entry)
+                    if ~isnumeric(entry)
                         if (isstruct(entry) || iscell(entry) || isempty(entry))
                             loadStruct(di).(allFieldNames{ni}) = entry;
-                            loadConfig(di).(allFieldNames{ni}) = ['loadStruct(', num2str(di), ').', allFieldNames{ni}];
+                            loadStruct(di).(allFieldNames{ni}) = ['loadStruct(', di, ').', allFieldNames{ni}];
                         else
-                            loadConfig(di).(allFieldNames{ni}) = ['''', entry, ''''];
+                            loadStruct(di).(allFieldNames{ni}) = ['''', entry, ''''];
                         end
                         
                     end

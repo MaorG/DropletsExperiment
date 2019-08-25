@@ -36,7 +36,7 @@ classdef Parser
                 end
             end
                             
-            conf = obj.createStructFromCsvFile(obj, fileToRead);
+            conf = obj.createStructFromCsvFile(obj, fileToRead, loadStruct);
                         
             %TODO - ignore commas within double quote marks!
 %             T = readtable(configFileName,'Delimiter',',');
@@ -67,7 +67,7 @@ classdef Parser
     
     methods(Static)
         
-        function res = customeval(expr, loadStruct)
+        function res = customeval(expr)
             if isnumeric (expr)
                 res = expr;
             elseif isempty(expr)
@@ -78,7 +78,7 @@ classdef Parser
         end
         
         
-        function conf = createStructFromCsvFile(obj, filepath)
+        function conf = createStructFromCsvFile(obj, filepath, loadStruct)
             
             conf = struct;
             fields = {};

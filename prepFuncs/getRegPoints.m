@@ -18,6 +18,13 @@ linking = props.linking;
 % notes on parameters:
 % 'linkaxes' true - makes all subplots move synchronomously
 
+% output:
+% each entry in the third dimension is a different referenced point (a
+% reference point is a set of points for a set of images that points to the
+% same physical location)
+% for each entry, each row is a point of the ith image
+% so, for instance, to get all the points of the first  image - iterate all dimensions and get the first row of each one
+    
 imgs = cell(0);
 titles = cell(0);
 
