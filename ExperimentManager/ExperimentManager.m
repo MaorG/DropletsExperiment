@@ -19,7 +19,7 @@ classdef ExperimentManager < handle
     methods
         
         function obj = ExperimentManager(matlab_ver, expMainTopic)
-            obj.dm = DataManager;
+            obj.dm = DataManager();
             obj.pm = Parser;
             obj.enm = EntityManager(obj.dm);
             % obj.enm = EntityManager(obj.dm);

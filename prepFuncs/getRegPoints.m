@@ -1,4 +1,4 @@
-function res = getRegPoints(data,parameters)
+function res = getRegPoints(data,parameters,dm)
 
 props = parseParams(parameters);
 
@@ -22,9 +22,11 @@ linking = props.linking;
 % each entry in the third dimension is a different referenced point (a
 % reference point is a set of points for a set of images that points to the
 % same physical location)
-% for each entry, each row is a point of the ith image
-% so, for instance, to get all the points of the first  image - iterate all dimensions and get the first row of each one
+% for each such entry, each row is a point of the ith image
+% so, for instance, to later get all the points of the first  image - iterate all dimensions and get the first row of each one
     
+maxRefPointsPerImage = 2; % currently the image registration works on two points per image only
+
 imgs = cell(0);
 titles = cell(0);
 
@@ -85,8 +87,8 @@ end
 
 num = numel(titles);
 h = figure;
-if (~isempty(props.figPos))
-   set(h, 'Position', props.figPos);
+if (props.keepPos && isprop(dm, 'state') && isfield(dm.state, 'nextFigPos') && ~isempty(dm.state.nextFigPos))
+   set(h, 'Position', dm.state.nextFigPos);
 end
 clim = [0,2^16 - 1];
 clim = repmat(clim, num, 1);
@@ -109,6 +111,8 @@ for i = 1 : num
     img = imgs{i};
     if (thApply(i)) % any(strcmp(curTitle, thresholdSrcs)) not relevant anymore
         imshow(img > th(i));
+    elseif (strcmp(class(img), 'logical'))
+        imshow(img);
     else
         fixedScale = eval([class(img), '([', num2str(clim(i, :)), '])']); % fixes according to image integer type
         imshow(img, fixedScale);
@@ -133,6 +137,10 @@ lastTitle = [];
 % Return key stops getting input points from the images altogether
 while userinput ~= 13
     refPoint = refPoint + 1;
+    
+    if (refPoint > maxRefPointsPerImage)
+        break; 
+    end
     
     points(:,:,refPoint) = repmat(unfilledPointVals, num, 1);
     
@@ -172,6 +180,8 @@ while userinput ~= 13
                     if (thApply(i)) % any(strcmp(curTitle, thresholdSrcs)) not relevant anymore
                         curImg = curImg > th(i);
                         imshow(curImg);
+                    elseif (strcmp(class(img), 'logical'))
+                        imshow(img);
                     else
                         fixedScale = eval([class(img), '([', num2str(clim(i, :)), '])']); % fixes according to image integer type
                         imshow(curImg, fixedScale);
@@ -244,7 +254,7 @@ while userinput ~= 13
                             thApply(i) = true;
                             thOld(i) = -1; % will make it update the threshold image because old != new
                             continueToBigLoop = true;
-                        case 103 % 'g' will turn of threshold mode
+                        case 103 % 'g' will turn off threshold mode
                             thApply(i) = false;
                             thOld(i) = -1; % will make it update the threshold image because old != new
                             continueToBigLoop = true;
@@ -272,7 +282,7 @@ while userinput ~= 13
 end
 
 if (props.keepPos)
-    res.nextFigPos = get(h, 'Position');
+    dm.state.nextFigPos = get(h, 'Position');
 end
 close(h);
 
@@ -290,7 +300,7 @@ for i = 1 : size(points,3)
     
 end
 
-res.points = points;
+res = points;
 
 end
 
@@ -302,8 +312,7 @@ props = struct(...
     'linkaxes',false,...
     'treatTitle', '',...
     'linking', false, ...
-    'keepPos', false, ...
-    'figPos', [] ...
+    'keepPos', false ...
     );
 
 for i = 1:numel(v)
@@ -317,9 +326,7 @@ for i = 1:numel(v)
     elseif (strcmp(v{i}, 'linking'))
         props.linking = v{i+1};      
     elseif (strcmp(v{i}, 'keepPos'))
-        props.keepPos = v{i+1};
-    elseif (strcmp(v{i}, 'figPos'))
-        props.figPos = v{i+1};           
+        props.keepPos = v{i+1};        
     end
     
 end

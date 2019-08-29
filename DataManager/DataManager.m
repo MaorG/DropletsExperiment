@@ -7,6 +7,12 @@ classdef DataManager < handle
         parameterSpaceNames
         allData
         loadConfigArray
+        specialPrepsInFunctionSaving
+        % the 'state' struct will contain different .properties that can be modified and retrieved from other functions
+        % example: nextFigPos - the position and size to be used for the
+        % next figure that is going to be open (for functions that open
+        % figures and are parametrized to use this figure property)
+        state
     end
     
     methods
@@ -14,6 +20,8 @@ classdef DataManager < handle
             %DataManager: Construct an instance of this class
             
             obj.allData = [];
+            obj.specialPrepsInFunctionSaving = {'imageRegistration'}; % these prep functions will save the results inside the function rather than get the result as output from the function
+            state = struct;
         end
         
         function clearData(obj)
@@ -69,7 +77,7 @@ classdef DataManager < handle
             for i = 1:numel(fields)
                 fieldName = fields(i);
                 val = loadConfigRow.(fieldName{1});
-                if isnumeric(val)
+                if isnumeric(val) || isstruct(val) || iscell(val)
                     data.properties.(fieldName{1}) = val;
                 else
                     [path,name,ext] = fileparts(val);
@@ -165,23 +173,47 @@ classdef DataManager < handle
 %                 if (~isfield(obj.allData,prepConfigRow.resName))
 %                     [obj.allData.(prepConfigRow.resName)] = deal([]);
 %                 end
-                if (~all(isprop(obj.allData,prepConfigRow.resName)))
-                  addprop(obj.allData, prepConfigRow.resName);
+
+                inFuncSaving = any(strcmp(obj.specialPrepsInFunctionSaving , prepConfigRow.funcName));
+                
+                resName = prepConfigRow.resName;
+                if (ischar(resName)) 
+                    resName = {resName};
+                end
+                for i = 1 : numel(resName)
+                    if (~all(isprop(obj.allData,resName{i})))
+                        addprop(obj.allData, resName{i});
+                    end
                 end
 
-                nextFigPos = [];
                 for i = 1:numel(obj.allData)
                     data = obj.allData(i);
                     parameters = prepConfigRow.parameters;
-                    if (~isempty(nextFigPos))
-                        parameters = [parameters, 'figPos' nextFigPos];
+                          
+                    if (inFuncSaving)     
+                        try
+                            eval([prepConfigRow.funcName, '(data, parameters, prepConfigRow.resName, obj)']);
+                        catch ME
+                            if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
+                                eval([prepConfigRow.funcName, '(data, parameters, prepConfigRow.resName)']);
+                            else
+                                rethrow(ME);
+                            end
+                        end
+                    else
+                        try
+                            obj.allData(i).(prepConfigRow.resName) = ...
+                                eval([prepConfigRow.funcName, '(data, parameters, obj)']);
+                        catch ME
+                            if strcmp(ME.identifier, 'MATLAB:TooManyInputs')
+                                obj.allData(i).(prepConfigRow.resName) = ...
+                                    eval([prepConfigRow.funcName, '(data, parameters)']);
+                            else
+                                rethrow(ME);
+                            end
+                        end
                     end
-                    
-                    obj.allData(i).(prepConfigRow.resName) = ...
-                        eval([prepConfigRow.funcName, '(data, parameters)']);
-                    if (isfield(obj.allData(i).(prepConfigRow.resName), 'nextFigPos'))
-                        nextFigPos = obj.allData(i).(prepConfigRow.resName).nextFigPos;
-                    end
+                        
                     
                 end
             end
@@ -193,7 +225,7 @@ classdef DataManager < handle
             if (strcmp(prepConfigRow.funcName, 'ExportFields'))
                 doExportFields(obj, prepConfigRow)                
             elseif (strcmp(prepConfigRow.funcName, 'registerImages'))
-                doRegisterImages(obj, prepConfigRow)
+                doRegisterImages(obj, prepConfigRow)            
             end
         end
 
@@ -377,8 +409,12 @@ classdef DataManager < handle
                 fileNames = obj.doFileNameingAndExport(imagesFieldName, dstPath);
                 allFileNames(ni,:) = fileNames(:);
             end
-                
-             writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad], [obj.rootName, props.structLoad]);
+            
+            structLoadFile = [];
+            if (~isempty(props.structLoad))
+                structLoadFile = [obj.rootName, props.structLoad];
+            end
+            writeNewLoadFile(obj, props.Images, allFileNames, [obj.rootName, props.updatedLoad], structLoadFile);
         end
         
         
@@ -419,7 +455,9 @@ classdef DataManager < handle
             T = struct2table(loadConfig);
             
             writetable(T, loadFileName);
-            save(loadStructName, 'loadStruct');
+            if (~isempty(loadStructName)) % if empty - not saved. good when you don't want to override the earlier version and don't want to save the current ones, or the current is empty.
+                save(loadStructName, 'loadStruct');
+            end
             
         end
 
@@ -509,7 +547,8 @@ classdef DataManager < handle
                 'Images', {'R'},...
                 'targetDir', 'new tif\',...
                 'updatedLoad', 'newload.csv',...
-                'structLoad', 'loadStruct.mat');
+                'structLoad', '');
+            % if structLoad is empty, the data from from structs/cells will not be saved
 
             for i = 1:numel(v)
 

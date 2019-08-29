@@ -29,6 +29,9 @@ conf = '\\qnap01\LongTerm\Shifra\2019\7.19\7.7.19\screen b\exp_7.7.19_shifra_scr
 conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size.csv';
 conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size_all_in_one.csv';
 
+% Maor experiments
+%conf = '\\qnap01\LongTerm\Maor\27.5.19 p260519SUR1\exp_sur101.csv';
+
 em.configure(conf);
 
 em.doLoad();
