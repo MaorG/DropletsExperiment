@@ -63,7 +63,7 @@ for ti = 1:numel(nd.T)
             YG(i) = sum(YlistG) / (vv.totalPixels * vv.pA * props.convertFactor);
         end
         
-        YG./(YG+YR)
+        YG./(YG+YR);
 
         vv.X = X;
         vv.YR = YR;
@@ -94,6 +94,7 @@ cellArea = entityStruct.(props.cellArea);
 cellArea = cellArea(viableCells) * pA;
 
 liveDeadRatio = entityStruct.(props.liveDeadRatio);
+liveDeadRatio(isnan(liveDeadRatio)) = 0;
 liveDeadRatio = liveDeadRatio(viableCells);
 
 res.dropletArea = dropletArea;
@@ -122,7 +123,7 @@ for i = 1:numel(v)
     if (strcmp(v{i}, 'cellArea'))
         props.cellArea = v{i+1};
     elseif (strcmp(v{i}, 'liveDeadRatio'))
-        props.cellSurvival = v{i+1};
+        props.liveDeadRatio = v{i+1};
     elseif (strcmp(v{i}, 'dropletArea'))
         props.dropletArea = v{i+1};
     elseif (strcmp(v{i}, 'dropletAreaBins'))

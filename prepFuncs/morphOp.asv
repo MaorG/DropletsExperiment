@@ -13,20 +13,20 @@ s = data.(props.src)>0;
 
 
 if strcmp(props.op, 'dilate')
-    disk = getDisk(floor(props.dist / dX));
-    SE = strel('arbitrary',disk);
+disk = getDisk(floor(props.dist / dX));
+SE = strel('arbitrary',disk);
     res = imdilate(s, SE);
 elseif strcmp(props.op, 'erode')
-    disk = getDisk(floor(props.dist / dX));
-    SE = strel('arbitrary',disk);
+disk = getDisk(floor(props.dist / dX));
+SE = strel('arbitrary',disk);
     res = imerode(s, SE);
 elseif strcmp(props.op, 'open')
-    disk = getDisk(floor(props.dist / dX));
-    SE = strel('arbitrary',disk);
+disk = getDisk(floor(props.dist / dX));
+SE = strel('arbitrary',disk);
     res = imopen(s, SE);
 elseif strcmp(props.op, 'close')
-    disk = getDisk(floor(props.dist / dX));
-    SE = strel('arbitrary',disk);
+disk = getDisk(floor(props.dist / dX));
+SE = strel('arbitrary',disk);
     res = imclose(s, SE);
 elseif strcmp(props.op, 'areaOpen')
     res = bwareaopen(s,floor(props.dist / (dX * dX)));
@@ -38,10 +38,10 @@ end
 
 
 function disk = getDisk(radius)
-dx = -radius:radius;
-dy = -radius:radius;
-[DX, DY] = meshgrid(dx,dy);
-disk = (DX.*DX)+(DY.*DY) <= radius*radius;
+    dx = -radius:radius;
+    dy = -radius:radius;
+    [DX, DY] = meshgrid(dx,dy);
+    disk = (DX.*DX)+(DY.*DY) <= radius*radius;
 end
 
 function props = parseParams(v)

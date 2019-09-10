@@ -13,8 +13,12 @@ idx12 = find((src1(:) > 0) & (src2(:) > 0));
 
 idxAll = [idx1; idx2; idx12];
 
-sampleSize1 = ceil(max(1000,numel(idx1)/100));
-sampleSize2 = ceil(max(1000,numel(idx2)/100));
+sampleSize1 = ceil(min(max(1000,numel(idx1)/100),10000));
+sampleSize2 = ceil(min(max(1000,numel(idx2)/100),10000));
+sampleSize1 = 1000;
+sampleSize2 = 1000;
+
+
 
 idx1f = randsample(idx1,sampleSize1);
 idx2f = randsample(idx2,sampleSize2);
