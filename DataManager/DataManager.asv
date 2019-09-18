@@ -441,7 +441,9 @@ classdef DataManager < handle
                         
                     if ~isnumeric(entry) && ~iscell(entry)
                         % if (isstruct(entry) || iscell(entry) || isempty(entry))
-                        loadConfig(di).(allFieldNames{ni}) = ['''', entry, ''''];
+
+                            loadConfig(di).(allFieldNames{ni}) = ['''', entry, ''''];
+
                      
                     elseif iscell(entry) && all(cellfun(@isnumeric, entry))
                         strsCell = cell(0);
@@ -450,16 +452,19 @@ classdef DataManager < handle
                             strsCell = [strsCell, conv3dMatToTextWithCatForEval(entry{i})];
                         end
                         
-                        loadConfig(di).(allFieldNames{ni}) = convStrings2cellForEval(strsCell);
+                        
                                 
                     elseif isnumeric(entry) && ~isscalar(entry)
                         loadConfig(di).(allFieldNames{ni}) = conv3dMatToTextWithCatForEval(entry);
-                    elseif iscell(entry) || isstruct(entry) || isempty(entry)
-                        loadConfig(di).(allFieldNames{ni}) = '[]';
                     end
                 end
             end
             
+           all(cellfun(@isnumeric, {[2 4], [4 5], 'f'}))
+           if (isempty(entry))
+               loadConfig(di).(allFieldNames{ni}) = '[]';
+           else
+           
             T = struct2table(loadConfig);
             
             [path, ~, ~] = fileparts(loadFileName);  

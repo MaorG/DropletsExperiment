@@ -18,7 +18,7 @@ classdef Parser
         % otherwise it will read configFileName as usual. if topic matches
         % the pattern, this implies that all config files are combined in
         % mainConfigFileName as separate topics
-        function conf = getConfiguration(obj, mainConfigFileName, loadStruct, configFileName, topic)
+        function conf = getConfiguration(obj, mainConfigFileName, configFileName, topic)
             
 
             % get configuration file using comma as a field separator
@@ -57,7 +57,7 @@ classdef Parser
                     
                 for fieldName = fieldnames(conf)'
 
-                    conf(i).(fieldName{1}) = obj.customeval(conf(i).(fieldName{1}), loadStruct);
+                    conf(i).(fieldName{1}) = obj.customeval(conf(i).(fieldName{1}));
                 end
                 
             end
@@ -67,7 +67,7 @@ classdef Parser
     
     methods(Static)
         
-        function res = customeval(expr, loadStruct)
+        function res = customeval(expr)
             if isnumeric (expr)
                 res = expr;
             elseif isempty(expr)
@@ -146,7 +146,8 @@ classdef Parser
         
         function tokens = getCommaTokensIgnoreQuotes(obj, rline)
             
-            regCommaToks = '[^,\s](?:[^,\s]|\s(?!,|\s|$))*';
+            %regCommaToks = '[^,\s](?:[^,\s]|\s(?!,|\s|$))*';
+            regCommaToks = '[^,\s](?:[^,\s]|\s(?!,|$))*';
             regQuotesRep = '"(.*?)"';
             quotesTo = '<<<$1>>>';
             regCommaRep = '(?<=<<<((?!>>>).)*),(?=((?!>>>).)*>>>)';

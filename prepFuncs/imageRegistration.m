@@ -15,7 +15,6 @@ function res = imageRegistration(data,parameters,resNames)
 
 props = parseParams(parameters);
 
-inRegPointsField = 'points';
 
 linking = props.linking;
 src = props.src;
@@ -30,14 +29,14 @@ if (isprop(data, pointsSrc))
         res = []; % empty - probably at linking and this entry is not the first
         return;
     else
-        regPoints = data.(pointsSrc).(inRegPointsField);
+        regPoints = data.(pointsSrc);
     end
 elseif (isfield(data.properties, pointsSrc))
     if (isempty(data.properties.(pointsSrc)))
         res = []; % empty - probably at linking and this entry is not the first
         return;
     else
-        regPoints = data.properties.(pointsSrc).(inRegPointsField);
+        regPoints = data.properties.(pointsSrc);
     end
 else
     error('regPoints not found'); 

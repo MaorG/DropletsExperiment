@@ -32,6 +32,12 @@ conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_si
 % Maor experiments
 %conf = '\\qnap01\LongTerm\Maor\27.5.19 p260519SUR1\exp_sur101.csv';
 
+% validation testing
+conf = 'D:\matlab\sample_data\dropletsValidationData\validation_testing_params.csv';
+
+% microbiota paper
+conf = 'D:\docs\shifra project 18.11.18\microbiota_paper_config_for_pipeline.csv';
+
 em.configure(conf);
 
 em.doLoad();

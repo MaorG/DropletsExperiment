@@ -47,8 +47,7 @@ classdef ExperimentManager < handle
                 obj.configFileName = [path userConfigFileName];
             end
             
-            loadStruct = [];
-            obj.conf = obj.pm.getConfiguration(obj.configFileName, loadStruct, '', obj.expMainTopic);
+            obj.conf = obj.pm.getConfiguration(obj.configFileName, '', obj.expMainTopic);
             
             
             % passing info to DataManager.
@@ -87,15 +86,8 @@ classdef ExperimentManager < handle
         
         function doLoad(obj)
             
-            loadStruct = [];
-            if (isfield(obj.conf, 'loadStruct'))
-                loadStruct = [obj.rootName, obj.conf.loadStruct];
-                if (exist(loadStruct, 'file'))
-                    load(loadStruct, 'loadStruct');
-                end
-            end
             
-            loadConf = obj.pm.getConfiguration(obj.configFileName, loadStruct, [obj.rootName, obj.conf.load], obj.conf.load);
+            loadConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.load], obj.conf.load);
             
             obj.dm.setRootName(obj.rootName);
             obj.dm.setExperimentParameterSpace(obj.parameterSpace);
@@ -206,39 +198,33 @@ classdef ExperimentManager < handle
         
         function doPrep(obj)
             
-            loadStruct = [];
-            
-            prepConf = obj.pm.getConfiguration(obj.configFileName, loadStruct, [obj.rootName, obj.conf.prep], obj.conf.prep);
+            prepConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.prep], obj.conf.prep);
             
             obj.dm.prepData(prepConf)
         end
         
         function doEntities(obj)
             
-            loadStruct = [];
-            
             obj.enm = EntityManager(obj.dm);
-            entityConf = obj.pm.getConfiguration(obj.configFileName, loadStruct, [obj.rootName, obj.conf.entities], obj.conf.entities);
+            entityConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.entities], obj.conf.entities);
             obj.enm.doEntities(entityConf)
         end
         
         function doAnalysis(obj)
             
-            loadStruct = [];
-            
             obj.am = AnalysisManager(obj.dm, obj.enm);
-            analysisConf = obj.pm.getConfiguration(obj.configFileName, loadStruct, [obj.rootName, obj.conf.analysis], obj.conf.analysis);
+            analysisConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.analysis], obj.conf.analysis);
             obj.am.doAnalysis(analysisConf)
         end
         
         function doOutput(obj)
-            
-            loadStruct = []; 
-            
+
             obj.om = OutputManager(obj.dm, obj.enm, obj.am);
-            outputConf = obj.pm.getConfiguration(obj.configFileName, loadStruct, [obj.rootName, obj.conf.output], obj.conf.output);
+            outputConf = obj.pm.getConfiguration(obj.configFileName, [obj.rootName, obj.conf.output], obj.conf.output);
             obj.om.doOutput(outputConf)
         end
+        
+        
         
     end
     
