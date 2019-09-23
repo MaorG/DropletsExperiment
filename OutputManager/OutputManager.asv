@@ -33,6 +33,7 @@ classdef OutputManager < dynamicprops
             if strcmpi('analysis', outputConfigRow.stage)
                 doOutputRowAnalysis(obj, outputConfigRow)
             elseif strcmpi('data', outputConfigRow.stage)
+                if 
                 doOutputRowData(obj, outputConfigRow)
             elseif strcmpi('defaultParams', outputConfigRow.stage)
                 if (isfield(outputConfigRow, 'parameters') && ~isempty(outputConfigRow.parameters))
@@ -60,11 +61,7 @@ classdef OutputManager < dynamicprops
                 entry = fData(i);
                 str = obj.getTitle(entry, filter(1:2:end));
                 figure('Name', str);
-                if (~isempty(outputConfigRow.srcName))
-                    eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
-                else
-                    eval([funcName '(entry, parameters)'])
-                end
+                eval([funcName '(entry, parameters)'])
                 title(str);
             end
         end
