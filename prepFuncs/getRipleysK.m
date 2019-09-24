@@ -32,6 +32,19 @@ end
 
 radii = rbins./data.properties.pixelSize;
 
+% by the dist map
+getCountsAndAreasByDistMap(imageSize,centers,N,radii,validPixels)
+
+res = struct;
+res.totAreas = totAreas;
+res.totCounts = totCounts;
+res.rbins = rbins;
+res.N = N;
+res.validPixelCount = sum(validPixels(:));
+end
+
+function [totCounts, totAreas] = getCountsAndAreasByDistMap(imageSize,centers,N,radii)
+    
 totCounts = nan(N,numel(radii));
 totAreas = nan(N,numel(radii));
 
@@ -74,15 +87,6 @@ for i = 1:N
     
 end
 
-
-%
-
-res = struct;
-res.totAreas = totAreas;
-res.totCounts = totCounts;
-res.rbins = rbins;
-res.N = N;
-res.validPixelCount = sum(validPixels(:));
 end
 
 function props = parseParams(v)

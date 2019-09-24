@@ -3,8 +3,6 @@ function res = getRipleysK(data,parameters)
 props = parseParams(parameters);
 
 image = data.(props.src);
-dr = props.dr;
-maxR = props.maxR;
 rbins = props.rbins;
 imageSize = size(image);
 validPixels = ones(imageSize);
@@ -34,6 +32,21 @@ end
 
 radii = rbins./data.properties.pixelSize;
 
+%
+getCountsAndAreasByDistMap(imageSize,centers,N,radii)
+
+%
+
+res = struct;
+res.totAreas = totAreas;
+res.totCounts = totCounts;
+res.rbins = rbins;
+res.N = N;
+res.validPixelCount = sum(validPixels(:));
+end
+
+function [totCounts, totAreas] = getCountsAndAreasByDistMap(imageSize,centers,N,radii)
+    
 totCounts = nan(N,numel(radii));
 totAreas = nan(N,numel(radii));
 
@@ -76,14 +89,6 @@ for i = 1:N
     
 end
 
-
-%
-
-res = struct;
-res.totAreas = totAreas;
-res.totCounts = totCounts;
-res.rbins = rbins;
-res.N = N;
 end
 
 function props = parseParams(v)
@@ -91,8 +96,7 @@ function props = parseParams(v)
 props = struct(...
     'src','GFP',...
     'removedMask','removed',...
-    'dr',6, ...
-    'maxR', 600 ...
+    'rbins',[1,2,4,8,16,32,64] ...
     )
 
 for i = 1:numel(v)
@@ -101,10 +105,8 @@ for i = 1:numel(v)
         props.src = v{i+1};
     elseif (strcmp(v{i}, 'removedMask'))
         props.removedMask = v{i+1};
-    elseif (strcmp(v{i}, 'dr'))
-        props.dr = v{i+1};
-    elseif (strcmp(v{i}, 'maxR'))
-        props.maxR = v{i+1};
+    elseif (strcmp(v{i}, 'rbins'))
+        props.rbins = v{i+1};
     end
 end
 
