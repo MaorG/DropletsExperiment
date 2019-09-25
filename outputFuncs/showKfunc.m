@@ -6,7 +6,7 @@ rbins = m.rbins;
 N = m.N;
 validPixelCount = m.validPixelCount;
 
-plot(rbins,mean(totCounts),'b')
+plot(rbins,mean(totCounts./totAreas),'b')
 hold on
 
 
@@ -18,27 +18,27 @@ confint = 0.01;
 
 %if false
     % poisson
-    expected = N.*(mean(totAreas,1)./validPixelCount);
+    expected = N.*(sum(totAreas,1)./validPixelCount);
     conftop = nan(size(expected));
     confbot = nan(size(expected));
     for ei = 1:numel(expected)
         
-        r = poissrnd(expected(ei),RN);
+        r = poissrnd(expected(ei),[RN,1]);
         rs = sort(r);
         conftop(ei) = rs(round(RN*(1-confint)));
         confbot(ei) = rs(round(RN*(confint)));
     end
-    errorbar(rbins,expected,expected-confbot,conftop-expected,'r')
+    errorbar(rbins,expected./sum(totAreas),(expected-confbot)./sum(totAreas),(conftop-expected)./sum(totAreas),'r')
 %else
 
 
     % binomial
-    expected = N.*(mean(totAreas,1)./validPixelCount);
+    expected = N.*(sum(totAreas,1)./validPixelCount);
 
     conftop = nan(size(expected));
     confbot = nan(size(expected));
 
-    p = mean(totAreas,1)./validPixelCount;
+    p = sum(totAreas,1)./validPixelCount;
     
     for ei = 1:numel(expected)
         rs = nan(RN,1);
@@ -50,7 +50,7 @@ confint = 0.01;
         rs = sort(rs);
         conftop(ei) = rs(round(RN*(1-confint)));
         confbot(ei) = rs(round(RN*(confint)));
-        errorbar(rbins,expected,expected-confbot,conftop-expected,'g')
+        errorbar(rbins,expected./sum(totAreas),(expected-confbot)./sum(totAreas),(conftop-expected)./sum(totAreas),'g')
     end
     
 %end

@@ -1,4 +1,4 @@
-function res = getRipleysK(data,parameters)
+function res = getRipleysK2(data,parameters)
 
 props = parseParams(parameters);
 
@@ -19,6 +19,34 @@ centers = cat(1, rp.Centroid);
 
 N = size(centers,1);
 gamma = N/sum(validPixels(:));
+
+distances = nan(N,N);
+for i = 1:N
+    for j = 1:N
+        if (i~=j)
+            center1 = centers(i,:);
+            center2 = centers(j,:);
+            distances(i,j) = sqrt( ((center1(1)-center2(1))^2) + ((center1(2)-center2(2))^2));
+        end
+    end
+end
+
+distances = sort(distances(:));
+distances = distances(~isnan(distances));
+
+distBins = 1:60;
+
+kfunc = nan(size(distBins));
+
+for i = 1:numel(distBins)
+    kfunc(i) = (numel(image))*sum(distances <= distBins(i))/(N*N);
+end
+
+lfunc = sqrt(kfunc/pi)
+pfunc = distBins - lfunc
+
+figure;
+plot(distBins, pfun
 
 centersImage = zeros(imageSize);
 for i = 1:N
