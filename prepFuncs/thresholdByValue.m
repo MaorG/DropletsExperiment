@@ -5,7 +5,7 @@ props = parseParams(parameters);
 if isnumeric(props.threshold)
     th = props.threshold;
 else
-    if (isfield(props, props.threshold))
+    if (isprop(data, props.threshold))
         th = (data.(props.threshold));
     else
         th = (data.properties.(props.threshold));

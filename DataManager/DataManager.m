@@ -15,6 +15,7 @@ classdef DataManager < handle
         % figures and are parametrized to use this figure property)
         state
         exportFieldsImagePrefix
+        loadExtsAsImages
     end
     
     methods
@@ -27,6 +28,7 @@ classdef DataManager < handle
             obj.state = struct;
             obj.exportFieldsImagePrefix = '@'; % when using 'ExportFields' in the prep, use this prefix in front of the fields you want to save as images
             % example: '', 'ExportFields', {'Fields' {'@DropMask' 'dropSizes' 'cellsPerDrop'} 'targetDir' 'newTifs2\man\' 'updatedLoad' 'config/load2.csv'} 
+            obj.loadExtsAsImages = {'.tif' '.tiff'}; % specifies which extensions to imread()
         end
         
         function clearData(obj)
@@ -73,7 +75,7 @@ classdef DataManager < handle
             % if the value is a fileName, it 'imread's the file 
             % otherwise, it just copies the value into 
             
-            readExts = {'.tif' '.tiff'}; % specifies which extensions to imread()
+            readExts = obj.loadExtsAsImages; % specifies which extensions to imread()
             
             fields = fieldnames(loadConfigRow);
             %data = struct;
@@ -425,6 +427,9 @@ classdef DataManager < handle
             
             for ni = 1:numel(fieldNames)
                 imagesFieldName = fieldNames{ni};
+                if (startsWith(imagesFieldName, obj.exportFieldsImagePrefix))
+                    imagesFieldName = imagesFieldName(numel(obj.exportFieldsImagePrefix)+1:end);
+                end
                 [loadConfig.(imagesFieldName)] = deal(allFileNames{ni,:});
             end
             

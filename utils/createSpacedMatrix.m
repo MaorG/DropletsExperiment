@@ -16,7 +16,10 @@ end
 
 % separate numbers in edges to cells
 %cedges = compose('%d', edges); % bad functionality with floating points
-cedges = strsplit(num2str(edges), ' ');
+cedges = cell(0);
+for i = 1 : size(edges,1) % iterate rows
+    cedges = [cedges; strsplit(num2str(edges(i, :)), ' ')];
+end        
 cedges2 = []; % will be used when there are two rows
 
 rangeIteratorSubtract = 1;

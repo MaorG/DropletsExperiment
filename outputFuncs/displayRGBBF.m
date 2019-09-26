@@ -2,7 +2,7 @@ function displayRGBBF(m, parameters, removedMask)
 
 props = parseParams(parameters);
 
-channels = cell(0);
+channels = cell(3, 1);
 cindices = zeros(3,1);
 
 if (~isempty(props.R))

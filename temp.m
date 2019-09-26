@@ -38,6 +38,9 @@ conf = 'D:\matlab\sample_data\dropletsValidationData\validation_testing_params.c
 % microbiota paper
 conf = 'D:\docs\shifra project 18.11.18\microbiota_paper_config_for_pipeline.csv';
 
+% microbiota paper test data
+conf = '\\qnap01\LongTerm\Shifra\2018\10.18\28.10.18\exported_tiffs\expConfig.csv';
+
 em.configure(conf);
 
 em.doLoad();
