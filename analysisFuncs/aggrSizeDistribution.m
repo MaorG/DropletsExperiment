@@ -69,7 +69,7 @@ for ti = 1:numel(nd.T)
     % results = uniteNDtables(nd, ndDataParmas)
 
 
-
+end
 
 % TODO: and for removing dimension of size 1 (? but what will happen to a
 % single data entry ?)

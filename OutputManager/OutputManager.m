@@ -60,7 +60,11 @@ classdef OutputManager < dynamicprops
                 entry = fData(i);
                 str = obj.getTitle(entry, filter(1:2:end));
                 figure('Name', str);
-                eval([funcName '(entry, parameters)'])
+                if (~isempty(outputConfigRow.srcName))
+                    eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
+                else
+                    eval([funcName '(entry, parameters)'])
+                end
                 title(str);
             end
         end

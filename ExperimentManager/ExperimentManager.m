@@ -95,7 +95,7 @@ classdef ExperimentManager < handle
             
             passGlobalParameters(obj);
             
-            if (isfield(obj.conf, 'link'))
+            if (isfield(obj.conf, 'link') && ~isempty(obj.conf.link))
                 obj.doLinking()
                 obj.dm.addPropertyToAll('link', obj.conf.link); 
             end

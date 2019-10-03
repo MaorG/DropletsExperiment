@@ -1,7 +1,7 @@
 function displayPlot(m, properties)
 props = parseParams(properties);
 
-plot(m.X,m.Y,'o')
+plot(m.X,m.Y,'-o')
 
 set(gca,'xscale',props.xscale);
 set(gca,'yscale',props.yscale);
