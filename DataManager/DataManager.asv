@@ -417,12 +417,7 @@ classdef DataManager < handle
                 allFileNames(ni,:) = fileNames(:);
             end
             
-            if isempty(props.updatedLoad)
-                loadFileName = '';
-            else
-                loadFileName = [obj.rootName, props.updatedLoad];
-            end
-            writeNewLoadFile(obj, props.Fields, allFileNames, loadFileName);
+            writeNewLoadFile(obj, props.Fields, allFileNames, [obj.rootName, props.updatedLoad]);
         end
         
         
@@ -472,12 +467,10 @@ classdef DataManager < handle
             
             T = struct2table(loadConfig);
             
-            if ~isempty(loadFileName)
-                [path, ~, ~] = fileparts(loadFileName);
-                mkdir(path);
-                
-                writetable(T, loadFileName);
-            end
+            [path, ~, ~] = fileparts(loadFileName);  
+            mkdir(path);
+                                            
+            writetable(T, loadFileName);
             
         end
 

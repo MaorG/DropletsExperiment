@@ -8,23 +8,17 @@ cindices = zeros(3,1);
 
 if (~isempty(props.R))
     channels{1} = mat2gray(m.(props.R), props.Rscale);
-    if (props.encircle(1))
+    if (1)
         channels{1} = getBWPerimeter(channels{1}, 1, 2);
     end
     cindices(1) = 1;
 end
 if (~isempty(props.G))
     channels{2} = mat2gray(m.(props.G), props.Gscale);
-    if (props.encircle(2))
-        channels{2} = getBWPerimeter(channels{2}, 1, 2);
-    end
     cindices(2) = 1;
 end
 if (~isempty(props.B))
     channels{3} = mat2gray(m.(props.B), props.Bscale);
-    if (props.encircle(3))
-        channels{3} = getBWPerimeter(channels{3}, 1, 2);
-    end
     cindices(3) = 1;
 end
 
@@ -74,7 +68,7 @@ props = struct(...
     'BG', [], ...
     'Mark', [], ...
     'MarkColor', 'R', ...
-    'encircle', [0 0 0] ... % vector of 3 numbers representing the offset of each of the R G B, in that order, whether it's on or off; to only encircle the GFP channel, use 0 1 0
+    'encircle', false ... % should these 
     );
 
 for i = 1:numel(v)
@@ -98,7 +92,7 @@ for i = 1:numel(v)
 	elseif (strcmp(v{i}, 'MarkColor'))
         props.MarkColor = v{i+1};  
 	elseif (strcmp(v{i}, 'encircle'))
-        props.encircle = v{i+1};          
+        props.MarkColor = v{i+1};          
         
     end
 end
