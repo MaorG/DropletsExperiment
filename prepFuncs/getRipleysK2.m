@@ -34,7 +34,7 @@ end
 distances = sort(distances(:));
 distances = distances(~isnan(distances));
 
-distBins = 1:200;
+distBins = 1:5000;
 
 kfunc = nan(size(distBins));
 
@@ -45,7 +45,8 @@ end
 lfunc = sqrt(kfunc/pi);
 pfunc = lfunc - distBins;
 res = pfunc;
-figure;
+%figure;
+hold on
 plot(distBins, pfunc);
 return;
 
@@ -123,7 +124,7 @@ function props = parseParams(v)
 props = struct(...
     'src','GFP',...
     'removedMask','removed',...
-    'rbins',[6:6:100] ...
+    'rbins',[1:120] ...
     )
 
 for i = 1:numel(v)

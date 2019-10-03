@@ -181,10 +181,14 @@ classdef NDResultTable
                     end
                     
                     indn = sub2ind(args{:})
-                    ~isempty(cell2mat(permutedT{indn}))
+                    %~isempty(cell2mat(permutedT{indn}))
                     
                     if ~isempty(permutedT{indn})
+                        %if iscell(permutedT{indn})
                         newT{i} = [newT{i}, {permutedT{indn}{1}}]
+                        %else
+                            %newT{i} = [newT{i}, {permutedT{indn}}]    
+                        %end
                     end
                     %                     if (~isempty(cell2mat(permutedT{indn})) & ~isnan(permutedT{indn}{1}))
                     %                         Y(j) = cell2mat(permutedT{indn});
