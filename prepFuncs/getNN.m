@@ -4,9 +4,13 @@ props = parseParams(parameters);
 
 static = data.(props.static);
 dynamic = data.(props.dynamic);
-dinstanceBins = props.dinstanceBins;
+
+pixelSize = data.properties.pixelSize;
 repeats = props.repeats;
-confidence = props.confidence;
+
+% delete: moved to visualization
+% distanceBins = props.distanceBins;
+% confidence = props.confidence;
 
 % analyze experimental data
 expDistances = getNNdistances(static, dynamic,props);
@@ -31,76 +35,13 @@ for ri = 1:repeats
     disp(['\n'])
 end
 
-% extract confidence envelope
-figure
-subplot(1,3,1)
-imshow(single(cat(3,static,dynamic,0*dynamic)));
-
-% version 1: binning
-
-subplot(1,3,2)
-hold on;
-allRandHists = [];
+res = struct;
+res.expDistances = expDistances * pixelSize;
 for ri = 1:repeats
-    rndHist = histcounts(allRndDistances{ri} ,dinstanceBins);
-    plot(dinstanceBins(1:end-1), rndHist, 'r');
-    allRandHists = cat(1,allRandHists ,rndHist);
+    allRndDistances{ri} = allRndDistances{ri}*pixelSize;
 end
-allRandHistsSorted = sort(allRandHists,1)
-margin = ceil(confidence*repeats)
-plot(dinstanceBins(1:end-1),allRandHistsSorted (margin,:),'k');
-plot(dinstanceBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
+res.allRndDistances = allRndDistances;
 
-expHist = histcounts(expDistances ,dinstanceBins);
-plot(dinstanceBins(1:end-1), expHist, 'g');
-
-
-% version 2: cumulative
-
-subplot(1,3,3)
-
-hold on;
-for ri = 1:repeats
-    dist = allRndDistances{ri};
-    [distancesSorted, order] = sort(dist);
-    y = (1:numel(distancesSorted))./ numel(distancesSorted);
-    y = (1:numel(distancesSorted));
-    plot(distancesSorted,y,'r')
-end
-
-% envelope: sample curves at intervals
-
-
-sortedY = [];
-maxX = max (cat(2,allRndDistances{:}));
-minX = min (cat(2,allRndDistances{:}));
-xq = minX:1:maxX;
-for ri = 1:repeats
-    dist = allRndDistances{ri};
-    [distancesSorted, order] = sort(dist);
-    x = distancesSorted;
-    y = (1:numel(distancesSorted))./ numel(distancesSorted);
-    [x,yi] = unique(x)
-    y = y(yi);
-    yq = interp1(x,y,xq,'linear','extrap');
-    sortedY = cat(1,sortedY,yq);
-end
-sortedSortedY = sort(sortedY,1);
-sortedSortedY = max(sortedSortedY,0);
-sortedSortedY = min(sortedSortedY,1);
-
-margin = ceil(confidence*repeats)
-plot(xq,sortedSortedY(margin,:),'k');
-plot(xq,sortedSortedY(end - margin + 1,:),'k');
-
-hold on;
-[distancesSorted, order] = sort(expDistances);
-y = (1:numel(distancesSorted))./ numel(distancesSorted);
-y = (1:numel(distancesSorted));
-plot(distancesSorted,y,'g')
-
-
-res = [];
 end
 
 function dynamicRandomized = getDynamicRandomized(static, dynamicEntities, props)
@@ -118,11 +59,12 @@ viableDynamicPixels = ones(imsize);
 I = zeros(imsize);
 numDynamicEntities = numel(dynamicEntities.pixels);
 successCount = 0;
+
+randomOrder = randperm(numDynamicEntities);
 for di = 1:numDynamicEntities
     tryCount = 0;
-    newPixels = [];
     maxTryCount = inf;
-    pixels = dynamicEntities.pixels{di};
+    pixels = dynamicEntities.pixels{randomOrder(di)};
     while tryCount < maxTryCount
         
         newPixels = randomizePixelsLocationMB(imsize,pixels);
@@ -266,10 +208,10 @@ function props = parseParams(v)
 props = struct(...
     'static','BF',...
     'dynamic','GFP',...
-    'dinstanceBins_',[0,12*power(2,0:4)], ...
-    'dinstanceBins',0:6:200, ...
+    'distanceBins_',[0,12*power(2,0:4)], ...
+    'distanceBins__',0:1:200, ...
     'repeats',10, ...
-    'confidence', 0.05, ...
+    'confidence__', 0.05, ...
     'edge', true, ...
     'staticOverlap', 0, ...
     'dynamicOverlap', 0, ...
@@ -282,8 +224,8 @@ for i = 1:numel(v)
         props.static = v{i+1};
     elseif (strcmp(v{i}, 'dynamic'))
         props.dynamic = v{i+1};
-    elseif (strcmp(v{i}, 'dinstanceBins'))
-        props.dinstanceBins = v{i+1};
+    elseif (strcmp(v{i}, 'distanceBins'))
+        props.distanceBins = v{i+1};
     elseif (strcmp(v{i}, 'repeats'))
         props.repeats = v{i+1};
     elseif (strcmp(v{i}, 'confidence'))
