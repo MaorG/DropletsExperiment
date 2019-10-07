@@ -13,8 +13,12 @@ repeats = props.repeats;
 % confidence = props.confidence;
 
 % analyze experimental data
-expDistances = getNNdistances(static, dynamic,props);
 
+staticDistMap = bwdist(static);
+
+%props.verbose = true
+expDistances = getNNdistances(staticDistMap , dynamic,props);
+%props.verbose = false
 % generate and analyze CSR
 allRndDistances = {};
 
@@ -29,7 +33,7 @@ for ri = 1:repeats
     toc
     disp(['NN ' , num2str(ri)])
     tic 
-    rndDist = getNNdistances(static, dynamicRandomized, props);
+    rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
     toc
     allRndDistances{ri} = rndDist;
     disp(['\n'])
@@ -148,7 +152,7 @@ newAggCols = baseAggCols + randColInc;
 newPixels = sub2ind(imSize, newAggRows, newAggCols);
 end
 
-function distances = getNNdistances(static, dynamic, props)
+function distances = getNNdistances(staticDistMap, dynamic, props)
 
 %staticEntities = getPropsForSeg(static);
 
@@ -164,19 +168,66 @@ end
 
 numDynamic = numel(dynamicEntities.pixelsidx);
 
-staticDistMap = bwdist(static);
+
+%staticDistMap = bwdist(staticDistMap);
 distances = [];
-if props.edge
+
+if props.verbose
+    
+end
+
+if props.verbose
+    vimage = nan(size(staticDistMap));
+end
+
+if strcmp(props.mode, 'edge')
     for pIdx = 1:numDynamic
         cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+        end
         distances = [distances, min(cellDistances)];
     end
 else
     for pIdx = 1:numDynamic
         cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = cellDistances;
+        end
+
         distances = [distances, cellDistances'];
     end
 end
+
+if props.verbose
+    figure
+
+    vimage = vimage*0.16;
+    cmap = (hsv(200));
+    cmap = cmap(1:(end*0.75),:);
+    indimage = 1 + ceil((100*(vimage)) / max(vimage(:) ) );
+    %cmap(1,:) = [0,0,0];
+    rgbImage = ind2rgb(indimage, cmap);
+    
+    R = rgbImage(:,:,1);
+    G = rgbImage(:,:,2);
+    B = rgbImage(:,:,3);
+    
+    R(isnan(vimage)) = 0;
+    G(isnan(vimage)) = 0;
+    B(isnan(vimage)) = 0;
+
+    R((staticDistMap == 0) & (~dynamic)) = 1;
+    G((staticDistMap == 0) & (~dynamic)) = 1;
+    B((staticDistMap == 0) & (~dynamic)) = 1;
+    
+    rgbImage = cat(3,R,G,B);
+    imshow(rgbImage)
+    colormap(cmap)
+    colorbar;
+    caxis([0,max(vimage(:))])
+end
+
 
 end
 
@@ -212,11 +263,11 @@ props = struct(...
     'distanceBins__',0:1:200, ...
     'repeats',10, ...
     'confidence__', 0.05, ...
-    'edge', true, ...
+    'mode', 'edge', ...
     'staticOverlap', 0, ...
     'dynamicOverlap', 0, ...
-    'verbose', true ...
-    )
+    'verbose', 0 ...
+    );
 
 for i = 1:numel(v)
     
@@ -230,8 +281,8 @@ for i = 1:numel(v)
         props.repeats = v{i+1};
     elseif (strcmp(v{i}, 'confidence'))
         props.confidence = v{i+1};
-    elseif (strcmp(v{i}, 'edge'))
-        props.edge = v{i+1};
+    elseif (strcmp(v{i}, 'mode'))
+        props.mode = v{i+1};
     elseif (strcmp(v{i}, 'staticOverlap'))
         props.staticOverlap = v{i+1};
     elseif (strcmp(v{i}, 'dynamicOverlap'))

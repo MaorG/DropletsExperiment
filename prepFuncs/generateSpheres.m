@@ -63,7 +63,7 @@ elseif (strcmp(typeName, 'flowers'))
     IR(randi(numel(IR),[floor(6*N/7),1])) = 2;
     disk = getDisk(rSphere);
     IR2 = conv2(IR==2,disk,'same');
-    %I(IR2 ~= 0) = 2;
+    I(IR2 ~= 0) = 2;
 end
    
 

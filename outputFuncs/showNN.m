@@ -32,7 +32,7 @@ plot(distanceBins(1:end-1),allRandHistsSorted (margin,:),'k');
 plot(distanceBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
 
 expHist = histcounts(expDistances ,distanceBins);
-plot(distanceBins(1:end-1), expHist, 'g');
+plot(distanceBins(1:end-1), expHist, 'b','LineWidth', 2);
 
 end
 
@@ -74,7 +74,7 @@ for ri = 1:repeats
 end
 sortedSortedY = sort(sortedY,1);
 sortedSortedY = max(sortedSortedY,0);
-sortedSortedY = min(sortedSortedY,1);
+sortedSortedY = min(sortedSortedY,numel(distancesSorted));
 
 margin = ceil(confidence*repeats);
 plot(xq,sortedSortedY(margin,:),'k');
@@ -84,7 +84,7 @@ hold on;
 [distancesSorted, order] = sort(expDistances);
 y = (1:numel(distancesSorted))./ numel(distancesSorted);
 y = (1:numel(distancesSorted));
-plot(distancesSorted,y,'g')
+plot(distancesSorted,y,'b','LineWidth', 2)
 
 end
 
