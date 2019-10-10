@@ -4,8 +4,7 @@ function res = morphOp2(data,parameters)
 % src: fieldname in data, 1st image
 % op: choose from {'dilate', 'erode', 'open', 'close'}
 % dist: SE radius, or cell (if 'param' is used - see below), or a string
-% that represents a function to evaluate to be used instead of SE - such as
-% 'dist' 'strel('disk', 8)'
+% that represents a function to evaluate to be used instead of SE 
 
 props = parseParams(parameters);
 
@@ -39,11 +38,10 @@ end
 % 
 if (ischar(dist))
     SE = eval(dist);
-else    
-    disk = getDisk(floor(dist / dX));
+    
+disk = getDisk(floor(dist / dX));
 
-    SE = strel('arbitrary',disk);
-end
+SE = strel('arbitrary',disk);
 
 if strcmp(props.op, 'dilate')
     res = imdilate(s, SE);
