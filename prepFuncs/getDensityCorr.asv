@@ -1,12 +1,32 @@
-function [res] = getNN(data, parameters)
+function [allresults] = getDensityCorr(data, parameters)
+
+props = parseParams(parameters);
+
+pixelSize = data.properties.pixelSize;
+radius = props.radius ./ pixelSize;
+allres = [];
+for ri = 1:numel(radius)
+   
+    res = struct;
+    res.radius = radius(ri);
+    res.res = getDensityCorrAux(data, parameters, res.radius);
+    allres = cat(1,allres,res);
+end
+
+allresults = struct;
+allresults.pool = allress
+
+end
+
+function [res] = getDensityCorrAux(data, parameters, radius)
 
 props = parseParams(parameters);
 
 static = data.(props.static);
 dynamic = data.(props.dynamic);
 
-pixelSize = data.properties.pixelSize;
 repeats = props.repeats;
+
 
 % delete: moved to visualization
 % distanceBins = props.distanceBins;
@@ -14,16 +34,20 @@ repeats = props.repeats;
 
 % analyze experimental data
 
-staticDistMap = bwdist(static);
+
+disk = getDisk(radius);
+
+staticDensityMap = conv2(static, disk,'same');
+boundaryFactor = conv2(ones(size(static)), disk, 'same');
+
+staticDensityMap = staticDensityMap ./ boundaryFactor;
 
 %props.verbose = true
-expDistances = getNNdistances(staticDistMap , dynamic,props);
-expDD = getNNDD(staticDistMap, dynamic, props);
+expDensities = getDensities(staticDensityMap , dynamic,props);
 
 %props.verbose = false
 % generate and analyze CSR
-allRndDistances = {};
-allRndDD = [];
+allRndDensities = {};
 
 % doing once, saving time
 dynamicEntities = getPropsForSeg(dynamic);
@@ -36,29 +60,19 @@ for ri = 1:repeats
     toc
     disp(['NN ' , num2str(ri)])
     tic 
-    rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+    rndDist = getDensities(staticDensityMap, dynamicRandomized, props);
     toc
-    disp(['DD ' , num2str(ri)])
-    tic 
-    rndDD = getNNDD(staticDistMap, dynamicRandomized, props);
-    toc
-    allRndDistances{ri} = rndDist;
-    allRndDD = cat(1,allRndDD,rndDD);
-    
-    disp(['\n'])
+    allRndDensities{ri} = rndDist;
+    disp([''])
 end
 
 res = struct;
-res.expDistances = expDistances * pixelSize;
-res.expDD = expDD;
-res.expDD.bins = expDD.bins * pixelSize;
+res.expDensities = expDensities;
 
 for ri = 1:repeats
-    allRndDistances{ri} = allRndDistances{ri}*pixelSize;
-    allRndDD(ri).bins = allRndDD(ri).bins * pixelSize;
+    allRndDensities{ri} = allRndDensities{ri};
 end
-res.allRndDistances = allRndDistances;
-res.allRndDD = allRndDD ;
+res.allRndDensities = allRndDensities;
 
 end
 
@@ -166,32 +180,8 @@ end
 % newPixels = sub2ind(imSize, newAggRows, newAggCols);
 % end
 % 
-function distanceDensity = getNNDD(staticDistMap, dynamic, props)
 
-if (islogical(dynamic))
-    dynamicEntities = getPropsForSeg(dynamic);
-else
-    dynamicEntities = struct;
-    dynamicEntities.pixelsidx = {};
-    maxPIdx = max(dynamic(:));
-    
-    dynamicEntities.pixelsidx = label2idx(dynamic);
-end
-
-dynamicMask = dynamic > 0;
-
-dynDistHist = histcounts(staticDistMap(dynamicMask) ,props.distanceBins);
-totDistHist = histcounts(staticDistMap(:) ,props.distanceBins);
-
-
-distanceDensity = struct;
-distanceDensity.dyn = dynDistHist;
-distanceDensity.tot = totDistHist;
-distanceDensity.bins = props.distanceBins(1:end-1);
-
-end
-
-function distances = getNNdistances(staticDistMap, dynamic, props)
+function densities = getDensities(staticDensityMap, dynamic, props)
 
 
 if (islogical(dynamic))
@@ -208,32 +198,32 @@ numDynamic = numel(dynamicEntities.pixelsidx);
 
 
 %staticDistMap = bwdist(staticDistMap);
-distances = [];
+densities = [];
 
 if props.verbose
     
 end
 
 if props.verbose
-    vimage = nan(size(staticDistMap));
+    vimage = nan(size(staticDensityMap));
 end
 
 if strcmp(props.mode, 'edge')
     for pIdx = 1:numDynamic
-        cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        environmentDensities = staticDensityMap(dynamicEntities.pixelsidx{pIdx});
         if props.verbose
-            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(environmentDensities);
         end
-        distances = [distances, min(cellDistances)];
+        densities = [densities, max(environmentDensities)];
     end
 else
     for pIdx = 1:numDynamic
-        cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        environmentDensities = staticDensityMap(dynamicEntities.pixelsidx{pIdx});
         if props.verbose
-            vimage(dynamicEntities.pixelsidx{pIdx}) = cellDistances;
+            vimage(dynamicEntities.pixelsidx{pIdx}) = environmentDensities;
         end
 
-        distances = [distances, cellDistances'];
+        densities = [densities, environmentDensities'];
     end
 end
 
@@ -255,9 +245,9 @@ if props.verbose
     G(isnan(vimage)) = 0;
     B(isnan(vimage)) = 0;
 
-    R((staticDistMap == 0) & (~dynamic)) = 1;
-    G((staticDistMap == 0) & (~dynamic)) = 1;
-    B((staticDistMap == 0) & (~dynamic)) = 1;
+%    R((staticMap == 1) & (~dynamic)) = 1;
+%    G((staticMap == 1) & (~dynamic)) = 1;
+%    B((staticMap == 1) & (~dynamic)) = 1;
     
     rgbImage = cat(3,R,G,B);
     imshow(rgbImage)
@@ -297,8 +287,7 @@ function props = parseParams(v)
 props = struct(...
     'static','BF',...
     'dynamic','GFP',...
-    'distanceBins_',[0,12*power(2,0:4)], ...
-    'distanceBins',0:1:1200, ...
+    'radius', 5,...
     'repeats',10, ...
     'confidence__', 0.05, ...
     'mode', 'edge', ...

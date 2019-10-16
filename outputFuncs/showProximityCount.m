@@ -1,39 +1,20 @@
-function showNN(m, params)
+function showProximityCount(m, params)
 
 props = parseParams(params);
 
-if strcmp(props.mode, 'bins')
-    showNNBinning(m, props);
-elseif strcmp(props.mode, 'nndd')
-    showNNDD(m, props);
-else
-    showNNCummulative(m, props);
-
-end
-    % version 1: binning
-end
-
-function showNNDD(m, props)
 hold on
-res = m;
 
-repeats = numel(res.allRndDD);
-
-for ri = 1:repeats
-
-    if (props.cumulative)
-        plot(res.allRndDD(ri).bins, (cumsum(res.allRndDD(ri).dyn) ./ cumsumres.allRndDD(ri).tot), 'r')    
-    else
-        plot(res.allRndDD(ri).bins, (res.allRndDD(ri).dyn ./ res.allRndDD(ri).tot), 'r')
-    end
+for wi = 1:numel(m.windowSize)
+        scatter(m.windowSize(wi)*ones(size(m.bothByDistanceRnd(:,wi))), m.bothByDistanceRnd(:,wi),'ro');
+        scatter(m.windowSize(wi), m.bothByDistanceExp(wi),'bo');
 end
+res = struct;
 
-if (props.cumulative)
-    plot(res.expDD.bins, (cumsum(res.expDD.dyn) ./ cumsum(res.expDD.tot)), 'b')
-else
-    plot(res.expDD.bins, (res.expDD.dyn ./ res.expDD.tot), 'b')
-end
+
+
 set(gca, 'xscale', 'log')
+set(gca, 'yscale', 'log')
+
 xlabel({'distance [um]'})
 ylabel({'fraction covered'})
 end

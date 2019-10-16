@@ -12,36 +12,10 @@ expMainTopic = '<main>'; % looks for expMainTopic in the experiment main file as
 
 em = ExperimentManager(matlab_ver, expMainTopic);
 
-conf = '\\qnap01\LongTerm\Maor\droplets\bioreporter 31.3.19\conf time handling\exp_biorep_31.3.csv';
-conf = '\\qnap01\LongTerm\Michael\drops\alexa seg\exp_alexa_auto.csv';
-conf = '\\qnap01\LongTerm\Michael\drops\exp alexa_22.4.19\exp_alexa_auto.csv';
-conf = '\\qnap01\LongTerm\Michael\drops\paper\pipeline conf\expConfig.csv';
-
-%conf = '\\qnap01\LongTerm\Michael\drops\registered\exp_memory101 - phase2 - registration.csv'
-%conf = '\\qnap01\LongTerm\Michael\drops\registered\downd\exp_memory101 - phase3.csv';
-
-% experiments of bacteria and beads - comparing droplets growth
-conf = '\\qnap01\LongTerm\Tomer\22.5.19 p200519AEM1\exp_AEM.csv';
-conf = '\\qnap01\LongTerm\Tomer\13.6.19 p120619bac_beads\13.6.19 p120619bac\exp_13.6.19.csv';
-conf = '\\qnap01\LongTerm\Shifra\2019\7.19\7.7.19\screen b\exp_7.7.19_shifra_screen_b.csv';
-
-% sample experiment
-conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size.csv';
-conf = 'D:\matlab\sample_data\droplets_change_size\exp_sample_droplets_change_size_all_in_one.csv';
-
-% Maor experiments
-%conf = '\\qnap01\LongTerm\Maor\27.5.19 p260519SUR1\exp_sur101.csv';
-
-% validation testing
-conf = 'D:\matlab\sample_data\dropletsValidationData\validation_testing_params.csv';
-
-% microbiota paper
-conf = 'D:\docs\shifra project 18.11.18\microbiota_paper_config_for_pipeline.csv';
-
-% microbiota paper test data
-conf = '\\qnap01\LongTerm\Shifra\2018\10.18\28.10.18\exported_tiffs\expConfig.csv';
-conf = '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\expConfigNew.csv';
-
+conf ='C:\school\papers\microbiota\point\pointpatterns.csv';
+conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
+conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
+conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old.csv';
 em.configure(conf);
 
 em.doLoad();

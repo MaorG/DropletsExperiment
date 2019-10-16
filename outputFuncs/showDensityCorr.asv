@@ -1,71 +1,55 @@
-function showNN(m, params)
+function showDensityCorr(m, params)
 
 props = parseParams(params);
 
 if strcmp(props.mode, 'bins')
-    showNNBinning(m, props);
-elseif strcmp(props.mode, 'nndd')
-    showNNDD(m, props);
+    showDCBinning(m, props);
 else
-    showNNCummulative(m, props);
+    showDCCummulative(m, props);
 
 end
     % version 1: binning
 end
 
-function showNNDD(m, props)
-hold on
-res = m;
+function showDCBinning(m, props)
 
-repeats = numel(res.allRndDD);
-
-for ri = 1:repeats
-
-    if (props.cumulative)
-        plot(res.allRndDD(ri).bins, (cumsum(res.allRndDD(ri).dyn) ./ cumsumres.allRndDD(ri).tot), 'r')    
-    else
-        plot(res.allRndDD(ri).bins, (res.allRndDD(ri).dyn ./ res.allRndDD(ri).tot), 'r')
-    end
-end
-
-if (props.cumulative)
-    plot(res.expDD.bins, (cumsum(res.expDD.dyn) ./ cumsum(res.expDD.tot)), 'b')
-else
-    plot(res.expDD.bins, (res.expDD.dyn ./ res.expDD.tot), 'b')
-end
-set(gca, 'xscale', 'log')
-xlabel({'distance [um]'})
-ylabel({'fraction covered'})
-end
-
-function showNNBinning(m, props)
-
-expDistances = m.expDistances;
-allRndDistances = m.allRndDistances;
-repeats = numel(allRndDistances);
+%expDensities = m.expDensities;
+expDensities = m.expDistances %!!!
+allRndDensities = m.allRndDensities;
+repeats = numel(allRndDensities);
 
 confidence = props.confidence;
-distanceBins = props.distBins;
+densityBins = props.distBins;
 
 hold on;
 allRandHists = [];
 for ri = 1:repeats
-    rndHist = histcounts(allRndDistances{ri} ,distanceBins);
-    plot(distanceBins(1:end-1), rndHist, 'r');
+    rndHist = histcounts(allRndDensities{ri} ,densityBins);
+    plot(densityBins(1:end-1), rndHist+1, 'r');
     allRandHists = cat(1,allRandHists ,rndHist);
 end
 allRandHistsSorted = sort(allRandHists,1);
 margin = ceil(confidence*repeats);
-plot(distanceBins(1:end-1),allRandHistsSorted (margin,:),'k');
-plot(distanceBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
 
-expHist = histcounts(expDistances ,distanceBins);
-plot(distanceBins(1:end-1), expHist, 'b','LineWidth', 2);
+plot(densityBins(1:end-1),allRandHistsSorted (margin,:) +1 ,'k');
+plot(densityBins(1:end-1),allRandHistsSorted (end - margin + 1,:) + 1,'k');
+
+expHist = histcounts(expDensities ,densityBins);
+plot(densityBins(1:end-1), expHist + 1, 'b','LineWidth', 2);
+
+set(gca, 'xscale', 'log')
+set(gca, 'yscale', 'log')
 
 end
 
-function showNNCummulative(m, props)
+function showDCCummulative(m, props)
 
+%expDensities = m.expDensities;
+expDensities = m.expDistances %!!!
+allRndDensities = m.allRndDensities;
+repeats = numel(allRndDensities);
+
+confidence = props.confidence;
 expDistances = m.expDistances;
 allRndDistances = m.allRndDistances;
 repeats = numel(allRndDistances);
