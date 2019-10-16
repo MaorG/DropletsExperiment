@@ -15,7 +15,7 @@ em = ExperimentManager(matlab_ver, expMainTopic);
 conf ='C:\school\papers\microbiota\point\pointpatterns.csv';
 conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
 conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
-conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old.csv';
+conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old_exp.csv';
 em.configure(conf);
 
 em.doLoad();

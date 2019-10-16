@@ -76,7 +76,8 @@ hold on;
 sortedY = [];
 maxX = max (cat(2,allRndDensities{:}));
 minX = min (cat(2,allRndDensities{:}));
-xq = minX:1:maxX;
+dx = (maxX-minX)/100;
+xq = minX:dx:maxX;
 for ri = 1:repeats
     density = allRndDensities{ri};
     [densitiesSorted, order] = sort(density,'descend');
