@@ -4,8 +4,7 @@ props = parseParams(params);
 for ri = 1:numel(m.pool)
     if props.radius/0.16 == m.pool(ri).radius
         showDensityCorrAux(m.pool(ri), params)
-        text(0,0,[ 'r: ' num2str(m.pool(ri).radius)],'units','normalized');
-
+        text(0.1,0.1,[ 'r: ' num2str(m.pool(ri).radius)],'units','normalized');
     end
 end
 
@@ -26,9 +25,8 @@ end
 
 function showDCBinning(m, props)
 
-%expDensities = m.expDensities;
-expDensities = m.expDistances %!!!
-allRndDensities = m.allRndDensities;
+expDensities = m.res.expDensities;
+allRndDensities = m.res.allRndDensities;
 repeats = numel(allRndDensities);
 
 confidence = props.confidence;

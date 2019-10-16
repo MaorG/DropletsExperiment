@@ -212,7 +212,7 @@ if strcmp(props.mode, 'edge')
     for pIdx = 1:numDynamic
         environmentDensities = staticDensityMap(dynamicEntities.pixelsidx{pIdx});
         if props.verbose
-            vimage(dynamicEntities.pixelsidx{pIdx}) = min(environmentDensities);
+            vimage(dynamicEntities.pixelsidx{pIdx}) = max(environmentDensities);
         end
         densities = [densities, max(environmentDensities)];
     end

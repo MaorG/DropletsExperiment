@@ -58,7 +58,7 @@ classdef OutputManager < dynamicprops
             
             for i = 1:numel(fData)
                 entry = fData(i);
-                str = obj.getTitle(entry, filter(1:2:end));
+                str = obj.getTitle2(entry, filter(1:2:end), outputConfigRow);
                 figure('Name', str);
                 if (~isempty(outputConfigRow.srcName))
                     eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
@@ -84,6 +84,26 @@ classdef OutputManager < dynamicprops
             end
             
         end
+
+                
+        function str = getTitle2(obj, entry, filterNames, outputConfigRow)
+            % TODO: make static and paramatrize "params" field
+            
+            src = (outputConfigRow.srcName);
+            str = strcat("<", src, ">") ;
+            fns = fieldnames(entry.parameters);
+            for fi = 1:numel(fns)
+                %if (sum(contains(filterNames, fns(fi))) > 0)
+                    if isnumeric(entry.parameters.(fns{fi}))
+                        str = strcat(str, " | ", fns{fi}, ': ', num2str(entry.parameters.(fns{fi})));
+                    else
+                        str = strcat(str, " | ", fns{fi}, ': ', entry.parameters.(fns{fi}));
+                    end
+                %end
+            end
+            
+        end
+
         
         function addDefault(obj, field, params)
             obj.(field) = [obj.(field), params];
