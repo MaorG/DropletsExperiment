@@ -47,7 +47,7 @@ pfunc = lfunc - distBins;
 res = pfunc;
 %figure;
 hold on
-plot(distBins, pfunc);
+plot(distBins, kfunc);
 return;
 
 centersImage = zeros(imageSize);

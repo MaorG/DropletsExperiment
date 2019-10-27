@@ -16,6 +16,11 @@ conf ='C:\school\papers\microbiota\point\pointpatterns.csv';
 conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
 conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline.csv';
 conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old_exp.csv';
+
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_control.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_old_exp.csv'
 em.configure(conf);
 
 em.doLoad();

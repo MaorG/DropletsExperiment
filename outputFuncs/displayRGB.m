@@ -14,7 +14,7 @@ if (~isempty(props.G))
     cindices(2) = 1;
 end
 if (~isempty(props.B))
-    channels{3} = mat2gray(m.(props.B) > 50000, props.Bscale);
+    channels{3} = mat2gray(m.(props.B), props.Bscale);
     cindices(3) = 1;
 end
 

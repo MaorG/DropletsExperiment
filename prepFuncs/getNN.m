@@ -12,6 +12,11 @@ repeats = props.repeats;
 % distanceBins = props.distanceBins;
 % confidence = props.confidence;
 
+
+
+
+
+
 % analyze experimental data
 
 staticDistMap = bwdist(static);
@@ -37,6 +42,8 @@ for ri = 1:repeats
     disp(['NN ' , num2str(ri)])
     tic 
     rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+    
+    
     toc
     disp(['DD ' , num2str(ri)])
     tic 
@@ -46,6 +53,8 @@ for ri = 1:repeats
     allRndDD = cat(1,allRndDD,rndDD);
     
     disp(['\n'])
+    
+
 end
 
 res = struct;
@@ -225,6 +234,15 @@ if strcmp(props.mode, 'edge')
             vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
         end
         distances = [distances, min(cellDistances)];
+    end
+elseif strcmp(props.mode, 'edgeW')
+    for pIdx = 1:numDynamic
+        cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+        end
+        temp = repmat(min(cellDistances),1,numel(cellDistances));
+        distances = [distances, temp];
     end
 else
     for pIdx = 1:numDynamic

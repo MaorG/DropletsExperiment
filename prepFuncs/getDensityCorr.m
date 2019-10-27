@@ -38,9 +38,25 @@ repeats = props.repeats;
 disk = getDisk(radius);
 
 staticDensityMap = conv2(static, disk,'same');
-boundaryFactor = conv2(ones(size(static)), disk, 'same');
+%boundaryFactor = conv2(ones(size(static)), disk, 'same');
+
+boundaryFactor = sum(disk(:))*ones(size(static));
+
 
 staticDensityMap = staticDensityMap ./ boundaryFactor;
+
+dynamicDensityMap = conv2(dynamic, disk,'same');
+dynamicDensityMap = dynamicDensityMap ./ boundaryFactor;
+
+% bins = [0:0.0002:0.01];
+% figure
+% subplot(4,3,1)
+% imshow(dynamic)
+% subplot(4,3,7)
+% [N,B] = histcounts(dynamicDensityMap(:),bins)
+% bar(B(1:end-1),N);
+% yl = [0,max(N)*1.2]
+% ylim(yl)
 
 %props.verbose = true
 expDensities = getDensities(staticDensityMap , dynamic,props);
@@ -64,6 +80,26 @@ for ri = 1:repeats
     toc
     allRndDensities{ri} = rndDist;
     disp([''])
+    
+    
+
+    dynamicRandomized(dynamicRandomized~=0) = 1;
+dynamicRandomizedDensityMap = conv2(dynamicRandomized, disk,'same');
+dynamicRandomizedDensityMap = dynamicRandomizedDensityMap ./ boundaryFactor;
+
+
+
+% subplot(4,3,1+ri)
+% imshow(dynamicRandomized)
+% subplot(4,3,7+ri)
+% [N,B] = histcounts(dynamicRandomizedDensityMap,bins)
+% bar(B(1:end-1),N);
+% ylim(yl)
+
+
+
+
+
 end
 
 res = struct;
