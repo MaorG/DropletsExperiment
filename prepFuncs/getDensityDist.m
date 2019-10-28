@@ -115,6 +115,28 @@ res.Nrnd = allRndDensities;
 end
 
 
+function props = getPropsForSeg(im)
+
+CC = bwconncomp(im);
+rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
+centers = cat(1, rp.Centroid);
+pixels = cell(numel(rp),1);
+pixelsidx = cell(numel(rp),1);
+for ii = 1:numel(rp)
+    pixels{ii} = rp(ii).PixelList;
+    pixelsidx{ii} = rp(ii).PixelIdxList;
+end
+areas = cat(1, rp.Area);
+
+% from array of structs to struct of arrays...
+
+props = struct;
+props.centers = centers;
+props.areas = areas;
+props.pixels = pixels;
+props.pixelsidx = pixelsidx;
+
+end
 
 function props = parseParams(v)
 % default:
