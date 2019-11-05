@@ -2,17 +2,16 @@
 name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
 'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v2\control', {'pixelSize' 0.16}, {'well' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
-
 <load>
 well, time, BF, GFP, removed
 #'a4', 1,  'a4/classified BW 1 BF.tiff',  'a4/classified BW 1 GFP.tiff',  []
 #'a4', 6,  'a4/classified BW 6 BF.tiff',  'a4/classified BW 6 GFP.tiff',  []
 #'a4', 11, 'a4/classified BW 11 BF.tiff', 'a4/classified BW 11 GFP.tiff', []
-'a4', 16, 'a4/classified BW 16 BF.tiff', 'a4/classified BW 16 GFP.tiff', []
+#'a4', 16, 'a4/classified BW 16 BF.tiff', 'a4/classified BW 16 GFP.tiff', []
 #'a4', 21, 'a4/classified BW 21 BF.tiff', 'a4/classified BW 21 GFP.tiff', []
-#'a4', 26, 'a4/classified BW 26 BF.tiff', 'a4/classified BW 26 GFP.tiff', []
+'a4', 26, 'a4/classified BW 26 BF.tiff', 'a4/classified BW 26 GFP.tiff', []
 #'b2', 1,  'b2/classified BW 1 BF.tiff',  'b2/classified BW 1 GFP.tiff',  []
-'b2', 6,  'b2/classified BW 6 BF.tiff',  'b2/classified BW 6 GFP.tiff',  []
+#'b2', 6,  'b2/classified BW 6 BF.tiff',  'b2/classified BW 6 GFP.tiff',  []
 #'b2', 11, 'b2/classified BW 11 BF.tiff', 'b2/classified BW 11 GFP.tiff', 'b2\removedRegions\removedMask 11.tif'
 #'b2', 16, 'b2/classified BW 16 BF.tiff', 'b2/classified BW 16 GFP.tiff', 'b2\removedRegions\removedMask 16.tif'
 #'b2', 21, 'b2/classified BW 21 BF.tiff', 'b2/classified BW 21 GFP.tiff', 'b2\removedRegions\removedMask 21.tif'
@@ -20,17 +19,21 @@ well, time, BF, GFP, removed
 #'c4', 1,  'c4/classified BW 1 BF.tiff',  'c4/classified BW 1 GFP.tiff',  []
 #'c4', 6,  'c4/classified BW 6 BF.tiff',  'c4/classified BW 6 GFP.tiff',  'c4\removedRegions\removedMask 6.tif'
 #'c4', 11, 'c4/classified BW 11 BF.tiff', 'c4/classified BW 11 GFP.tiff', []
-'c4', 16, 'c4/classified BW 16 BF.tiff', 'c4/classified BW 16 GFP.tiff', []
+#'c4', 16, 'c4/classified BW 16 BF.tiff', 'c4/classified BW 16 GFP.tiff', []
 #'c4', 21, 'c4/classified BW 21 BF.tiff', 'c4/classified BW 21 GFP.tiff', []
-#'c4', 26, 'c4/classified BW 26 BF.tiff', 'c4/classified BW 26 GFP.tiff', []
+'c4', 26, 'c4/classified BW 26 BF.tiff', 'c4/classified BW 26 GFP.tiff', []
 #'d2', 1,  'd2/classified BW 1 BF.tiff',  'd2/classified BW 1 GFP.tiff',  []
 #'d2', 6,  'd2/classified BW 6 BF.tiff',  'd2/classified BW 6 GFP.tiff',  []
 #'d2', 11, 'd2/classified BW 11 BF.tiff', 'd2/classified BW 11 GFP.tiff', []
-'d2', 16, 'd2/classified BW 16 BF.tiff', 'd2/classified BW 16 GFP.tiff', []
+#'d2', 16, 'd2/classified BW 16 BF.tiff', 'd2/classified BW 16 GFP.tiff', []
 #'d2', 21, 'd2/classified BW 21 BF.tiff', 'd2/classified BW 21 GFP.tiff', []
 #'d2', 26, 'd2/classified BW 26 BF.tiff', 'd2/classified BW 26 GFP.tiff', []
-#'d2', 18, 'd2/classified BW 18 BF.tiff', 'd2/classified BW 18 GFP.tiff', []
+'d2', 18, 'd2/classified BW 18 BF.tiff', 'd2/classified BW 18 GFP.tiff', []
 
+
+
+#'b2', 16, 'b2/classified BW 16 BF_cropped.tiff', 'b2/classified BW 16 GFP_cropped.tiff', []
+'b2', 26, 'b2/classified BW 26 BF_cropped.tiff', 'b2/classified BW 26 GFP_cropped.tiff', []
 
 #'unt', 16, 'd2/classified BW 16 BF.tiff', 'd2/temp.tif', []
 
@@ -57,8 +60,9 @@ resName, funcName, parameters
 #'DC1', 'getDensityCorr', {'static' 'BFfilt' 'dynamic' 'GFPfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' [2 4 8 16 32] 'repeats' 10 'verbose' 0}
 
 
-
-'dd01', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.00025:1 'staticOverlap' 1 'radius' [25 50] 'repeats' 10 'verbose' 1}
+#'dd_100', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [100] 'repeats' 10 'verbose' 0}
+'dd_50', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [50] 'repeats' 100 'verbose' 0}
+#'dd01_coarse', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [50 100] 'repeats' 10 'verbose' 0}
 
 <entities>
 targetName, resName, funcName, parameters
@@ -76,7 +80,16 @@ stage, funcName, srcName, filter, parameters
 #'data', 'showTwoPointCorr', 'pointCorr', {}, {}
 #'data', 'showTwoPointCorr', 'pointCorr', {'time' {[11 16 21]}}, {}
 
-'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 2 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 4 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 8 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 16 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 2 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 4 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 8 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 16 'cumulative' 1}
+
+#'data', 'showDensityDist', 'dd_100', {}, {'confidence' 0.05  'radius' 100}
+'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50}
+'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50 'binMerge' 3}
+'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50 'binMerge' 10}
+#'data', 'showDensityDist', 'dd01_fine', {}, {'confidence' 0.05  'radius' 25}
+#'data', 'showDensityDist', 'dd01_fine', {}, {'confidence' 0.05  'radius' 50}
+#'data', 'showDensityDist', 'dd01_coarse', {}, {'confidence' 0.05  'radius' 100}
+#'data', 'showDensityDist', 'dd01_coarse', {}, {'confidence' 0.05  'radius' 50}

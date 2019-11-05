@@ -79,7 +79,9 @@ for ri = 1:repeats
     [distancesSorted, order] = sort(dist);
     %y = (1:numel(distancesSorted))./ numel(distancesSorted);
     y = (1:numel(distancesSorted));
-    plot(distancesSorted,y,'r')
+    if props.showAll
+        plot(distancesSorted,y,'r')
+    end
 end
 hold on;
 % envelope: sample curves at intervals
@@ -88,7 +90,7 @@ hold on;
 sortedY = [];
 maxX = max (cat(2,allRndDistances{:}));
 minX = min (cat(2,allRndDistances{:}));
-xq = minX:1:maxX;
+xq = minX:0.1:maxX;
 for ri = 1:repeats
     dist = allRndDistances{ri};
     [distancesSorted, order] = sort(dist);
@@ -105,14 +107,33 @@ sortedSortedY = max(sortedSortedY,0);
 sortedSortedY = min(sortedSortedY,numel(distancesSorted));
 
 margin = ceil(confidence*repeats);
-plot(xq,sortedSortedY(margin,:),'k');
-plot(xq,sortedSortedY(end - margin + 1,:),'k');
-
+if props.showAll
+    plot(xq,sortedSortedY(margin,:),'k');
+    plot(xq,sortedSortedY(end - margin + 1,:),'k');
+else 
+    meanY = median(sortedSortedY);
+    errYbot = meanY - sortedSortedY(end - margin + 1,:);
+    errYtop = sortedSortedY(margin,:) - meanY;
+    shadedErrorBar(xq,1+meanY,[-errYbot;-errYtop],'lineprops','k--');
+end
 hold on;
 [distancesSorted, order] = sort(expDistances);
 y = (1:numel(distancesSorted))./ numel(distancesSorted);
 y = (1:numel(distancesSorted));
-plot(distancesSorted,y,'b','LineWidth', 2)
+
+if props.showAll
+    plot(distancesSorted,y,'b','LineWidth', 2)
+else
+    plot(distancesSorted,y,'k-','LineWidth', 2)
+end
+
+%set(gca, 'yscale', 'log')
+set(gca,'LineWidth',2)
+set(gca,'FontSize',14)
+box on
+xlabel('distance [\mum]')
+ylabel('No. of cell within distance')
+
 
 end
 
@@ -121,7 +142,8 @@ function props = parseParams(v)
 props = struct(...
     'mode', 'bins',...
     'distBins',0:1:200, ...
-    'confidence', 0.05, ...
+    'confidence', 0.01, ...
+    'showAll', 0, ...
     'cumulative', 0 ...
     );
 
@@ -133,6 +155,8 @@ for i = 1:numel(v)
         props.distBins = v{i+1};
     elseif (strcmp(v{i}, 'confidence'))
         props.confidence = v{i+1};
+    elseif (strcmp(v{i}, 'showAll'))
+        props.showAll = v{i+1};
     elseif (strcmp(v{i}, 'cumulative'))
         props.cumulative = v{i+1};
     end

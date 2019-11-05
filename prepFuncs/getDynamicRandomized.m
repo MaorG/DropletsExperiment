@@ -17,7 +17,7 @@ successCount = 0;
 randomOrder = randperm(numDynamicEntities);
 for di = 1:numDynamicEntities
     tryCount = 0;
-    maxTryCount = inf;
+    maxTryCount = 1000;
     pixels = dynamicEntities.pixels{randomOrder(di)};
     while tryCount < maxTryCount
         

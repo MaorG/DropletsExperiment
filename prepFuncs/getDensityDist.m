@@ -39,8 +39,8 @@ repeats = props.repeats;
 
 disk = getDisk(radius);
 
-%boundaryFactor = conv2(ones(size(static)), disk, 'same');
-boundaryFactor = sum(disk(:))*ones(size(static));
+boundaryFactor = conv2(ones(size(static)), disk, 'same');
+%boundaryFactor = sum(disk(:))*ones(size(static));
 
 staticDensityMap = conv2(static, disk,'same');
 dynamicDensityMap = conv2(dynamic, disk,'same');

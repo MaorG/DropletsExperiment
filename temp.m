@@ -19,9 +19,11 @@ conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline
 
 
 
-conf = 'C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old_exp_figure.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_old_exp.csv'
 
-conf = 'C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_control_figure.csv'
+%conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_control.csv'
+
+conf = '\\QNAP01\LongTerm\Yana\29.10.19\survival101.csv'
 em.configure(conf);
 
 em.doLoad();

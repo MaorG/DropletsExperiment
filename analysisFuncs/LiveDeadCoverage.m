@@ -26,22 +26,46 @@ function result = LiveDeadCoverage(entities, parameters)
     %nd = createNDResultTable(res, 'val', fns);
     nd = NDResultTable(res, 'val', fns);
     
-    nd = NDResultTable(res, 'val', fns);
+    % COMBINING DUPLICATES
+    for ti = 1:numel(nd.T)
+        if (~isempty(nd.T{ti}))
+            vv = nd.T{ti}{1};
+            for ri = 2:numel((nd.T{ti}))
+               vv.totalArea = [vv.totalArea, nd.T{ti}{ri}.totalArea];
+               vv.liveArea = [vv.liveArea, nd.T{ti}{ri}.liveArea];
+               vv.deadArea = [vv.deadArea, nd.T{ti}{ri}.deadArea];
+            end
+            nd.T{ti}{1} = vv;
+        end
+    end
+    % HANDLING TIME SERIES
+    nd = nd.colateTable(nd, 'time');
     
     % TODO: use some func for this
     % uniting similar datas
-%     for ti = 1:numel(nd.T)
-%         if (~isempty(nd.T{ti}))
-%             vv = nd.T{ti}{1};
-%             for ri = 2:numel(nd.T{ti})
-%                vv.area = [vv.area; nd.T{ti}{ri}.area];
-%                vv.pop = [vv.pop; nd.T{ti}{ri}.pop];
-%             end
-%             vv.area = vv.area;
-%             nd.T{ti} = cell(0);
-%             nd.T{ti}{1} = vv;
-%         end
-%     end
+    for ti = 1:numel(nd.T)
+        if (~isempty(nd.T{ti}))
+            
+            totalArea = {};
+            liveArea = {};
+            deadArea = {};
+            timePoints = [];
+            for tpi = 1:numel(nd.T{ti})
+                totalArea{tpi} = nd.T{ti}{tpi}.totalArea;
+                liveArea{tpi} = nd.T{ti}{tpi}.liveArea;
+                deadArea{tpi} = nd.T{ti}{tpi}.deadArea;
+                timePoints(tpi) = nd.T{ti}{tpi}.time;
+            end
+            te = struct;
+            te.totalArea = totalArea;
+            te.liveArea = liveArea;
+            te.deadArea = deadArea;
+            te.timePoints = timePoints;
+
+            nd.T{ti} = cell(0);
+            nd.T{ti}{1} = te;
+        end
+    end
 
     % TODO: and for this
 % 	for ti = 1:numel(nd.T)
@@ -62,9 +86,8 @@ function result = LiveDeadCoverage(entities, parameters)
 %     end
 
 
-%nasty
-%result = nd.colateTable(nd, 'time');
 
+result = nd;
     
 end
 
@@ -82,6 +105,8 @@ res.liveArea = liveArea;
 res.deadArea = deadArea;
 if isfield(entityStruct.dataParameters, 'time')
     res.time = entityStruct.dataParameters.time; 
+else
+    res.time = nan;
 end
 end
 
