@@ -41,6 +41,9 @@ for ri = 1:repeats
     toc
     disp(['NN ' , num2str(ri)])
     tic 
+    
+    dynamicRandomized_dilated
+    
     rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
     
     
@@ -233,8 +236,16 @@ if strcmp(props.mode, 'edge')
         if props.verbose
             vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
         end
-        temp = ones(
         distances = [distances, min(cellDistances)];
+    end
+elseif strcmp(props.mode, 'edgeW')
+    for pIdx = 1:numDynamic
+        cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+        end
+        temp = repmat(min(cellDistances),1,numel(cellDistances));
+        distances = [distances, temp];
     end
 else
     for pIdx = 1:numDynamic

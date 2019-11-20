@@ -7,7 +7,7 @@ well, time, BF, GFP, removed
 #'a4', 1,  'a4/classified BW 1 BF.tiff',  'a4/classified BW 1 GFP.tiff',  []
 #'a4', 6,  'a4/classified BW 6 BF.tiff',  'a4/classified BW 6 GFP.tiff',  []
 #'a4', 11, 'a4/classified BW 11 BF.tiff', 'a4/classified BW 11 GFP.tiff', []
-'a4', 16, 'a4/classified BW 16 BF.tiff', 'a4/classified BW 16 GFP.tiff', []
+#'a4', 16, 'a4/classified BW 16 BF.tiff', 'a4/classified BW 16 GFP.tiff', []
 #'a4', 21, 'a4/classified BW 21 BF.tiff', 'a4/classified BW 21 GFP.tiff', []
 'a4', 26, 'a4/classified BW 26 BF.tiff', 'a4/classified BW 26 GFP.tiff', []
 #'b2', 1,  'b2/classified BW 1 BF.tiff',  'b2/classified BW 1 GFP.tiff',  []
@@ -33,7 +33,7 @@ well, time, BF, GFP, removed
 
 
 
-'b2', 16, 'b2/classified BW 16 BF_cropped.tiff', 'b2/classified BW 16 GFP_cropped.tiff', []
+#'b2', 16, 'b2/classified BW 16 BF_cropped.tiff', 'b2/classified BW 16 GFP_cropped.tiff', []
 'b2', 26, 'b2/classified BW 26 BF_cropped.tiff', 'b2/classified BW 26 GFP_cropped.tiff', []
 
 #'unt', 16, 'd2/classified BW 16 BF.tiff', 'd2/temp.tif', []
@@ -43,67 +43,25 @@ well, time, BF, GFP, removed
 resName, funcName, parameters
 
 #'BF1', 'morphOp', {'src' 'BF' 'op' 'close' 'dist' 2}
-#'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
-
+'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
 
 #'BFfilt', 'morphOp', {'src' 'BF1' 'op' 'areaOpen' 'dist' 0.5}
 #'GFPfilt', 'morphOp', {'src' 'GFP1' 'op' 'areaOpen' 'dist' 0.5}
 
-'kfunc', 'getRipleysK2', {'src' 'GFP' 'removedMask' [] 'rbins' [1:30:5000]}
-#'kfunc', 'getRipleysK', {'src' 'GFP' 'removedMask' []}
-#'pointCorr', 'getTwoPointCorr', {'src' 'GFP' 'dr' 60 'repeats' 100 }
+'pointCorr1', 'getTwoPointCorr', {'src' 'GFP1' 'dr' 6 'repeats' 100 }
 
-#'BFfilt', 'morphOp', {'src' 'BF' 'op' 'areaOpen' 'dist' 6.4}
-
-
-
-
-#'DC1', 'getDensityCorr', {'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' 50 'repeats' 5 'verbose' 0}
-#'DC1', 'getDensityCorr', {'static' 'BFfilt' 'dynamic' 'GFPfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' [2 4 8 16 32] 'repeats' 10 'verbose' 0}
-
-
-#'dd_100', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [100] 'repeats' 10 'verbose' 0}
-#'dd_50', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [50] 'repeats' 10 'verbose' 0}
-#'dd01_coarse', 'getDensityDist', {'static' 'BFfilt' 'bins' 0:0.0001:1 'staticOverlap' 1 'radius' [50 100] 'repeats' 10 'verbose' 0}
 
 <entities>
 targetName, resName, funcName, parameters
-'cells', '', 'createEntitiesFromSeg', {'seg' 'GFP' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
-'cells', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'GFP1' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
 
 <analysis>
 resName, funcName, entities, parameters
-'cellsSizeDistribution', 'aggrSizeDistribution', 'cells', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 4 'bins_step' 0.1}
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
 
 <output>
 stage, funcName, srcName, filter, parameters
-#'analysis', 'displayPlot', 'cellsSizeDistribution', {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 2000]}
-#'data', 'showKfunc', 'kfunc', {}, {}
-'data', 'showTwoPointCorr', 'pointCorr', {}, {}
-#'data', 'showTwoPointCorr', 'pointCorr', {'time' {[11 16 21]}}, {}
-
-#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 2 'cumulative' 1}
-#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 4 'cumulative' 1}
-#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 8 'cumulative' 1}
-#'data', 'showDensityCorr', 'DC1' , {}, {'mode' 'bins' 'distBins' "[0, 1./power(1.5,16:-1:0)]" 'radius' 16 'cumulative' 1}
-
-
-
-
-
-#'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50}
-
-
-
-
-
-
-#'data', 'showDensityDist', 'dd_100', {}, {'confidence' 0.05  'radius' 100}
-
-
-#'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50 'binMerge' 3}
-#'data', 'showDensityDist', 'dd_50', {}, {'confidence' 0.05  'radius' 50 'binMerge' 10}
-#'data', 'showDensityDist', 'dd01_fine', {}, {'confidence' 0.05  'radius' 25}
-#'data', 'showDensityDist', 'dd01_fine', {}, {'confidence' 0.05  'radius' 50}
-#'data', 'showDensityDist', 'dd01_coarse', {}, {'confidence' 0.05  'radius' 100}
-#'data', 'showDensityDist', 'dd01_coarse', {}, {'confidence' 0.05  'radius' 50}
+'data', 'showTwoPointCorr', 'pointCorr1', {}, {}
+'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}

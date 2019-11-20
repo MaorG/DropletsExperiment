@@ -14,18 +14,29 @@ csr_sorted = sort(csr,1);
 csr_count = size(csr_sorted,1);
 margin = ceil(confidence*csr_count);
 
+meanY = median(csr_sorted,1);
+errYbot = meanY - csr_sorted(end - margin + 1,:);
+errYtop = csr_sorted(margin,:) - meanY;
+
 
 hold on
-plot(r_csr*pixelSize, csr_sorted(margin,:),'r');
-plot(r_csr*pixelSize, csr_sorted(end-margin+1,:),'r');
+shadedErrorBar(r_csr(1:end)*pixelSize,meanY,[-errYbot;-errYtop],'lineprops','k--');
 
- plot(r*pixelSize, corrfun,'b');
+%plot(r_csr*pixelSize, csr_sorted(margin,:),'r');
+%plot(r_csr*pixelSize, csr_sorted(end-margin+1,:),'r');
 
-if (isfield(m, 'randomExample'))
-    plot(r_csr*pixelSize, m.randomExample,'g');
+ plot(r*pixelSize, corrfun,'k-', 'LineWidth', 2);
+
+if false && (isfield(m, 'randomExample'))
+    plot(r_csr*pixelSize, m.randomExample,'k-', 'LineWidth', 2);
 end
  
  
-xlim([0,300]);
+xlim([0,100]);
+set(gca,'LineWidth',2)
+set(gca,'FontSize',14)
+box on
+xlabel('distance [\mum]')
+ylabel('G_{11}')
 %set(gca,'yscale','log')
 end

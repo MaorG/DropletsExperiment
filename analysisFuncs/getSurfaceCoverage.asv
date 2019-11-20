@@ -37,10 +37,8 @@ end
 nd = NDResultTable(res, 'val', fns);
 
 if (~isempty(props.colateBy))
-    dim = find(strcmp(nd.names,props.colateBy));
-    vals = nd.vals{dim};
     nd = nd.colateTable(nd,(props.colateBy));
-    
+    dim
 end
 
 % TODO: use some func for this - simple concatanation...
@@ -53,11 +51,7 @@ for ti = 1:numel(nd.T)
         %             nd.T{ti} = cell(0);
         %             nd.T{ti}{1} = vv;
         if (~isempty(props.colateBy))
-            a = struct;
-            a.Y = vv; 
-            a.X = vals; 
             
-            nd.T{ti} = {a};
         else
             nd.T{ti} = vv;
         end

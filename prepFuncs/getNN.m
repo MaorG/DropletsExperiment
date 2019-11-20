@@ -41,7 +41,17 @@ for ri = 1:repeats
     toc
     disp(['NN ' , num2str(ri)])
     tic 
-    rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+
+    
+    if props.doSubtract
+        se = strel('disk',4);
+        dynamicRandomized_dilated = imdilate(dynamicRandomized,se);
+        static_diffed = static & (~dynamicRandomized_dilated);
+        staticDistMap_diffed = bwdist(static_diffed);
+        rndDist = getNNdistances(staticDistMap_diffed, dynamicRandomized, props);
+    else
+        rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+    end
     
     
     toc
@@ -322,6 +332,7 @@ props = struct(...
     'mode', 'edge', ...
     'staticOverlap', 0, ...
     'dynamicOverlap', 0, ...
+    'doSubtract', 0, ...
     'verbose', 0 ...
     );
 
@@ -343,6 +354,8 @@ for i = 1:numel(v)
         props.staticOverlap = v{i+1};
     elseif (strcmp(v{i}, 'dynamicOverlap'))
         props.dynamicOverlap = v{i+1};
+    elseif (strcmp(v{i}, 'doSubtract'))
+        props.doSubtract = v{i+1};
     elseif (strcmp(v{i}, 'verbose'))
         props.verbose = v{i+1};
         

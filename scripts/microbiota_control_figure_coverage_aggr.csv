@@ -1,0 +1,70 @@
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v2\control', {'pixelSize' 0.16}, {'well' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+well, time, BF, GFP, removed
+'a4', 1,  'a4/classified BW 1 BF.tiff',  'a4/classified BW 1 GFP.tiff',  []
+'a4', 6,  'a4/classified BW 6 BF.tiff',  'a4/classified BW 6 GFP.tiff',  []
+'a4', 11, 'a4/classified BW 11 BF.tiff', 'a4/classified BW 11 GFP.tiff', []
+'a4', 16, 'a4/classified BW 16 BF.tiff', 'a4/classified BW 16 GFP.tiff', []
+'a4', 21, 'a4/classified BW 21 BF.tiff', 'a4/classified BW 21 GFP.tiff', []
+'a4', 26, 'a4/classified BW 26 BF.tiff', 'a4/classified BW 26 GFP.tiff', []
+'b2', 1,  'b2/classified BW 1 BF.tiff',  'b2/classified BW 1 GFP.tiff',  []
+'b2', 6,  'b2/classified BW 6 BF.tiff',  'b2/classified BW 6 GFP.tiff',  []
+'b2', 11, 'b2/classified BW 11 BF.tiff', 'b2/classified BW 11 GFP.tiff', 'b2\removedRegions\removedMask 11.tif'
+'b2', 16, 'b2/classified BW 16 BF.tiff', 'b2/classified BW 16 GFP.tiff', 'b2\removedRegions\removedMask 16.tif'
+'b2', 21, 'b2/classified BW 21 BF.tiff', 'b2/classified BW 21 GFP.tiff', 'b2\removedRegions\removedMask 21.tif'
+'b2', 26, 'b2/classified BW 26 BF.tiff', 'b2/classified BW 26 GFP.tiff', 'b2\removedRegions\removedMask 26.tif'
+'c4', 1,  'c4/classified BW 1 BF.tiff',  'c4/classified BW 1 GFP.tiff',  []
+'c4', 6,  'c4/classified BW 6 BF.tiff',  'c4/classified BW 6 GFP.tiff',  'c4\removedRegions\removedMask 6.tif'
+'c4', 11, 'c4/classified BW 11 BF.tiff', 'c4/classified BW 11 GFP.tiff', []
+'c4', 16, 'c4/classified BW 16 BF.tiff', 'c4/classified BW 16 GFP.tiff', []
+'c4', 21, 'c4/classified BW 21 BF.tiff', 'c4/classified BW 21 GFP.tiff', []
+'c4', 26, 'c4/classified BW 26 BF.tiff', 'c4/classified BW 26 GFP.tiff', []
+'d2', 1,  'd2/classified BW 1 BF.tiff',  'd2/classified BW 1 GFP.tiff',  []
+'d2', 6,  'd2/classified BW 6 BF.tiff',  'd2/classified BW 6 GFP.tiff',  []
+'d2', 11, 'd2/classified BW 11 BF.tiff', 'd2/classified BW 11 GFP.tiff', []
+'d2', 16, 'd2/classified BW 16 BF.tiff', 'd2/classified BW 16 GFP.tiff', []
+'d2', 21, 'd2/classified BW 21 BF.tiff', 'd2/classified BW 21 GFP.tiff', []
+'d2', 26, 'd2/classified BW 26 BF.tiff', 'd2/classified BW 26 GFP.tiff', []
+#'d2', 18, 'd2/classified BW 18 BF.tiff', 'd2/classified BW 18 GFP.tiff', []
+#'c4', 18, 'c4/classified BW 18 BF.tiff', 'c4/classified BW 18 GFP.tiff', []
+
+
+
+#'b2', 16, 'b2/classified BW 16 BF_cropped.tiff', 'b2/classified BW 16 GFP_cropped.tiff', []
+#'b2', 26, 'b2/classified BW 26 BF_cropped.tiff', 'b2/classified BW 26 GFP_cropped.tiff', []
+
+#'unt', 16, 'd2/classified BW 16 BF.tiff', 'd2/temp.tif', []
+
+
+<prep>
+resName, funcName, parameters
+
+#'BF1', 'morphOp', {'src' 'BF' 'op' 'close' 'dist' 2}
+'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
+
+#'BFfilt', 'morphOp', {'src' 'BF1' 'op' 'areaOpen' 'dist' 0.5}
+#'GFPfilt', 'morphOp', {'src' 'GFP1' 'op' 'areaOpen' 'dist' 0.5}
+
+#'pointCorr1', 'getTwoPointCorr', {'src' 'GFP1' 'dr' 6 'repeats' 100 }
+
+
+<entities>
+targetName, resName, funcName, parameters
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'GFP1' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'bacteriaCover', 'getSurfaceCoverage', 'bacteria', {'removedMaskName' 'removed' 'colateBy' 'time'}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+#'data', 'showTwoPointCorr', 'pointCorr1', {}, {}, {}
+#'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}

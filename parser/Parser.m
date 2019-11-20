@@ -68,7 +68,6 @@ classdef Parser
     methods(Static)
         
         function res = customeval(expr)
-            expr
             if isnumeric (expr)
                 res = expr;
             elseif isempty(expr)

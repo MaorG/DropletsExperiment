@@ -1,14 +1,16 @@
-function displayPlot(m, properties)
+function displaySurfaceCoverage(m, properties)
 props = parseParams(properties);
 
 if isstruct(m)
     if numel(m) == 1
-        plot(m.X,m.Y,'-o', 'LineWidth', 2)
+        plot(m.X(1:numel(m.Y))* props.timeScale,m.Y,'-o', 'LineWidth', 2)
     else
-        plot(cat(1,m.X),cat(1,m.Y),'-o', 'LineWidth', 2)
+        plot(cat(1,m.X)* props.timeScale,cat(1,m.Y),'-o', 'LineWidth', 2)
     end
 else
-    plot(m)
+    timepoints = 1:numel(m);
+    timepoints = timepoints * props.timeScale;
+    plot( timepoints, m, '-o', 'LineWidth', 2)
 end
 set(gca,'xscale',props.xscale);
 set(gca,'yscale',props.yscale);
@@ -29,6 +31,7 @@ end
 function props = parseParams(v)
 % default:
 props = struct(...
+    'timeScale', 1.0, ...
     'xscale','linear',...
     'yscale','linear', ...
     'xlim', [], ...
@@ -37,7 +40,9 @@ props = struct(...
 
 for i = 1:numel(v)
     
-    if (strcmp(v{i}, 'xscale'))
+    if (strcmp(v{i}, 'timeScale'))
+        props.timeScale = v{i+1};
+    elseif (strcmp(v{i}, 'xscale'))
         props.xscale = v{i+1};
     elseif (strcmp(v{i}, 'yscale'))
         props.yscale = v{i+1};

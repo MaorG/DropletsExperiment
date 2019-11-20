@@ -24,6 +24,14 @@ conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_
 %conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_control.csv'
 
 conf = '\\QNAP01\LongTerm\Yana\29.10.19\survival101.csv'
+conf = '\\QNAP01\LongTerm\Maor\seg-exp\test_seg.csv';
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_control_figure_kfunc.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_aggr_size_dist.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_control_figure_coverage_aggr.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_point_corr_microbiota.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_windows.csv'
 em.configure(conf);
 
 em.doLoad();
