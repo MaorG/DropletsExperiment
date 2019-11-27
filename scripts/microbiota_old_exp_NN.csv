@@ -1,17 +1,17 @@
 <main>
-name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
-'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v2\', {'pixelSize' 0.16}, {'well' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v2\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
 
 <load>
-well, time, BF, GFP, RGB
-#'A1', 2,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 2 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 2 GFP.tiff','colorTif\long\img_T02_A1_RGB.tif'
-#'A1', 6,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 6 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 6 GFP.tiff','colorTif\long\img_T06_A1_RGB.tif'
-#'A1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 GFP.tiff','colorTif\long\img_T10_A1_RGB.tif'
-#'A1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 GFP.tiff','colorTif\long\img_T14_A1_RGB.tif'
-#'A1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 GFP.tiff','colorTif\long\img_T18_A1_RGB.tif'
-#'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff','colorTif\long\img_T22_A1_RGB.tif'
-#'A1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 GFP.tiff','colorTif\long\img_T26_A1_RGB.tif'
+well, time, BF, GFP
+#'A1', 2,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 2 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 2 GFP.tiff'
+#'A1', 6,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 6 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 6 GFP.tiff'
+#'A1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 GFP.tiff'
+#'A1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 GFP.tiff'
+#'A1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 GFP.tiff'
+#'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff'
+#'A1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 GFP.tiff'
 ##
 #'C1', 2,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 2 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 2 GFP.tiff'
 #'C1', 6,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 6 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 6 GFP.tiff'
@@ -128,101 +128,69 @@ well, time, BF, GFP, RGB
 #'A1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 GFP.tiff'
 #'C1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 GFP.tiff'
 #'A6', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 GFP.tiff'
-#'D1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 GFP.tiff'
+'D1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 GFP.tiff'
 #
 #'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff'
 #'A1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 GFP.tiff'
 #
 
-
-#'A1', 01, [] ,[] ,'colorTif\long\img_T01_A1_RGB.tif'
-#'A1', 02, [] ,[] ,'colorTif\long\img_T02_A1_RGB.tif'
-#'A1', 03, [] ,[] ,'colorTif\long\img_T03_A1_RGB.tif'
-#'A1', 04, [] ,[] ,'colorTif\long\img_T04_A1_RGB.tif'
-#'A1', 05, [] ,[] ,'colorTif\long\img_T05_A1_RGB.tif'
-#'A1', 06, [] ,[] ,'colorTif\long\img_T06_A1_RGB.tif'
-#'A1', 07, [] ,[] ,'colorTif\long\img_T07_A1_RGB.tif'
-#'A1', 08, [] ,[] ,'colorTif\long\img_T08_A1_RGB.tif'
-#'A1', 09, [] ,[] ,'colorTif\long\img_T09_A1_RGB.tif'
-#'A1', 10, [] ,[] ,'colorTif\long\img_T10_A1_RGB.tif'
-#'A1', 11, [] ,[] ,'colorTif\long\img_T11_A1_RGB.tif'
-#'A1', 12, [] ,[] ,'colorTif\long\img_T12_A1_RGB.tif'
-#'A1', 13, [] ,[] ,'colorTif\long\img_T13_A1_RGB.tif'
-#'A1', 14, [] ,[] ,'colorTif\long\img_T14_A1_RGB.tif'
-#'A1', 15, [] ,[] ,'colorTif\long\img_T15_A1_RGB.tif'
-#'A1', 16, [] ,[] ,'colorTif\long\img_T16_A1_RGB.tif'
-#'A1', 17, [] ,[] ,'colorTif\long\img_T17_A1_RGB.tif'
-#'A1', 18, [] ,[] ,'colorTif\long\img_T18_A1_RGB.tif'
-#'A1', 19, [] ,[] ,'colorTif\long\img_T19_A1_RGB.tif'
-#'A1', 20, [] ,[] ,'colorTif\long\img_T20_A1_RGB.tif'
-#'A1', 21, [] ,[] ,'colorTif\long\img_T21_A1_RGB.tif'
-#'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff','colorTif\long\img_T22_A1_RGB.tif'
-
-#'C1', 01, [] ,[] ,'colorTif\long\img_T01_C1_RGB.tif'
-#'C1', 02, [] ,[] ,'colorTif\long\img_T02_C1_RGB.tif'
-#'C1', 03, [] ,[] ,'colorTif\long\img_T03_C1_RGB.tif'
-#'C1', 04, [] ,[] ,'colorTif\long\img_T04_C1_RGB.tif'
-#'C1', 05, [] ,[] ,'colorTif\long\img_T05_C1_RGB.tif'
-#'C1', 06, [] ,[] ,'colorTif\long\img_T06_C1_RGB.tif'
-#'C1', 07, [] ,[] ,'colorTif\long\img_T07_C1_RGB.tif'
-#'C1', 08, [] ,[] ,'colorTif\long\img_T08_C1_RGB.tif'
-#'C1', 09, [] ,[] ,'colorTif\long\img_T09_C1_RGB.tif'
-#'C1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 GFP.tiff','colorTif\long\img_T10_C1_RGB.tif'
-
-
-'A6', 01, [] ,[] ,'colorTif\long\img_T01_A6_RGB.tif'
-'A6', 02, [] ,[] ,'colorTif\long\img_T02_A6_RGB.tif'
-'A6', 03, [] ,[] ,'colorTif\long\img_T03_A6_RGB.tif'
-'A6', 04, [] ,[] ,'colorTif\long\img_T04_A6_RGB.tif'
-'A6', 05, [] ,[] ,'colorTif\long\img_T05_A6_RGB.tif'
-'A6', 06, [] ,[] ,'colorTif\long\img_T06_A6_RGB.tif'
-'A6', 07, [] ,[] ,'colorTif\long\img_T07_A6_RGB.tif'
-'A6', 08, [] ,[] ,'colorTif\long\img_T08_A6_RGB.tif'
-'A6', 09, [] ,[] ,'colorTif\long\img_T09_A6_RGB.tif'
-'A6', 10, [] ,[] ,'colorTif\long\img_T10_A6_RGB.tif'
-'A6', 11, [] ,[] ,'colorTif\long\img_T11_A6_RGB.tif'
-'A6', 12, [] ,[] ,'colorTif\long\img_T12_A6_RGB.tif'
-'A6', 13, [] ,[] ,'colorTif\long\img_T13_A6_RGB.tif'
-'A6', 14,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 14 GFP.tiff','colorTif\long\img_T14_A6_RGB.tif'
-#
-#'D1', 01, [] ,[] ,'colorTif\long\img_T01_D1_RGB.tif'
-#'D1', 02, [] ,[] ,'colorTif\long\img_T02_D1_RGB.tif'
-#'D1', 03, [] ,[] ,'colorTif\long\img_T03_D1_RGB.tif'
-#'D1', 04, [] ,[] ,'colorTif\long\img_T04_D1_RGB.tif'
-#'D1', 05, [] ,[] ,'colorTif\long\img_T05_D1_RGB.tif'
-#'D1', 06, [] ,[] ,'colorTif\long\img_T06_D1_RGB.tif'
-#'D1', 07, [] ,[] ,'colorTif\long\img_T07_D1_RGB.tif'
-#'D1', 08, [] ,[] ,'colorTif\long\img_T08_D1_RGB.tif'
-#'D1', 09, [] ,[] ,'colorTif\long\img_T09_D1_RGB.tif'
-#'D1', 10, [] ,[] ,'colorTif\long\img_T10_D1_RGB.tif'
-#'D1', 11, [] ,[] ,'colorTif\long\img_T11_D1_RGB.tif'
-#'D1', 12, [] ,[] ,'colorTif\long\img_T12_D1_RGB.tif'
-#'D1', 13, [] ,[] ,'colorTif\long\img_T13_D1_RGB.tif'
-#'D1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 14 GFP.tiff','colorTif\long\img_T14_D1_RGB.tif'
-
-
 <prep>
 resName, funcName, parameters
-#'BF1', 'morphOp', {'src' 'BF' 'op' 'close' 'dist' 2}
-#'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
+
+'BF1', 'morphOp', {'src' 'BF' 'op' 'close' 'dist' 2}
+'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
 #
 #
-#'BFfilt', 'morphOp', {'src' 'BF1' 'op' 'areaOpen' 'dist' 0.5}
-#'GFPfilt', 'morphOp', {'src' 'GFP1' 'op' 'areaOpen' 'dist' 0.5}
+'BFfilt', 'morphOp', {'src' 'BF1' 'op' 'areaOpen' 'dist' 0.5}
+'GFPfilt', 'morphOp', {'src' 'GFP1' 'op' 'areaOpen' 'dist' 0.5}
+'Allfilt', 'booleanOp', {'src1' 'BFfilt' 'src2' 'GFPfilt' 'op' 'union'}
 #
-#
-#'histories','getNeighborsHistories', {'mask1' 'BFfilt' 'mask2' 'GFPfilt' 'image' 'RGB' 'maxDist' 2 'windowSize' 20} 
-'histories','getRegionHistories', {'mask1' [] 'mask2' [] 'image' 'RGB' 'region' "struct('x',1,'y',1000,'w',60,'h',40,'dx',50,'dy',30','nx',3,'ny',2)"} 
+
+#'bacteriaSC', 'getSurfaceCoveragePrep', {'src' 'GFPfilt'}
+#'microbiotaSC', 'getSurfaceCoveragePrep', {'src' 'BFfilt'}
+#'allSC', 'getSurfaceCoveragePrep', {'src' 'Allfilt'}
+
+'NNverbose', 'getNN', {'dynamic' 'GFP1' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 0 'confidence' 0.05  'verbose' 1}
+#'NN1', 'getNN', {'dynamic' 'GFP1' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.05  'verbose' 0}
+
 
 <entities>
 targetName, resName, funcName, parameters
-#'microbiota', '', 'createEntitiesFromSeg', {'seg' 'BF' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'microbiota', '', 'createEntitiesFromSeg', {'seg' 'BFfilt' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'microbiota', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'GFPfilt' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'allCells', '', 'createEntitiesFromSeg', {'seg' 'Allfilt' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'allCells', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria1', '', 'createEntitiesFromSeg', {'seg' 'GFP1' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria1', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
 
 <analysis>
 resName, funcName, entities, parameters
-#'microbiotaSizeDistribution', 'aggrSizeDistribution', 'microbiota', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'microbiotaSizeDistribution', 'aggrSizeDistribution', 'microbiota', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'allCellsSizeDistribution', 'aggrSizeDistribution', 'allCells', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'microbiotaCover', 'getSurfaceCoverage', 'microbiota', {'colateBy' 'time'}
+'bacteriaCover', 'getSurfaceCoverage', 'bacteria', {'colateBy' 'time'}
+'allCellsCover', 'getSurfaceCoverage', 'allCells', {'colateBy' 'time'}
+
+'bacteria1Cover', 'getSurfaceCoverage', 'bacteria1', {'colateBy' 'time'}
+
 
 <output>
 stage, funcName, srcName, filter, hold, parameters
-#'analysis', 'displayPlot', 'microbiotaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 2e2] 'ylim' [1 2e3]}
-'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' '\\qnap01\LongTerm\Maor\microbiota v2\histories'}
+#'analysis', 'displayPlot', 'microbiotaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displayPlot', 'allCellsSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displaySurfaceCoverage', 'microbiotaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+#'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+#'analysis', 'displaySurfaceCoverage', 'allCellsCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+
+#'analysis', 'displaySurfaceCoverage', 'bacteria1Cover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+
+#'analysis', 'displayPlot', 'bacteriaSizeDistribution', {'time' {2 10 18}}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+
+'data', 'showNN', 'NN1' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+
+

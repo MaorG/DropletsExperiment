@@ -291,7 +291,9 @@ if props.verbose
     imshow(rgbImage)
     colormap(cmap)
     colorbar;
-    caxis([0,max(vimage(:))])
+    if max(vimage(:)) > 0
+        caxis([0,max(vimage(:))])
+    end
 end
 
 

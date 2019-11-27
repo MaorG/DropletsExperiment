@@ -1,4 +1,4 @@
-function res = getNeighborsHistories(data,parameters)
+function res = getRegionHistories(data,parameters)
 
 if isfield(data.properties, 'next')
     res = [];
@@ -7,32 +7,29 @@ end
 
 props = parseParams(parameters);
 
+regions = getRegions(props.regions);
+
 pixelSize = data.properties.pixelSize;
-maxDist = props.maxDist / pixelSize;
-windowSize = props.windowSize / pixelSize;
-mask1 = data.(props.mask1);
-mask2 = data.(props.mask2);
+mask1 = [];
+if (~isempty(props.mask1))
+    mask1 = data.(props.mask1);
+end
+mask2 = [];
+if (~isempty(props.mask2))
+    mask2 = data.(props.mask2);
+end
 RGB = data.(props.image);
 
 imageSize = size(mask1);
-
-se = strel('disk',ceil(maxDist*0.5));
-
-expand1 = imdilate(mask1,se);
-expand2 = imdilate(mask2,se);
-intersection = expand1 & expand2;
-intersection = intersection | expand2;
-
-CC = bwconncomp(intersection);
-rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
-centers = cat(1, rp.Centroid);
 
 res = struct;
 res.windows = {};
 res.x = [];
 res.y = [];
 
-for ci = 1:min(100,size(centers,1))
+
+
+for ri = 1:numel(regions)
     center = centers(ci,:);
     cx = ceil(center(1));
     cx = min(max(1,cx),imageSize(2));
@@ -90,19 +87,17 @@ end
 function props = parseParams(v)
 % default:
 props = struct(...
-    'maxDist', 2, ...
-    'windowSize',30,...
+    'region', [], ...
     'mask2','BF', ...
     'mask1', 'GFP', ...
     'image', 'RGB' ...
     );
 
+
 for i = 1:numel(v)
     
-    if (strcmp(v{i}, 'maxDist'))
-        props.maxDist = v{i+1};
-    elseif (strcmp(v{i}, 'windowSize'))
-        props.windowSize = v{i+1};
+    if (strcmp(v{i}, 'region'))
+        props.region = v{i+1};
     elseif (strcmp(v{i}, 'mask2'))
         props.mask2 = v{i+1};
     elseif (strcmp(v{i}, 'mask1'))
@@ -110,6 +105,6 @@ for i = 1:numel(v)
     elseif (strcmp(v{i}, 'image'))
         props.image = v{i+1};
     end
-    end7
+end
 
 end

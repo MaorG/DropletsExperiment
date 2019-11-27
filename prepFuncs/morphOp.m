@@ -9,6 +9,11 @@ props = parseParams(parameters);
 
 dX = data.properties.pixelSize;
 
+if sum(strcmp(fieldnames(data),(props.src))) == 0
+    res = [];
+    return;
+end
+
 s = data.(props.src)>0;
 
 disk = getDisk(floor(props.dist / dX));

@@ -150,7 +150,7 @@ resName, funcName, parameters
 'microbiotaSC', 'getSurfaceCoveragePrep', {'src' 'BFfilt'}
 'allSC', 'getSurfaceCoveragePrep', {'src' 'Allfilt'}
 
-'NN1', 'getNN', {'dynamic' 'GFP' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.05  'verbose' 0}
+#'NN1', 'getNN', {'dynamic' 'GFP' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.05  'verbose' 0}
 
 
 <entities>

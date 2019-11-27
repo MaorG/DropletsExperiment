@@ -66,5 +66,5 @@ resName, funcName, entities, parameters
 <output>
 stage, funcName, srcName, filter, hold, parameters
 #'data', 'showTwoPointCorr', 'pointCorr1', {}, {}, {}
-#'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
-'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+'analysis', 'displayPlot', 'bacteriaSizeDistribution', {'time' {1 11 21}}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}

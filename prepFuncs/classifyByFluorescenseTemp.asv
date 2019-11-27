@@ -1,0 +1,30 @@
+function mask = classifyByFluorescenseTemp(data, parameters)
+
+props = parseParams(parameters);
+
+bactChannel = data.bactChannel;
+otherChannel = data.bactChannel;
+
+
+end
+
+function props = parseParams(v)
+% default:
+props = struct(...
+    'originalMask','allMask',...
+    'RGBsrc','RGB',...
+    'verbose','0'...
+    );
+
+for i = 1:numel(v)
+    
+    if (strcmp(v{i}, 'src'))
+        props.src = v{i+1};
+    elseif (strcmp(v{i}, 'RGBsrc'))
+        props.RGBsrc = v{i+1};
+    elseif (strcmp(v{i}, 'verbose'))
+        props.verbose = v{i+1};
+    end
+end
+
+end

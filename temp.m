@@ -31,6 +31,15 @@ conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_aggr_size_dist.
 conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_control_figure_coverage_aggr.csv'
 conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_point_corr_microbiota.csv'
 
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_aggr_size_dist_01.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_old_exp_NN.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_classification.csv';
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_comparisons.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_aggr_size.csv';
+
+
 conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_windows.csv'
 em.configure(conf);
 

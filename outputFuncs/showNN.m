@@ -66,12 +66,16 @@ end
 
 function showNNCummulative(m, props)
 
+
 expDistances = m.expDistances;
 allRndDistances = m.allRndDistances;
 repeats = numel(allRndDistances);
 
 confidence = props.confidence;
 
+if (isempty(expDistances))
+    return;
+end
 
 hold on;
 for ri = 1:repeats
