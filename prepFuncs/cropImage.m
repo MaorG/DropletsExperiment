@@ -2,24 +2,32 @@ function [res] = cropImage(data, parameters)
 
 props = parseParams(parameters);
 
+
+
 I = data.(props.src);
 
-top = data.properties.(props.borders{1});
-bottom = data.properties.(props.borders{2});
-left = data.properties.(props.borders{3});
-right = data.properties.(props.borders{4});
+borders = data.properties.(props.borders);
+% top = data.properties.(props.borders{1});
+% bottom = data.properties.(props.borders{2});
+% left = data.properties.(props.borders{3});
+% right = data.properties.(props.borders{4});
+
+top = borders{1};
+bottom = borders{2};
+left = borders{3};
+right = borders{4};
 
 if ~isempty(bottom)
-    I = I(1:bottom,:);
+    I = I(1:bottom,:,:);
 end
 if ~isempty(top)
-    I = I(top:end,:);
+    I = I(top:end,:,:);
 end
 if ~isempty(right)
-    I = I(:,1:right);
+    I = I(:,1:right,:);
 end
 if ~isempty(left)
-    I = I(:,left:end);
+    I = I(:,left:end,:);
 end
 
 res = I;

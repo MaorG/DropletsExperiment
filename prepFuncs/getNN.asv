@@ -303,7 +303,7 @@ if props.verbose
         hold on;
         umStaticDistMap = staticDistMap*0.16;
         distances = 2:2:max(vimage(:));
-        distances = 2:2:10;
+        distances = 2:2:max(vimage(:));
         for di = 1:numel(distances)
             dist = distances(di);
             dist_contour = bwperim(umStaticDistMap <= dist);

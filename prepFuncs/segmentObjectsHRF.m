@@ -3,8 +3,16 @@ function seg = segmentObjectsHRF(data,parameters)
 props = parseParams(parameters);
 
 src = data.(props.src);
-thresh = [10000 7000 4000];
-ngh = [10, 5, 2];
+if isnumeric(props.HRFThresh)
+    thresh = props.HRFThresh;
+else 
+    thresh = data.properties.(props.HRFThresh);
+end
+if isnumeric(props.HRFngh)
+    ngh = props.HRFngh;
+else 
+    ngh = data.properties.(props.HRFngh);
+end
 
 
 [h,w] = size(src);
@@ -16,6 +24,7 @@ if (props.verbose)
     imshow(RGB)
     hold on;
     colors = hsv(numel(thresh));
+    title(data.properties.well)
 end 
 
 for i = 1:numel(thresh)
@@ -31,6 +40,16 @@ for i = 1:numel(thresh)
         set(hm, 'AlphaData', bwperim(M));
     end
 end
+
+M(:,1) = 0;
+M(:,end) = 0;
+M(1,:) = 0;
+M(end,:) = 0;
+
+M(:,1:5) = 0;
+M(:,(end-4):end) = 0;
+M(1:5,:) = 0;
+M((end-4):end,:) = 0;
 
 seg = M;
 
@@ -58,6 +77,9 @@ props = struct(...
     'verbose','0'...
     );
 
+props.HRFThresh = [10000 7000 4000];
+props.HRFngh = [10, 5, 2];
+
 for i = 1:numel(v)
     
     if (strcmp(v{i}, 'src'))
@@ -66,6 +88,10 @@ for i = 1:numel(v)
         props.RGBsrc = v{i+1};
     elseif (strcmp(v{i}, 'verbose'))
         props.verbose = v{i+1};
+    elseif (strcmp(v{i}, 'HRFThresh'))
+        props.HRFThresh = v{i+1};
+    elseif (strcmp(v{i}, 'HRFngh'))
+        props.HRFngh = v{i+1};
     end
 end
 

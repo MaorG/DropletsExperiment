@@ -17,7 +17,6 @@ end
 
 function showNNZScore(m, props)
 
-hold on;
 expDistances = m.expDistances;
 allRndDistances = m.allRndDistances;
 repeats = numel(allRndDistances);
@@ -32,26 +31,22 @@ for i = 1:numel(xv)
     x = xv(i);
     
 
-    [expDistancesSorted, order] = sort(expDistances);
-    ye = find(expDistancesSorted <= x, 1, 'last')
+
+    ye = find(expDistances <= x, 1, 'last')
     yrv = [];
     for ri = 1:repeats
         dist = allRndDistances{ri};
         [distancesSorted, order] = sort(dist);
         %y = (1:numel(distancesSorted))./ numel(distancesSorted);
-        yr = find(distancesSorted <= x, 1, 'last');
+        yr = find(distancesSorted <= x, 1, 'last')
         yrv(end+1) = yr;
     end
     [Z,mu,sigma] = zscore(yrv)
     X = 1:tot;
     Y = normpdf(X,mu,sigma);
     
-    ezscore = (ye-mu)/sigma;
+    plot(X,Y,'Color', colors(i,3)
     
-    plot(X,Y,'Color', colors(i,:));
-    scatter(yrv, max(Y(:))*0.1*(1+rand(numel(yrv),1)),[],colors(i,:));
-    plot([ye,ye],[0,max(Y(:))],'Color', colors(i,:), 'LineWidth', 2);
-    text(ye,max(Y(:)),num2str(ezscore),'Color', colors(i,:));
 end
     
 end

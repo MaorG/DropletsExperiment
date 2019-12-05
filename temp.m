@@ -40,7 +40,8 @@ conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_comparisons.csv'
 conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_aggr_size.csv';
 
 
-conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_windows.csv'
+conf = '\\QNAP01\LongTerm\Maor\microbiota v3\mv3_windows.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_classification_02.csv'
 em.configure(conf);
 
 em.doLoad();

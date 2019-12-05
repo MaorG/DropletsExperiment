@@ -1,5 +1,6 @@
 function exportNeighborsHistories(m, properties)
 if (isempty(m))
+    close gcf;
     return;
 end
 props = parseParams(properties);
@@ -39,9 +40,15 @@ for i = 1:numel(fns)
     end
     paramNames = [paramNames ' ' param]
 end
-    
+
+
+
 outName = [props.outName paramNames '.jpg']
-imwrite(canvas, outName);
+if (isa(canvas, 'uint16'))
+    imwrite(im2uint8(canvas), outName);
+else
+    imwrite(canvas, outName);
+end
 
 end
 

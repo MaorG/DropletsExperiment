@@ -5,47 +5,120 @@ name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
 
 <load>
 
-well,time,BF,GFP,RFP, RGB, bactChannel, otherChannel, bactThresh, otherThresh
-#'A1',  2, 'tif_sample\long\img_T1_A1_BF.tif', 'tif_sample\long\img_T1_A1_GFP.tif', 'tif_sample\long\img_T1_A1_RFP.tif', 'tif_sample\long\img_T1_A1_RGB.tif', 'RFP', 'GFP', 1500, 500  
-#'A1', 10, 'tif_sample\long\img_T2_A1_BF.tif', 'tif_sample\long\img_T2_A1_GFP.tif', 'tif_sample\long\img_T2_A1_RFP.tif', 'tif_sample\long\img_T2_A1_RGB.tif', 'RFP', 'GFP', 1500, 500 
- 'A1', 18, 'tif_sample\long\img_T3_A1_BF.tif', 'tif_sample\long\img_T3_A1_GFP.tif', 'tif_sample\long\img_T3_A1_RFP.tif', 'tif_sample\long\img_T3_A1_RGB.tif', 'RFP', 'GFP', 1500, 500 
-#'A6',  2, 'tif_sample\long\img_T1_A6_BF.tif', 'tif_sample\long\img_T1_A6_GFP.tif', 'tif_sample\long\img_T1_A6_RFP.tif', 'tif_sample\long\img_T1_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
-#'A6', 10, 'tif_sample\long\img_T2_A6_BF.tif', 'tif_sample\long\img_T2_A6_GFP.tif', 'tif_sample\long\img_T2_A6_RFP.tif', 'tif_sample\long\img_T2_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
- 'A6', 18, 'tif_sample\long\img_T3_A6_BF.tif', 'tif_sample\long\img_T3_A6_GFP.tif', 'tif_sample\long\img_T3_A6_RFP.tif', 'tif_sample\long\img_T3_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
-#'C1',  2, 'tif_sample\long\img_T1_C1_BF.tif', 'tif_sample\long\img_T1_C1_GFP.tif', 'tif_sample\long\img_T1_C1_RFP.tif', 'tif_sample\long\img_T1_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
-#'C1', 10, 'tif_sample\long\img_T2_C1_BF.tif', 'tif_sample\long\img_T2_C1_GFP.tif', 'tif_sample\long\img_T2_C1_RFP.tif', 'tif_sample\long\img_T2_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
- 'C1', 18, 'tif_sample\long\img_T3_C1_BF.tif', 'tif_sample\long\img_T3_C1_GFP.tif', 'tif_sample\long\img_T3_C1_RFP.tif', 'tif_sample\long\img_T3_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
-#'D1',  2, 'tif_sample\long\img_T1_D1_BF.tif', 'tif_sample\long\img_T1_D1_GFP.tif', 'tif_sample\long\img_T1_D1_RFP.tif', 'tif_sample\long\img_T1_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
-#'D1', 10, 'tif_sample\long\img_T2_D1_BF.tif', 'tif_sample\long\img_T2_D1_GFP.tif', 'tif_sample\long\img_T2_D1_RFP.tif', 'tif_sample\long\img_T2_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
- 'D1', 18, 'tif_sample\long\img_T3_D1_BF.tif', 'tif_sample\long\img_T3_D1_GFP.tif', 'tif_sample\long\img_T3_D1_RFP.tif', 'tif_sample\long\img_T3_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+well,time,BF,GFP,RFP, RGB, bactChannel, otherChannel, bactThresh, otherThresh, thresh, crop
+#'A1',  2, 'tif\long\img_T1_A1_BF.tif', 'tif\long\img_T1_A1_GFP.tif', 'tif\long\img_T1_A1_RFP.tif', 'tif\long\img_T1_A1_RGB.tif', 'RFP', 'GFP', 1500, 500  
+#'A1', 10, 'tif\long\img_T2_A1_BF.tif', 'tif\long\img_T2_A1_GFP.tif', 'tif\long\img_T2_A1_RFP.tif', 'tif\long\img_T2_A1_RGB.tif', 'RFP', 'GFP', 1500, 500 
+#'A1', 18, 'tif\long\img_T3_A1_BF.tif', 'tif\long\img_T3_A1_GFP.tif', 'tif\long\img_T3_A1_RFP.tif', 'tif\long\img_T3_A1_RGB.tif', 'RFP', 'GFP', 1500, 500 
+#'A6',  2, 'tif\long\img_T1_A6_BF.tif', 'tif\long\img_T1_A6_GFP.tif', 'tif\long\img_T1_A6_RFP.tif', 'tif\long\img_T1_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#'A6', 10, 'tif\long\img_T2_A6_BF.tif', 'tif\long\img_T2_A6_GFP.tif', 'tif\long\img_T2_A6_RFP.tif', 'tif\long\img_T2_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#'A6', 18, 'tif\long\img_T3_A6_BF.tif', 'tif\long\img_T3_A6_GFP.tif', 'tif\long\img_T3_A6_RFP.tif', 'tif\long\img_T3_A6_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#'C1',  2, 'tif\long\img_T1_C1_BF.tif', 'tif\long\img_T1_C1_GFP.tif', 'tif\long\img_T1_C1_RFP.tif', 'tif\long\img_T1_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
+#'C1', 10, 'tif\long\img_T2_C1_BF.tif', 'tif\long\img_T2_C1_GFP.tif', 'tif\long\img_T2_C1_RFP.tif', 'tif\long\img_T2_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
+#'C1', 18, 'tif\long\img_T3_C1_BF.tif', 'tif\long\img_T3_C1_GFP.tif', 'tif\long\img_T3_C1_RFP.tif', 'tif\long\img_T3_C1_RGB.tif', 'RFP', 'GFP', 2500, 1500 
+#'D1',  2, 'tif\long\img_T1_D1_BF.tif', 'tif\long\img_T1_D1_GFP.tif', 'tif\long\img_T1_D1_RFP.tif', 'tif\long\img_T1_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#'D1', 10, 'tif\long\img_T2_D1_BF.tif', 'tif\long\img_T2_D1_GFP.tif', 'tif\long\img_T2_D1_RFP.tif', 'tif\long\img_T2_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#'D1', 18, 'tif\long\img_T3_D1_BF.tif', 'tif\long\img_T3_D1_GFP.tif', 'tif\long\img_T3_D1_RFP.tif', 'tif\long\img_T3_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000 
+#
+#'A1', 18, 'tif\long\img_T18_A1_BF.tif', 'tif\long\img_T18_A1_GFP.tif', 'tif\long\img_T18_A1_RFP.tif', 'rgb\long\img_T18_A1_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+#'A2', 18, 'tif\long\img_T18_A2_BF.tif', 'tif\long\img_T18_A2_GFP.tif', 'tif\long\img_T18_A2_RFP.tif', 'rgb\long\img_T18_A2_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+#'A3', 18, 'tif\long\img_T18_A3_BF.tif', 'tif\long\img_T18_A3_GFP.tif', 'tif\long\img_T18_A3_RFP.tif', 'rgb\long\img_T18_A3_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+'A5', 18, 'tif\long\img_T18_A5_BF.tif', 'tif\long\img_T18_A5_GFP.tif', 'tif\long\img_T18_A5_RFP.tif', 'rgb\long\img_T18_A5_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+#'A6', 18, 'tif\long\img_T18_A6_BF.tif', 'tif\long\img_T18_A6_GFP.tif', 'tif\long\img_T18_A6_RFP.tif', 'rgb\long\img_T18_A6_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+#'B1', 18, 'tif\long\img_T18_B1_BF.tif', 'tif\long\img_T18_B1_GFP.tif', 'tif\long\img_T18_B1_RFP.tif', 'rgb\long\img_T18_B1_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+'C1', 18, 'tif\long\img_T18_C1_BF.tif', 'tif\long\img_T18_C1_GFP.tif', 'tif\long\img_T18_C1_RFP.tif', 'rgb\long\img_T18_C1_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C2', 18, 'tif\long\img_T18_C2_BF.tif', 'tif\long\img_T18_C2_GFP.tif', 'tif\long\img_T18_C2_RFP.tif', 'rgb\long\img_T18_C2_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C3', 18, 'tif\long\img_T18_C3_BF.tif', 'tif\long\img_T18_C3_GFP.tif', 'tif\long\img_T18_C3_RFP.tif', 'rgb\long\img_T18_C3_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C5', 18, 'tif\long\img_T18_C5_BF.tif', 'tif\long\img_T18_C5_GFP.tif', 'tif\long\img_T18_C5_RFP.tif', 'rgb\long\img_T18_C5_RGB.tif', 'GFP', 'RFP',  2000, 1800, [4000 4000 4000] , {1800 2500 1800 2500}
+#'C6', 18, 'tif\long\img_T18_C6_BF.tif', 'tif\long\img_T18_C6_GFP.tif', 'tif\long\img_T18_C6_RFP.tif', 'rgb\long\img_T18_C6_RGB.tif', 'GFP', 'RFP',  2000, 1800, [4000 4000 4000] , {1800 2500 1800 2500}
+'D1', 18, 'tif\long\img_T18_D1_BF.tif', 'tif\long\img_T18_D1_GFP.tif', 'tif\long\img_T18_D1_RFP.tif', 'rgb\long\img_T18_D1_RGB.tif', 'GFP', 'RFP',  2000, 1800, [5000 4000 3000], {1800 2500 1800 2500}
+#
+#'A1', 10, 'tif\long\img_T10_A1_BF.tif', 'tif\long\img_T10_A1_GFP.tif', 'tif\long\img_T10_A1_RFP.tif', 'rgb\long\img_T10_A1_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+#'A2', 10, 'tif\long\img_T10_A2_BF.tif', 'tif\long\img_T10_A2_GFP.tif', 'tif\long\img_T10_A2_RFP.tif', 'rgb\long\img_T10_A2_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+#'A3', 10, 'tif\long\img_T10_A3_BF.tif', 'tif\long\img_T10_A3_GFP.tif', 'tif\long\img_T10_A3_RFP.tif', 'rgb\long\img_T10_A3_RGB.tif', 'RFP', 'GFP',  1500, 500 , [5000 4000 3000], {1000 2500 1000 2500}
+#'A5', 10, 'tif\long\img_T10_A5_BF.tif', 'tif\long\img_T10_A5_GFP.tif', 'tif\long\img_T10_A5_RFP.tif', 'rgb\long\img_T10_A5_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+#'A6', 10, 'tif\long\img_T10_A6_BF.tif', 'tif\long\img_T10_A6_GFP.tif', 'tif\long\img_T10_A6_RFP.tif', 'rgb\long\img_T10_A6_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+#'B1', 10, 'tif\long\img_T10_B1_BF.tif', 'tif\long\img_T10_B1_GFP.tif', 'tif\long\img_T10_B1_RFP.tif', 'rgb\long\img_T10_B1_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000], {1000 2500 1000 2500}
+#'C1', 10, 'tif\long\img_T10_C1_BF.tif', 'tif\long\img_T10_C1_GFP.tif', 'tif\long\img_T10_C1_RFP.tif', 'rgb\long\img_T10_C1_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C2', 10, 'tif\long\img_T10_C2_BF.tif', 'tif\long\img_T10_C2_GFP.tif', 'tif\long\img_T10_C2_RFP.tif', 'rgb\long\img_T10_C2_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C3', 10, 'tif\long\img_T10_C3_BF.tif', 'tif\long\img_T10_C3_GFP.tif', 'tif\long\img_T10_C3_RFP.tif', 'rgb\long\img_T10_C3_RGB.tif', 'RFP', 'GFP',  2500, 1500, [5000 4000 3000], {1000 2500 1000 2500}
+#'C5', 10, 'tif\long\img_T10_C5_BF.tif', 'tif\long\img_T10_C5_GFP.tif', 'tif\long\img_T10_C5_RFP.tif', 'rgb\long\img_T10_C5_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000] , {1000 2500 1000 2500}
+#'C6', 10, 'tif\long\img_T10_C6_BF.tif', 'tif\long\img_T10_C6_GFP.tif', 'tif\long\img_T10_C6_RFP.tif', 'rgb\long\img_T10_C6_RGB.tif', 'GFP', 'RFP',  2000, 1000, [4000 4000 4000] , {1000 2500 1000 2500}
+#'D1', 10, 'tif\long\img_T10_D1_BF.tif', 'tif\long\img_T10_D1_GFP.tif', 'tif\long\img_T10_D1_RFP.tif', 'rgb\long\img_T10_D1_RGB.tif', 'GFP', 'RFP',  2000, 1000, [5000 4000 3000], {1000 2500 1000 2500}
+
+#'old', 05, '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T05_C3_BF.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T05_C3_GFP.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T05_C3_GFP.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T05_C3_BF.tiff', 'GFP', 'RFP',  2000, 65000, [5000 4000 3000], {1000 2500 1000 2500}
+#'old', 10, '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T10_C3_BF.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T10_C3_GFP.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T10_C3_GFP.tiff', '\\QNAP01\LongTerm\Shifra\2018\8.18\2.8.18\exported_tiffs\img_T10_C3_BF.tiff', 'GFP', 'RFP',  2000, 65000, [5000 4000 3000], {1000 2500 1000 2500}
+
+#'D1', 09, 'tif\long\img_T09_D1_BF.tif', 'tif\long\img_T09_D1_GFP.tif', 'tif\long\img_T09_D1_RFP.tif', 'rgb\long\img_T09_D1_RGB.tif', 'GFP', 'RFP',  2000, 0900, [5000 4000 3000], {1000 2500 0900 2500}
+#'D1', 10, 'tif\long\img_T10_D1_BF.tif', 'tif\long\img_T10_D1_GFP.tif', 'tif\long\img_T10_D1_RFP.tif', 'rgb\long\img_T10_D1_RGB.tif', 'GFP', 'RFP',  2000, 1000, [5000 4000 3000], {1000 2500 1000 2500}
+
+
+
+#well,time,!BF,!GFP,!RFP,!RGB,bactChannel,otherChannel,bactThresh,otherThresh,thresh,crop,BF,GFP,RFP,RGB
+#'A1',18,'tif\long\img_T18_A1_BF.tif','tif\long\img_T18_A1_GFP.tif','tif\long\img_T18_A1_RFP.tif','rgb\long\img_T18_A1_RGB.tif','RFP','GFP',1500,500, [5000   4000   3000], "[]",'segexp\cropped\BFc well A1 time 18 1 .tif','segexp\cropped\GFPc well A1 time 18 1 .tif','segexp\cropped\RFPc well A1 time 18 1 .tif','segexp\cropped\RGBc well A1 time 18 1 .tif'
+#'A2',18,'tif\long\img_T18_A2_BF.tif','tif\long\img_T18_A2_GFP.tif','tif\long\img_T18_A2_RFP.tif','rgb\long\img_T18_A2_RGB.tif','RFP','GFP',1500,500, [5000   4000   3000], "[]",'segexp\cropped\BFc well A2 time 18 1 .tif','segexp\cropped\GFPc well A2 time 18 1 .tif','segexp\cropped\RFPc well A2 time 18 1 .tif','segexp\cropped\RGBc well A2 time 18 1 .tif'
+#'A3',18,'tif\long\img_T18_A3_BF.tif','tif\long\img_T18_A3_GFP.tif','tif\long\img_T18_A3_RFP.tif','rgb\long\img_T18_A3_RGB.tif','RFP','GFP',1500,500, [5000   4000   3000], "[]",'segexp\cropped\BFc well A3 time 18 1 .tif','segexp\cropped\GFPc well A3 time 18 1 .tif','segexp\cropped\RFPc well A3 time 18 1 .tif','segexp\cropped\RGBc well A3 time 18 1 .tif'
+#'A5',18,'tif\long\img_T18_A5_BF.tif','tif\long\img_T18_A5_GFP.tif','tif\long\img_T18_A5_RFP.tif','rgb\long\img_T18_A5_RGB.tif','GFP','RFP',2000,1000,[4000    4000   4000],"[]",'segexp\cropped\BFc well A5 time 18 1 .tif','segexp\cropped\GFPc well A5 time 18 1 .tif','segexp\cropped\RFPc well A5 time 18 1 .tif','segexp\cropped\RGBc well A5 time 18 1 .tif'
+#'A6',18,'tif\long\img_T18_A6_BF.tif','tif\long\img_T18_A6_GFP.tif','tif\long\img_T18_A6_RFP.tif','rgb\long\img_T18_A6_RGB.tif','GFP','RFP',2000,1000,[4000    2000   1000],"[]",'segexp\cropped\BFc well A6 time 18 1 .tif','segexp\cropped\GFPc well A6 time 18 1 .tif','segexp\cropped\RFPc well A6 time 18 1 .tif','segexp\cropped\RGBc well A6 time 18 1 .tif'
+#'B1',18,'tif\long\img_T18_B1_BF.tif','tif\long\img_T18_B1_GFP.tif','tif\long\img_T18_B1_RFP.tif','rgb\long\img_T18_B1_RGB.tif','GFP','RFP',2000,1000,[4000    2000   1000],"[]",'segexp\cropped\BFc well B1 time 18 1 .tif','segexp\cropped\GFPc well B1 time 18 1 .tif','segexp\cropped\RFPc well B1 time 18 1 .tif','segexp\cropped\RGBc well B1 time 18 1 .tif'
+#'C1',18,'tif\long\img_T18_C1_BF.tif','tif\long\img_T18_C1_GFP.tif','tif\long\img_T18_C1_RFP.tif','rgb\long\img_T18_C1_RGB.tif','RFP','GFP',2500,1500,[5000    4000   3000],"[]",'segexp\cropped\BFc well C1 time 18 1 .tif','segexp\cropped\GFPc well C1 time 18 1 .tif','segexp\cropped\RFPc well C1 time 18 1 .tif','segexp\cropped\RGBc well C1 time 18 1 .tif'
+#'C2',18,'tif\long\img_T18_C2_BF.tif','tif\long\img_T18_C2_GFP.tif','tif\long\img_T18_C2_RFP.tif','rgb\long\img_T18_C2_RGB.tif','RFP','GFP',2500,1500,[5000    4000   3000],"[]",'segexp\cropped\BFc well C2 time 18 1 .tif','segexp\cropped\GFPc well C2 time 18 1 .tif','segexp\cropped\RFPc well C2 time 18 1 .tif','segexp\cropped\RGBc well C2 time 18 1 .tif'
+#'C3',18,'tif\long\img_T18_C3_BF.tif','tif\long\img_T18_C3_GFP.tif','tif\long\img_T18_C3_RFP.tif','rgb\long\img_T18_C3_RGB.tif','RFP','GFP',2500,1500,[5000    4000   3000],"[]",'segexp\cropped\BFc well C3 time 18 1 .tif','segexp\cropped\GFPc well C3 time 18 1 .tif','segexp\cropped\RFPc well C3 time 18 1 .tif','segexp\cropped\RGBc well C3 time 18 1 .tif'
+#'C5',18,'tif\long\img_T18_C5_BF.tif','tif\long\img_T18_C5_GFP.tif','tif\long\img_T18_C5_RFP.tif','rgb\long\img_T18_C5_RGB.tif','GFP','RFP',2000,1000,[4000  4000   4000],   "[]",'segexp\cropped\BFc well C5 time 18 1 .tif','segexp\cropped\GFPc well C5 time 18 1 .tif','segexp\cropped\RFPc well C5 time 18 1 .tif','segexp\cropped\RGBc well C5 time 18 1 .tif'
+#'C6',18,'tif\long\img_T18_C6_BF.tif','tif\long\img_T18_C6_GFP.tif','tif\long\img_T18_C6_RFP.tif','rgb\long\img_T18_C6_RGB.tif','GFP','RFP',2000,1000,[4000  4000   4000],   "[]",'segexp\cropped\BFc well C6 time 18 1 .tif','segexp\cropped\GFPc well C6 time 18 1 .tif','segexp\cropped\RFPc well C6 time 18 1 .tif','segexp\cropped\RGBc well C6 time 18 1 .tif'
+#'D1',18,'tif\long\img_T18_D1_BF.tif','tif\long\img_T18_D1_GFP.tif','tif\long\img_T18_D1_RFP.tif','rgb\long\img_T18_D1_RGB.tif','GFP','RFP',2000,1000,[4000  4000   4000],"[]",'segexp\cropped\BFc well D1 time 18 1 .tif','segexp\cropped\GFPc well D1 time 18 1 .tif','segexp\cropped\RFPc well D1 time 18 1 .tif','segexp\cropped\RGBc well D1 time 18 1 .tif'
+
+
+
 
 <prep>
 resName, funcName, parameters
-'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0}
+#'BFc' ,'cropImage', {'src' 'BF' 'borders' 'crop'}
+#'GFPc' ,'cropImage', {'src' 'GFP' 'borders' 'crop'}
+#'RFPc' ,'cropImage', {'src' 'RFP' 'borders' 'crop'}
+#'RGBc' ,'cropImage', {'src' 'RGB' 'borders' 'crop'}
+#'', 'ExportFields', {'Fields' {'@BFc' '@GFPc' '@RFPc' '@RGBc'} 'targetDir' 'segexp\cropped' 'updatedLoad' 'segexp\loadcropped.csv'} 
+
 #'', 'ExportFields', {'Fields' {'@allMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
 
-# check mode of morph op order
-# 1st
+
+##'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 1 'HRFThresh' 'thresh'}
+#
+#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'thresh'}
+#
+## check mode of morph op order
+## 1st
 'bactMask', 'classifyByFluorescenseTemp', {'originalMask' 'allMask' 'RGBsrc' 'RGB' 'verbose' 0}
 'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
 'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1.5}
+'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 1.5}
 'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'open' 'dist' 0.1}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'open' 'dist' 0.1}
+#
+##
+'microbiotaMask1', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
+#'NNvv', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 0 'confidence' 0.01  'verbose' 2 'verboseRGB' 'RGB'}
+
+#'NNs11', 'getNN', {'dynamic' 'bactMaskS' 'static' 'microbiotaMaskS' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+#'NNs10', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMaskS' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+#'NNs01', 'getNN', {'dynamic' 'bactMaskS' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+#'NNs00', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
 
 
 #'NN0', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+'NN1', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+#'NN100', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
 
-'microbiotaMask1', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
-#'NN1', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
-
-'microbiotaMask2', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 2}
+#'microbiotaMask2', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 2}
 #'NN2', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask2' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
 
-'microbiotaMask10', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 10}
+#'microbiotaMask10', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 10}
 #'NN10', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask10' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
 
-'NNvvv', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 0 'confidence' 0.01  'verbose' 1}
+
+#'histories','getRegionHistories', {'mask1' [] 'mask2' [] 'image' 'RGB' 'region' "struct('x',1,'y',1000,'w',60,'h',40,'dx',50,'dy',30','nx',3,'ny',2)"} 
+
 
 
 
@@ -77,11 +150,11 @@ resName, funcName, entities, parameters
 
 <output>
 stage, funcName, srcName, filter, hold, parameters
-'analysis', 'displayPlot', 'microbiotaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
-'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displayPlot', 'microbiotaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+#'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
 #'analysis', 'displayPlot', 'allCellsSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
-'analysis', 'displaySurfaceCoverage', 'microbiotaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
-'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+#'analysis', 'displaySurfaceCoverage', 'microbiotaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+#'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
 #'analysis', 'displaySurfaceCoverage', 'allCellsCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
 
 #'analysis', 'displaySurfaceCoverage', 'bacteria1Cover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
@@ -89,8 +162,14 @@ stage, funcName, srcName, filter, hold, parameters
 #'analysis', 'displayPlot', 'bacteriaSizeDistribution', {'time' {2 10 18}}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
 
 #'data', 'showNN', 'NN0' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
-'data', 'showNN', 'NN1' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
-'data', 'showNN', 'NN2' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
-'data', 'showNN', 'NN10' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN2' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN10' , {'time' {18}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
 
+'data', 'showNN', 'NN1' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+'data', 'showNN', 'NN1' , {}, {}, {'mode' 'zscore' 'zsample' 1:10 'confidence' 0.01}
+#'data', 'showNN', 'NN100' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN100' , {}, {}, {'mode' 'zscore' 'zsample' 1:10 'confidence' 0.01}
 
+#'data', 'showNN', 'NNs11' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NNs01' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NNs10' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
