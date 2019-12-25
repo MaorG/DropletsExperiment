@@ -33,20 +33,35 @@ confidence = props.confidence;
 densityBins = props.distBins;
 
 hold on;
+
 allRandHists = [];
 for ri = 1:repeats
     rndHist = histcounts(allRndDensities{ri} ,densityBins);
-    plot(densityBins(1:end-1), rndHist+1, 'r');
+
     allRandHists = cat(1,allRandHists ,rndHist);
+    if props.showAll
+        plot(densityBins(1:end-1), rndHist+1, 'r');
+    end
 end
+
 allRandHistsSorted = sort(allRandHists,1);
 margin = ceil(confidence*repeats);
 
-plot(densityBins(1:end-1),allRandHistsSorted (margin,:) +1 ,'k');
-plot(densityBins(1:end-1),allRandHistsSorted (end - margin + 1,:) + 1,'k');
-
+if props.showAll
+    plot(densityBins(1:end-1),allRandHistsSorted (margin,:) ,'k');
+    plot(densityBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
+else
+    meanARHS = mean(allRandHistsSorted,1);
+    diffARHStop = allRandHistsSorted (margin,:) - meanARHS;
+    diffARHSbot = meanARHS - allRandHistsSorted (end - margin + 1,:);
+    shadedErrorBar(densityBins(1:end-1), meanARHS, diffARHSbot, diffARHStop,'k') 
+end
 expHist = histcounts(expDensities ,densityBins);
-plot(densityBins(1:end-1), expHist + 1, 'b','LineWidth', 2);
+if props.showAll
+    plot(densityBins(1:end-1), expHist + 1, 'b','LineWidth', 2);
+else
+    plot(densityBins(1:end-1), expHist + 1, 'k','LineWidth', 2);
+end
 
 set(gca, 'xscale', 'log')
 set(gca, 'yscale', 'log')
@@ -111,8 +126,9 @@ function props = parseParams(v)
 props = struct(...
     'mode', 'bins',...
     'distBins',0:1:200, ...
-    'confidence', 0.05, ...
+    'confidence', 0.01, ...
     'cumulative', 0, ...
+    'showAll', 0, ...
     'radius', [] ...
     );
 
@@ -126,6 +142,8 @@ for i = 1:numel(v)
         props.confidence = v{i+1};
     elseif (strcmp(v{i}, 'cumulative'))
         props.cumulative = v{i+1};
+    elseif (strcmp(v{i}, 'showAll'))
+        props.showAll = v{i+1};
     elseif (strcmp(v{i}, 'radius'))
         props.radius = v{i+1};
     end

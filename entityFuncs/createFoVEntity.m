@@ -21,7 +21,7 @@ props = struct(...
 for i = 1:numel(v)
     
     if (strcmp(v{i}, 'FoV'))
-        props.seg = v{i+1};
+        props.FoV = v{i+1};
     end
 end
 

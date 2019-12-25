@@ -88,21 +88,51 @@ well, time, BF, GFP
 #'D1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 26 GFP.tiff'
 #'A1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 GFP.tiff'
 
-# paper plots
-'A1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 GFP.tiff'
-'C1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 GFP.tiff'
-'A6', 10,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 GFP.tiff'
+# paper plots!
+#'A1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 GFP.tiff'
+#'C1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 GFP.tiff'
+#'A6', 10,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 GFP.tiff'
 'D1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 10 GFP.tiff'
+#
+#'A1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 14 GFP.tiff'
+#'C1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 14 GFP.tiff'
+#'A6', 14,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 14 GFP.tiff'
+#'D1', 14,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 14 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 14 GFP.tiff'
+#
 #'A1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 GFP.tiff'
 #'C1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 GFP.tiff'
-#'A6', 24,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 24 GFP.tiff'
-#'D1', 24,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 24 GFP.tiff'
+#'A6', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 GFP.tiff'
+#'D1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 GFP.tiff'
 
+#'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff'
+# #'C1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 22 GFP.tiff'
+#'A6', 22,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 22 GFP.tiff'
+# #'D1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 22 GFP.tiff'
+
+#'A1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 GFP.tiff'
+# #'C1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 26 GFP.tiff'
+#'A6', 26,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 26 GFP.tiff'
+# #'D1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 26 GFP.tiff'
 
 
 # older data set
 #'old',  5, '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T05_C3_BF.tif', '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T05_C3_GFP.tif'
-'old', 10, '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T10_C3_BF.tiff', '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T10_C3_GFP.tif'
+#'old', 10, '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T10_C3_BF.tiff', '\\qnap01\LongTerm\Shifra\2018\8.18\2.8.18\classified_cropped\img_T10_C3_GFP.tif'
+
+
+# options for older dataset:
+#'A1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 10 GFP.tiff'
+#'C1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 10 GFP.tiff'
+#'A6', 10,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 10 GFP.tiff'
+#'D1', 10,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 10 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 10 GFP.tiff'
+#'A1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 18 GFP.tiff'
+#'C1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 GB_C1\classified BW 18 GFP.tiff'
+#'A6', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 pear_A6\classified BW 18 GFP.tiff'
+#'D1', 18,'\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 B728 GB_D1\classified BW 18 GFP.tiff'
+#
+#'A1', 22,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 22 GFP.tiff'
+#'A1', 26,'\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 BF.tiff','\separated_channels_segmented_images_project_screen 18.11.18 A506 pear_A1\classified BW 26 GFP.tiff'
+#
 
 <prep>
 resName, funcName, parameters
@@ -122,6 +152,15 @@ resName, funcName, parameters
 #'GFPfilt', 'booleanOp', {'src1' 'GFP1' 'src2' 'GFPfilt' 'op' 'difference'}
 #
 
+
+#'NN1', 'getNN', {'dynamic' 'GFP' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.05  'verbose' 0}
+'NN1', 'getNN', {'dynamic' 'GFP' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.05  'verbose' 0}
+'NN2', 'getNN', {'dynamic' 'GFP' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.05  'verbose' 0 'doSubtract' 1}
+
+
+
+
+
 #'xcorr1', 'getTwoPointCrossCorr', {'src1' 'GFP' 'src2' 'BFfilt' 'dr' 6}
 #'xcorr2', 'getTwoPointCrossCorr', {'src2' 'GFP' 'src1' 'BFfilt' 'dr' 6}
 
@@ -139,7 +178,6 @@ resName, funcName, parameters
 #'NN1fff', 'getNN', {'static' 'BF' 'dynamic' 'GFP1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 1 'confidence' 0.05  'verbose' 1}
 
 
-#'NN1', 'getNN', {'dynamic' 'GFPfilt' 'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 5 'confidence' 0.05  'verbose' 0}
 #'NN1r', 'getNN', {'dynamic' 'BFfilt' 'static' 'GFPfilt' 'mode' 'edge' 'staticOverlap' 1 'repeats' 5 'confidence' 0.05  'verbose' 0}
 
 
@@ -162,7 +200,7 @@ resName, funcName, parameters
 #'DC1r3', 'getDensityCorr', {'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' 3 'repeats' 10 'verbose' 0}
 
 #'DC0rrs', 'getDensityCorr', {'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 0 'radius' [2 4 8 16] 'repeats' 100 'verbose' 0}
-'DC1rrs', 'getDensityCorr', {'static' 'BFfilt' 'dynamic' 'GFPfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' [2 4 8 16] 'repeats' 100 'verbose' 0}
+#'DC1rrs', 'getDensityCorr', {'static' 'BFfilt' 'dynamic' 'GFPfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' [2 4 8 16] 'repeats' 100 'verbose' 0}
 #'DC0rrs_v', 'getDensityCorr', {'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 0 'radius' [2 4 8 16] 'repeats' 1 'verbose' 0}
 #'DC1rrs_v', 'getDensityCorr', {'static' 'BFfilt' 'mode' 'edge' 'staticOverlap' 1 'radius' [2 4 8 16] 'repeats' 1 'verbose' 0}
 
@@ -207,7 +245,12 @@ stage, funcName, srcName, filter, hold, parameters
 #'data', 'showNN', 'NN1' , {}, {}, {'mode' 'nndd' 'distBins' [0:200] 'cumulative' 1}
 
 
-#'data', 'showNN', 'NN1' , {}, {}, {'mode' 'notbins' 'distBins' [0:200] 'cumulative' 1}
+'data', 'showNN', 'NN1' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+'data', 'showNN', 'NN2' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+
+
+
+
 #'data', 'showNN', 'NN1r' , {}, {}, {'mode' 'notbins' 'distBins' [0:200] 'cumulative' 1}
 #'data', 'showNN', 'NN1w' , {}, {}, {'mode' 'notbins' 'distBins' [0:200] 'cumulative' 1}
 #'data', 'showNN', 'NN1f' , {}, {}, {'mode' 'notbins' 'distBins' [0:200] 'cumulative' 1}
@@ -223,12 +266,12 @@ stage, funcName, srcName, filter, hold, parameters
 
 #'data', 'showDensityCorr', 'DC0r3' , {}, {}, {'mode' 'bins' 'distBins' [0:0.03:1] 'cumulative' 0}
 #'data', 'showDensityCorr', 'DC1rrs' , {'well' 'A6'}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'cumulative' 0}
-'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 2 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 2 'cumulative' 1}
 #'data', 'showDensityCorr', 'DC0rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 2 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 4 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 4 'cumulative' 1}
 #'data', 'showDensityCorr', 'DC0rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 4 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 8 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 8 'cumulative' 1}
 #'data', 'showDensityCorr', 'DC0rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 8 'cumulative' 1}
-'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 16 'cumulative' 1}
+#'data', 'showDensityCorr', 'DC1rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 16 'cumulative' 1}
 #'data', 'showDensityCorr', 'DC0rrs' , {}, {}, {'mode' 'bins' 'distBins' "[0, 1./power(2,10:-1:0)]" 'radius' 16 'cumulative' 1}
 

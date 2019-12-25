@@ -17,13 +17,16 @@ for ei = numel(entities):-1:1
     
     if (isempty(entities(ei).(props.aggrArea)))
         res(ei).val = 0;
+        res(ei).FoVArea = 0;
     else
         res(ei).val = entities(ei).(props.aggrArea)*pA;
+        res(ei).FoVArea = numel(entities(ei).seg)*pA;
     end
 end
 
 %nd = createNDResultTable(res, 'val', fns);
 nd = NDResultTable(res, 'val', fns);
+nd2 = NDResultTable(res, 'FoVArea', fns);
 
 % TODO: use some func for this - simple concatanation...
 for ti = 1:numel(nd.T)
@@ -43,10 +46,12 @@ for ti = 1:numel(nd.T)
     if (~isempty(nd.T{ti}))
         areas = nd.T{ti}{1};
         
+        FovArea_mm2 = nd2.T{ti}{1}/1e6;
         
         totAreaInBins = [];
         [Ni,~,binidx] = histcounts(areas,bins);
         
+        Ni = Ni / FovArea_mm2;
         
         if (props.accumArea)
             for bi = 1:numel(Ni)

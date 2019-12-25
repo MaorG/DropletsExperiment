@@ -41,7 +41,17 @@ for ri = 1:repeats
     toc
     disp(['NN ' , num2str(ri)])
     tic 
-    rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+
+    
+    if props.doSubtract
+        se = strel('disk',4);
+        dynamicRandomized_dilated = imdilate(dynamicRandomized,se);
+        static_diffed = static & (~dynamicRandomized_dilated);
+        staticDistMap_diffed = bwdist(static_diffed);
+        rndDist = getNNdistances(staticDistMap_diffed, dynamicRandomized, props);
+    else
+        rndDist = getNNdistances(staticDistMap, dynamicRandomized, props);
+    end
     
     
     toc
@@ -233,8 +243,16 @@ if strcmp(props.mode, 'edge')
         if props.verbose
             vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
         end
-        temp = ones(
         distances = [distances, min(cellDistances)];
+    end
+elseif strcmp(props.mode, 'edgeW')
+    for pIdx = 1:numDynamic
+        cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+        end
+        temp = repmat(min(cellDistances),1,numel(cellDistances));
+        distances = [distances, temp];
     end
 else
     for pIdx = 1:numDynamic
@@ -261,19 +279,56 @@ if props.verbose
     G = rgbImage(:,:,2);
     B = rgbImage(:,:,3);
     
-    R(isnan(vimage)) = 0;
-    G(isnan(vimage)) = 0;
-    B(isnan(vimage)) = 0;
+    R(isnan(vimage)) = 1;
+    G(isnan(vimage)) = 1;
+    B(isnan(vimage)) = 1;
+    
+    R((staticDistMap == 0) & (~dynamic)) = 0.5;
+    G((staticDistMap == 0) & (~dynamic)) = 0.5;
+    B((staticDistMap == 0) & (~dynamic)) = 0.5;
 
-    R((staticDistMap == 0) & (~dynamic)) = 1;
-    G((staticDistMap == 0) & (~dynamic)) = 1;
-    B((staticDistMap == 0) & (~dynamic)) = 1;
+    contourEntities = bwperim(dynamic | (staticDistMap == 0) );
+    R(contourEntities) = 0;
+    G(contourEntities) = 0;
+    B(contourEntities) = 0;
     
     rgbImage = cat(3,R,G,B);
     imshow(rgbImage)
     colormap(cmap)
-    colorbar;
-    caxis([0,max(vimage(:))])
+    if max(vimage(:)) > 0
+        caxis([0,max(vimage(:))])
+    end
+
+    if props.verbose == 2
+        hold on;
+        umStaticDistMap = staticDistMap*0.16;
+        distances = 2:2:max(vimage(:));
+        distances = 2:2:max(vimage(:));
+        for di = 1:numel(distances)
+            dist = distances(di);
+            dist_contour = bwperim(umStaticDistMap <= dist);
+            dist_contour = imdilate
+            distIndex = 1 + ceil((100*(dist)) / max(vimage(:) ) );
+            RR = cmap(distIndex,1) * 0.85 + 0.15;
+            GG = cmap(distIndex,2) * 0.85 + 0.15;
+            BB = cmap(distIndex,3) * 0.85 + 0.15;
+            
+            colorI = ones(size(dist_contour,1),size(dist_contour,2),3);
+            colorI(:,:,1) = RR;
+            colorI(:,:,2) = GG;
+            colorI(:,:,3) = BB;
+            
+            hm = imshow(colorI);
+            set(hm, 'AlphaData', (dist_contour & ~(dynamic | (staticDistMap == 0))));
+            
+            
+            
+        end
+    end
+    
+    cb = colorbar;
+    ylabel(cb, {'Nearest Neighbor edge-to-edge distance';'between immigrant bacteria and microbiota [\mum]'}, 'FontSize',20)
+   
 end
 
 
@@ -314,7 +369,9 @@ props = struct(...
     'mode', 'edge', ...
     'staticOverlap', 0, ...
     'dynamicOverlap', 0, ...
-    'verbose', 0 ...
+    'doSubtract', 0, ...
+    'verbose', 0, ...
+    'verboseRGB', 'RGB' ...
     );
 
 for i = 1:numel(v)
@@ -335,8 +392,12 @@ for i = 1:numel(v)
         props.staticOverlap = v{i+1};
     elseif (strcmp(v{i}, 'dynamicOverlap'))
         props.dynamicOverlap = v{i+1};
+    elseif (strcmp(v{i}, 'doSubtract'))
+        props.doSubtract = v{i+1};
     elseif (strcmp(v{i}, 'verbose'))
         props.verbose = v{i+1};
+    elseif (strcmp(v{i}, 'verboseRGB'))
+        props.verboseRGB = v{i+1};
         
     end
 end

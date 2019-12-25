@@ -1,5 +1,61 @@
 function showKfunc(m,props)
 
+props = parseParams(props);
+
+expK = m.rk;
+rndK = m.rkrnds;
+bins = m.bins;
+confidence = props.confidence;
+
+pixelSize = 0.16;
+
+margin = ceil(props.confidence*size(rndK,1));
+
+sortedY = sort(rndK,1);
+
+meanY = median(sortedY,1);
+errYbot = meanY - sortedY(end - margin + 1,:);
+errYtop = sortedY(margin,:) - meanY;
+
+hold on;
+
+shadedErrorBar(bins(1:end)*pixelSize,meanY,[-errYbot;-errYtop],'lineprops','k--');
+
+plot(bins(1:end)*pixelSize, expK,'k-', 'LineWidth', 2);
+
+set(gca,'LineWidth',2)
+set(gca,'FontSize',14)
+box on
+xlabel('distance [\mum]')
+ylabel('k')
+
+xlim([0,100])
+
+end
+
+
+function props = parseParams(v)
+% default:
+props = struct(...
+    'confidence', 0.05, ...
+    'showAll', 0 ...
+);
+
+for i = 1:numel(v)
+    
+    if (strcmp(v{i}, 'confidence'))
+        props.confidence = v{i+1};
+    elseif (strcmp(v{i}, 'showAll'))
+        props.showAll = v{i+1};
+    end
+end
+
+end
+
+
+
+function idontknow
+%%% ? ? ? ? ? ? 
 totCounts = m.totCounts;
 totAreas = m.totAreas;
 rbins = m.rbins;

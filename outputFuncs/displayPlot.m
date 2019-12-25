@@ -1,8 +1,15 @@
 function displayPlot(m, properties)
 props = parseParams(properties);
 
-plot(m.X,m.Y,'-o')
-
+if isstruct(m)
+    if numel(m) == 1
+        plot(m.X,m.Y,'-o', 'LineWidth', 2)
+    else
+        plot(cat(1,m.X),cat(1,m.Y),'-o', 'LineWidth', 2)
+    end
+else
+    plot(m)
+end
 set(gca,'xscale',props.xscale);
 set(gca,'yscale',props.yscale);
 
@@ -12,6 +19,10 @@ end
 if(~isempty(props.ylim))
     ylim(props.ylim);
 end
+
+set(gca,'LineWidth',2)
+set(gca,'FontSize',14)
+box on
 
 end
 

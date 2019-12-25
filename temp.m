@@ -19,9 +19,29 @@ conf ='C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline
 
 
 
-conf = 'C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_old_exp_figure.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_old_exp.csv'
 
-conf = 'C:\school\papers\microbiota\analysis\microbiota_paper_config_for_pipeline_control_figure.csv'
+%conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_paper_config_for_pipeline_control.csv'
+
+conf = '\\QNAP01\LongTerm\Yana\29.10.19\survival101.csv'
+conf = '\\QNAP01\LongTerm\Maor\seg-exp\test_seg.csv';
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_control_figure_kfunc.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_aggr_size_dist.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_control_figure_coverage_aggr.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_point_corr_microbiota.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_exp_figure_aggr_size_dist_01.csv'
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_old_exp_NN.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_classification.csv';
+
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_comparisons.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_aggr_size.csv';
+
+
+conf = '\\QNAP01\LongTerm\Maor\microbiota v3\mv3_windows.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_classification_02.csv'
 em.configure(conf);
 
 em.doLoad();
