@@ -11,18 +11,30 @@ end
 %plot(m.expConn/sum(m.expConn),'b')
 plot(m.expConn,'b')
 
-return;
-
-if strcmp(props.mode, 'bins')
-    showNNBinning(m, props);
-elseif strcmp(props.mode, 'nndd')
-    showNNDD(m, props);
-else
-    showNNCummulative(m, props);
+% set(gca,'yscale','log');
+% set(gca,'xscale','log');
 
 end
-    % version 1: binning
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function showNNDD(m, props)
 hold on
