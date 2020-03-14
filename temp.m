@@ -42,6 +42,11 @@ conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_aggr_size.csv';
 
 conf = '\\QNAP01\LongTerm\Maor\microbiota v3\mv3_windows.csv'
 conf = 'D:\Maor\DropletsExperiment\scripts\microbiota_v3_classification_02.csv'
+% 
+% conf = 'D:\Maor\DropletsExperiment\scripts\interactions104surf.csv'
+% conf = 'D:\Maor\DropletsExperiment\scripts\interactions105 B728.csv'
+% conf = 'D:\Maor\DropletsExperiment\scripts\interactions B728 expConfig2.csv'
+conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_aggr_size_fig_5.csv'
 em.configure(conf);
 
 em.doLoad();

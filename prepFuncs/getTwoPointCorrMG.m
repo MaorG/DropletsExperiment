@@ -1,10 +1,11 @@
-function res = getTwoPointCorr(data,parameters)
+function res = getTwoPointCorrMG(data,parameters)
 
 props = parseParams(parameters);
 
 image = data.(props.src);
 dr = props.dr;
 
+margin = 200
 
 CC = bwconncomp(image);
 rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
@@ -19,10 +20,11 @@ repeats = props.repeats;
 % 
 % xr = randi(w,[size(centers,1),repeats]);
 % yr = randi(h,[size(centers,1),repeats]);
+
+figure
+
 CSRcorrfuns = []
 for i = 1:repeats
-    blksize = 1000;
-    verbose = 0;
     
     imageRandomized = getDynamicRandomized(zeros(size(image)), dynamicEntities, props);
     CC = bwconncomp(imageRandomized);
@@ -31,7 +33,7 @@ for i = 1:repeats
     xr = centers(:,1);
     yr = centers(:,2);
     
-    [ corrfun r rw] = twopointcorr( xr(:),yr(:),dr,blksize,verbose);
+    [ corrfun  ] = twopointcorrMG(w,h, xr,yr, dr, margin);
     
     corrfun = cat(2,corrfun,zeros(1,10000-size(corrfun,2)));
     CSRcorrfuns = cat(1,CSRcorrfuns, corrfun);
@@ -40,6 +42,8 @@ for i = 1:repeats
         randomExample = corrfun;
     end
     
+    plot(dr:dr:10000*dr,corrfun);
+    hold on;
     
 end
 CSRcorrfunsSorted = sort(CSRcorrfuns,1);
@@ -60,9 +64,14 @@ y = centersOrig(:,2);
 
 blksize = 1000;
 verbose = 0;
-[ corrfun r rw] = twopointcorr( x,y,dr,blksize,verbose)
 
+r = dr:dr:(w-dr);
+
+[ corrfun  ] = twopointcorrMG(w,h, x,y, dr, margin);
 % plot(r, corrfun);
+
+    plot(dr:dr:(w-dr),corrfun ,'k', 'LineWidth', 2);
+    xlim([0,100])
 
 res = struct;
 res.corr = corrfun;

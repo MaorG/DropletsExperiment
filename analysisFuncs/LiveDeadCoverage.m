@@ -39,7 +39,7 @@ function result = LiveDeadCoverage(entities, parameters)
         end
     end
     % HANDLING TIME SERIES
-    nd = nd.colateTable(nd, 'time');
+    nd = nd.colateTable(nd, 'timepoint');
     
     % TODO: use some func for this
     % uniting similar datas
@@ -95,7 +95,8 @@ function res = getLiveDeadCoverageAux(entityStruct, props)
 
 pA = (entityStruct.dataParameters.pixelSize)^2;
 
-map = entityStruct.data.(props.map);
+data = entityStruct.dataHandle;
+map = data.(props.map);
 totalArea = numel(map)*pA;
 liveArea = sum(map(:) == 1)*pA;
 deadArea = sum(map(:) == 2)*pA;
@@ -103,8 +104,8 @@ deadArea = sum(map(:) == 2)*pA;
 res.totalArea = totalArea;
 res.liveArea = liveArea;
 res.deadArea = deadArea;
-if isfield(entityStruct.dataParameters, 'time')
-    res.time = entityStruct.dataParameters.time; 
+if isfield(entityStruct.dataParameters, 'timepoint') || isfield(entityStruct.dataParameters, 'time')
+    res.time = entityStruct.dataParameters.timepoint; 
 else
     res.time = nan;
 end

@@ -1,0 +1,137 @@
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'microbiotaPaper', '\\QNAP01\LongTerm\Tomer\9.12.2019\', {'pixelSize' 0.16}, {'cond' 'bact' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+cond, time, well, repeat, bact, GFP, RFP, GFPth, RFPth
+
+
+
+'dyn', 11   , 'A1'  , 1 , 'b728', 'tif\wet02\img_T1_A1.fov1_GFP.tif', 'tif\wet02\img_T1_A1.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'A1'  , 2 , 'b728', 'tif\wet02\img_T1_A1.fov2_GFP.tif', 'tif\wet02\img_T1_A1.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'A1'  , 3 , 'b728', 'tif\wet02\img_T1_A1.fov3_GFP.tif', 'tif\wet02\img_T1_A1.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'A2'  , 1 , 'pant', 'tif\wet02\img_T1_A2.fov1_GFP.tif', 'tif\wet02\img_T1_A2.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'A2'  , 2 , 'pant', 'tif\wet02\img_T1_A2.fov2_GFP.tif', 'tif\wet02\img_T1_A2.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'A2'  , 3 , 'pant', 'tif\wet02\img_T1_A2.fov3_GFP.tif', 'tif\wet02\img_T1_A2.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'A3'  , 1 , 'coli', 'tif\wet02\img_T1_A3.fov1_GFP.tif', 'tif\wet02\img_T1_A3.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'A3'  , 2 , 'coli', 'tif\wet02\img_T1_A3.fov2_GFP.tif', 'tif\wet02\img_T1_A3.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'A3'  , 3 , 'coli', 'tif\wet02\img_T1_A3.fov3_GFP.tif', 'tif\wet02\img_T1_A3.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'A4'  , 1 , 'b728', 'tif\wet02\img_T1_A4.fov1_GFP.tif', 'tif\wet02\img_T1_A4.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'A4'  , 2 , 'b728', 'tif\wet02\img_T1_A4.fov2_GFP.tif', 'tif\wet02\img_T1_A4.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'A4'  , 3 , 'b728', 'tif\wet02\img_T1_A4.fov3_GFP.tif', 'tif\wet02\img_T1_A4.fov3_RFP.tif', 3000, 2000
+
+'sts', 11   , 'B1'  , 1 , 'b728', 'tif\wet02\img_T1_B1.fov1_GFP.tif', 'tif\wet02\img_T1_B1.fov1_RFP.tif', 3000, 2000
+'sts', 11   , 'B1'  , 2 , 'b728', 'tif\wet02\img_T1_B1.fov2_GFP.tif', 'tif\wet02\img_T1_B1.fov2_RFP.tif', 3000, 2000
+'sts', 11   , 'B2'  , 1 , 'pant', 'tif\wet02\img_T1_B2.fov1_GFP.tif', 'tif\wet02\img_T1_B2.fov1_RFP.tif', 3000, 2000
+'sts', 11   , 'B2'  , 2 , 'pant', 'tif\wet02\img_T1_B2.fov2_GFP.tif', 'tif\wet02\img_T1_B2.fov2_RFP.tif', 3000, 2000
+'sts', 11   , 'B3'  , 1 , 'coli', 'tif\wet02\img_T1_B3.fov1_GFP.tif', 'tif\wet02\img_T1_B3.fov1_RFP.tif', 3000, 2000
+'sts', 11   , 'B3'  , 2 , 'coli', 'tif\wet02\img_T1_B3.fov2_GFP.tif', 'tif\wet02\img_T1_B3.fov2_RFP.tif', 3000, 2000
+'sts', 11   , 'B4'  , 1 , 'b728', 'tif\wet02\img_T1_B4.fov1_GFP.tif', 'tif\wet02\img_T1_B4.fov1_RFP.tif', 3000, 2000
+'sts', 11   , 'B4'  , 2 , 'b728', 'tif\wet02\img_T1_B4.fov2_GFP.tif', 'tif\wet02\img_T1_B4.fov2_RFP.tif', 3000, 2000
+
+'dyn', 11   , 'C1'  , 1 , 'b728', 'tif\wet02\img_T1_C1.fov1_GFP.tif', 'tif\wet02\img_T1_C1.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'C1'  , 2 , 'b728', 'tif\wet02\img_T1_C1.fov2_GFP.tif', 'tif\wet02\img_T1_C1.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'C1'  , 3 , 'b728', 'tif\wet02\img_T1_C1.fov3_GFP.tif', 'tif\wet02\img_T1_C1.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'C2'  , 1 , 'pant', 'tif\wet02\img_T1_C2.fov1_GFP.tif', 'tif\wet02\img_T1_C2.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'C2'  , 2 , 'pant', 'tif\wet02\img_T1_C2.fov2_GFP.tif', 'tif\wet02\img_T1_C2.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'C2'  , 3 , 'pant', 'tif\wet02\img_T1_C2.fov3_GFP.tif', 'tif\wet02\img_T1_C2.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'C3'  , 1 , 'coli', 'tif\wet02\img_T1_C3.fov1_GFP.tif', 'tif\wet02\img_T1_C3.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'C3'  , 2 , 'coli', 'tif\wet02\img_T1_C3.fov2_GFP.tif', 'tif\wet02\img_T1_C3.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'C3'  , 3 , 'coli', 'tif\wet02\img_T1_C3.fov3_GFP.tif', 'tif\wet02\img_T1_C3.fov3_RFP.tif', 3000, 2000
+'dyn', 11   , 'C4'  , 1 , 'pant', 'tif\wet02\img_T1_C4.fov1_GFP.tif', 'tif\wet02\img_T1_C4.fov1_RFP.tif', 3000, 2000
+'dyn', 11   , 'C4'  , 2 , 'pant', 'tif\wet02\img_T1_C4.fov2_GFP.tif', 'tif\wet02\img_T1_C4.fov2_RFP.tif', 3000, 2000
+'dyn', 11   , 'C4'  , 3 , 'pant', 'tif\wet02\img_T1_C4.fov3_GFP.tif', 'tif\wet02\img_T1_C4.fov3_RFP.tif', 3000, 2000
+
+'dyn', 12   , 'A1'  , 1 , 'b728', 'tif\wet03\img_T1_A1.fov1_GFP.tif', 'tif\wet03\img_T1_A1.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'A1'  , 2 , 'b728', 'tif\wet03\img_T1_A1.fov2_GFP.tif', 'tif\wet03\img_T1_A1.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'A1'  , 3 , 'b728', 'tif\wet03\img_T1_A1.fov3_GFP.tif', 'tif\wet03\img_T1_A1.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'A2'  , 1 , 'pant', 'tif\wet03\img_T1_A2.fov1_GFP.tif', 'tif\wet03\img_T1_A2.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'A2'  , 2 , 'pant', 'tif\wet03\img_T1_A2.fov2_GFP.tif', 'tif\wet03\img_T1_A2.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'A2'  , 3 , 'pant', 'tif\wet03\img_T1_A2.fov3_GFP.tif', 'tif\wet03\img_T1_A2.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'A3'  , 1 , 'coli', 'tif\wet03\img_T1_A3.fov1_GFP.tif', 'tif\wet03\img_T1_A3.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'A3'  , 2 , 'coli', 'tif\wet03\img_T1_A3.fov2_GFP.tif', 'tif\wet03\img_T1_A3.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'A3'  , 3 , 'coli', 'tif\wet03\img_T1_A3.fov3_GFP.tif', 'tif\wet03\img_T1_A3.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'A4'  , 1 , 'b728', 'tif\wet03\img_T1_A4.fov1_GFP.tif', 'tif\wet03\img_T1_A4.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'A4'  , 2 , 'b728', 'tif\wet03\img_T1_A4.fov2_GFP.tif', 'tif\wet03\img_T1_A4.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'A4'  , 3 , 'b728', 'tif\wet03\img_T1_A4.fov3_GFP.tif', 'tif\wet03\img_T1_A4.fov3_RFP.tif', 3000, 2000
+
+'sts', 12   , 'B1'  , 1 , 'b728', 'tif\wet03\img_T1_B1.fov1_GFP.tif', 'tif\wet03\img_T1_B1.fov1_RFP.tif', 3000, 2000
+'sts', 12   , 'B1'  , 2 , 'b728', 'tif\wet03\img_T1_B1.fov2_GFP.tif', 'tif\wet03\img_T1_B1.fov2_RFP.tif', 3000, 2000
+'sts', 12   , 'B2'  , 1 , 'pant', 'tif\wet03\img_T1_B2.fov1_GFP.tif', 'tif\wet03\img_T1_B2.fov1_RFP.tif', 3000, 2000
+'sts', 12   , 'B2'  , 2 , 'pant', 'tif\wet03\img_T1_B2.fov2_GFP.tif', 'tif\wet03\img_T1_B2.fov2_RFP.tif', 3000, 2000
+'sts', 12   , 'B3'  , 1 , 'coli', 'tif\wet03\img_T1_B3.fov1_GFP.tif', 'tif\wet03\img_T1_B3.fov1_RFP.tif', 3000, 2000
+'sts', 12   , 'B3'  , 2 , 'coli', 'tif\wet03\img_T1_B3.fov2_GFP.tif', 'tif\wet03\img_T1_B3.fov2_RFP.tif', 3000, 2000
+'sts', 12   , 'B4'  , 1 , 'b728', 'tif\wet03\img_T1_B4.fov1_GFP.tif', 'tif\wet03\img_T1_B4.fov1_RFP.tif', 3000, 2000
+'sts', 12   , 'B4'  , 2 , 'b728', 'tif\wet03\img_T1_B4.fov2_GFP.tif', 'tif\wet03\img_T1_B4.fov2_RFP.tif', 3000, 2000
+
+'dyn', 12   , 'C1'  , 1 , 'b728', 'tif\wet03\img_T1_C1.fov1_GFP.tif', 'tif\wet03\img_T1_C1.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'C1'  , 2 , 'b728', 'tif\wet03\img_T1_C1.fov2_GFP.tif', 'tif\wet03\img_T1_C1.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'C1'  , 3 , 'b728', 'tif\wet03\img_T1_C1.fov3_GFP.tif', 'tif\wet03\img_T1_C1.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'C2'  , 1 , 'pant', 'tif\wet03\img_T1_C2.fov1_GFP.tif', 'tif\wet03\img_T1_C2.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'C2'  , 2 , 'pant', 'tif\wet03\img_T1_C2.fov2_GFP.tif', 'tif\wet03\img_T1_C2.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'C2'  , 3 , 'pant', 'tif\wet03\img_T1_C2.fov3_GFP.tif', 'tif\wet03\img_T1_C2.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'C3'  , 1 , 'coli', 'tif\wet03\img_T1_C3.fov1_GFP.tif', 'tif\wet03\img_T1_C3.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'C3'  , 2 , 'coli', 'tif\wet03\img_T1_C3.fov2_GFP.tif', 'tif\wet03\img_T1_C3.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'C3'  , 3 , 'coli', 'tif\wet03\img_T1_C3.fov3_GFP.tif', 'tif\wet03\img_T1_C3.fov3_RFP.tif', 3000, 2000
+'dyn', 12   , 'C4'  , 1 , 'pant', 'tif\wet03\img_T1_C4.fov1_GFP.tif', 'tif\wet03\img_T1_C4.fov1_RFP.tif', 3000, 2000
+'dyn', 12   , 'C4'  , 2 , 'pant', 'tif\wet03\img_T1_C4.fov2_GFP.tif', 'tif\wet03\img_T1_C4.fov2_RFP.tif', 3000, 2000
+'dyn', 12   , 'C4'  , 3 , 'pant', 'tif\wet03\img_T1_C4.fov3_GFP.tif', 'tif\wet03\img_T1_C4.fov3_RFP.tif', 3000, 2000
+
+'dyn', 13   , 'A1'  , 1 , 'b728', 'tif\wet03\img_T2_A1.fov1_GFP.tif', 'tif\wet03\img_T2_A1.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'A1'  , 2 , 'b728', 'tif\wet03\img_T2_A1.fov2_GFP.tif', 'tif\wet03\img_T2_A1.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'A1'  , 3 , 'b728', 'tif\wet03\img_T2_A1.fov3_GFP.tif', 'tif\wet03\img_T2_A1.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'A2'  , 1 , 'pant', 'tif\wet03\img_T2_A2.fov1_GFP.tif', 'tif\wet03\img_T2_A2.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'A2'  , 2 , 'pant', 'tif\wet03\img_T2_A2.fov2_GFP.tif', 'tif\wet03\img_T2_A2.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'A2'  , 3 , 'pant', 'tif\wet03\img_T2_A2.fov3_GFP.tif', 'tif\wet03\img_T2_A2.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'A3'  , 1 , 'coli', 'tif\wet03\img_T2_A3.fov1_GFP.tif', 'tif\wet03\img_T2_A3.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'A3'  , 2 , 'coli', 'tif\wet03\img_T2_A3.fov2_GFP.tif', 'tif\wet03\img_T2_A3.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'A3'  , 3 , 'coli', 'tif\wet03\img_T2_A3.fov3_GFP.tif', 'tif\wet03\img_T2_A3.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'A4'  , 1 , 'b728', 'tif\wet03\img_T2_A4.fov1_GFP.tif', 'tif\wet03\img_T2_A4.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'A4'  , 2 , 'b728', 'tif\wet03\img_T2_A4.fov2_GFP.tif', 'tif\wet03\img_T2_A4.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'A4'  , 3 , 'b728', 'tif\wet03\img_T2_A4.fov3_GFP.tif', 'tif\wet03\img_T2_A4.fov3_RFP.tif', 3000, 2000
+
+'sts', 13   , 'B1'  , 1 , 'b728', 'tif\wet03\img_T2_B1.fov1_GFP.tif', 'tif\wet03\img_T2_B1.fov1_RFP.tif', 3000, 2000
+'sts', 13   , 'B1'  , 2 , 'b728', 'tif\wet03\img_T2_B1.fov2_GFP.tif', 'tif\wet03\img_T2_B1.fov2_RFP.tif', 3000, 2000
+'sts', 13   , 'B2'  , 1 , 'pant', 'tif\wet03\img_T2_B2.fov1_GFP.tif', 'tif\wet03\img_T2_B2.fov1_RFP.tif', 3000, 2000
+'sts', 13   , 'B2'  , 2 , 'pant', 'tif\wet03\img_T2_B2.fov2_GFP.tif', 'tif\wet03\img_T2_B2.fov2_RFP.tif', 3000, 2000
+'sts', 13   , 'B3'  , 1 , 'coli', 'tif\wet03\img_T2_B3.fov1_GFP.tif', 'tif\wet03\img_T2_B3.fov1_RFP.tif', 3000, 2000
+'sts', 13   , 'B3'  , 2 , 'coli', 'tif\wet03\img_T2_B3.fov2_GFP.tif', 'tif\wet03\img_T2_B3.fov2_RFP.tif', 3000, 2000
+'sts', 13   , 'B4'  , 1 , 'b728', 'tif\wet03\img_T2_B4.fov1_GFP.tif', 'tif\wet03\img_T2_B4.fov1_RFP.tif', 3000, 2000
+'sts', 13   , 'B4'  , 2 , 'b728', 'tif\wet03\img_T2_B4.fov2_GFP.tif', 'tif\wet03\img_T2_B4.fov2_RFP.tif', 3000, 2000
+
+'dyn', 13   , 'C1'  , 1 , 'b728', 'tif\wet03\img_T2_C1.fov1_GFP.tif', 'tif\wet03\img_T2_C1.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'C1'  , 2 , 'b728', 'tif\wet03\img_T2_C1.fov2_GFP.tif', 'tif\wet03\img_T2_C1.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'C1'  , 3 , 'b728', 'tif\wet03\img_T2_C1.fov3_GFP.tif', 'tif\wet03\img_T2_C1.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'C2'  , 1 , 'pant', 'tif\wet03\img_T2_C2.fov1_GFP.tif', 'tif\wet03\img_T2_C2.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'C2'  , 2 , 'pant', 'tif\wet03\img_T2_C2.fov2_GFP.tif', 'tif\wet03\img_T2_C2.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'C2'  , 3 , 'pant', 'tif\wet03\img_T2_C2.fov3_GFP.tif', 'tif\wet03\img_T2_C2.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'C3'  , 1 , 'coli', 'tif\wet03\img_T2_C3.fov1_GFP.tif', 'tif\wet03\img_T2_C3.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'C3'  , 2 , 'coli', 'tif\wet03\img_T2_C3.fov2_GFP.tif', 'tif\wet03\img_T2_C3.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'C3'  , 3 , 'coli', 'tif\wet03\img_T2_C3.fov3_GFP.tif', 'tif\wet03\img_T2_C3.fov3_RFP.tif', 3000, 2000
+'dyn', 13   , 'C4'  , 1 , 'pant', 'tif\wet03\img_T2_C4.fov1_GFP.tif', 'tif\wet03\img_T2_C4.fov1_RFP.tif', 3000, 2000
+'dyn', 13   , 'C4'  , 2 , 'pant', 'tif\wet03\img_T2_C4.fov2_GFP.tif', 'tif\wet03\img_T2_C4.fov2_RFP.tif', 3000, 2000
+'dyn', 13   , 'C4'  , 3 , 'pant', 'tif\wet03\img_T2_C4.fov3_GFP.tif', 'tif\wet03\img_T2_C4.fov3_RFP.tif', 3000, 2000
+
+<prep>
+resName, funcName, parameters
+'bact1Mask', 'thresholdByValue', {'src' 'RFP' 'threshold' 'RFPth'}
+'bact2Mask', 'thresholdByValue', {'src' 'GFP' 'threshold' 'GFPth'}
+
+'', 'ExportFields', {'Fields' {'@bact1Mask' '@bact2Mask'} 'targetDir' 'seg\' 'updatedLoad' 'seg\loadseg02.csv'} 
+
+
+'bact1Mask', 'booleanOp', {'src1' 'bact1Mask' 'src2' 'bact2Mask' 'op' 'difference'}
+'LiveDeadMap', 'masks2Label', {'masks' {{'bact1Mask' 1} {'bact2Mask' 2}}}
+
+<entities>
+targetName, resName, funcName, parameters
+'ldmap', '', 'createFoVEntity', {'FoV' 'LiveDeadMap' }
+
+<analysis>
+resName, funcName, entities, parameters
+'ldCov', 'LiveDeadCoverage', 'ldmap', {'map' 'LiveDeadMap'}
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'ratio' 'xscale' 'linear' 'yscale' 'linear' 'ylim' [0 1]}
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'area' 'xscale' 'linear' 'yscale' 'linear' 'ylim' []}

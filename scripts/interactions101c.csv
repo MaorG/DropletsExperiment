@@ -1,0 +1,257 @@
+
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'microbiotaPaper', '\\QNAP01\LongTerm\Tomer\9.12.2019\', {'pixelSize' 0.16}, {'cond' 'bact' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+cond, time, well, repeat, bact, GFP, RFP, GFPth, RFPth
+'dyn', 15   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T1_A1.fov1_GFP.tif', 'tif\wet04\img_T1_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T2_A1.fov1_GFP.tif', 'tif\wet04\img_T2_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T3_A1.fov1_GFP.tif', 'tif\wet04\img_T3_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T4_A1.fov1_GFP.tif', 'tif\wet04\img_T4_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T5_A1.fov1_GFP.tif', 'tif\wet04\img_T5_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T6_A1.fov1_GFP.tif', 'tif\wet04\img_T6_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'A1'  , 1 , 'b728', 'tif\wet04\img_T7_A1.fov1_GFP.tif', 'tif\wet04\img_T7_A1.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T1_A1.fov2_GFP.tif', 'tif\wet04\img_T1_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T2_A1.fov2_GFP.tif', 'tif\wet04\img_T2_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T3_A1.fov2_GFP.tif', 'tif\wet04\img_T3_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T4_A1.fov2_GFP.tif', 'tif\wet04\img_T4_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T5_A1.fov2_GFP.tif', 'tif\wet04\img_T5_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T6_A1.fov2_GFP.tif', 'tif\wet04\img_T6_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'A1'  , 2 , 'b728', 'tif\wet04\img_T7_A1.fov2_GFP.tif', 'tif\wet04\img_T7_A1.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T1_A1.fov3_GFP.tif', 'tif\wet04\img_T1_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T2_A1.fov3_GFP.tif', 'tif\wet04\img_T2_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T3_A1.fov3_GFP.tif', 'tif\wet04\img_T3_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T4_A1.fov3_GFP.tif', 'tif\wet04\img_T4_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T5_A1.fov3_GFP.tif', 'tif\wet04\img_T5_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T6_A1.fov3_GFP.tif', 'tif\wet04\img_T6_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'A1'  , 3 , 'b728', 'tif\wet04\img_T7_A1.fov3_GFP.tif', 'tif\wet04\img_T7_A1.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T1_A2.fov1_GFP.tif', 'tif\wet04\img_T1_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T2_A2.fov1_GFP.tif', 'tif\wet04\img_T2_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T3_A2.fov1_GFP.tif', 'tif\wet04\img_T3_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T4_A2.fov1_GFP.tif', 'tif\wet04\img_T4_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T5_A2.fov1_GFP.tif', 'tif\wet04\img_T5_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T6_A2.fov1_GFP.tif', 'tif\wet04\img_T6_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'A2'  , 1 , 'pant', 'tif\wet04\img_T7_A2.fov1_GFP.tif', 'tif\wet04\img_T7_A2.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T1_A2.fov2_GFP.tif', 'tif\wet04\img_T1_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T2_A2.fov2_GFP.tif', 'tif\wet04\img_T2_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T3_A2.fov2_GFP.tif', 'tif\wet04\img_T3_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T4_A2.fov2_GFP.tif', 'tif\wet04\img_T4_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T5_A2.fov2_GFP.tif', 'tif\wet04\img_T5_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T6_A2.fov2_GFP.tif', 'tif\wet04\img_T6_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'A2'  , 2 , 'pant', 'tif\wet04\img_T7_A2.fov2_GFP.tif', 'tif\wet04\img_T7_A2.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T1_A2.fov3_GFP.tif', 'tif\wet04\img_T1_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T2_A2.fov3_GFP.tif', 'tif\wet04\img_T2_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T3_A2.fov3_GFP.tif', 'tif\wet04\img_T3_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T4_A2.fov3_GFP.tif', 'tif\wet04\img_T4_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T5_A2.fov3_GFP.tif', 'tif\wet04\img_T5_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T6_A2.fov3_GFP.tif', 'tif\wet04\img_T6_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'A2'  , 3 , 'pant', 'tif\wet04\img_T7_A2.fov3_GFP.tif', 'tif\wet04\img_T7_A2.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T1_A3.fov1_GFP.tif', 'tif\wet04\img_T1_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T2_A3.fov1_GFP.tif', 'tif\wet04\img_T2_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T3_A3.fov1_GFP.tif', 'tif\wet04\img_T3_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T4_A3.fov1_GFP.tif', 'tif\wet04\img_T4_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T5_A3.fov1_GFP.tif', 'tif\wet04\img_T5_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T6_A3.fov1_GFP.tif', 'tif\wet04\img_T6_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'A3'  , 1 , 'coli', 'tif\wet04\img_T7_A3.fov1_GFP.tif', 'tif\wet04\img_T7_A3.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T1_A3.fov2_GFP.tif', 'tif\wet04\img_T1_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T2_A3.fov2_GFP.tif', 'tif\wet04\img_T2_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T3_A3.fov2_GFP.tif', 'tif\wet04\img_T3_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T4_A3.fov2_GFP.tif', 'tif\wet04\img_T4_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T5_A3.fov2_GFP.tif', 'tif\wet04\img_T5_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T6_A3.fov2_GFP.tif', 'tif\wet04\img_T6_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'A3'  , 2 , 'coli', 'tif\wet04\img_T7_A3.fov2_GFP.tif', 'tif\wet04\img_T7_A3.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T1_A3.fov3_GFP.tif', 'tif\wet04\img_T1_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T2_A3.fov3_GFP.tif', 'tif\wet04\img_T2_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T3_A3.fov3_GFP.tif', 'tif\wet04\img_T3_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T4_A3.fov3_GFP.tif', 'tif\wet04\img_T4_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T5_A3.fov3_GFP.tif', 'tif\wet04\img_T5_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T6_A3.fov3_GFP.tif', 'tif\wet04\img_T6_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'A3'  , 3 , 'coli', 'tif\wet04\img_T7_A3.fov3_GFP.tif', 'tif\wet04\img_T7_A3.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T1_A4.fov1_GFP.tif', 'tif\wet04\img_T1_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T2_A4.fov1_GFP.tif', 'tif\wet04\img_T2_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T3_A4.fov1_GFP.tif', 'tif\wet04\img_T3_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T4_A4.fov1_GFP.tif', 'tif\wet04\img_T4_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T5_A4.fov1_GFP.tif', 'tif\wet04\img_T5_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T6_A4.fov1_GFP.tif', 'tif\wet04\img_T6_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'A4'  , 1 , 'b728', 'tif\wet04\img_T7_A4.fov1_GFP.tif', 'tif\wet04\img_T7_A4.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T1_A4.fov2_GFP.tif', 'tif\wet04\img_T1_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T2_A4.fov2_GFP.tif', 'tif\wet04\img_T2_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T3_A4.fov2_GFP.tif', 'tif\wet04\img_T3_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T4_A4.fov2_GFP.tif', 'tif\wet04\img_T4_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T5_A4.fov2_GFP.tif', 'tif\wet04\img_T5_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T6_A4.fov2_GFP.tif', 'tif\wet04\img_T6_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'A4'  , 2 , 'b728', 'tif\wet04\img_T7_A4.fov2_GFP.tif', 'tif\wet04\img_T7_A4.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T1_A4.fov3_GFP.tif', 'tif\wet04\img_T1_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T2_A4.fov3_GFP.tif', 'tif\wet04\img_T2_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T3_A4.fov3_GFP.tif', 'tif\wet04\img_T3_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T4_A4.fov3_GFP.tif', 'tif\wet04\img_T4_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T5_A4.fov3_GFP.tif', 'tif\wet04\img_T5_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T6_A4.fov3_GFP.tif', 'tif\wet04\img_T6_A4.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'A4'  , 3 , 'b728', 'tif\wet04\img_T7_A4.fov3_GFP.tif', 'tif\wet04\img_T7_A4.fov3_RFP.tif', 6000, 5000
+'sts', 15   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T1_B1.fov1_GFP.tif', 'tif\wet04\img_T1_B1.fov1_RFP.tif', 6000, 5000
+'sts', 16   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T2_B1.fov1_GFP.tif', 'tif\wet04\img_T2_B1.fov1_RFP.tif', 6000, 5000
+'sts', 17   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T3_B1.fov1_GFP.tif', 'tif\wet04\img_T3_B1.fov1_RFP.tif', 6000, 5000
+'sts', 18   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T4_B1.fov1_GFP.tif', 'tif\wet04\img_T4_B1.fov1_RFP.tif', 6000, 5000
+'sts', 19   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T5_B1.fov1_GFP.tif', 'tif\wet04\img_T5_B1.fov1_RFP.tif', 6000, 5000
+'sts', 20   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T6_B1.fov1_GFP.tif', 'tif\wet04\img_T6_B1.fov1_RFP.tif', 6000, 5000
+'sts', 21   , 'B1'  , 1 , 'b728', 'tif\wet04\img_T7_B1.fov1_GFP.tif', 'tif\wet04\img_T7_B1.fov1_RFP.tif', 6000, 5000
+'sts', 15   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T1_B1.fov2_GFP.tif', 'tif\wet04\img_T1_B1.fov2_RFP.tif', 6000, 5000
+'sts', 16   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T2_B1.fov2_GFP.tif', 'tif\wet04\img_T2_B1.fov2_RFP.tif', 6000, 5000
+'sts', 17   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T3_B1.fov2_GFP.tif', 'tif\wet04\img_T3_B1.fov2_RFP.tif', 6000, 5000
+'sts', 18   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T4_B1.fov2_GFP.tif', 'tif\wet04\img_T4_B1.fov2_RFP.tif', 6000, 5000
+'sts', 19   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T5_B1.fov2_GFP.tif', 'tif\wet04\img_T5_B1.fov2_RFP.tif', 6000, 5000
+'sts', 20   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T6_B1.fov2_GFP.tif', 'tif\wet04\img_T6_B1.fov2_RFP.tif', 6000, 5000
+'sts', 21   , 'B1'  , 2 , 'b728', 'tif\wet04\img_T7_B1.fov2_GFP.tif', 'tif\wet04\img_T7_B1.fov2_RFP.tif', 6000, 5000
+'sts', 15   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T1_B2.fov1_GFP.tif', 'tif\wet04\img_T1_B2.fov1_RFP.tif', 6000, 5000
+'sts', 16   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T2_B2.fov1_GFP.tif', 'tif\wet04\img_T2_B2.fov1_RFP.tif', 6000, 5000
+'sts', 17   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T3_B2.fov1_GFP.tif', 'tif\wet04\img_T3_B2.fov1_RFP.tif', 6000, 5000
+'sts', 18   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T4_B2.fov1_GFP.tif', 'tif\wet04\img_T4_B2.fov1_RFP.tif', 6000, 5000
+'sts', 19   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T5_B2.fov1_GFP.tif', 'tif\wet04\img_T5_B2.fov1_RFP.tif', 6000, 5000
+'sts', 20   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T6_B2.fov1_GFP.tif', 'tif\wet04\img_T6_B2.fov1_RFP.tif', 6000, 5000
+'sts', 21   , 'B2'  , 1 , 'pant', 'tif\wet04\img_T7_B2.fov1_GFP.tif', 'tif\wet04\img_T7_B2.fov1_RFP.tif', 6000, 5000
+'sts', 15   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T1_B2.fov2_GFP.tif', 'tif\wet04\img_T1_B2.fov2_RFP.tif', 6000, 5000
+'sts', 16   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T2_B2.fov2_GFP.tif', 'tif\wet04\img_T2_B2.fov2_RFP.tif', 6000, 5000
+'sts', 17   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T3_B2.fov2_GFP.tif', 'tif\wet04\img_T3_B2.fov2_RFP.tif', 6000, 5000
+'sts', 18   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T4_B2.fov2_GFP.tif', 'tif\wet04\img_T4_B2.fov2_RFP.tif', 6000, 5000
+'sts', 19   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T5_B2.fov2_GFP.tif', 'tif\wet04\img_T5_B2.fov2_RFP.tif', 6000, 5000
+'sts', 20   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T6_B2.fov2_GFP.tif', 'tif\wet04\img_T6_B2.fov2_RFP.tif', 6000, 5000
+'sts', 21   , 'B2'  , 2 , 'pant', 'tif\wet04\img_T7_B2.fov2_GFP.tif', 'tif\wet04\img_T7_B2.fov2_RFP.tif', 6000, 5000
+'sts', 15   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T1_B3.fov1_GFP.tif', 'tif\wet04\img_T1_B3.fov1_RFP.tif', 6000, 5000
+'sts', 16   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T2_B3.fov1_GFP.tif', 'tif\wet04\img_T2_B3.fov1_RFP.tif', 6000, 5000
+'sts', 17   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T3_B3.fov1_GFP.tif', 'tif\wet04\img_T3_B3.fov1_RFP.tif', 6000, 5000
+'sts', 18   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T4_B3.fov1_GFP.tif', 'tif\wet04\img_T4_B3.fov1_RFP.tif', 6000, 5000
+'sts', 19   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T5_B3.fov1_GFP.tif', 'tif\wet04\img_T5_B3.fov1_RFP.tif', 6000, 5000
+'sts', 20   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T6_B3.fov1_GFP.tif', 'tif\wet04\img_T6_B3.fov1_RFP.tif', 6000, 5000
+'sts', 21   , 'B3'  , 1 , 'coli', 'tif\wet04\img_T7_B3.fov1_GFP.tif', 'tif\wet04\img_T7_B3.fov1_RFP.tif', 6000, 5000
+'sts', 15   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T1_B3.fov2_GFP.tif', 'tif\wet04\img_T1_B3.fov2_RFP.tif', 6000, 5000
+'sts', 16   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T2_B3.fov2_GFP.tif', 'tif\wet04\img_T2_B3.fov2_RFP.tif', 6000, 5000
+'sts', 17   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T3_B3.fov2_GFP.tif', 'tif\wet04\img_T3_B3.fov2_RFP.tif', 6000, 5000
+'sts', 18   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T4_B3.fov2_GFP.tif', 'tif\wet04\img_T4_B3.fov2_RFP.tif', 6000, 5000
+'sts', 19   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T5_B3.fov2_GFP.tif', 'tif\wet04\img_T5_B3.fov2_RFP.tif', 6000, 5000
+'sts', 20   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T6_B3.fov2_GFP.tif', 'tif\wet04\img_T6_B3.fov2_RFP.tif', 6000, 5000
+'sts', 21   , 'B3'  , 2 , 'coli', 'tif\wet04\img_T7_B3.fov2_GFP.tif', 'tif\wet04\img_T7_B3.fov2_RFP.tif', 6000, 5000
+'sts', 15   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T1_B4.fov1_GFP.tif', 'tif\wet04\img_T1_B4.fov1_RFP.tif', 6000, 5000
+'sts', 16   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T2_B4.fov1_GFP.tif', 'tif\wet04\img_T2_B4.fov1_RFP.tif', 6000, 5000
+'sts', 17   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T3_B4.fov1_GFP.tif', 'tif\wet04\img_T3_B4.fov1_RFP.tif', 6000, 5000
+'sts', 18   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T4_B4.fov1_GFP.tif', 'tif\wet04\img_T4_B4.fov1_RFP.tif', 6000, 5000
+'sts', 19   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T5_B4.fov1_GFP.tif', 'tif\wet04\img_T5_B4.fov1_RFP.tif', 6000, 5000
+'sts', 20   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T6_B4.fov1_GFP.tif', 'tif\wet04\img_T6_B4.fov1_RFP.tif', 6000, 5000
+'sts', 21   , 'B4'  , 1 , 'b728', 'tif\wet04\img_T7_B4.fov1_GFP.tif', 'tif\wet04\img_T7_B4.fov1_RFP.tif', 6000, 5000
+'sts', 15   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T1_B4.fov2_GFP.tif', 'tif\wet04\img_T1_B4.fov2_RFP.tif', 6000, 5000
+'sts', 16   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T2_B4.fov2_GFP.tif', 'tif\wet04\img_T2_B4.fov2_RFP.tif', 6000, 5000
+'sts', 17   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T3_B4.fov2_GFP.tif', 'tif\wet04\img_T3_B4.fov2_RFP.tif', 6000, 5000
+'sts', 18   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T4_B4.fov2_GFP.tif', 'tif\wet04\img_T4_B4.fov2_RFP.tif', 6000, 5000
+'sts', 19   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T5_B4.fov2_GFP.tif', 'tif\wet04\img_T5_B4.fov2_RFP.tif', 6000, 5000
+'sts', 20   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T6_B4.fov2_GFP.tif', 'tif\wet04\img_T6_B4.fov2_RFP.tif', 6000, 5000
+'sts', 21   , 'B4'  , 2 , 'b728', 'tif\wet04\img_T7_B4.fov2_GFP.tif', 'tif\wet04\img_T7_B4.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T1_C1.fov1_GFP.tif', 'tif\wet04\img_T1_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T2_C1.fov1_GFP.tif', 'tif\wet04\img_T2_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T3_C1.fov1_GFP.tif', 'tif\wet04\img_T3_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T4_C1.fov1_GFP.tif', 'tif\wet04\img_T4_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T5_C1.fov1_GFP.tif', 'tif\wet04\img_T5_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T6_C1.fov1_GFP.tif', 'tif\wet04\img_T6_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'C1'  , 1 , 'b728', 'tif\wet04\img_T7_C1.fov1_GFP.tif', 'tif\wet04\img_T7_C1.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T1_C1.fov2_GFP.tif', 'tif\wet04\img_T1_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T2_C1.fov2_GFP.tif', 'tif\wet04\img_T2_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T3_C1.fov2_GFP.tif', 'tif\wet04\img_T3_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T4_C1.fov2_GFP.tif', 'tif\wet04\img_T4_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T5_C1.fov2_GFP.tif', 'tif\wet04\img_T5_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T6_C1.fov2_GFP.tif', 'tif\wet04\img_T6_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'C1'  , 2 , 'b728', 'tif\wet04\img_T7_C1.fov2_GFP.tif', 'tif\wet04\img_T7_C1.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T1_C1.fov3_GFP.tif', 'tif\wet04\img_T1_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T2_C1.fov3_GFP.tif', 'tif\wet04\img_T2_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T3_C1.fov3_GFP.tif', 'tif\wet04\img_T3_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T4_C1.fov3_GFP.tif', 'tif\wet04\img_T4_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T5_C1.fov3_GFP.tif', 'tif\wet04\img_T5_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T6_C1.fov3_GFP.tif', 'tif\wet04\img_T6_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'C1'  , 3 , 'b728', 'tif\wet04\img_T7_C1.fov3_GFP.tif', 'tif\wet04\img_T7_C1.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T1_C2.fov1_GFP.tif', 'tif\wet04\img_T1_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T2_C2.fov1_GFP.tif', 'tif\wet04\img_T2_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T3_C2.fov1_GFP.tif', 'tif\wet04\img_T3_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T4_C2.fov1_GFP.tif', 'tif\wet04\img_T4_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T5_C2.fov1_GFP.tif', 'tif\wet04\img_T5_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T6_C2.fov1_GFP.tif', 'tif\wet04\img_T6_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'C2'  , 1 , 'pant', 'tif\wet04\img_T7_C2.fov1_GFP.tif', 'tif\wet04\img_T7_C2.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T1_C2.fov2_GFP.tif', 'tif\wet04\img_T1_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T2_C2.fov2_GFP.tif', 'tif\wet04\img_T2_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T3_C2.fov2_GFP.tif', 'tif\wet04\img_T3_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T4_C2.fov2_GFP.tif', 'tif\wet04\img_T4_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T5_C2.fov2_GFP.tif', 'tif\wet04\img_T5_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T6_C2.fov2_GFP.tif', 'tif\wet04\img_T6_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'C2'  , 2 , 'pant', 'tif\wet04\img_T7_C2.fov2_GFP.tif', 'tif\wet04\img_T7_C2.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T1_C2.fov3_GFP.tif', 'tif\wet04\img_T1_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T2_C2.fov3_GFP.tif', 'tif\wet04\img_T2_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T3_C2.fov3_GFP.tif', 'tif\wet04\img_T3_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T4_C2.fov3_GFP.tif', 'tif\wet04\img_T4_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T5_C2.fov3_GFP.tif', 'tif\wet04\img_T5_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T6_C2.fov3_GFP.tif', 'tif\wet04\img_T6_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'C2'  , 3 , 'pant', 'tif\wet04\img_T7_C2.fov3_GFP.tif', 'tif\wet04\img_T7_C2.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T1_C3.fov1_GFP.tif', 'tif\wet04\img_T1_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T2_C3.fov1_GFP.tif', 'tif\wet04\img_T2_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T3_C3.fov1_GFP.tif', 'tif\wet04\img_T3_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T4_C3.fov1_GFP.tif', 'tif\wet04\img_T4_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T5_C3.fov1_GFP.tif', 'tif\wet04\img_T5_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T6_C3.fov1_GFP.tif', 'tif\wet04\img_T6_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'C3'  , 1 , 'coli', 'tif\wet04\img_T7_C3.fov1_GFP.tif', 'tif\wet04\img_T7_C3.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T1_C3.fov2_GFP.tif', 'tif\wet04\img_T1_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T2_C3.fov2_GFP.tif', 'tif\wet04\img_T2_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T3_C3.fov2_GFP.tif', 'tif\wet04\img_T3_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T4_C3.fov2_GFP.tif', 'tif\wet04\img_T4_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T5_C3.fov2_GFP.tif', 'tif\wet04\img_T5_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T6_C3.fov2_GFP.tif', 'tif\wet04\img_T6_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'C3'  , 2 , 'coli', 'tif\wet04\img_T7_C3.fov2_GFP.tif', 'tif\wet04\img_T7_C3.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T1_C3.fov3_GFP.tif', 'tif\wet04\img_T1_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T2_C3.fov3_GFP.tif', 'tif\wet04\img_T2_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T3_C3.fov3_GFP.tif', 'tif\wet04\img_T3_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T4_C3.fov3_GFP.tif', 'tif\wet04\img_T4_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T5_C3.fov3_GFP.tif', 'tif\wet04\img_T5_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T6_C3.fov3_GFP.tif', 'tif\wet04\img_T6_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'C3'  , 3 , 'coli', 'tif\wet04\img_T7_C3.fov3_GFP.tif', 'tif\wet04\img_T7_C3.fov3_RFP.tif', 6000, 5000
+'dyn', 15   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T1_C4.fov1_GFP.tif', 'tif\wet04\img_T1_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 16   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T2_C4.fov1_GFP.tif', 'tif\wet04\img_T2_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 17   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T3_C4.fov1_GFP.tif', 'tif\wet04\img_T3_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 18   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T4_C4.fov1_GFP.tif', 'tif\wet04\img_T4_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 19   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T5_C4.fov1_GFP.tif', 'tif\wet04\img_T5_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 20   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T6_C4.fov1_GFP.tif', 'tif\wet04\img_T6_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 21   , 'C4'  , 1 , 'pant', 'tif\wet04\img_T7_C4.fov1_GFP.tif', 'tif\wet04\img_T7_C4.fov1_RFP.tif', 6000, 5000
+'dyn', 15   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T1_C4.fov2_GFP.tif', 'tif\wet04\img_T1_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 16   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T2_C4.fov2_GFP.tif', 'tif\wet04\img_T2_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 17   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T3_C4.fov2_GFP.tif', 'tif\wet04\img_T3_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 18   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T4_C4.fov2_GFP.tif', 'tif\wet04\img_T4_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 19   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T5_C4.fov2_GFP.tif', 'tif\wet04\img_T5_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 20   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T6_C4.fov2_GFP.tif', 'tif\wet04\img_T6_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 21   , 'C4'  , 2 , 'pant', 'tif\wet04\img_T7_C4.fov2_GFP.tif', 'tif\wet04\img_T7_C4.fov2_RFP.tif', 6000, 5000
+'dyn', 15   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T1_C4.fov3_GFP.tif', 'tif\wet04\img_T1_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 16   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T2_C4.fov3_GFP.tif', 'tif\wet04\img_T2_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 17   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T3_C4.fov3_GFP.tif', 'tif\wet04\img_T3_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 18   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T4_C4.fov3_GFP.tif', 'tif\wet04\img_T4_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 19   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T5_C4.fov3_GFP.tif', 'tif\wet04\img_T5_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 20   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T6_C4.fov3_GFP.tif', 'tif\wet04\img_T6_C4.fov3_RFP.tif', 6000, 5000
+'dyn', 21   , 'C4'  , 3 , 'pant', 'tif\wet04\img_T7_C4.fov3_GFP.tif', 'tif\wet04\img_T7_C4.fov3_RFP.tif', 6000, 5000
+
+<prep>
+resName, funcName, parameters
+
+
+'bact1Mask', 'thresholdByValue', {'src' 'RFP' 'threshold' 'RFPth'}
+'bact2Mask', 'thresholdByValue', {'src' 'GFP' 'threshold' 'GFPth'}
+
+'', 'ExportFields', {'Fields' {'@bact1Mask' '@bact2Mask'} 'targetDir' 'seg\' 'updatedLoad' 'seg\loadseg04.csv'} 
+
+
+'bact1Mask', 'booleanOp', {'src1' 'bact1Mask' 'src2' 'bact2Mask' 'op' 'difference'}
+'LiveDeadMap', 'masks2Label', {'masks' {{'bact1Mask' 1} {'bact2Mask' 2}}}
+
+<entities>
+targetName, resName, funcName, parameters
+'ldmap', '', 'createFoVEntity', {'FoV' 'LiveDeadMap' }
+
+<analysis>
+resName, funcName, entities, parameters
+'ldCov', 'LiveDeadCoverage', 'ldmap', {'map' 'LiveDeadMap'}
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'ratio' 'xscale' 'linear' 'yscale' 'linear' 'ylim' [0 1]}
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'area' 'xscale' 'linear' 'yscale' 'linear' 'ylim' []}

@@ -1,11 +1,15 @@
 function displayPlot(m, properties)
 props = parseParams(properties);
 
+colorOrder = zeros(1,3);
+set(0, 'DefaultAxesColorOrder', colorOrder)
+set(0, 'DefaultAxesLineStyleOrder', {'-o', '-s', '-x'})
+
 if isstruct(m)
     if numel(m) == 1
-        plot(m.X,m.Y,'-o', 'LineWidth', 2)
+        plot(m.X,m.Y, 'LineWidth', 2, 'MarkerSize', 7, 'MarkerFaceColor', [1,1,1])
     else
-        plot(cat(1,m.X),cat(1,m.Y),'-o', 'LineWidth', 2)
+        plot(cat(1,m.X),cat(1,m.Y),'-o', 'LineWidth', 2, 'MarkerSize', 7)
     end
 else
     plot(m)

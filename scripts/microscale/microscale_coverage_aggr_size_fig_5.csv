@@ -1,0 +1,61 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
+ 'A4', 16, 'tif\long\img_T16_A4_BF.tif', 'tif\long\img_T16_A4_GFP.tif', 'tif\long\img_T16_A4_RFP.tif', 'tif\long\img_T16_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4', 22, 'tif\long\img_T22_A4_BF.tif', 'tif\long\img_T22_A4_GFP.tif', 'tif\long\img_T22_A4_RFP.tif', 'tif\long\img_T22_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4', 26, 'tif\long\img_T26_A4_BF.tif', 'tif\long\img_T26_A4_GFP.tif', 'tif\long\img_T26_A4_RFP.tif', 'tif\long\img_T26_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'B2', 16, 'tif\long\img_T16_B2_BF.tif', 'tif\long\img_T16_B2_GFP.tif', 'tif\long\img_T16_B2_RFP.tif', 'tif\long\img_T16_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2', 22, 'tif\long\img_T22_B2_BF.tif', 'tif\long\img_T22_B2_GFP.tif', 'tif\long\img_T22_B2_RFP.tif', 'tif\long\img_T22_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2', 26, 'tif\long\img_T26_B2_BF.tif', 'tif\long\img_T26_B2_GFP.tif', 'tif\long\img_T26_B2_RFP.tif', 'tif\long\img_T26_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'C4', 16, 'tif\long\img_T16_C4_BF.tif', 'tif\long\img_T16_C4_GFP.tif', 'tif\long\img_T16_C4_RFP.tif', 'tif\long\img_T16_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4', 22, 'tif\long\img_T22_C4_BF.tif', 'tif\long\img_T22_C4_GFP.tif', 'tif\long\img_T22_C4_RFP.tif', 'tif\long\img_T22_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4', 26, 'tif\long\img_T26_C4_BF.tif', 'tif\long\img_T26_C4_GFP.tif', 'tif\long\img_T26_C4_RFP.tif', 'tif\long\img_T26_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'D2', 16, 'tif\long\img_T16_D2_BF.tif', 'tif\long\img_T16_D2_GFP.tif', 'tif\long\img_T16_D2_RFP.tif', 'tif\long\img_T16_D2_RGB.tif', 'GFP', 'RFP', 2000, 1000 ,[6000 5000 2500] ,{3000 5940 3000 5940}
+ 'D2', 22, 'tif\long\img_T22_D2_BF.tif', 'tif\long\img_T22_D2_GFP.tif', 'tif\long\img_T22_D2_RFP.tif', 'tif\long\img_T22_D2_RGB.tif', 'GFP', 'RFP', 1000, 1000 ,[6000 5000 2500] ,{3000 5940 3000 5940}
+ 'D2', 26, 'tif\long\img_T26_D2_BF.tif', 'tif\long\img_T26_D2_GFP.tif', 'tif\long\img_T26_D2_RFP.tif', 'tif\long\img_T26_D2_RGB.tif', 'GFP', 'RFP', 2000, 1000 ,[6000 5000 2500] ,{3000 5940 3000 5940}
+
+<prep>
+resName, funcName, parameters
+#'BF', 'cropImage', {'src' 'BF' 'borders' 'cropRect'}
+#'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+#'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'HRFThresh1'}
+#'', 'ExportFields', {'Fields' {'@allMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
+# 
+#'bactMask', 'classifyByFluorescenseTemp', {'originalMask' 'allMask' 'RGBsrc' 'RGB' 'verbose' 0}
+#'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
+#'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+#
+#
+#'dd_50', 'getDensityDist', {'dynamic' 'bactMask' 'bins' 0:0.0001:1 'dynamicOverlap' 1 'staticOverlap' 1 'radius' [50] 'repeats' 100 'verbose' 0}
+#'rk', 'getRipleysK2', {'src' 'bactMask'}
+#'pc1', 'getTwoPointCorr', {'src' 'bactMask' 'dr' 12 'repeats' 100}
+'pc2', 'getTwoPointCorrMG', {'src' 'bactMask' 'dr' 24 'repeats' 5}
+
+<entities>
+targetName, resName, funcName, parameters
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'bactMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'bacteriaCover', 'getSurfaceCoverage', 'bacteria', {'colateBy' 'time'}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+#'data', 'showDensityDist', 'dd_50', {}, {}, {'confidence' 0.05  'radius' 50 'binMerge' 3}
+#'data', 'showDensityDist', 'dd_50', {}, {}, {'confidence' 0.05  'radius' 50 'binMerge' 10}
+#'data', 'showDensityDist', 'dd_50', {}, {}, {'confidence' 0.05  'radius' 25}
+#'data', 'showDensityDist', 'dd_50', {}, {}, {'confidence' 0.05  'radius' 50}
+
+#'data', 'showTwoPointCorr', 'pc1', {'time' {22}}, {}, {}
+'data', 'showTwoPointCorr', 'pc2', {}, {}, {}

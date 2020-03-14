@@ -414,6 +414,11 @@ classdef DataManager < handle
                 dstPath = props.targetDir;
             
                 fileNames = obj.doFileNameingAndExport(fieldName, dstPath);
+                for fni = numel(fileNames):-1:1
+                    if isempty(fileNames{fni})
+                       fileNames(fni) = [];
+                    end
+                end
                 allFileNames(ni,:) = fileNames(:);
             end
             
@@ -557,9 +562,11 @@ classdef DataManager < handle
                         
                     end
                 else
-                    uIDs = [uIDs, ndID.T{ti}{1}];
+                    %uIDs = [uIDs, ndID.T{ti}{1}];
+                    uIDs = [uIDs, 0];
                     fileNames = [fileNames, {[]}];
                 end
+                
                 
             end
             

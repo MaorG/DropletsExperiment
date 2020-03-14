@@ -104,7 +104,7 @@ classdef ExperimentManager < handle
         % todo: should this be a func of data manager?!
         function doLinking(obj)
             
-            parameters = obj.conf.parameterSpace;
+            parameters = obj.parameterSpace; % why PS in obj and in obj.conf
             
             linkName = obj.conf.link;
             linkNameIdx = find(strcmp(parameters, linkName));

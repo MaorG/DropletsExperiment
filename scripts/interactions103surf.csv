@@ -1,0 +1,39 @@
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'microbiotaPaper', '\\QNAP01\LongTerm\Tomer\9.12.2019\', {'pixelSize' 0.16}, {'cond' 'bact' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+cond, time, well, repeat, bact, GFP, RFP, GFPth, RFPth
+
+'dyn', 01   , 'A1'  , 1 , 'b728', 'tif\b728\img_T01_A1.fov1_GFP.tif', 'tif\b728\img_T01_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 06   , 'A1'  , 1 , 'b728', 'tif\b728\img_T06_A1.fov1_GFP.tif', 'tif\b728\img_T06_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 11   , 'A1'  , 1 , 'b728', 'tif\b728\img_T11_A1.fov1_GFP.tif', 'tif\b728\img_T11_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 16   , 'A1'  , 1 , 'b728', 'tif\b728\img_T16_A1.fov1_GFP.tif', 'tif\b728\img_T16_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 21   , 'A1'  , 1 , 'b728', 'tif\b728\img_T26_A1.fov1_GFP.tif', 'tif\b728\img_T26_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 26   , 'A1'  , 1 , 'b728', 'tif\b728\img_T26_A1.fov1_GFP.tif', 'tif\b728\img_T26_A1.fov1_RFP.tif', 1000, 1000
+'dyn', 31   , 'A1'  , 1 , 'b728', 'tif\b728\img_T31_A1.fov1_GFP.tif', 'tif\b728\img_T31_A1.fov1_RFP.tif', 1000, 1000
+
+
+<prep>
+resName, funcName, parameters
+'bacT01Mask', 'getOptimalSegmentationFromBitmap2', {'imageName' 'RFP' 'thresholds' [0.2:0.1:0.8] 'optimalPropNames' {'MinorAxisLength' 'MajorAxisLength'} 'optimalPropRanges' {[3 7] [12 50]}}
+'bact2Mask', 'getOptimalSegmentationFromBitmap2', {'imageName' 'GFP' 'thresholds' [0.2:0.1:0.8] 'optimalPropNames' {'MinorAxisLength' 'MajorAxisLength'} 'optimalPropRanges' {[3 7] [12 50]}}
+
+#'', 'ExportFields', {'Fields' {'@bacT01Mask' '@bact2Mask'} 'targetDir' 'segsample\' 'updatedLoad' 'seg\loadseg01.csv'} 
+
+
+'bacT01Mask', 'booleanOp', {'src1' 'bacT01Mask' 'src2' 'bact2Mask' 'op' 'difference'}
+'LiveDeadMap', 'masks2Label', {'masks' {{'bacT01Mask' 1} {'bact2Mask' 2}}}
+
+<entities>
+targetName, resName, funcName, parameters
+'ldmap', '', 'createFoVEntity', {'FoV' 'LiveDeadMap' }
+
+<analysis>
+resName, funcName, entities, parameters
+'ldCov', 'LiveDeadCoverage', 'ldmap', {'map' 'LiveDeadMap'}
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'ratio' 'xscale' 'linear' 'yscale' 'linear' 'ylim' [0 1]}
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'area' 'xscale' 'linear' 'yscale' 'linear' 'ylim' []}

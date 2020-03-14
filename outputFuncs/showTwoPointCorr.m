@@ -2,7 +2,7 @@ function showTwoPointCorr(m,props)
 
 pixelSize = 0.16;
 
-confidence = 0.01;
+confidence = 0.05;
 
 corrfun = m.corr;
 r = m.r

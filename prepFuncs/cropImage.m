@@ -12,22 +12,25 @@ borders = data.properties.(props.borders);
 % left = data.properties.(props.borders{3});
 % right = data.properties.(props.borders{4});
 
-top = borders{1};
-bottom = borders{2};
-left = borders{3};
-right = borders{4};
+if numel(borders) == 4
+    top = borders{1};
+    bottom = borders{2};
+    left = borders{3};
+    right = borders{4};
 
-if ~isempty(bottom)
-    I = I(1:bottom,:,:);
-end
-if ~isempty(top)
-    I = I(top:end,:,:);
-end
-if ~isempty(right)
-    I = I(:,1:right,:);
-end
-if ~isempty(left)
-    I = I(:,left:end,:);
+    if ~isempty(bottom)
+        I = I(1:bottom,:,:);
+    end
+    if ~isempty(top)
+        I = I(top:end,:,:);
+    end
+    if ~isempty(right)
+        I = I(:,1:right,:);
+    end
+    if ~isempty(left)
+        I = I(:,left:end,:);
+    end
+
 end
 
 res = I;

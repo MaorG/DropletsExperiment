@@ -265,13 +265,39 @@ else
     end
 end
 
+
+
+
+
+
+
+
+
+
+
 if props.verbose
     figure
-
+    
+    distances = [1 1.5 2 4 8];
     vimage = (vimage*0.16);
-    cmap = (hsv(200));
-    cmap = cmap(1:(end*0.75),:);
-    indimage = 1 + ceil((100*(vimage)) / max(vimage(:) ) );
+
+    
+    cmap = (hsv(numel(distances) + 2));
+    cmap = cmap(1:end-1,:);
+    
+    indimage = uint16(zeros(size(vimage)));
+    
+    paddedDistances = [0, distances, inf];
+    for i = 1:numel(paddedDistances)-1
+        indimage( (vimage>paddedDistances(i)) & (vimage<paddedDistances(i+1))) = i-1;
+    end
+%     indimage = uint16(floor (vimage / distances(1)));
+%     indimage(indimage>(numel(distances)+1)) = numel(distances)+1;
+    
+    
+    
+    
+    
     %cmap(1,:) = [0,0,0];
     rgbImage = ind2rgb(indimage, cmap);
     
@@ -279,39 +305,42 @@ if props.verbose
     G = rgbImage(:,:,2);
     B = rgbImage(:,:,3);
     
-    R(isnan(vimage)) = 1;
-    G(isnan(vimage)) = 1;
-    B(isnan(vimage)) = 1;
+    R(isnan(vimage)) = 0.1;
+    G(isnan(vimage)) = 0.1;
+    B(isnan(vimage)) = 0.1;
     
     R((staticDistMap == 0) & (~dynamic)) = 0.5;
     G((staticDistMap == 0) & (~dynamic)) = 0.5;
     B((staticDistMap == 0) & (~dynamic)) = 0.5;
 
     contourEntities = bwperim(dynamic | (staticDistMap == 0) );
-    R(contourEntities) = 0;
-    G(contourEntities) = 0;
-    B(contourEntities) = 0;
+    R(contourEntities) = 0.9;
+    G(contourEntities) = 0.9;
+    B(contourEntities) = 0.9;
     
     rgbImage = cat(3,R,G,B);
     imshow(rgbImage)
-    colormap(cmap)
-    if max(vimage(:)) > 0
-        caxis([0,max(vimage(:))])
-    end
+    colormap(cmap);
+    cbh = colorbar
+    caxis([0,numel(distances)+1])
+    cbh.Ticks  = [0:(numel(distances)+1)];
+    cbh.TickLabels = [num2cell([0,distances]');'\infty'];
+    cbh.FontSize = 14;
+    
 
     if props.verbose == 2
         hold on;
         umStaticDistMap = staticDistMap*0.16;
-        distances = 2:2:max(vimage(:));
-        distances = 2:2:10;
+
         for di = 1:numel(distances)
             dist = distances(di);
             dist_contour = bwperim(umStaticDistMap <= dist);
-            dist_contour = imdilate
-            distIndex = 1 + ceil((100*(dist)) / max(vimage(:) ) );
-            RR = cmap(distIndex,1) * 0.85 + 0.15;
-            GG = cmap(distIndex,2) * 0.85 + 0.15;
-            BB = cmap(distIndex,3) * 0.85 + 0.15;
+            dist_contour = imdilate(dist_contour, [1,1;1,1]);
+            distIndex = di;
+            factor = 0.6;
+            RR = cmap(distIndex,1) * factor + 0*(1-factor);
+            GG = cmap(distIndex,2) * factor + 0*(1-factor);
+            BB = cmap(distIndex,3) * factor + 0*(1-factor);
             
             colorI = ones(size(dist_contour,1),size(dist_contour,2),3);
             colorI(:,:,1) = RR;
@@ -326,10 +355,20 @@ if props.verbose
         end
     end
     
-    cb = colorbar;
-    ylabel(cb, {'Nearest Neighbor edge-to-edge distance';'between immigrant bacteria and microbiota [\mum]'}, 'FontSize',20)
+    
+    ylabel(cbh, {'Nearest Neighbor edge-to-edge distance';'between immigrant bacteria and microbiota [\mum]'}, 'FontSize',20)
    
 end
+
+
+
+
+
+
+
+
+
+
 
 
 end

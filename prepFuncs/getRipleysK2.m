@@ -8,7 +8,7 @@ imageSize = size(image);
 validPixels = ones(imageSize);
 imageArea = imageSize(1) * imageSize(2);
 
-repeats = 100;
+repeats = 10;
 
 
 if isfield(data, (props.removedMask)) && ~isempty(data.(props.removedMask))

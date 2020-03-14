@@ -1,0 +1,97 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+
+well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
+'A1', 10, 'tif\long\img_T10_A1_BF.tif', 'tif\long\img_T10_A1_GFP.tif', 'tif\long\img_T10_A1_RFP.tif', 'tif\long\img_T10_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
+'A1', 16, 'tif\long\img_T16_A1_BF.tif', 'tif\long\img_T16_A1_GFP.tif', 'tif\long\img_T16_A1_RFP.tif', 'tif\long\img_T16_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
+'A1', 22, 'tif\long\img_T22_A1_BF.tif', 'tif\long\img_T22_A1_GFP.tif', 'tif\long\img_T22_A1_RFP.tif', 'tif\long\img_T22_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
+'A6', 10, 'tif\long\img_T10_A6_BF.tif', 'tif\long\img_T10_A6_GFP.tif', 'tif\long\img_T10_A6_RFP.tif', 'tif\long\img_T10_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
+'A6', 16, 'tif\long\img_T16_A6_BF.tif', 'tif\long\img_T16_A6_GFP.tif', 'tif\long\img_T16_A6_RFP.tif', 'tif\long\img_T16_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,{}
+'A6', 22, 'tif\long\img_T22_A6_BF.tif', 'tif\long\img_T22_A6_GFP.tif', 'tif\long\img_T22_A6_RFP.tif', 'tif\long\img_T22_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
+'C1', 10, 'tif\long\img_T10_C1_BF.tif', 'tif\long\img_T10_C1_GFP.tif', 'tif\long\img_T10_C1_RFP.tif', 'tif\long\img_T10_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,[]
+'C1', 16, 'tif\long\img_T16_C1_BF.tif', 'tif\long\img_T16_C1_GFP.tif', 'tif\long\img_T16_C1_RFP.tif', 'tif\long\img_T16_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000]  ,{}
+'C1', 22, 'tif\long\img_T22_C1_BF.tif', 'tif\long\img_T22_C1_GFP.tif', 'tif\long\img_T22_C1_RFP.tif', 'tif\long\img_T22_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,{'a' 2000 4000 2000 4000}
+'D1', 10, 'tif\long\img_T10_D1_BF.tif', 'tif\long\img_T10_D1_GFP.tif', 'tif\long\img_T10_D1_RFP.tif', 'tif\long\img_T10_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
+'D1', 16, 'tif\long\img_T16_D1_BF.tif', 'tif\long\img_T16_D1_GFP.tif', 'tif\long\img_T16_D1_RFP.tif', 'tif\long\img_T16_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
+'D1', 22, 'tif\long\img_T22_D1_BF.tif', 'tif\long\img_T22_D1_GFP.tif', 'tif\long\img_T22_D1_RFP.tif', 'tif\long\img_T22_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
+ 
+<prep>
+resName, funcName, parameters
+#'BF',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+#'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+#'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 1 'HRFThresh' 'HRFThresh1'}
+##'', 'ExportFields', {'Fields' {'@allMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
+#
+## check mode of morph op order
+## 1st
+#'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
+#'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
+#'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+
+
+#'NN0', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
+#
+##'microbiotaMask1', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
+##'NN1', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
+#
+##'microbiotaMask2', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 2}
+##'NN2', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask2' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+#
+##'microbiotaMask10', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 10}
+##'NN10', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask10' 'mode' 'edge' 'staticOverlap' 1 'repeats' 10 'confidence' 0.01  'verbose' 0}
+
+#'NNvvv', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 0 'confidence' 0.01  'verbose' 2}
+
+#'pc1', 'getTwoPointCorr', {'src' 'bactMask' 'dr' 12 'repeats' 10}
+'pc2', 'getTwoPointCorr', {'src' 'bactMask' 'dr' 24 'repeats' 10}
+
+
+
+<entities>
+targetName, resName, funcName, parameters
+#'microbiota0', '', 'createEntitiesFromSeg', {'seg' 'microbiotaMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+#'microbiota0', 'area', 'resFromRegions', {'regionProp' 'Area'}
+#'microbiota1', '', 'createEntitiesFromSeg', {'seg' 'microbiotaMask1' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+#'microbiota1', 'area', 'resFromRegions', {'regionProp' 'Area'}
+#'microbiota2', '', 'createEntitiesFromSeg', {'seg' 'microbiotaMask2' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+#'microbiota2', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'bactMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+#'allCells', '', 'createEntitiesFromSeg', {'seg' 'Allfilt' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+#'allCells', 'area', 'resFromRegions', {'regionProp' 'Area'}
+#'bacteria1', '', 'createEntitiesFromSeg', {'seg' 'GFP1' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+#'bacteria1', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+#'microbiotaSizeDistribution0', 'aggrSizeDistribution', 'microbiota0', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+#'microbiotaSizeDistribution1', 'aggrSizeDistribution', 'microbiota1', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+#'microbiotaSizeDistribution2', 'aggrSizeDistribution', 'microbiota2', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+#'microbiotaCover', 'getSurfaceCoverage', 'microbiota0', {'colateBy' 'time'}
+#'bacteriaCover', 'getSurfaceCoverage', 'bacteria', {'colateBy' 'time'}
+#'allCellsCover', 'getSurfaceCoverage', 'allCells', {'colateBy' 'time'}
+
+#'bacteria1Cover', 'getSurfaceCoverage', 'bacteria1', {'colateBy' 'time'}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+#'data', 'showNN', 'NN1' , {'well' {'A6'}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN1' , {'time' {10 16 22 26}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN0' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN0' , {},{}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+'data', 'showNN', 'NN0' , {'time' {16}}, {'time'}, {'mode' 'notbins' 'cumulative' 1  'confidence' 0.01}
+
+#'data', 'showTwoPointCorr', 'pc1', {}, {}, {}
+#'data', 'showTwoPointCorr', 'pc2', {'well' {'D1'}}, {}, {}
+

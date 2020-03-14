@@ -1,0 +1,72 @@
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'intertif/bulk', '\\QNAP01\LongTerm\Tomer\9.12.2019\', {'pixelSize' 0.16}, {'cond' 'bact' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+cond, time, well, repeat, bact, GFP, RFP, GFPth, RFPth
+'bulk', 00   , 'A1'  , 1 , 'b728', 'tif/bulk\t0\img_44 AND 1_GFP.tif'  , 'tif/bulk\t0\img_44 AND 1_RFP.tif'  , 1000,  500
+#'bulk', 00   , 'A2'  , 1 , 'pant', 'tif/bulk\t0\img_44 AND  3_GFP.tif' , 'tif/bulk\t0\img_44 AND  3_RFP.tif' , 1000,  500
+#'bulk', 00   , 'A3'  , 1 , 'coli', 'tif/bulk\t0\img_44 AND 222_GFP.tif', 'tif/bulk\t0\img_44 AND 222_RFP.tif', 3000,  500
+
+'bulk', 10   , 'A1'  , 1 , 'b728', 'tif/bulk\t1\img_XY01_GFP.tif'      , 'tif/bulk\t1\img_XY01_RFP.tif'      , 1000,  450
+'bulk', 10   , 'A2'  , 1 , 'pant', 'tif/bulk\t1\img_XY02_GFP.tif'      , 'tif/bulk\t1\img_XY02_RFP.tif'      , 1000,  450
+'bulk', 10   , 'A3'  , 1 , 'coli', 'tif/bulk\t1\img_XY03_GFP.tif'      , 'tif/bulk\t1\img_XY03_RFP.tif'      , 1000,  450
+'bulk', 10   , 'A4'  , 1 , 'b728', 'tif/bulk\t1\img_XY04_GFP.tif'      , 'tif/bulk\t1\img_XY04_RFP.tif'      , 1000,  450
+#'bulk', 10   , 'B1'  , 1 , 'b728', 'tif/bulk\t1\img_XY05_GFP.tif'      , 'tif/bulk\t1\img_XY05_RFP.tif'      , 1000,  450
+#'bulk', 10   , 'B2'  , 1 , 'pant', 'tif/bulk\t1\img_XY06_GFP.tif'      , 'tif/bulk\t1\img_XY06_RFP.tif'      , 1000,  450
+#'bulk', 10   , 'B3'  , 1 , 'coli', 'tif/bulk\t1\img_XY07_GFP.tif'      , 'tif/bulk\t1\img_XY07_RFP.tif'      ,99000,99000
+#'bulk', 10   , 'B4'  , 1 , 'b728', 'tif/bulk\t1\img_XY08_GFP.tif'      , 'tif/bulk\t1\img_XY08_RFP.tif'      , 1000,  450
+'bulk', 10   , 'C1'  , 1 , 'b728', 'tif/bulk\t1\img_XY09_GFP.tif'      , 'tif/bulk\t1\img_XY09_RFP.tif'      , 1000,  450
+'bulk', 10   , 'C2'  , 1 , 'pant', 'tif/bulk\t1\img_XY10_GFP.tif'      , 'tif/bulk\t1\img_XY10_RFP.tif'      , 1000,  450
+'bulk', 10   , 'C3'  , 1 , 'coli', 'tif/bulk\t1\img_XY11_GFP.tif'      , 'tif/bulk\t1\img_XY11_RFP.tif'      , 1000,  450
+'bulk', 10   , 'C4'  , 1 , 'pant', 'tif/bulk\t1\img_XY12_GFP.tif'      , 'tif/bulk\t1\img_XY12_RFP.tif'      , 1000,  450
+
+'bulk', 23   , 'A1'  , 1 , 'b728', 'tif/bulk\t2\img_a1_GFP.tif'        , 'tif/bulk\t2\img_a1_RFP.tif'        , 2000, 1000
+'bulk', 23   , 'A2'  , 1 , 'pant', 'tif/bulk\t2\img_a2_GFP.tif'        , 'tif/bulk\t2\img_a2_RFP.tif'        , 2000, 1000
+'bulk', 23   , 'A3'  , 1 , 'coli', 'tif/bulk\t2\img_a3_GFP.tif'        , 'tif/bulk\t2\img_a3_RFP.tif'        , 2000, 1000
+'bulk', 23   , 'A4'  , 1 , 'b728', 'tif/bulk\t2\img_a4_GFP.tif'        , 'tif/bulk\t2\img_a4_RFP.tif'        , 2000, 1000
+#'bulk', 23   , 'B1'  , 1 , 'b728', 'tif/bulk\t2\img_b1_GFP.tif'        , 'tif/bulk\t2\img_b1_RFP.tif'        , 2000, 1000
+#'bulk', 23   , 'B2'  , 1 , 'pant', 'tif/bulk\t2\img_b2_GFP.tif'        , 'tif/bulk\t2\img_b2_RFP.tif'        , 3000, 3000
+#'bulk', 23   , 'B3'  , 1 , 'coli', 'tif/bulk\t2\img_b3_GFP.tif'        , 'tif/bulk\t2\img_b3_RFP.tif'        , 3000, 3000
+#'bulk', 23   , 'B4'  , 1 , 'b728', 'tif/bulk\t2\img_b4_GFP.tif'        , 'tif/bulk\t2\img_b4_RFP.tif'        , 3000, 3000
+'bulk', 23   , 'C1'  , 1 , 'b728', 'tif/bulk\t2\img_c1_GFP.tif'        , 'tif/bulk\t2\img_c1_RFP.tif'        , 3000, 3000
+'bulk', 23   , 'C2'  , 1 , 'pant', 'tif/bulk\t2\img_c2_GFP.tif'        , 'tif/bulk\t2\img_c2_RFP.tif'        , 3000, 3000
+'bulk', 23   , 'C3'  , 1 , 'coli', 'tif/bulk\t2\img_c3_GFP.tif'        , 'tif/bulk\t2\img_c3_RFP.tif'        , 3000, 3000
+'bulk', 23   , 'C4'  , 1 , 'pant', 'tif/bulk\t2\img_c4_GFP.tif'        , 'tif/bulk\t2\img_c4_RFP.tif'        , 3000, 2000
+
+'bulk', 27   , 'A1'  , 1 , 'b728', 'tif/bulk\t3\img_a1_GFP.tif'        , 'tif/bulk\t3\img_a1_RFP.tif'        , 3000, 2000
+'bulk', 27   , 'A2'  , 1 , 'pant', 'tif/bulk\t3\img_a2_GFP.tif'        , 'tif/bulk\t3\img_a2_RFP.tif'        , 2000, 1000
+'bulk', 27   , 'A3'  , 1 , 'coli', 'tif/bulk\t3\img_a3_GFP.tif'        , 'tif/bulk\t3\img_a3_RFP.tif'        , 3000, 2000
+#'bulk', 27   , 'A4'  , 1 , 'b728', 'tif/bulk\t3\img_a4_GFP.tif'        , 'tif/bulk\t3\img_a4_RFP.tif'        , 2000, 1000
+#'bulk', 27   , 'B1'  , 1 , 'b728', 'tif/bulk\t3\img_b1_GFP.tif'        , 'tif/bulk\t3\img_b1_RFP.tif'        , 2000, 1000
+#'bulk', 27   , 'B2'  , 1 , 'pant', 'tif/bulk\t3\img_b2_GFP.tif'        , 'tif/bulk\t3\img_b2_RFP.tif'        ,10000, 5000
+#'bulk', 27   , 'B3'  , 1 , 'coli', 'tif/bulk\t3\img_b3_GFP.tif'        , 'tif/bulk\t3\img_b3_RFP.tif'        , 5000, 4000
+#'bulk', 27   , 'B4'  , 1 , 'b728', 'tif/bulk\t3\img_b4_GFP.tif'        , 'tif/bulk\t3\img_b4_RFP.tif'        , 3000, 3000
+'bulk', 27   , 'C1'  , 1 , 'b728', 'tif/bulk\t3\img_c1_GFP.tif'        , 'tif/bulk\t3\img_c1_RFP.tif'        , 3000, 3000
+'bulk', 27   , 'C2'  , 1 , 'pant', 'tif/bulk\t3\img_c2_GFP.tif'        , 'tif/bulk\t3\img_c2_RFP.tif'        , 3000, 3000
+'bulk', 27   , 'C3'  , 1 , 'coli', 'tif/bulk\t3\img_c3_GFP.tif'        , 'tif/bulk\t3\img_c3_RFP.tif'        , 3000, 3000
+'bulk', 27   , 'C4'  , 1 , 'pant', 'tif/bulk\t3\img_c4_GFP.tif'        , 'tif/bulk\t3\img_c4_RFP.tif'        , 3000, 2000
+
+<prep>
+resName, funcName, parameters
+'bact1Mask', 'thresholdByValue', {'src' 'RFP' 'threshold' 'RFPth'}
+'bact2Mask', 'thresholdByValue', {'src' 'GFP' 'threshold' 'GFPth'}
+
+'', 'ExportFields', {'Fields' {'@bact1Mask' '@bact2Mask'} 'targetDir' 'seg\bulk' 'updatedLoad' 'seg\bulk\loadseg01.csv'} 
+
+
+'bact1Mask', 'booleanOp', {'src1' 'bact1Mask' 'src2' 'bact2Mask' 'op' 'difference'}
+'LiveDeadMap', 'masks2Label', {'masks' {{'bact1Mask' 1} {'bact2Mask' 2}}}
+
+<entities>
+targetName, resName, funcName, parameters
+'ldmap', '', 'createFoVEntity', {'FoV' 'LiveDeadMap' }
+
+<analysis>
+resName, funcName, entities, parameters
+'ldCov', 'LiveDeadCoverage', 'ldmap', {'map' 'LiveDeadMap'}
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'ratio' 'xscale' 'linear' 'yscale' 'linear' 'ylim' [0 1]}
+'analysis', 'showLiveDeadCoverage', 'ldCov', {}, {}, {'mode' 'area' 'xscale' 'linear' 'yscale' 'log' 'ylim' [1e-6 1]}

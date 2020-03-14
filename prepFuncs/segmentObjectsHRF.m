@@ -19,9 +19,9 @@ end
 M = ones(size(src));
 I = src;
 if (props.verbose)
-    RGB = data.(props.RGBsrc);
+    tt = data.(props.src);
     figure
-    imshow(RGB)
+    imshow(tt)
     hold on;
     colors = hsv(numel(thresh));
     title(data.properties.well)

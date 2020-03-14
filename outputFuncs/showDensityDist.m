@@ -62,10 +62,12 @@ else
     plot(bins(1:end-1), Nexp,'k-', 'LineWidth', 2);
 end
 
-vi = max(find(sortedY(end - margin + 1,:), 1, 'last') ,find(Nexp, 1, 'last'));
+vi = max(find(sortedY(end - margin + 1,:), 1, 'last') ,find(Nexp, 1, 'last'))
 
 xl = xlim;
+if (vi>1)
 xlim([0,1.1*bins(vi)]);
+end
 
 
 %set(gca, 'xscale', 'log')
