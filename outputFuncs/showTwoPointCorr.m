@@ -1,5 +1,8 @@
 function showTwoPointCorr(m,props)
 
+
+
+
 pixelSize = 0.16;
 
 confidence = 0.05;
@@ -20,15 +23,15 @@ errYtop = csr_sorted(margin,:) - meanY;
 
 
 hold on
-shadedErrorBar(r_csr(1:end)*pixelSize,meanY,[-errYbot;-errYtop],'lineprops','k--');
+shadedErrorBar(r_csr(1:end),meanY,[-errYbot;-errYtop],'lineprops','k');
 
 %plot(r_csr*pixelSize, csr_sorted(margin,:),'r');
 %plot(r_csr*pixelSize, csr_sorted(end-margin+1,:),'r');
 
- plot(r*pixelSize, corrfun,'k-', 'LineWidth', 2);
+ plot(r, corrfun,'k-', 'LineWidth', 2);
 
 if false && (isfield(m, 'randomExample'))
-    plot(r_csr*pixelSize, m.randomExample,'k-', 'LineWidth', 2);
+    plot(r_csr, m.randomExample,'k-', 'LineWidth', 2);
 end
  
  

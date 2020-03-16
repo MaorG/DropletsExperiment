@@ -17,53 +17,48 @@ dynamicEntities = getPropsForSeg(image);
 
 repeats = props.repeats;
 [w,h] = size(image);
-%
+% 
 % xr = randi(w,[size(centers,1),repeats]);
 % yr = randi(h,[size(centers,1),repeats]);
-verbose = 0;
-if verbose
-    figure
-end
+
+figure
 
 CSRcorrfuns = []
 for i = 1:repeats
     
-    if (strcmp(props.random,'CSR'))
-        xr= randi(h,size(dynamicEntities.centers,1),1);
-        yr= randi(w,size(dynamicEntities.centers,1),1);
-    else
-        
+    if (strcmo(props.random,'CSR')
+
+             xr= randi(h,size(centers,1),1);
+     yr= randi(w,size(centers,1),1);
+
         
         imageRandomized = getDynamicRandomized(zeros(size(image)), dynamicEntities, props);
-        CC = bwconncomp(imageRandomized);
-        rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
-        centers = cat(1, rp.Centroid);
-        xr = centers(:,1);
-        yr = centers(:,2);
-    end
+    CC = bwconncomp(imageRandomized);
+    rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
+    centers = cat(1, rp.Centroid);
+    xr = centers(:,1);
+    yr = centers(:,2);
+    
     
     [ corrfun  ] = twopointcorrMG(w,h, xr,yr, dr, margin);
     
-    %corrfun = cat(2,corrfun,zeros(1,10000-size(corrfun,2)));
+    corrfun = cat(2,corrfun,zeros(1,10000-size(corrfun,2)));
     CSRcorrfuns = cat(1,CSRcorrfuns, corrfun);
     
     if i == 1
         randomExample = corrfun;
     end
-
-    if verbose
-
-        plot(dr:dr:10000*dr,corrfun);
-        hold on;
-    end
+    
+    plot(dr:dr:10000*dr,corrfun);
+    hold on;
     
 end
 CSRcorrfunsSorted = sort(CSRcorrfuns,1);
 
-r_plus = dr:dr:margin;
+r_plus = dr:dr:10000*dr;
 
 % figure;
-%
+% 
 % hold on
 % plot(r, CSRcorrfunsSorted(1,:),'r');
 % plot(r, CSRcorrfunsSorted(end,:),'r');
@@ -74,16 +69,17 @@ y = centersOrig(:,2);
 
 
 
+blksize = 1000;
 verbose = 0;
 
-r =dr:dr:margin;
+r =dr:dr:10000*dr;
 
 [ corrfun  ] = twopointcorrMG(w,h, x,y, dr, margin);
 % plot(r, corrfun);
 
-%corrfun = cat(2,corrfun,zeros(1,margin-size(corrfun,2)))
+corrfun = cat(2,corrfun,zeros(1,10000-size(corrfun,2)))
 
-if verbose
+if 1
     plot(r,corrfun ,'k', 'LineWidth', 2);
     xlim([0,100])
 end
@@ -140,8 +136,6 @@ for i = 1:numel(v)
         props.src = v{i+1};
     elseif (strcmp(v{i}, 'dr'))
         props.dr = v{i+1};
-    elseif (strcmp(v{i}, 'random'))
-        props.random = v{i+1};
     elseif (strcmp(v{i}, 'repeats'))
         props.repeats = v{i+1};
     elseif (strcmp(v{i}, 'staticOverlap'))
