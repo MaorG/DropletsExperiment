@@ -1,6 +1,6 @@
 <main>
 name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
-'microbiotaPaper', 'C:\school\microscopy\drops\25.12.18 tif\t0 tif\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+'microbiotaPaper', 'C:\school\microscopy\drops\25.12.18 tif\t0 tif\', {'pixelSize' 0.16}, {'well'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
 
 <load>
@@ -15,14 +15,14 @@ well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect, cropRect2
  
 <prep>
 resName, funcName, parameters
-#'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
 #'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
 #'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
 # 
 #'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
 #'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
 #'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
-#'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1}
+'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1}
 #'GDM2', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.2}
 #'dropMask0bf', 'getLevelSet', {'map' 'BFs' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 20}
 #'dropMask0e005a5it10', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 10 'epsilon' 0.05 'alfa' 5}
