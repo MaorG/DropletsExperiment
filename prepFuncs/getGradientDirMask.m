@@ -6,31 +6,37 @@ src = data.(props.src);
 minArea = props.minArea;
 direcs  = props.dirs;
 verbose = props.verbose;
+oppositeDirTol = props.oppositeDirTol;
 
 bf = mat2gray(src);
 
 % todo: replace with convolution with gaussian
 [Gx,Gy] = getGradientXY(bf);
 
-mask = getGradientDirMaskAux(Gx, Gy, minArea, direcs, verbose);
+mask = getGradientDirMaskAux(Gx, Gy, minArea, direcs, oppositeDirTol, verbose);
 
 end
 
 function [Gx,Gy] = getGradientXY(bf)
-dx = [
-    -5 -4 0 4 5
-    -8 -10 0 10 8
-    -10 -20 0 20 10
-    -8 -10 0 10 8
-    -5 -4 0 4 5
-    ];
-dy = dx';
+% dx = [
+%     -5 -4 0 4 5
+%     -8 -10 0 10 8
+%     -10 -20 0 20 10
+%     -8 -10 0 10 8
+%     -5 -4 0 4 5
+%     ];
+% dy = dx';
+% 
+% Gx = imfilter(bf, dx);
+% Gy = imfilter(bf, dy);
 
-Gx = imfilter(bf, dx);
-Gy = imfilter(bf, dy);
+bf_smooth = imgaussfilt(bf,2);
+[Gx, Gy] = gradient(bf_smooth);
+
+
 end
 
-function mask = getGradientDirMaskAux(Gx, Gy,minArea, direcs, verbose)
+function mask = getGradientDirMaskAux(Gx, Gy,minArea, direcs, oppositeDirTol, verbose)
 
 [Gmag,Gdir] = imgradient(Gx, Gy);
 
@@ -93,29 +99,33 @@ end
 %     figure
 %     imshow(RGB);
     
-    I1 = GdirI(2:end-1,2:end-1)-GdirII(1:end-2,2:end-1);
-    I2 = GdirI(2:end-1,2:end-1)-GdirII(3:end,2:end-1);
-    I3 = GdirI(2:end-1,2:end-1)-GdirII(2:end-1,1:end-2);
-    I4 = GdirI(2:end-1,2:end-1)-GdirII(2:end-1,3:end);
+    I1 = abs(GdirI(2:end-1,2:end-1)-GdirII(1:end-2,2:end-1));
+    I2 = abs(GdirI(2:end-1,2:end-1)-GdirII(3:end,2:end-1));
+    I3 = abs(GdirI(2:end-1,2:end-1)-GdirII(2:end-1,1:end-2));
+    I4 = abs(GdirI(2:end-1,2:end-1)-GdirII(2:end-1,3:end));
     
-    mm =8;
-    II1 = I1> -mm & I1< mm;
-    II2 = I2> -mm & I2< mm;
-    II3 = I3> -mm & I3< mm;
-    II4 = I4> -mm & I4< mm;
+    mm = oppositeDirTol;
+    II1 = I1 < mm | I1 > N-mm;
+    II2 = I2 < mm | I2 > N-mm;
+    II3 = I3 < mm | I3 > N-mm;
+    II4 = I4 < mm | I4 > N-mm;
     III = (II1|II2|II3|II4);
+    
+
+mask = zeros(size(Gx));
+mask(2:end-1,2:end-1) = III;
     
 if verbose
     
     figure
-    
-    imshow(0.25*mask1(2:end-1,2:end-1) + (III & mask1(2:end-1,2:end-1)))
+
+	imshow(RGB.*(0.125+0.2*repmat(mask1+int_mask,[1,1,3])+0.7*repmat(mask,[1,1,3])));
+    %imshow(0.25*mask1(2:end-1,2:end-1) + (III & mask1(2:end-1,2:end-1)))
     
 end
 
-mask = zeros(size(Gx));
-mask(2:end-1,2:end-1) = III;
 mask = mask&mask1;
+
 end
 
 
@@ -125,6 +135,7 @@ props = struct(...
     'src','BF',...
     'minArea',60,...
     'verbose', 0,...
+    'oppositeDirTol', 6,...
     'dirs',[]...
     );
 
@@ -134,6 +145,8 @@ for i = 1:numel(v)
     
     if (strcmp(v{i}, 'src'))
         props.src = v{i+1};
+    elseif (strcmp(v{i}, 'oppositeDirTol'))
+        props.oppositeDirTol = v{i+1};
     elseif (strcmp(v{i}, 'minArea'))
         props.minArea = v{i+1};
     elseif (strcmp(v{i}, 'verbose'))

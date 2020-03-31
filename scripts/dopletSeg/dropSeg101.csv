@@ -1,17 +1,17 @@
 <main>
 name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
-'microbiotaPaper', 'C:\school\microscopy\drops\25.12.18 tif\t0 tif\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+'microbiotaPaper', 'C:\Maor\waterscape_model\waterscapes\25.12.18\input\', {'pixelSize' 0.16}, {'well'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
 
 <load>
 
 well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect, cropRect2
-'A1', 'p1a1\img_XY1_BF.tif', 'p1a1\img_XY1_GFP.tif', 'p1a1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{3500 4500 3000 4000}
-#'A2', 'p1a1\img_XY2_BF.tif', 'p1a1\img_XY2_GFP.tif', 'p1a1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3500 4500}
-#'A3', 'p1a1\img_XY3_BF.tif', 'p1a1\img_XY3_GFP.tif', 'p1a1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3000 4000}
-#'B1', 'p1b1\img_XY1_BF.tif', 'p1b1\img_XY1_GFP.tif', 'p1b1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3250 4250}
-#'B2', 'p1b1\img_XY2_BF.tif', 'p1b1\img_XY2_GFP.tif', 'p1b1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3200 4200}
-'B3', 'p1b1\img_XY3_BF.tif', 'p1b1\img_XY3_GFP.tif', 'p1b1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{3000 4000 3500 4500}
+'A1', 'p1a1\img_XY1_BF.tif', 'p1a1\img_XY1_GFP.tif', 'p1a1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 3500 4500 3000 4000}
+#'A2', 'p1a1\img_XY2_BF.tif', 'p1a1\img_XY2_GFP.tif', 'p1a1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 2500 3500 3500 4500}
+#'A3', 'p1a1\img_XY3_BF.tif', 'p1a1\img_XY3_GFP.tif', 'p1a1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 2500 3500 3000 4000}
+#'B1', 'p1b1\img_XY1_BF.tif', 'p1b1\img_XY1_GFP.tif', 'p1b1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 2500 3500 3250 4250}
+#'B2', 'p1b1\img_XY2_BF.tif', 'p1b1\img_XY2_GFP.tif', 'p1b1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 2500 3500 3200 4200}
+'B3', 'p1b1\img_XY3_BF.tif', 'p1b1\img_XY3_GFP.tif', 'p1b1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{'a' 3000 4000 3500 4500}
  
 <prep>
 resName, funcName, parameters
@@ -32,6 +32,8 @@ resName, funcName, parameters
 #'dropMask2', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 20 'sigma' 5 'alfa' 2}
 #'dropMask', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 40 'sigma' 3.5 'alfa' 1.5 'lambda' 5}
 'dropMask0e005a2it40', 'thresholdByValue', {'src' 'dropMask0e005a2it40' 'threshold'  0}
+
+'', 'ExportFields', {'Fields' {'@GDM' '@bactMask' '@dropMask0e001a2it40'} 'targetDir' '..\temp\' 'updatedLoad' 'load_dropSeg101.csv'} 
 
 <entities>
 targetName, resName, funcName, parameters

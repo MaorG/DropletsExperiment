@@ -21,20 +21,20 @@ well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, 
  
 <prep>
 resName, funcName, parameters
-'BF',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
-'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
-'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 1 'HRFThresh' 'HRFThresh1'}
-#'', 'ExportFields', {'Fields' {'@BF' '@GFP' '@RFP'} 'targetDir' 'tif\select' 'updatedLoad' 'load_fig8.csv'} 
-#
-## check mode of morph op order
-## 1st
-'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
-'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
-'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+#'BF',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+#'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+#'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 1 'HRFThresh' 'HRFThresh1'}
+##'', 'ExportFields', {'Fields' {'@BF' '@GFP' '@RFP'} 'targetDir' 'tif\select' 'updatedLoad' 'load_fig8.csv'} 
+##
+### check mode of morph op order
+### 1st
+#'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
+#'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
+#'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
 
 
 #'NN0', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
@@ -56,8 +56,10 @@ resName, funcName, parameters
 #'pc_r', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
 #'pc_s', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
 
-'pc_r_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 2 'repeats' 100}
-'pc_s_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 2 'repeats' 100}
+#'pc_r_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 2 'repeats' 100}
+#'pc_s_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 2 'repeats' 100}
+'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
+'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
 
 
 
@@ -107,5 +109,6 @@ stage, funcName, srcName, filter, hold, parameters
 #'data', 'showTwoPointCorrDouble', '', {'time' {16}}, {}, {}
 
 
-#'data', 'showTwoPointCorrDouble', '', {'time' {16}}, {}, {'CSRname' 'pc_r_2' 'SFLname' 'pc_s_2'}
-'data', 'showTwoPointCorrDouble', '', {'time' {16}}, {}, {'CSRname' 'pc_r' 'SFLname' 'pc_s'}
+#'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_2' 'SFLname' 'pc_s_2'}
+'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_4' 'SFLname' 'pc_s_4'}
+#'data', 'showTwoPointCorrDouble', '', {'time' {16}}, {}, {'CSRname' 'pc_r' 'SFLname' 'pc_s'}

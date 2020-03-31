@@ -505,7 +505,11 @@ classdef DataManager < handle
             
             for di = numel(obj.allData):-1:1
                 for dpi = 1:numel(dataParameters)
-                    res(di).(dataParameters{dpi}) = obj.allData(di).parameters.(dataParameters{dpi});
+                    if isfield(obj.allData(di).parameters, dataParameters{dpi})
+                        res(di).(dataParameters{dpi}) = obj.allData(di).parameters.(dataParameters{dpi});
+                    else
+                        res(di).(dataParameters{dpi}) = '1';
+                    end
                 end
                 res(di).(fieldName) = obj.allData(di).(fieldName);
                 res(di).uid = obj.allData(di).uniqueID;
