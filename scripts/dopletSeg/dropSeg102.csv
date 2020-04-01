@@ -1,0 +1,49 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', 'C:\school\microscopy\drops\25.12.18 tif\t0 tif\', {'pixelSize' 0.16}, {'well'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect, cropRect2
+'A1', 'p1a1\img_XY1_BF.tif', 'p1a1\img_XY1_GFP.tif', 'p1a1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{3500 4500 3000 4000}
+#'A2', 'p1a1\img_XY2_BF.tif', 'p1a1\img_XY2_GFP.tif', 'p1a1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3500 4500}
+#'A3', 'p1a1\img_XY3_BF.tif', 'p1a1\img_XY3_GFP.tif', 'p1a1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3000 4000}
+#'B1', 'p1b1\img_XY1_BF.tif', 'p1b1\img_XY1_GFP.tif', 'p1b1\img_XY1_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3250 4250}
+#'B2', 'p1b1\img_XY2_BF.tif', 'p1b1\img_XY2_GFP.tif', 'p1b1\img_XY2_RFP.tif', 1500, 500, [10000 7000 4000] ,{2500 3500 3200 4200}
+'B3', 'p1b1\img_XY3_BF.tif', 'p1b1\img_XY3_GFP.tif', 'p1b1\img_XY3_RFP.tif', 1500, 500, [10000 7000 4000] ,{3000 4000 3500 4500}
+ 
+<prep>
+resName, funcName, parameters
+#'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+#'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+#'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+# 
+#'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
+#'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
+#'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
+#'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 65 'oppositeDirTol' 8}
+#'GDM2', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.2}
+#'alfa' 5}
+
+'seed_bg', 'getGradientDirSeedMask', {'src' 'BFs' 'verbose' 1 'minArea' 65 'oppositeDirTol' 8}
+'seed_f', 'booleanOp', {'src1' 'seed_bg' 'src2' 'bactMask' 'op' 'union'}
+
+'dropMask0e005a2it40', 'getLevelSet', {'map' 'GDM' 'seed' 'seed_f' 'verbose' 1 'iter_outer' 40 'epsilon' 0.05 'alfa' 2}
+'dropMask0e005a2it40mask', 'thresholdByValue', {'src' 'dropMask0e005a2it40' 'threshold'  0}
+
+<entities>
+targetName, resName, funcName, parameters
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'bactMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+#'data', 'displayRGBBF', '', {}, {}, {'R' 'seed_bg' 'Rscale' [0 5] 'G' 'seed_f' 'Gscale' [0 5] 'B' 'bactMask' 'Bscale' [0 5] 'BG' 'BFs'}
+'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e005a2it40mask' 'Rscale' [0 3] 'G' 'seed_f' 'Gscale' [0 3] 'B' 'bactMask' 'Bscale' [0 3] 'BG' 'BFs'}
+

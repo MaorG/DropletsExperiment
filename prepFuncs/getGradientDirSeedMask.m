@@ -1,4 +1,4 @@
-function mask = getGradientDirMask(data, parameters)
+function mask = getGradientDirSeedMask(data, parameters)
 
 props = parseParams(parameters);
 
@@ -13,7 +13,7 @@ bf = mat2gray(src);
 % todo: replace with convolution with gaussian
 [Gx,Gy] = getGradientXY(bf);
 
-mask = getGradientDirMaskAux(Gx, Gy, minArea, direcs, oppositeDirTol, verbose);
+mask = getGradientDirSeedMaskAux(Gx, Gy, minArea, direcs, oppositeDirTol, verbose);
 
 end
 
@@ -36,7 +36,7 @@ bf_smooth = imgaussfilt(bf,1);
 
 end
 
-function mask = getGradientDirMaskAux(Gx, Gy,minArea, direcs, oppositeDirTol, verbose)
+function mask_LP = getGradientDirSeedMaskAux(Gx, Gy,minArea, direcs, oppositeDirTol, verbose)
 
 [Gmag,Gdir] = imgradient(Gx, Gy);
 
@@ -125,6 +125,19 @@ if verbose
 end
 
 mask = mask&mask1;
+
+GdirMat_large_patches = zeros(size(GdirMat));
+
+for i = 1:size(GdirMat2,3)
+    GdirMat_large_patches(:,:,i) = bwareaopen(GdirMat2(:,:,i),200);
+end
+
+mask_LP = (sum(GdirMat_large_patches,3) > 0);
+
+disk = fspecial('disk',5);
+close_to_edge = imdilate(mask,disk>0);
+
+mask_LP = mask_LP & ~close_to_edge;
 
 end
 
