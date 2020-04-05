@@ -11,13 +11,13 @@ oppositeDirTol = props.oppositeDirTol;
 bf = mat2gray(src);
 
 % todo: replace with convolution with gaussian
-[Gx,Gy] = getGradientXY(bf);
+[Gx,Gy] = getGradientXY(bf, props.sigma);
 
-mask = getGradientDirSeedMaskAux(Gx, Gy, minArea, direcs, oppositeDirTol, verbose);
+mask = getGradientDirSeedMaskAux(Gx, Gy, minArea, minAreaSeed, direcs, oppositeDirTol, verbose);
 
 end
 
-function [Gx,Gy] = getGradientXY(bf)
+function [Gx,Gy] = getGradientXY(bf, sigma)
 % dx = [
 %     -5 -4 0 4 5
 %     -8 -10 0 10 8
@@ -30,13 +30,13 @@ function [Gx,Gy] = getGradientXY(bf)
 % Gx = imfilter(bf, dx);
 % Gy = imfilter(bf, dy);
 
-bf_smooth = imgaussfilt(bf,1);
+bf_smooth = imgaussfilt(bf,sigma);
 [Gx, Gy] = gradient(bf_smooth);
 
 
 end
 
-function mask = getGradientDirSeedMaskAux(Gx, Gy,minArea, direcs, oppositeDirTol, verbose)
+function mask_LP = getGradientDirSeedMaskAux(Gx, Gy,minArea, minAreaSeed, direcs, oppositeDirTol, verbose)
 
 [Gmag,Gdir] = imgradient(Gx, Gy);
 
@@ -129,15 +129,15 @@ mask = mask&mask1;
 GdirMat_large_patches = zeros(size(GdirMat));
 
 for i = 1:size(GdirMat2,3)
-    GdirMat_large_patches(:,:,i) = bwareaopen(GdirMat2(:,:,i),1000);
+    GdirMat_large_patches(:,:,i) = bwareaopen(GdirMat2(:,:,i),60);
 end
 
-imdilate(mask1
 mask_LP = (sum(GdirMat_large_patches,3) > 0);
 
+disk = fspecial('disk',5);
+close_to_edge = imdilate(mask,disk>0);
 
-
-mask_LP = mask_LP & ~ 
+mask_LP = mask_LP & ~close_to_edge;
 
 end
 
@@ -147,7 +147,9 @@ function props = parseParams(v)
 props = struct(...
     'src','BF',...
     'minArea',60,...
+    'minAreaSeed',200,...
     'verbose', 0,...
+    'sigma', 1, ...
     'oppositeDirTol', 6,...
     'dirs',[]...
     );
@@ -158,10 +160,14 @@ for i = 1:numel(v)
     
     if (strcmp(v{i}, 'src'))
         props.src = v{i+1};
+    elseif (strcmp(v{i}, 'sigma'))
+        props.sigma = v{i+1};
     elseif (strcmp(v{i}, 'oppositeDirTol'))
         props.oppositeDirTol = v{i+1};
     elseif (strcmp(v{i}, 'minArea'))
         props.minArea = v{i+1};
+    elseif (strcmp(v{i}, 'minAreaSeed'))
+        props.minAreaSeed = v{i+1};
     elseif (strcmp(v{i}, 'verbose'))
         props.verbose = v{i+1};
     elseif (strcmp(v{i}, 'dirs'))

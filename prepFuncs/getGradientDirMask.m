@@ -11,13 +11,14 @@ oppositeDirTol = props.oppositeDirTol;
 bf = mat2gray(src);
 
 % todo: replace with convolution with gaussian
-[Gx,Gy] = getGradientXY(bf);
+[Gx,Gy] = getGradientXY(bf, props.sigma);
+
 
 mask = getGradientDirMaskAux(Gx, Gy, minArea, direcs, oppositeDirTol, verbose);
 
 end
 
-function [Gx,Gy] = getGradientXY(bf)
+function [Gx,Gy] = getGradientXY(bf, sigma)
 % dx = [
 %     -5 -4 0 4 5
 %     -8 -10 0 10 8
@@ -30,7 +31,7 @@ function [Gx,Gy] = getGradientXY(bf)
 % Gx = imfilter(bf, dx);
 % Gy = imfilter(bf, dy);
 
-bf_smooth = imgaussfilt(bf,1);
+bf_smooth = imgaussfilt(bf,sigma);
 [Gx, Gy] = gradient(bf_smooth);
 
 
@@ -135,6 +136,7 @@ props = struct(...
     'src','BF',...
     'minArea',60,...
     'verbose', 0,...
+    'sigma', 1, ...
     'oppositeDirTol', 6,...
     'dirs',[]...
     );
@@ -145,6 +147,8 @@ for i = 1:numel(v)
     
     if (strcmp(v{i}, 'src'))
         props.src = v{i+1};
+    elseif (strcmp(v{i}, 'sigma'))
+        props.sigma = v{i+1};
     elseif (strcmp(v{i}, 'oppositeDirTol'))
         props.oppositeDirTol = v{i+1};
     elseif (strcmp(v{i}, 'minArea'))

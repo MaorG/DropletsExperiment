@@ -6,23 +6,31 @@ name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
 <load>
 
 well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect
-'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{12500 14500 12000 14000}
-'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{2500 4500 2000 4000}
-'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{12500 14500 2000 4000}
-'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{2500 4500 12000 14000}
+'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{13500 14500 12000 13000}
+'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{3000 4000 2500 3500}
+'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{13500 14500 3000 4000}
+'A1', 'tif\img_XY1_BF.tif', 'tif\img_XY1_DAPI.tif', 'tif\img_XY1_RFP.tif', 450, 500, [10000 7000 4000] ,{3000 4000 12500 13500}
  
 <prep>
 resName, funcName, parameters
-#'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
-#'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
-#'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-# 
-#'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
-#'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
-#'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
-'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 35 'oppositeDirTol' 8}
-'GDM2', 'morphOp', {'src' 'GDM' 'op' 'close' 'dist' 0.18}
-'GDM3', 'morphOp', {'src' 'GDM2' 'op' 'areaOpen' 'dist' 0.8}
+'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+ 
+'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
+'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
+'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
+'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 35 'oppositeDirTol' 8 'sigma' 2}
+#'GDM2', 'morphOp', {'src' 'GDM' 'op' 'close' 'dist' 0.18}
+'GDM3', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.8}
+
+
+'seed_bg', 'getGradientDirSeedMask', {'src' 'BFs' 'verbose' 1 'minArea' 65 'oppositeDirTol' 6}
+'seed_f', 'booleanOp', {'src1' 'seed_bg' 'src2' 'bactMask' 'op' 'union'}
+
+'dropMask0e005a2it40', 'getLevelSet', {'map' 'GDM' 'seed' 'seed_f' 'verbose' 1 'iter_outer' 40 'epsilon' 0.05 'alfa' 2}
+'dropMask0e005a2it40mask', 'thresholdByValue', {'src' 'dropMask0e005a2it40' 'threshold'  0}
+
 #'dropMask0bf', 'getLevelSet', {'map' 'BFs' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 20}
 #'dropMask0e005a5it10', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 10 'epsilon' 0.05 'alfa' 5}
 #'dropMask101', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1}
@@ -30,7 +38,7 @@ resName, funcName, parameters
 #'dropMask0e001a2it40', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 40 'epsilon' 0.01 'alfa' 2}
 #'dropMask0e001a15it80', 'getLevelSet', {'map' 'GDM2' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 80 'epsilon' 0.01 'alfa' 1.5}
 #'dropMask0e001a2it40s2', 'getLevelSet', {'map' 'GDM3' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 40 'epsilon' 0.01 'alfa' 2 'sigma' 2}
-'dropMask0e001a2it40v2', 'getLevelSet', {'map' 'GDM3' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 40 'epsilon' 0.01 'alfa' 2}
+#'dropMask0e001a2it40v2', 'getLevelSet', {'map' 'GDM3' 'seed' 'bactMask' 'verbose' 1 'iter_outer' 40 'epsilon' 0.01 'alfa' 2}
 
 <entities>
 targetName, resName, funcName, parameters
@@ -47,5 +55,9 @@ resName, funcName, entities, parameters
 stage, funcName, srcName, filter, hold, parameters
 #'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e001a2it40v2' 'Rscale' [0 50] 'G' 'dropMask0e001a2it40' 'Gscale' [0 50] 'B' 'GDM3' 'Bscale' [0 3] 'BG' 'BFs'}
 #'data', 'displayRGBBF', '', {}, {}, {'R' 'GDM' 'Rscale' [0 5] 'G' 'GDM2' 'Gscale' [0 3] 'B' 'GDM3' 'Bscale' [0 1] 'BG' 'BFs'}
-'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e001a2it40v2' 'Rscale' [0 3] 'G' 'bactMask' 'Gscale' [0 3] 'B' 'GDM3' 'Bscale' [0 1] 'BG' 'BFs'}
+#'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e001a2it40v2' 'Rscale' [0 3] 'G' 'bactMask' 'Gscale' [0 3] 'B' 'GDM3' 'Bscale' [0 1] 'BG' 'BFs'}
+'data', 'displayRGBBF', '', {}, {}, {'R' 'GDM' 'Rscale' [0 3] 'G' 'seed_bg' 'Gscale' [0 3] 'B' 'bactMask' 'Bscale' [0 3] 'BG' 'BFs'}
+'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e005a2it40mask' 'Rscale' [0 3] 'G' 'seed_f' 'Gscale' [0 3] 'B' 'bactMask' 'Bscale' [0 3] 'BG' 'BFs'}
+
+
 
