@@ -14,18 +14,17 @@ well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect, cropRect2
  
 <prep>
 resName, funcName, parameters
-#'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
-#'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
-#'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-# 
-#'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
-#'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
-#'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
-#'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 65 'oppositeDirTol' 8}
-#'GDM2', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.2}
-#'alfa' 5}
+'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+ 
+'bactMaskG', 'thresholdByValue', {'src' 'GFPs' 'threshold'  'GThresh'}
+'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
+'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
+'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 80 'oppositeDirTol' 8}
+'GDM2', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.2}
 
-'seed_bg', 'getGradientDirSeedMask', {'src' 'BFs' 'verbose' 1 'minArea' 65 'oppositeDirTol' 8}
+'seed_bg', 'getGradientDirSeedMask', {'src' 'BFs' 'verbose' 1 'minArea' 80 'oppositeDirTol' 8}
 'seed_f', 'booleanOp', {'src1' 'seed_bg' 'src2' 'bactMask' 'op' 'union'}
 
 'dropMask0e005a2it40', 'getLevelSet', {'map' 'GDM' 'seed' 'seed_f' 'verbose' 1 'iter_outer' 40 'epsilon' 0.05 'alfa' 2}
@@ -45,5 +44,5 @@ resName, funcName, entities, parameters
 <output>
 stage, funcName, srcName, filter, hold, parameters
 #'data', 'displayRGBBF', '', {}, {}, {'R' 'seed_bg' 'Rscale' [0 5] 'G' 'seed_f' 'Gscale' [0 5] 'B' 'bactMask' 'Bscale' [0 5] 'BG' 'BFs'}
-'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e005a2it40mask' 'Rscale' [0 3] 'G' 'seed_f' 'Gscale' [0 3] 'B' 'bactMask' 'Bscale' [0 3] 'BG' 'BFs'}
+'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask0e005a2it40mask' 'Rscale' [0 1.5] 'G' 'seed_f' 'Gscale' [0 3] 'B' 'GDM' 'Bscale' [0 1.3] 'BG' 'BFs'}
 
