@@ -1,0 +1,43 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', 'C:\school\matlab\DropSeg\examples\wt_vs_mu_101\', {'pixelSize' 0.16}, {'well'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+well, BF,GFP,RFP, GThresh, RThresh, HRFThresh1, cropRect, cropRect2
+'WT',   'tif/img_A2.tif', 'tif/img_A2_seed_manual.tif', '', 1500, 500, [10000 7000 4000] ,{500 3000 500 3000}
+'flim', 'tif/img_A4.tif', 'tif/img_A4_seed_manual.tif', '', 1500, 500, [10000 7000 4000] ,{500 3000 500 3000}
+ 
+<prep>
+resName, funcName, parameters
+'BFs',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
+#'RFPs', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+'GFPs', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+# 
+'bactMask', 'thresholdByValue', {'src' 'GFPs' 'threshold'  0.1}
+#'bactMaskR', 'thresholdByValue', {'src' 'RFPs' 'threshold'  'RThresh'}
+#'bactMask', 'booleanOp', {'src1' 'bactMaskG' 'src2' 'bactMaskR' 'op' 'union'}
+'GDM', 'getGradientDirMask', {'src' 'BFs' 'verbose' 1 'minArea' 100 'oppositeDirTol' 9 'sigma' 3}
+'GDM2', 'morphOp', {'src' 'GDM' 'op' 'areaOpen' 'dist' 0.2}
+'seed_bg', 'getGradientDirSeedMask', {'src' 'BFs' 'verbose' 1 'minArea' 200 'oppositeDirTol' 9 'sigma' 1.5}
+'seed_f', 'booleanOp', {'src1' 'seed_bg' 'src2' 'bactMask' 'op' 'union'}
+
+'dropMask0e005a2it40', 'getLevelSet', {'map' 'GDM' 'seed' 'seed_f' 'verbose' 1 'iter_outer' 40 'epsilon' 0.05 'alfa' 2}
+'dropMask', 'thresholdByValue', {'src' 'dropMask0e005a2it40' 'threshold'  0}
+
+<entities>
+targetName, resName, funcName, parameters
+'droplets', '', 'createEntitiesFromSeg', {'seg' 'dropMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'droplets', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'dropletSizeDistribution', 'aggrSizeDistribution', 'droplets', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'displayPlot', 'dropletSizeDistribution', {}, {}, {'yscale' 'log' 'xscale' 'log' }
+'data', 'displayRGBBF', '', {}, {}, {'R' 'GDM' 'Rscale' [0 1.5] 'G' '' 'Gscale' [0 5] 'B' '' 'Bscale' [0 5] 'BG' 'BFs'}
+'data', 'displayRGBBF', '', {}, {}, {'R' 'dropMask' 'Rscale' [0 3] 'G' 'seed_bg' 'Gscale' [0 1.5] 'B' 'bactMask' 'Bscale' [0 1.5] 'BG' 'BFs'}
