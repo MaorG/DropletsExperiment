@@ -1,9 +1,10 @@
 function displayPlot(m, properties)
 props = parseParams(properties);
 
-colorOrder = zeros(1,3);
-set(0, 'DefaultAxesColorOrder', colorOrder)
-set(0, 'DefaultAxesLineStyleOrder', {'-o', '-s', '-x'})
+ colorOrder = zeros(1,3);
+ colorOrder = hsv(3)
+ set(0, 'DefaultAxesColorOrder', colorOrder)
+ set(0, 'DefaultAxesLineStyleOrder', {'-o', '-s', '-x'})
 
 if isstruct(m)
     if numel(m) == 1

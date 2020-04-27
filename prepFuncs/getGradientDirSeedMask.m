@@ -4,6 +4,7 @@ props = parseParams(parameters);
 
 src = data.(props.src);
 minArea = props.minArea;
+minAreaSeed = props.minAreaSeed;
 direcs  = props.dirs;
 verbose = props.verbose;
 oppositeDirTol = props.oppositeDirTol;

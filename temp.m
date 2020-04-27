@@ -15,7 +15,7 @@ em = ExperimentManager(matlab_ver, expMainTopic);
 %conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_aggr_size_fig_8.csv'
 
 
-conf = 'C:\school2\matlab\DropletExperiment\DropletsExperiment\scripts\dopletSeg\dropSeg102.csv'
+conf = 'C:\school2\matlab\DropletExperiment\DropletsExperiment\scripts\dopletSeg\dropSeg_som_101.csv'
 %conf = 'D:\Maor\DropletsExperiment\scripts\dopletSeg\dropSeg101.csv'
 conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_fig3.csv'
 conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microbiota_histories_2.csv';
