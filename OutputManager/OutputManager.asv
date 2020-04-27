@@ -56,53 +56,33 @@ classdef OutputManager < dynamicprops
             
             fData = obj.dm.filterData(filter);
             
-
-            if ~(isfield(outputConfigRow, 'hold') && ~isempty(outputConfigRow.hold))
-                
-                for i = 1:numel(fData)
-                    entry = fData(i);
-                    str = obj.getTitle2(entry, filter(1:2:end), outputConfigRow);
-                    figure('Name', str);
-                    if (~isempty(outputConfigRow.srcName))
-                        eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
-                    else
-                        eval([funcName '(entry, parameters)'])
-                    end
-                    title(str);
+            for i = 1:numel(fData)
+                entry = fData(i);
+                str = obj.getTitle2(entry, filter(1:2:end), outputConfigRow);
+                figure('Name', str);
+                if (~isempty(outputConfigRow.srcName))
+                    eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
+                else
+                    eval([funcName '(entry, parameters)'])
                 end
-                
-            else
+                title(str);
+            end
             
+            if isfield(outputConfigRow, 'hold') && ~isempty(outputConfigRow.hold)
                 
                 figureArray = []
                 holdArray = {};
                 for i = 1:numel(fData)
-                    if sum(strcmp(fData(i).parameters.(outputConfigRow.hold{1}),holdArray))==0
+                    if sum(strcmp(fData(i).parameters.(outputConfigRow.hold{1}),holdArray))>0
                         holdArray{end+1} = fData(i).parameters.(outputConfigRow.hold{1});
+                        figureArray(end+1) = figure('Name', str);
                         
                         entry = fData(i);
                         str = obj.getTitle2(entry, filter(1:2:end), outputConfigRow);
-                        figureArray(end+1) = figure('Name', str);
-                        
-                        if (~isempty(outputConfigRow.srcName))
-                            eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
-                        else
-                            eval([funcName '(entry, parameters)'])
-                        end
-                        title(str);
                         
                     else
-                        idx = find(strcmp(fData(i).parameters.(outputConfigRow.hold{1}),holdArray))
-                        entry = fData(i);
-                        figure(figureArray(idx))
-                        hold on;
-                        if (~isempty(outputConfigRow.srcName))
-                            eval([funcName '(entry.(outputConfigRow.srcName), parameters)']);
-                        else
-                            eval([funcName '(entry, parameters)'])
-                        end                        
+                        
                     end
-                end
                 
             end
         end

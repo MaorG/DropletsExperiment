@@ -7,16 +7,19 @@ name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
 
 well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
 #'A1', 10, 'tif\long\img_T10_A1_BF.tif', 'tif\long\img_T10_A1_GFP.tif', 'tif\long\img_T10_A1_RFP.tif', 'tif\long\img_T10_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
-'A1', 16, 'tif\long\img_T16_A1_BF.tif', 'tif\long\img_T16_A1_GFP.tif', 'tif\long\img_T16_A1_RFP.tif', 'tif\long\img_T16_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
-'A1', 22, 'tif\long\img_T22_A1_BF.tif', 'tif\long\img_T22_A1_GFP.tif', 'tif\long\img_T22_A1_RFP.tif', 'tif\long\img_T22_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
+#'A1', 16, 'tif\long\img_T16_A1_BF.tif', 'tif\long\img_T16_A1_GFP.tif', 'tif\long\img_T16_A1_RFP.tif', 'tif\long\img_T16_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
+#'A1', 22, 'tif\long\img_T22_A1_BF.tif', 'tif\long\img_T22_A1_GFP.tif', 'tif\long\img_T22_A1_RFP.tif', 'tif\long\img_T22_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
 #'A6', 10, 'tif\long\img_T10_A6_BF.tif', 'tif\long\img_T10_A6_GFP.tif', 'tif\long\img_T10_A6_RFP.tif', 'tif\long\img_T10_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
+
 'A6', 16, 'tif\long\img_T16_A6_BF.tif', 'tif\long\img_T16_A6_GFP.tif', 'tif\long\img_T16_A6_RFP.tif', 'tif\long\img_T16_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,{}
-'A6', 22, 'tif\long\img_T22_A6_BF.tif', 'tif\long\img_T22_A6_GFP.tif', 'tif\long\img_T22_A6_RFP.tif', 'tif\long\img_T22_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
+'A6_2', 16, 'tif\long\img_T16_A6_BF.tif', 'tif\long\img_T16_A6_GFP.tif', 'tif\long\img_T16_A6_RFP.tif', 'tif\long\img_T16_A6_RGB.tif', 'GFP', 'RFP', 1000, 600            ,[5000 3500 2000] ,{}
+
+#'A6', 22, 'tif\long\img_T22_A6_BF.tif', 'tif\long\img_T22_A6_GFP.tif', 'tif\long\img_T22_A6_RFP.tif', 'tif\long\img_T22_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
 #'C1', 10, 'tif\long\img_T10_C1_BF.tif', 'tif\long\img_T10_C1_GFP.tif', 'tif\long\img_T10_C1_RFP.tif', 'tif\long\img_T10_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,[]
-'C1', 16, 'tif\long\img_T16_C1_BF.tif', 'tif\long\img_T16_C1_GFP.tif', 'tif\long\img_T16_C1_RFP.tif', 'tif\long\img_T16_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000]  ,{}
+#'C1', 16, 'tif\long\img_T16_C1_BF.tif', 'tif\long\img_T16_C1_GFP.tif', 'tif\long\img_T16_C1_RFP.tif', 'tif\long\img_T16_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000]  ,{}
 #'C1', 22, 'tif\long\img_T22_C1_BF.tif', 'tif\long\img_T22_C1_GFP.tif', 'tif\long\img_T22_C1_RFP.tif', 'tif\long\img_T22_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,{'a' 2000 4000 2000 4000}
 #'D1', 10, 'tif\long\img_T10_D1_BF.tif', 'tif\long\img_T10_D1_GFP.tif', 'tif\long\img_T10_D1_RFP.tif', 'tif\long\img_T10_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
-'D1', 16, 'tif\long\img_T16_D1_BF.tif', 'tif\long\img_T16_D1_GFP.tif', 'tif\long\img_T16_D1_RFP.tif', 'tif\long\img_T16_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
+#'D1', 16, 'tif\long\img_T16_D1_BF.tif', 'tif\long\img_T16_D1_GFP.tif', 'tif\long\img_T16_D1_RFP.tif', 'tif\long\img_T16_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
 #'D1', 22, 'tif\long\img_T22_D1_BF.tif', 'tif\long\img_T22_D1_GFP.tif', 'tif\long\img_T22_D1_RFP.tif', 'tif\long\img_T22_D1_RGB.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{}
  
 <prep>
@@ -29,15 +32,27 @@ resName, funcName, parameters
 ##
 ### check mode of morph op order
 ### 1st
-#'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
-#'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
-#'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
-#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
-#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
-#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
+'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
+'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
+'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
 
 
-#'NN0', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
+'NN0', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
+
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+'microbiotaMask6', 'morphOp', {'src' 'microbiotaMask' 'op' 'open' 'dist' 0.6}
+
+'NN0_6', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask6' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
+
+'NN0v', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask' 'mode' 'edge' 'staticOverlap' 1 'repeats' 1 'confidence' 0.01  'verbose' 1}
+
+
+
+
 #
 ##'microbiotaMask1', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
 ##'NN1', 'getNN', {'dynamic' 'bactMask' 'static' 'microbiotaMask1' 'mode' 'edge' 'staticOverlap' 1 'repeats' 100 'confidence' 0.01  'verbose' 0}
@@ -58,8 +73,8 @@ resName, funcName, parameters
 
 #'pc_r_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 2 'repeats' 100}
 #'pc_s_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 2 'repeats' 100}
-'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
-'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
+#'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
+#'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
 
 
 
@@ -81,7 +96,7 @@ targetName, resName, funcName, parameters
 
 <analysis>
 resName, funcName, entities, parameters
-#'microbiotaSizeDistribution0', 'aggrSizeDistribution', 'microbiota0', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+'microbiotaSizeDistribution0', 'aggrSizeDistribution', 'microbiota0', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
 #'microbiotaSizeDistribution1', 'aggrSizeDistribution', 'microbiota1', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
 #'microbiotaSizeDistribution2', 'aggrSizeDistribution', 'microbiota2', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
 'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
@@ -96,7 +111,8 @@ resName, funcName, entities, parameters
 stage, funcName, srcName, filter, hold, parameters
 #'data', 'showNN', 'NN1' , {'well' {'A6'}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
 #'data', 'showNN', 'NN1' , {'time' {10 16 22 26}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
-#'data', 'showNN', 'NN0' , {}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
+#'data', 'showNN', 'NN0_6' , {'time' {16}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01 'norm' 'area'}
+'data', 'showNN', 'NN0' , {'time' {16}}, {}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01 'norm' 'area'}
 #'data', 'showNN', 'NN0' , {},{}, {'mode' 'notbins' 'cumulative' 1 'confidence' 0.01}
 #'data', 'showNN', 'NN0' , {'time' {16}}, {'time'}, {'mode' 'notbins' 'cumulative' 1  'confidence' 0.01}
 
@@ -110,5 +126,5 @@ stage, funcName, srcName, filter, hold, parameters
 
 
 #'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_2' 'SFLname' 'pc_s_2'}
-'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_4' 'SFLname' 'pc_s_4'}
+#'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_4' 'SFLname' 'pc_s_4'}
 #'data', 'showTwoPointCorrDouble', '', {'time' {16}}, {}, {'CSRname' 'pc_r' 'SFLname' 'pc_s'}

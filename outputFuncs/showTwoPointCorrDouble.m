@@ -50,8 +50,8 @@ xlim([0,100]);
 set(gca,'LineWidth',2)
 set(gca,'FontSize',14)
 box on
-xlabel('distance [\mum]')
-ylabel('G_{11}')
+xlabel('r [\mum]')
+ylabel('g(r)')
 %set(gca,'yscale','log')
 end
 

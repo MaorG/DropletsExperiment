@@ -177,9 +177,9 @@ else
     if nnn < 5
         shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'lineprops','r--');
     elseif nnn < 10
-        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'lineprops','b--');
+        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'lineprops','k--');
     else
-        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'lineprops','g--');
+        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'lineprops','k--');
     end
     
 end
@@ -195,7 +195,7 @@ else
     if nnn < 5
         plot(distancesSorted,y*factor,'r-','LineWidth', 2)
     elseif nnn < 10
-        plot(distancesSorted,y*factor,'b-','LineWidth', 2)
+        plot(distancesSorted,y*factor,'k-','LineWidth', 2)
     else
         plot(distancesSorted,y*factor,'g-','LineWidth', 2)
     end

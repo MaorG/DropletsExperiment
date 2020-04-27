@@ -24,21 +24,24 @@ resName, funcName, parameters
 #'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
 #'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
 #'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'HRFThresh1'}
-#'', 'ExportFields', {'Fields' {'@BF' '@GFP' '@RFP'} 'targetDir' 'tif\select' 'updatedLoad' 'load_fig5.csv'} 
- 
+##'', 'ExportFields', {'Fields' {'@BF' '@GFP' '@RFP'} 'targetDir' 'tif\select' 'updatedLoad' 'load_fig5.csv'} 
+#
 #'bactMask', 'classifyByFluorescenseTemp', {'originalMask' 'allMask' 'RGBsrc' 'RGB' 'verbose' 0}
 #'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
 #'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
 #'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
 #'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
 #'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
-#
-#
-#'dd_50', 'getDensityDist', {'dynamic' 'bactMask' 'bins' 0:0.0001:1 'dynamicOverlap' 1 'staticOverlap' 1 'radius' [50] 'repeats' 100 'verbose' 0}
-#'rk', 'getRipleysK2', {'src' 'bactMask'}
-#'pc1', 'getTwoPointCorr', {'src' 'bactMask' 'dr' 12 'repeats' 100}
-'pc_r_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 2 'repeats' 100}
-'pc_s_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 2 'repeats' 100}
+
+
+##'dd_50', 'getDensityDist', {'dynamic' 'bactMask' 'bins' 0:0.0001:1 'dynamicOverlap' 1 'staticOverlap' 1 'radius' [50] 'repeats' 100 'verbose' 0}
+##'rk', 'getRipleysK2', {'src' 'bactMask'}
+##'pc1', 'getTwoPointCorr', {'src' 'bactMask' 'dr' 12 'repeats' 100}
+
+#'pc_r_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 2 'repeats' 100}
+#'pc_s_2', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 2 'repeats' 100}
+'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
+'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
 
 <entities>
 targetName, resName, funcName, parameters
@@ -64,5 +67,6 @@ stage, funcName, srcName, filter, hold, parameters
 #'data', 'showTwoPointCorr', 'pc_r', {'time' {16}}, {}, {}
 #'data', 'showTwoPointCorr', 'pc_s', {'time' {16}}, {}, {}
 
-#'data', 'showTwoPointCorrDouble', '', {'time' {22}}, {}, {'CSRname' 'pc_r_2' 'SFLname' 'pc_s_2'}
-'data', 'showTwoPointCorrDouble', '', {'time' {22}}, {}, {'CSRname' 'pc_r' 'SFLname' 'pc_s'}
+'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_2' 'SFLname' 'pc_s_2'}
+'data', 'showTwoPointCorrDouble', '', {}, {}, {'CSRname' 'pc_r_4' 'SFLname' 'pc_s_4'}
+#'data', 'showTwoPointCorrDouble', '', {'time' {22}}, {}, {'CSRname' 'pc_r' 'SFLname' 'pc_s'}

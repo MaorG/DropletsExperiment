@@ -6,24 +6,40 @@ name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
 <load>
 well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
  'A4',  2, 'tif/long\img_T02_A4_BF.tif', 'tif/long\img_T02_A4_GFP.tif', 'tif/long\img_T02_A4_RFP.tif', 'tif/long\img_T02_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4',  6, 'tif/long\img_T06_A4_BF.tif', 'tif/long\img_T06_A4_GFP.tif', 'tif/long\img_T06_A4_RFP.tif', 'tif/long\img_T06_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
  'A4', 10, 'tif/long\img_T10_A4_BF.tif', 'tif/long\img_T10_A4_GFP.tif', 'tif/long\img_T10_A4_RFP.tif', 'tif/long\img_T10_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4', 14, 'tif/long\img_T14_A4_BF.tif', 'tif/long\img_T14_A4_GFP.tif', 'tif/long\img_T14_A4_RFP.tif', 'tif/long\img_T14_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
  'A4', 18, 'tif/long\img_T18_A4_BF.tif', 'tif/long\img_T18_A4_GFP.tif', 'tif/long\img_T18_A4_RFP.tif', 'tif/long\img_T18_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4', 22, 'tif/long\img_T22_A4_BF.tif', 'tif/long\img_T22_A4_GFP.tif', 'tif/long\img_T22_A4_RFP.tif', 'tif/long\img_T22_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
+ 'A4', 26, 'tif/long\img_T26_A4_BF.tif', 'tif/long\img_T26_A4_GFP.tif', 'tif/long\img_T26_A4_RFP.tif', 'tif/long\img_T26_A4_RGB.tif', 'RFP', 'GFP', 1500, 500  ,[10000 7000 4000] ,[]
  'B2',  2, 'tif/long\img_T02_B2_BF.tif', 'tif/long\img_T02_B2_GFP.tif', 'tif/long\img_T02_B2_RFP.tif', 'tif/long\img_T02_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2',  6, 'tif/long\img_T06_B2_BF.tif', 'tif/long\img_T06_B2_GFP.tif', 'tif/long\img_T06_B2_RFP.tif', 'tif/long\img_T06_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
  'B2', 10, 'tif/long\img_T10_B2_BF.tif', 'tif/long\img_T10_B2_GFP.tif', 'tif/long\img_T10_B2_RFP.tif', 'tif/long\img_T10_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2', 14, 'tif/long\img_T14_B2_BF.tif', 'tif/long\img_T14_B2_GFP.tif', 'tif/long\img_T14_B2_RFP.tif', 'tif/long\img_T14_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
  'B2', 18, 'tif/long\img_T18_B2_BF.tif', 'tif/long\img_T18_B2_GFP.tif', 'tif/long\img_T18_B2_RFP.tif', 'tif/long\img_T18_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2', 22, 'tif/long\img_T22_B2_BF.tif', 'tif/long\img_T22_B2_GFP.tif', 'tif/long\img_T22_B2_RFP.tif', 'tif/long\img_T22_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
+ 'B2', 26, 'tif/long\img_T26_B2_BF.tif', 'tif/long\img_T26_B2_GFP.tif', 'tif/long\img_T26_B2_RFP.tif', 'tif/long\img_T26_B2_RGB.tif', 'GFP', 'RFP', 700, 1000  ,[2500  1750 1000] ,[]
  'C4',  2, 'tif/long\img_T02_C4_BF.tif', 'tif/long\img_T02_C4_GFP.tif', 'tif/long\img_T02_C4_RFP.tif', 'tif/long\img_T02_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4',  6, 'tif/long\img_T06_C4_BF.tif', 'tif/long\img_T06_C4_GFP.tif', 'tif/long\img_T06_C4_RFP.tif', 'tif/long\img_T06_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
  'C4', 10, 'tif/long\img_T10_C4_BF.tif', 'tif/long\img_T10_C4_GFP.tif', 'tif/long\img_T10_C4_RFP.tif', 'tif/long\img_T10_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4', 14, 'tif/long\img_T14_C4_BF.tif', 'tif/long\img_T14_C4_GFP.tif', 'tif/long\img_T14_C4_RFP.tif', 'tif/long\img_T14_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
  'C4', 18, 'tif/long\img_T18_C4_BF.tif', 'tif/long\img_T18_C4_GFP.tif', 'tif/long\img_T18_C4_RFP.tif', 'tif/long\img_T18_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4', 22, 'tif/long\img_T22_C4_BF.tif', 'tif/long\img_T22_C4_GFP.tif', 'tif/long\img_T22_C4_RFP.tif', 'tif/long\img_T22_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
+ 'C4', 26, 'tif/long\img_T26_C4_BF.tif', 'tif/long\img_T26_C4_GFP.tif', 'tif/long\img_T26_C4_RFP.tif', 'tif/long\img_T26_C4_RGB.tif', 'RFP', 'GFP', 2500, 1500 ,[5000 3500 2000] ,{2000 5940 1 5940}
  'D2',  2, 'tif/long\img_T02_D2_BF.tif', 'tif/long\img_T02_D2_GFP.tif', 'tif/long\img_T02_D2_RFP.tif', 'tif/long\img_T02_D2_RGB.tif', 'GFP', 'RFP', 2000, 1000 ,[5000 3500 2000] ,{3000 5940 3000 5940}
+ 'D2',  6, 'tif/long\img_T06_D2_BF.tif', 'tif/long\img_T06_D2_GFP.tif', 'tif/long\img_T06_D2_RFP.tif', 'tif/long\img_T06_D2_RGB.tif', 'GFP', 'RFP', 1000, 1000 ,[7000 5000 3000] ,{3000 5940 3000 5940}
  'D2', 10, 'tif/long\img_T10_D2_BF.tif', 'tif/long\img_T10_D2_GFP.tif', 'tif/long\img_T10_D2_RFP.tif', 'tif/long\img_T10_D2_RGB.tif', 'GFP', 'RFP', 1000, 1000 ,[7000 5000 3000] ,{3000 5940 3000 5940}
+ 'D2', 14, 'tif/long\img_T14_D2_BF.tif', 'tif/long\img_T14_D2_GFP.tif', 'tif/long\img_T14_D2_RFP.tif', 'tif/long\img_T14_D2_RGB.tif', 'GFP', 'RFP', 1000, 1000 ,[7000 5000 3000] ,{3000 5940 3000 5940}
  'D2', 18, 'tif/long\img_T18_D2_BF.tif', 'tif/long\img_T18_D2_GFP.tif', 'tif/long\img_T18_D2_RFP.tif', 'tif/long\img_T18_D2_RGB.tif', 'GFP', 'RFP', 2000, 1000 ,[5000 3500 2000] ,{3000 5940 3000 5940}
+ 'D2', 22, 'tif/long\img_T22_D2_BF.tif', 'tif/long\img_T22_D2_GFP.tif', 'tif/long\img_T22_D2_RFP.tif', 'tif/long\img_T22_D2_RGB.tif', 'GFP', 'RFP', 2000, 1000 ,[5000 3500 2000] ,{3000 5940 3000 5940}
+ 'D2', 26, 'tif/long\img_T26_D2_BF.tif', 'tif/long\img_T26_D2_GFP.tif', 'tif/long\img_T26_D2_RFP.tif', 'tif/long\img_T26_D2_RGB.tif', 'GFP', 'RFP', 1000, 1000 ,[7000 5000 3000] ,{3000 5940 3000 5940}
 
 <prep>
 resName, funcName, parameters
 'BF', 'cropImage', {'src' 'BF' 'borders' 'cropRect'}
 'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
 'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 1 'HRFThresh' 'HRFThresh1'}
+'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'HRFThresh1'}
 #'', 'ExportFields', {'Fields' {'@allMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
 
 'bactMask', 'classifyByFluorescenseTemp', {'originalMask' 'allMask' 'RGBsrc' 'RGB' 'verbose' 0}
@@ -54,7 +70,10 @@ resName, funcName, entities, parameters
 
 <output>
 stage, funcName, srcName, filter, hold, parameters
-'analysis', 'displayPlot', 'bacteriaSizeDistribution0', {}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+'analysis', 'displaySurfaceCoverage', 'bacteriaCover', {}, {}, {'timeScale' 0.5 'yscale' 'log'}
+#'analysis', 'displayPlot', 'bacteriaSizeDistribution0', {}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
 #'analysis', 'displayPlot', 'bacteriaSizeDistribution1', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
 #'analysis', 'displayPlot', 'bacteriaSizeDistribution0', {'time' {2 10 18}}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
 #'analysis', 'displayPlot', 'bacteriaSizeDistribution1', {'time' {2 10 18}}, {'time'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+'data', 'displayRGBBF', '', {'well' {'A4'} 'time' {14}}, {}, {'R' 'bactMask' 'Rscale' [0 3] 'G' '' 'Gscale' [0 3] 'B' '' 'Bscale' [0 3] 'BG' 'BF'}
+

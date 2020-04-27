@@ -1,0 +1,103 @@
+<main>
+name, rootDir, global, parameterSpace, link, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v2\', {'pixelSize' 0.16}, {'well' 'time'}, 'time', '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+well, time, BF, GFP, RGB
+
+#'A1', 01, [] ,[] ,'colorTif\long\img_T01_A1_RGB.tif'
+#'A1', 02, [] ,[] ,'colorTif\long\img_T02_A1_RGB.tif'
+#'A1', 03, [] ,[] ,'colorTif\long\img_T03_A1_RGB.tif'
+#'A1', 04, [] ,[] ,'colorTif\long\img_T04_A1_RGB.tif'
+#'A1', 05, [] ,[] ,'colorTif\long\img_T05_A1_RGB.tif'
+#'A1', 06, [] ,[] ,'colorTif\long\img_T06_A1_RGB.tif'
+#'A1', 07, [] ,[] ,'colorTif\long\img_T07_A1_RGB.tif'
+#'A1', 08, [] ,[] ,'colorTif\long\img_T08_A1_RGB.tif'
+#'A1', 09, [] ,[] ,'colorTif\long\img_T09_A1_RGB.tif'
+#'A1', 10, [] ,[] ,'colorTif\long\img_T10_A1_RGB.tif'
+#'A1', 11, [] ,[] ,'colorTif\long\img_T11_A1_RGB.tif'
+#'A1', 12, [] ,[] ,'colorTif\long\img_T12_A1_RGB.tif'
+#'A1', 13, [] ,[] ,'colorTif\long\img_T13_A1_RGB.tif'
+#'A1', 14, [] ,[] ,'colorTif\long\img_T14_A1_RGB.tif'
+#'A1', 15, [] ,[] ,'colorTif\long\img_T15_A1_RGB.tif'
+#'A1', 16, '..\microbiota v3\tif\seg4hist\microbiotaMask well A1 time 16 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well A1 time 16 1 .tif' ,'colorTif\long\img_T16_A1_RGB.tif'
+#
+#'A6', 01, [] ,[] ,'colorTif\long\img_T01_A6_RGB.tif'
+#'A6', 02, [] ,[] ,'colorTif\long\img_T02_A6_RGB.tif'
+#'A6', 03, [] ,[] ,'colorTif\long\img_T03_A6_RGB.tif'
+#'A6', 04, [] ,[] ,'colorTif\long\img_T04_A6_RGB.tif'
+#'A6', 05, [] ,[] ,'colorTif\long\img_T05_A6_RGB.tif'
+#'A6', 06, [] ,[] ,'colorTif\long\img_T06_A6_RGB.tif'
+#'A6', 07, [] ,[] ,'colorTif\long\img_T07_A6_RGB.tif'
+#'A6', 08, [] ,[] ,'colorTif\long\img_T08_A6_RGB.tif'
+#'A6', 09, [] ,[] ,'colorTif\long\img_T09_A6_RGB.tif'
+#'A6', 10, [] ,[] ,'colorTif\long\img_T10_A6_RGB.tif'
+#'A6', 11, [] ,[] ,'colorTif\long\img_T11_A6_RGB.tif'
+#'A6', 12, [] ,[] ,'colorTif\long\img_T12_A6_RGB.tif'
+#'A6', 13, [] ,[] ,'colorTif\long\img_T13_A6_RGB.tif'
+#'A6', 14, [] ,[] ,'colorTif\long\img_T14_A6_RGB.tif'
+#'A6', 15, [] ,[] ,'colorTif\long\img_T15_A6_RGB.tif'
+#'A6', 16, '..\microbiota v3\tif\seg4hist\microbiotaMask well A6 time 16 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well A6 time 16 1 .tif' ,'colorTif\long\img_T16_A6_RGB.tif'
+
+'C1', 01, [] ,[] ,'colorTif\long\img_T01_C1_RGB.tif'
+'C1', 02, [] ,[] ,'colorTif\long\img_T02_C1_RGB.tif'
+'C1', 03, [] ,[] ,'colorTif\long\img_T03_C1_RGB.tif'
+'C1', 04, [] ,[] ,'colorTif\long\img_T04_C1_RGB.tif'
+'C1', 05, [] ,[] ,'colorTif\long\img_T05_C1_RGB.tif'
+'C1', 06, [] ,[] ,'colorTif\long\img_T06_C1_RGB.tif'
+'C1', 07, [] ,[] ,'colorTif\long\img_T07_C1_RGB.tif'
+'C1', 08, [] ,[] ,'colorTif\long\img_T08_C1_RGB.tif'
+'C1', 09, [] ,[] ,'colorTif\long\img_T09_C1_RGB.tif'
+#'C1', 10, '..\microbiota v3\tif\seg4hist\microbiotaMask well C1 time 10 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well C1 time 10 1 .tif' ,'colorTif\long\img_T10_C1_RGB.tif'
+'C1', 10, [] ,[] ,'colorTif\long\img_T10_C1_RGB.tif'
+'C1', 11, [] ,[] ,'colorTif\long\img_T11_C1_RGB.tif'
+'C1', 12, [] ,[] ,'colorTif\long\img_T12_C1_RGB.tif'
+'C1', 13, [] ,[] ,'colorTif\long\img_T13_C1_RGB.tif'
+'C1', 14, [] ,[] ,'colorTif\long\img_T14_C1_RGB.tif'
+'C1', 15, [] ,[] ,'colorTif\long\img_T15_C1_RGB.tif'
+'C1', 16, '..\microbiota v3\tif\seg4hist\microbiotaMask well C1 time 16 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well C1 time 16 1 .tif' ,'colorTif\long\img_T16_C1_RGB.tif'
+
+'D1', 01, [] ,[] ,'colorTif\long\img_T01_D1_RGB.tif'
+'D1', 02, [] ,[] ,'colorTif\long\img_T02_D1_RGB.tif'
+'D1', 03, [] ,[] ,'colorTif\long\img_T03_D1_RGB.tif'
+'D1', 04, [] ,[] ,'colorTif\long\img_T04_D1_RGB.tif'
+'D1', 05, [] ,[] ,'colorTif\long\img_T05_D1_RGB.tif'
+'D1', 06, [] ,[] ,'colorTif\long\img_T06_D1_RGB.tif'
+'D1', 07, [] ,[] ,'colorTif\long\img_T07_D1_RGB.tif'
+'D1', 08, [] ,[] ,'colorTif\long\img_T08_D1_RGB.tif'
+'D1', 09, [] ,[] ,'colorTif\long\img_T09_D1_RGB.tif'
+#'D1', 10, '..\microbiota v3\tif\seg4hist\microbiotaMask well D1 time 10 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well D1 time 10 1 .tif' ,'colorTif\long\img_T10_D1_RGB.tif'
+'D1', 10, [] ,[] ,'colorTif\long\img_T10_D1_RGB.tif'
+'D1', 11, [] ,[] ,'colorTif\long\img_T11_D1_RGB.tif'
+'D1', 12, [] ,[] ,'colorTif\long\img_T12_D1_RGB.tif'
+'D1', 13, [] ,[] ,'colorTif\long\img_T13_D1_RGB.tif'
+'D1', 14, [] ,[] ,'colorTif\long\img_T14_D1_RGB.tif'
+'D1', 15, [] ,[] ,'colorTif\long\img_T15_D1_RGB.tif'
+'D1', 16, '..\microbiota v3\tif\seg4hist\microbiotaMask well D1 time 16 1 .tif' ,'..\microbiota v3\tif\seg4hist\bactMask well D1 time 16 1 .tif' ,'colorTif\long\img_T16_D1_RGB.tif'
+
+<prep>
+resName, funcName, parameters
+#'BF1', 'morphOp', {'src' 'BF' 'op' 'close' 'dist' 2}
+#'GFP1', 'morphOp', {'src' 'GFP' 'op' 'close' 'dist' 2}
+#
+#
+#'BFfilt', 'morphOp', {'src' 'BF1' 'op' 'areaOpen' 'dist' 0.5}
+#'GFPfilt', 'morphOp', {'src' 'GFP1' 'op' 'areaOpen' 'dist' 0.5}
+#
+#
+'histories','getNeighborsHistories2', {'mask1' 'BF' 'mask2' 'GFP' 'image' 'RGB' 'maxDist' 2 'windowSize' 20} 
+#'histories','getRegionHistories', {'mask1' [] 'mask2' [] 'image' 'RGB' 'region' "struct('x',1,'y',1000,'w',60,'h',40,'dx',50,'dy',30','nx',3,'ny',2)"} 
+
+<entities>
+targetName, resName, funcName, parameters
+#'microbiota', '', 'createEntitiesFromSeg', {'seg' 'BF' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+
+<analysis>
+resName, funcName, entities, parameters
+#'microbiotaSizeDistribution', 'aggrSizeDistribution', 'microbiota', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 5 'bins_step' 0.1}
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+#'analysis', 'displayPlot', 'microbiotaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 2e2] 'ylim' [1 2e3]}
+'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' '\\qnap01\LongTerm\Maor\microbiota v2\histories_temp_m_1'}

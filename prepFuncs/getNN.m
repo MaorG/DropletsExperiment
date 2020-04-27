@@ -2,8 +2,13 @@ function [res] = getNN(data, parameters)
 
 props = parseParams(parameters);
 
-static = data.(props.static);
-dynamic = data.(props.dynamic);
+try
+    static = data.(props.static);
+    dynamic = data.(props.dynamic);
+catch
+    res = [];
+    return;
+end
 
 pixelSize = data.properties.pixelSize;
 repeats = props.repeats;
