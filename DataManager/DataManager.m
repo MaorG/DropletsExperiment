@@ -28,7 +28,7 @@ classdef DataManager < handle
             obj.state = struct;
             obj.exportFieldsImagePrefix = '@'; % when using 'ExportFields' in the prep, use this prefix in front of the fields you want to save as images
             % example: '', 'ExportFields', {'Fields' {'@DropMask' 'dropSizes' 'cellsPerDrop'} 'targetDir' 'newTifs2\man\' 'updatedLoad' 'config/load2.csv'} 
-            obj.loadExtsAsImages = {'.tif' '.tiff'}; % specifies which extensions to imread()
+            obj.loadExtsAsImages = {'.tif' '.tiff' '.png'}; % specifies which extensions to imread()
         end
         
         function clearData(obj)

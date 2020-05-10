@@ -12,7 +12,13 @@ else
     end
 end
 
-res = data.(props.src) >= th;
+if isfield(data,(props.src))
+    src = data.(props.src);
+elseif ischar(data.properties.(props.src))
+    src = data.(data.properties.(props.src));
+end
+
+res = (src >= th);
 
 if (props.fillHoles)
     res = imfill(res, 'holes');

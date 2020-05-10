@@ -57,7 +57,13 @@ if (exist('removedMask', 'var') && all(size(removedMask) == size(BG)))
 %         );
     imshow(cat(3,channels{1}+BG+removedMask,channels{2}+BG,channels{3}+BG));
 else
-    imshow(cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG));
+    if (size(BG,3) == 1)
+        imshow(cat(3,channels{1}+BG,channels{2}+BG,channels{3}+BG));
+    else
+        imshow(double(cat(3,255*channels{1}+BG(:,:,1),255*channels{2}+BG(:,:,2),255*channels{3}+BG(:,:,2))));
+        
+    end
+    
 end
 
 end

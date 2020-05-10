@@ -21,13 +21,18 @@ conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_fig3.c
 conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microbiota_histories_2.csv';
 conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_aggr_size_fig_8_wells.csv'
 conf = '\\QNAP01\LongTerm\Maor\microbiota v3\wells\load_seg_2.csv'
-conf = 'D:\Maor\DropletsExperiment\scripts\microscale\microscale_coverage_aggr_size_fig_4BC.csv'
+
+
+conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK_2.csv'
+%conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK.csv'
+%conf = 'C:\school2\matlab\DropletExperiment\DropletsExperiment\scripts\microscale\microscale_seg_manual_class.csv'
 em.configure(conf);
+
 
 em.doLoad();
 em.doPrep();
-em.doEntities();
-em.doAnalysis();
+%em.doEntities();
+%em.doAnalysis();
 em.doOutput();
 
 %end

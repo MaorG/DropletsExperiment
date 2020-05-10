@@ -29,7 +29,7 @@ elseif strcmp(props.op, 'open')
 elseif strcmp(props.op, 'close')
     res = imclose(s, SE);
 elseif strcmp(props.op, 'areaOpen')
-    res = bwareaopen(s,floor(props.dist / (dX * dX)));
+    res = bwareaopen(s,floor(props.dist / (dX * dX)),4);
 elseif strcmp(props.op, 'fillHoles')
     res = imfill(s, 'holes');
 end

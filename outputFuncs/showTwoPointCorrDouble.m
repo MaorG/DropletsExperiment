@@ -33,8 +33,10 @@ errYsfltop = sfl_sorted(margin,:) - meanYsfl;
 
 
 hold on
-shadedErrorBar(r_csr(1:end),meanYcsr,[-errYscrbot;-errYcsrtop],'lineprops','k');
-shadedErrorBar(r_csr(1:end),meanYsfl,[-errYsflbot;-errYsfltop],'lineprops','r');
+%shadedErrorBar(r_csr(1:end),meanYcsr,[-errYscrbot;-errYcsrtop],'lineprops','k');
+%shadedErrorBar(r_csr(1:end),meanYsfl,[-errYsflbot;-errYsfltop],'lineprops','r');
+shadedErrorBar(r_csr(1:end),meanYcsr,[-errYscrbot;-errYcsrtop],'k',1);
+shadedErrorBar(r_csr(1:end),meanYsfl,[-errYsflbot;-errYsfltop],'r',1);
 
 %plot(r_csr*pixelSize, csr_sorted(margin,:),'r');
 %plot(r_csr*pixelSize, csr_sorted(end-margin+1,:),'r');
