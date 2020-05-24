@@ -1,8 +1,8 @@
 function displayPlot(m, properties)
 props = parseParams(properties);
 
- colorOrder = zeros(1,3);
- colorOrder = hsv(3)
+ colorOrder = zeros(1,5);
+ colorOrder = hsv(5)
  set(0, 'DefaultAxesColorOrder', colorOrder)
  set(0, 'DefaultAxesLineStyleOrder', {'-o', '-s', '-x'})
 
