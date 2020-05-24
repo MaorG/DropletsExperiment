@@ -25,7 +25,8 @@ conf = '\\QNAP01\LongTerm\Maor\microbiota v3\wells\load_seg_2.csv'
 
 conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK_2.csv'
 %conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK.csv'
-%conf = 'C:\school2\matlab\DropletExperiment\DropletsExperiment\scripts\microscale\microscale_seg_manual_class.csv'
+conf = 'C:\school\papers\microbiota\revision_2\scripts\figure 6 SMS.csv'
+conf = 'C:\school\papers\microbiota\revision_2\scripts\demo.csv'
 em.configure(conf);
 
 

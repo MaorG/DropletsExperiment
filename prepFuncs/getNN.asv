@@ -260,8 +260,8 @@ elseif strcmp(props.mode, 'edgeW')
         if props.verbose
             vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
         end
-        temp1 = repmat(min(cellDistances),1,numel(cellDistances));
-        distances = [distances, temp1];
+        temp = repmat(min(cellDistances),1,numel(cellDistances));
+        distances = [distances, temp];
     end
 elseif strcmp(props.mode, 'center')
     rrp = getPropsForSeg(staticDistMap == 0);
@@ -270,9 +270,17 @@ elseif strcmp(props.mode, 'center')
         blank(ceil(rrp.centers(rri,2)),ceil(rrp.centers(rri,1))) = 1;
     end
     tempDistMap = bwdist(blank);
-    centersPixelIdx = sub2ind(size(staticDistMap),ceil(dynamicEntities.centers(:,2)),ceil(dynamicEntities.centers(:,1)));
-    distances = tempDistMap(centersPixelIdx);
-    distances = distances';
+    for pIdx = 1:numDynamic
+        
+        sub2ind
+        
+        centersPixelIdx
+        cellDistances = tempDistMap(dynamicEntities.pixelsidx{pIdx});
+        if props.verbose
+            vimage(dynamicEntities.pixelsidx{pIdx}) = min(cellDistances);
+        end
+        distances = [distances, min(cellDistances)];
+    end
 else
     for pIdx = 1:numDynamic
         cellDistances = staticDistMap(dynamicEntities.pixelsidx{pIdx});

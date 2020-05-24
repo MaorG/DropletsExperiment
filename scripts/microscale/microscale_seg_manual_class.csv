@@ -37,7 +37,7 @@ resName, funcName, parameters
 'nonBactMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
 'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
 
-'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'areaOpen' 'dist' 0.5}
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'areaOpen' 'dist' 1}
 'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'close' 'dist' 1}
 'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'open' 'dist' 0.4}
 

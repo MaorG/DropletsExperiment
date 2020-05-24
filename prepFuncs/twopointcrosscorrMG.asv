@@ -1,11 +1,14 @@
 function [ allCorrC ] = twopointcrosscorrMG(w,h, x1,y1, x2, y2, dr, meanBinWin, rolling, margin)
 
-pixel2um = 0.16 
+%pixel2um = 0.16 
+pixel2um = 1
 
 if rolling
     dr = dr/meanBinWin;
 end
-maxr = margin;
+maxr = margin; %%% todo - different parameter
+
+maxr = w+h;
 r = 0:dr:maxr;
 
 N1 = numel(x1);
@@ -13,8 +16,8 @@ N2 = numel(x2);
 
 marginPixels = margin/pixel2um;
 inside1 = (x1>marginPixels & x1<(w-marginPixels) & y1>marginPixels & y1<(h-marginPixels));
-w
-h
+
+[w h]
 
 spd = pdist2([x1 y1],[x2 y2]);
 

@@ -1,4 +1,4 @@
-function [res] = getNN(data, parameters)
+function [res] = getNN_v2(data, parameters)
 
 props = parseParams(parameters);
 
@@ -48,6 +48,13 @@ for ri = 1:repeats
     disp(['randomized ' , num2str(ri)])
     tic
     dynamicRandomized = getDynamicRandomized(static, dynamicEntities, props);
+
+    
+    
+    if ~isempty(props.exportRandomizationsDirName)
+        exportRandomizations(data, props, ri, dynamicRandomized);
+    end
+
     toc
     disp(['NN ' , num2str(ri)])
     tic
@@ -431,14 +438,15 @@ props = struct(...
     'distanceBins_',[0,12*power(2,0:4)], ...
     'distanceBins',0:1:1200, ...
     'repeats',10, ...
-    'confidence__', 0.05, ...
+    'confidence', 0.05, ...
     'mode', 'edge', ...
     'staticOverlap', 0, ...
     'dynamicOverlap', 0, ...
     'doSubtract', 0, ...
     'removedMaskForVerbose', '',...
     'verbose', 0, ...
-    'verboseRGB', 'RGB' ...
+    'verboseRGB', 'RGB', ...
+    'exportRandomizationsDirName', '' ...
     );
 
 for i = 1:numel(v)
@@ -467,8 +475,41 @@ for i = 1:numel(v)
         props.verbose = v{i+1};
     elseif (strcmp(v{i}, 'verboseRGB'))
         props.verboseRGB = v{i+1};
-        
+    elseif (strcmp(v{i}, 'randomization'))
+        props.randomization = v{i+1};
+    elseif (strcmp(v{i}, 'exportRandomizationsDirName'))
+        props.exportRandomizationsDirName = v{i+1};
     end
 end
 
+end
+
+
+function exportRandomizations(data, props, ri, dynamicRandomized)
+
+        randomizationName = []
+        fns = fieldnames(data.parameters);
+        vals = struct2cell(data.parameters);
+        valstrs = {};
+        for nni = 1:numel(fns)
+            if (isnumeric(vals{nni}))
+                valstrs{nni} = num2str(vals{nni});
+            else
+                valstrs{nni} = vals{nni};
+            end
+        end
+        for nni = 1:numel(fns)
+            randomizationName = [randomizationName ' ', fns{nni},  ' ' valstrs{nni}, '  '];
+        end
+        if isfield(props, 'randomization') && strcmp(props.randomization, 'daime')
+            randomizationType = 'pix'
+        else
+            randomizationType = 'obj'
+        end
+        randomizationType = [randomizationType, '_', nuprops.
+        
+        randomizationName = [randomizationName, 'r_', num2str(ri)];
+        randomizationDst = [props.exportRandomizationsDirName, randomizationName, '.tif']
+        imwrite(dynamicRandomized,randomizationDst)
+        
 end

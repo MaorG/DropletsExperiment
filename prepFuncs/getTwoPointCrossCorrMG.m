@@ -5,8 +5,10 @@ props = parseParams(parameters);
 imageDynamic = data.(props.srcDynamic);
 imageStatic = data.(props.srcStatic);
 dr = props.dr;
+rolling = props.rolling;
+meanBinWin = props.meanBinWin;
 
-margin = 100;
+margin = 20;
 
 CC = bwconncomp(imageDynamic);
 rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
@@ -40,15 +42,15 @@ for i = 1:repeats
     if (strcmp(props.random,'CSR'))
         xr= randi(h,size(dynamicEntities.centers,1),1);
         yr= randi(w,size(dynamicEntities.centers,1),1);
-        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xs, ys, dr, margin);
+        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xs, ys, dr, meanBinWin, rolling, margin);
     elseif (strcmp(props.random,'shuffle1'))
-        imageRandomized = getDynamicRandomized(imageStatic, dynamicEntities, props);
+        imageRandomized = getDynamicRandomized(0*imageStatic, dynamicEntities, props);
         CC = bwconncomp(imageRandomized);
         rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
         centers = cat(1, rp.Centroid);
         xr = centers(:,1);
         yr = centers(:,2);
-        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xs, ys, dr, margin);
+        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xs, ys, dr, meanBinWin, rolling, margin);
     elseif (strcmp(props.random,'shuffle2'))
         imageStaticRandomized = getDynamicRandomized(0*imageStatic, staticEntities, props);
         props1 = props;
@@ -64,7 +66,7 @@ for i = 1:repeats
         centers = cat(1, rp.Centroid);
         xrs = centers(:,1);
         yrs = centers(:,2);
-        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xrs, yrs, dr, margin);
+        [ corrfun  ] = twopointcrosscorrMG(w,h, xr,yr, xrs, yrs, dr, meanBinWin, rolling, margin);
     else
         N1 = size(dynamicEntities.centers,1);
         N2 = size(staticEntities.centers,1);
@@ -79,7 +81,7 @@ for i = 1:repeats
         yy1 = yy(rpi);
         xx(rpi) = [];
         yy(rpi) = [];
-        [ corrfun  ] = twopointcrosscorrMG(w,h, xx1,yy1, xx, yy, dr, margin);
+        [ corrfun  ] = twopointcrosscorrMG(w,h, xx1,yy1, xx, yy, dr, meanBinWin, rolling, margin);
     end
     
     
@@ -118,7 +120,7 @@ verbose = 0;
 
 r =dr:dr:margin;
 
-[ corrfun  ] = twopointcrosscorrMG(w, h, x, y, xs, ys, dr, margin);
+[ corrfun  ] = twopointcrosscorrMG(w, h, x, y, xs, ys, dr, meanBinWin, rolling, margin);
 % plot(r, corrfun);
 
 %corrfun = cat(2,corrfun,zeros(1,margin-size(corrfun,2)))
@@ -169,6 +171,8 @@ props = struct(...
     'srcDynamic','bactMask',...
     'srcStatic','microbiotaMask',...
     'dr',2, ...
+    'meanBinWin', 1, ...
+    'rolling', 0, ...
     'repeats',5, ...
     'random', 'shuffle', ...
     'staticOverlap', 1, ...
@@ -183,6 +187,10 @@ for i = 1:numel(v)
         props.srcDynamic = v{i+1};
     elseif (strcmp(v{i}, 'dr'))
         props.dr = v{i+1};
+    elseif (strcmp(v{i}, 'meanBinWin'))
+        props.meanBinWin = v{i+1};
+    elseif (strcmp(v{i}, 'rolling'))
+        props.rolling= v{i+1};
     elseif (strcmp(v{i}, 'random'))
         props.random = v{i+1};
     elseif (strcmp(v{i}, 'repeats'))

@@ -39,17 +39,17 @@ for i = 1:numel(props.masks)
     
     set(hm, 'AlphaData', mask);
     
-    if 1|| props.verbose
+    if props.verbose
 CC = bwconncomp(mask);
 rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
 
-        text(pos(1),pos(2), [maskName, '| area: ',  num2str(sum(mask>0,'all')*0.16*0.16), ' [um^2], #:' ,num2str(numel(rp)) ], 'FontSize', 20, 'FontWeight', 'bold', 'Color', double(color)/255, 'Interpreter', 'none')
+        text(pos(1),pos(2), [maskName, ': ',  num2str(sum(mask>0,'all')*0.16*0.16), ' um^2', ], 'FontSize', 20, 'FontWeight', 'bold', 'Color', double(color)/255, 'Interpreter', 'none')
         pos(2) = pos(2) + 150;
     end
 end
-
-%set(gcf, 'Units', 'Inches', 'Position', [0, 0, 2, 2]);
-%print(gcf,['C:\school\papers\microbiota\revision\manualInput\', 'img_', m.parameters.well, '.png'],'-dpng', '-r2970');
+ set(gcf, 'Units', 'Inches', 'Position', [0, 0, 2, 2]);
+%saveas(gcf,['C:\school\papers\microbiota\revision\manualInput\', 'img_', m.parameters.well, '.png']);
+print(gcf,['C:\school\papers\microbiota\revision\manualInput\', 'img_', m.parameters.well, '.png'],'-dpng', '-r2970');
     
 end
     

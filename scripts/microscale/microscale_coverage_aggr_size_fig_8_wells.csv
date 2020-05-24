@@ -1,23 +1,23 @@
 <main>
 name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
-'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\wells\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\wells\', {'pixelSize' 0.16}, {'exp' 'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
 
 <load>
 
-well,time,BF,GFP,RFP, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
-'A1', 16, 'tif_8h\img_T1_A1_BF.tif', 'tif_8h\img_T1_A1_GFP.tif', 'tif_8h\img_T1_A1_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
-'A2', 16, 'tif_8h\img_T1_A2_BF.tif', 'tif_8h\img_T1_A2_GFP.tif', 'tif_8h\img_T1_A2_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
-'A3', 16, 'tif_8h\img_T1_A3_BF.tif', 'tif_8h\img_T1_A3_GFP.tif', 'tif_8h\img_T1_A3_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
-'A5', 16, 'tif_8h\img_T1_A5_BF.tif', 'tif_8h\img_T1_A5_GFP.tif', 'tif_8h\img_T1_A5_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
-'A6', 16, 'tif_8h\img_T1_A6_BF.tif', 'tif_8h\img_T1_A6_GFP.tif', 'tif_8h\img_T1_A6_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
-'B1', 16, 'tif_8h\img_T1_B1_BF.tif', 'tif_8h\img_T1_B1_GFP.tif', 'tif_8h\img_T1_B1_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
-'C1', 16, 'tif_8h\img_T1_C1_BF.tif', 'tif_8h\img_T1_C1_GFP.tif', 'tif_8h\img_T1_C1_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
-'C2', 16, 'tif_8h\img_T1_C2_BF.tif', 'tif_8h\img_T1_C2_GFP.tif', 'tif_8h\img_T1_C2_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
-'C3', 16, 'tif_8h\img_T1_C3_BF.tif', 'tif_8h\img_T1_C3_GFP.tif', 'tif_8h\img_T1_C3_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
-'D1', 16, 'tif_8h\img_T1_D1_BF.tif', 'tif_8h\img_T1_D1_GFP.tif', 'tif_8h\img_T1_D1_RFP.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
-'C5', 16, 'tif_8h\img_T1_C5_BF.tif', 'tif_8h\img_T1_C5_GFP.tif', 'tif_8h\img_T1_C5_RFP.tif', 'GFP', 'RFP', 1500, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
-'C6', 16, 'tif_8h\img_T1_C6_BF.tif', 'tif_8h\img_T1_C6_GFP.tif', 'tif_8h\img_T1_C6_RFP.tif', 'GFP', 'RFP', 1500, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
+exp, well,time,BF,GFP,RFP, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
+'AP', 'A1', 16, 'tif_8h\img_T1_A1_BF.tif', 'tif_8h\img_T1_A1_GFP.tif', 'tif_8h\img_T1_A1_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
+'AP', 'A2', 16, 'tif_8h\img_T1_A2_BF.tif', 'tif_8h\img_T1_A2_GFP.tif', 'tif_8h\img_T1_A2_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
+'AP', 'A3', 16, 'tif_8h\img_T1_A3_BF.tif', 'tif_8h\img_T1_A3_GFP.tif', 'tif_8h\img_T1_A3_RFP.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,{}
+'BP', 'A5', 16, 'tif_8h\img_T1_A5_BF.tif', 'tif_8h\img_T1_A5_GFP.tif', 'tif_8h\img_T1_A5_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
+'BP', 'A6', 16, 'tif_8h\img_T1_A6_BF.tif', 'tif_8h\img_T1_A6_GFP.tif', 'tif_8h\img_T1_A6_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
+'BP', 'B1', 16, 'tif_8h\img_T1_B1_BF.tif', 'tif_8h\img_T1_B1_GFP.tif', 'tif_8h\img_T1_B1_RFP.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000]  ,{}
+'AB', 'C1', 16, 'tif_8h\img_T1_C1_BF.tif', 'tif_8h\img_T1_C1_GFP.tif', 'tif_8h\img_T1_C1_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
+'AB', 'C2', 16, 'tif_8h\img_T1_C2_BF.tif', 'tif_8h\img_T1_C2_GFP.tif', 'tif_8h\img_T1_C2_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
+'AB', 'C3', 16, 'tif_8h\img_T1_C3_BF.tif', 'tif_8h\img_T1_C3_GFP.tif', 'tif_8h\img_T1_C3_RFP.tif', 'RFP', 'GFP', [5000 2000], [1000 800]  ,[5000 3500 2000]  ,{}
+'BB', 'D1', 16, 'tif_8h\img_T1_D1_BF.tif', 'tif_8h\img_T1_D1_GFP.tif', 'tif_8h\img_T1_D1_RFP.tif', 'GFP', 'RFP', 2000, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
+'BB', 'C5', 16, 'tif_8h\img_T1_C5_BF.tif', 'tif_8h\img_T1_C5_GFP.tif', 'tif_8h\img_T1_C5_RFP.tif', 'GFP', 'RFP', 1500, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
+'BB', 'C6', 16, 'tif_8h\img_T1_C6_BF.tif', 'tif_8h\img_T1_C6_GFP.tif', 'tif_8h\img_T1_C6_RFP.tif', 'GFP', 'RFP', 1500, 1000               ,[5000 3500 2000]  ,{2000 4000 2000 4000}
  
 <prep>
 resName, funcName, parameters
@@ -31,14 +31,19 @@ resName, funcName, parameters
 
 # check mode of morph op order
 # 1st
-'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BFs' 'verbose' 0}
+'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
 'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
 'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
 
-'', 'ExportFields', {'Fields' {'@allMask' '@bactMask' '@microbiotaMask'} 'targetDir' 'tif_8h\seg\' 'updatedLoad' 'load_seg.csv'} 
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'open' 'dist' 0.4}
+'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1.5}
+
+'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+
+
+#'', 'ExportFields', {'Fields' {'@allMask' '@bactMask' '@microbiotaMask'} 'targetDir' 'tif_8h\seg\' 'updatedLoad' 'load_seg.csv'} 
 
 
 #
