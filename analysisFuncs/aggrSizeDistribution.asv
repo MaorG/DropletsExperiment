@@ -20,9 +20,6 @@ for ei = numel(entities):-1:1
         res(ei).FoVArea = 0;
     else
         res(ei).val = entities(ei).(props.aggrArea)*pA;
-        if strcmp(props.special, 'area2dia')
-            res(ei).val = sqrt(res(ei).val/pi)*2;
-        end
         res(ei).FoVArea = numel(entities(ei).seg)*pA;
     end
 end
@@ -97,10 +94,8 @@ props = struct(...
     );
 
 for i = 1:numel(v)
-    if (strcmp(v{i}, 'special'))
-        props.special = v{i+1};
-    elseif (strcmp(v{i}, 'accumArea'))
-        props.accumArea = v{i+1};
+    if (strcmp(v{i}, 'aggrArea'))
+        props.aggrArea = v{i+1};
     elseif (strcmp(v{i}, 'accumArea'))
         props.accumArea = v{i+1};
     elseif (strcmp(v{i}, 'bins_min'))

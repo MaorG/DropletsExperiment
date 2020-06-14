@@ -42,6 +42,7 @@ allRndDD = [];
 
 % doing once, saving time
 dynamicEntities = getPropsForSeg(dynamic);
+staticEntities = getPropsForSeg(static);
 
 % does the thing
 for ri = 1:repeats
@@ -94,8 +95,22 @@ for ri = 1:repeats
     %allRndDD(ri).bins = allRndDD(ri).bins * pixelSize;
 end
 res.allRndDistances = allRndDistances;
-%res.allRndDD = allRndDD ;
 
+fns = fieldnames(data.parameters);
+paramNames = []
+for i = 1:numel(fns)
+    param = data.parameters.(fns{i});
+    if isnumeric(param)
+        param = num2str(param);
+    end
+    paramNames = [paramNames ' ' param]
+end
+    
+res.name = paramNames;
+
+res.N1 = numel(dynamicEntities.pixels);
+res.N2 = numel(staticEntities.pixels);
+res.A = numel(static(:))*pixelSize*pixelSize;
 end
 
 % function dynamicRandomized = getDynamicRandomized(static, dynamicEntities, props)
@@ -202,30 +217,7 @@ end
 % newPixels = sub2ind(imSize, newAggRows, newAggCols);
 % end
 %
-function distanceDensity = getNNDD(staticDistMap, dynamic, props)
 
-if (islogical(dynamic))
-    dynamicEntities = getPropsForSeg(dynamic);
-else
-    dynamicEntities = struct;
-    dynamicEntities.pixelsidx = {};
-    maxPIdx = max(dynamic(:));
-    
-    dynamicEntities.pixelsidx = label2idx(dynamic);
-end
-
-dynamicMask = dynamic > 0;
-
-dynDistHist = histcounts(staticDistMap(dynamicMask) ,props.distanceBins);
-totDistHist = histcounts(staticDistMap(:) ,props.distanceBins);
-
-
-distanceDensity = struct;
-distanceDensity.dyn = dynDistHist;
-distanceDensity.tot = totDistHist;
-distanceDensity.bins = props.distanceBins(1:end-1);
-
-end
 
 function distances = getNNdistances(staticDistMap, dynamic, props)
 
@@ -289,6 +281,12 @@ else
         
         distances = [distances, cellDistances'];
     end
+    maxd_exist = max(staticDistMap(:));
+    maxd_cell = max(distances);
+    
+    distances = distances*maxd_exist/maxd_cell;
+    
+    disp(max(staticDistMap(:)*0.16));
 end
 
 

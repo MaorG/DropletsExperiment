@@ -70,9 +70,9 @@ repeats = numel(res.allRndDD);
 for ri = 1:repeats
 
     if (props.cumulative)
-        plot(res.allRndDD(ri).bins, (cumsum(res.allRndDD(ri).dyn) ./ cumsum(res.allRndDD(ri).tot)), 'r')    
+        plot(res.allRndDD(ri).bins, (cumsum(res.allRndDD(ri).dyn) ./ cumsum(res.allRndDD(ri).tot)), 'k')    
     else
-        plot(res.allRndDD(ri).bins, (res.allRndDD(ri).dyn ./ res.allRndDD(ri).tot), 'r')
+        plot(res.allRndDD(ri).bins, (res.allRndDD(ri).dyn ./ res.allRndDD(ri).tot), 'k')
     end
 end
 
@@ -105,26 +105,51 @@ for ri = 1:repeats
 end
 allRandHistsSorted = sort(allRandHists,1);
 margin = ceil(confidence*repeats);
-%plot(distanceBins(1:end-1),allRandHistsSorted (margin,:),'k');
-%plot(distanceBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
 
-meanAllRandomHistSorted = median(allRandHistsSorted,1);
+meanAllRandomHistSorted = mean(allRandHistsSorted,1);
+conf_top = allRandHistsSorted (margin,:);
+conf_bot = allRandHistsSorted (end - margin + 1,:);
 
 expHist = histcounts(expDistances ,distanceBins);
 
-%plot(distanceBins(1:end-1),meanAllRandomHistSorted,'k'); 
-%plot(distanceBins(1:end-1), expHist, 'b','LineWidth', 2);
-
-%plot(distanceBins(1:end-1), max(0,(expHist)./meanAllRandomHistSorted), 'b','LineWidth', 2);
 
 colors = hsv(6);
 colors = colors*0.75;
 nnn = numel(get(gca,'Children'))
-iii = floor(nnn)+1
-plot(distanceBins(1:end-1), max(0,(expHist)./meanAllRandomHistSorted), 'Color', colors(iii,:),'LineWidth', 2);
+iii = floor(nnn)/5+1
 
+
+normFactor = m.A/(m.N1*m.N2);
+X = distanceBins(1:end-1);
+rY = meanAllRandomHistSorted/normFactor;
+rYerr1 = (meanAllRandomHistSorted - conf_bot)/normFactor;
+rYerr2 = (conf_top - meanAllRandomHistSorted)/normFactor;
+%rE1 = 
+%rE2 = 
+hold on
+%shadedErrorBar(distanceBins(1:end-1),meanAllRandomHistSorted, ...
+%    [meanAllRandomHistSorted - conf_bot; conf_top - meanAllRandomHistSorted], {'Color', colors(iii,:)},1);
+%plot(distanceBins(1:end-1), max(0,(expHist)), 'Color', colors(iii,:),'LineWidth', 2);
+rrrr = sum(meanAllRandomHistSorted)/sum(expHist)
+plot(distanceBins(1:end-1), rrrr*max(0,(expHist))./meanAllRandomHistSorted, 'Color', colors(iii,:),'LineWidth', 2);
+
+% shadedErrorBar(distanceBins(1:end-1),meanAllRandomHistSorted./distanceBins(1:end-1), ...
+%     [meanAllRandomHistSorted - conf_bot; conf_top - meanAllRandomHistSorted]./distanceBins(1:end-1), {'Color', colors(iii,:)},1);
+% plot(distanceBins(1:end-1), max(0,(expHist))./distanceBins(1:end-1), 'Color', colors(iii,:),'LineWidth', 2);
+
+if ~isempty(props.exportResultsDirName)
+    mkdir(props.exportResultsDirName)
+    X = distanceBins(1:end-1);
+    %T = table(X', expHist', expHist', expHist',meanAllRandomHistSorted', meanAllRandomHistSorted', meanAllRandomHistSorted');
+    T = table(X', expHist'/normFactor, expHist'/normFactor, expHist'/normFactor,meanAllRandomHistSorted'/normFactor, meanAllRandomHistSorted'/normFactor, meanAllRandomHistSorted'/normFactor);
+    T.Properties.VariableNames = {'X','Y', 'E1', 'E2', 'Yr', 'Er1', 'Er2'}
+    name = m.name;
+    writetable(T,[props.exportResultsDirName, name, '.txt'],'Delimiter','\t')
 
 end
+    
+end
+
 
 function showNNCummulative(m, props)
 
@@ -194,7 +219,7 @@ else
         
     nnn = numel(get(gca,'Children'))
     if nnn < 5
-        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'-r', 1);
+        shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'-k', 1);
     elseif nnn < 10
         shadedErrorBar(xq,meanY*factor,[-errYbot;-errYtop]*factor,'-g', 1);
     elseif nnn < 15
@@ -214,7 +239,7 @@ if props.showAll
 else
     nnn = numel(get(gca,'Children'))
     if nnn < 5
-        plot(distancesSorted,y*factor,'r-','LineWidth', 2)
+        plot(distancesSorted,y*factor,'k-','LineWidth', 2)
     elseif nnn < 10
         plot(distancesSorted,y*factor,'g-','LineWidth', 2)
     elseif nnn < 15
@@ -252,6 +277,7 @@ props = struct(...
     'showAll', 0, ...
     'cumulative', 0, ...
     'zsample', 2, ...
+    'exportResultsDirName', '',...
     'norm', 'none' ...
     );
 
@@ -269,6 +295,8 @@ for i = 1:numel(v)
         props.cumulative = v{i+1};
     elseif (strcmp(v{i}, 'zsample'))
         props.zsample = v{i+1};
+    elseif (strcmp(v{i}, 'exportResultsDirName'))
+        props.exportResultsDirName = v{i+1};
     elseif (strcmp(v{i}, 'norm'))
         props.norm = v{i+1};
     end

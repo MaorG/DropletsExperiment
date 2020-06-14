@@ -99,19 +99,54 @@ hold on;
 allRandHists = [];
 for ri = 1:repeats
     rndHist = histcounts(allRndDistances{ri} ,distanceBins);
-    plot(distanceBins(1:end-1), rndHist, 'r');
-    plot(distanceBins(1:end-1), rndHist, 'r');
+    %plot(distanceBins(1:end-1), rndHist, 'r');
+    %plot(distanceBins(1:end-1), rndHist./distanceBins(1:end-1), 'r');
     allRandHists = cat(1,allRandHists ,rndHist);
 end
 allRandHistsSorted = sort(allRandHists,1);
 margin = ceil(confidence*repeats);
-plot(distanceBins(1:end-1),allRandHistsSorted (margin,:),'k');
-plot(distanceBins(1:end-1),allRandHistsSorted (end - margin + 1,:),'k');
+
+meanAllRandomHistSorted = mean(allRandHistsSorted,1);
+conf_top = allRandHistsSorted (margin,:);
+conf_bot = allRandHistsSorted (end - margin + 1,:);
 
 expHist = histcounts(expDistances ,distanceBins);
-plot(distanceBins(1:end-1), expHist, 'b','LineWidth', 2);
+
+
+colors = hsv(6);
+colors = colors*0.75;
+nnn = numel(get(gca,'Children'))
+iii = floor(nnn)/5+1
+
+
+normFactor = m.A/(m.N1*m.N2);
+X = distanceBins(1:end-1);
+rY = meanAllRandomHistSorted/normFactor;
+rYerr1 = (meanAllRandomHistSorted - conf_bot)/normFactor;
+rYerr2 = (conf_top - meanAllRandomHistSorted)/normFactor;
+%rE1 = 
+%rE2 = 
+hold on
+shadedErrorBar(distanceBins(1:end-1),meanAllRandomHistSorted, ...
+    [meanAllRandomHistSorted - conf_bot; conf_top - meanAllRandomHistSorted], {'Color', colors(iii,:)},1);
+plot(distanceBins(1:end-1), max(0,(expHist)), 'Color', colors(iii,:),'LineWidth', 2);
+
+% shadedErrorBar(distanceBins(1:end-1),meanAllRandomHistSorted./distanceBins(1:end-1), ...
+%     [meanAllRandomHistSorted - conf_bot; conf_top - meanAllRandomHistSorted]./distanceBins(1:end-1), {'Color', colors(iii,:)},1);
+% plot(distanceBins(1:end-1), max(0,(expHist))./distanceBins(1:end-1), 'Color', colors(iii,:),'LineWidth', 2);
+
+if ~isempty(props.exportResultsDirName)
+    mkdir(props.exportResultsDirName)
+    X = distanceBins(1:end-1);
+    T = table(X', expHist', conf_top', conf_bot');
+    T.Properties.VariableNames = {'X','Y', 'E1', 'E2'}
+    name = m.name;
+    writetable(T,[props.exportResultsDirName, name, '.txt'],'Delimiter','\t')
 
 end
+    
+end
+
 
 function showNNCummulative(m, props)
 
@@ -239,6 +274,7 @@ props = struct(...
     'showAll', 0, ...
     'cumulative', 0, ...
     'zsample', 2, ...
+    'exportResultsDirName', '',...
     'norm', 'none' ...
     );
 
@@ -256,6 +292,8 @@ for i = 1:numel(v)
         props.cumulative = v{i+1};
     elseif (strcmp(v{i}, 'zsample'))
         props.zsample = v{i+1};
+    elseif (strcmp(v{i}, 'exportResultsDirName'))
+        props.exportResultsDirName = v{i+1};
     elseif (strcmp(v{i}, 'norm'))
         props.norm = v{i+1};
     end

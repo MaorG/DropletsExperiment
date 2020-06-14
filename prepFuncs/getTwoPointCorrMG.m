@@ -5,7 +5,7 @@ props = parseParams(parameters);
 image = data.(props.src);
 dr = props.dr;
 
-margin = 100;
+margin = props.margin;
 
 CC = bwconncomp(image);
 rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
@@ -26,6 +26,7 @@ if verbose
 end
 
 CSRcorrfuns = []
+randomExample=[];
 for i = 1:repeats
     
     if (strcmp(props.random,'CSR'))
@@ -131,13 +132,16 @@ props = struct(...
     'repeats',5, ...
     'random', 'shuffle', ...
     'staticOverlap', 1, ...
-    'dynamicOverlap', 0 ...
+    'dynamicOverlap', 0, ...
+    'margin', 100 ...
     );
 
 for i = 1:numel(v)
     
     if (strcmp(v{i}, 'src'))
         props.src = v{i+1};
+    elseif (strcmp(v{i}, 'margin'))
+        props.margin = v{i+1};
     elseif (strcmp(v{i}, 'dr'))
         props.dr = v{i+1};
     elseif (strcmp(v{i}, 'random'))

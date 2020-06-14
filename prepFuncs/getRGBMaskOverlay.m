@@ -11,7 +11,12 @@ end
 
 if size(BG,3) == 1
     BG = repmat(BG,[1,1,3]);
+elseif props.BGbw
+    BG = rgb2gray(BG);
+    BG = repmat(BG,[1,1,3]);
 end
+
+
 RGB = BG;
 
 pos = [0,150];
@@ -31,9 +36,9 @@ for i = 1:numel(props.masks)
         mask = maskPerim;
     end
   
-    RGB(:,:,1) = uint8(0.5*RGB(:,:,1) + 0.5*( RGB(:,:,1) .* uint8(~mask) + color(1)*uint8(mask)));
-    RGB(:,:,2) = uint8(0.5*RGB(:,:,2) + 0.5*( RGB(:,:,2) .* uint8(~mask) + color(2)*uint8(mask)));
-    RGB(:,:,3) = uint8(0.5*RGB(:,:,3) + 0.5*( RGB(:,:,3) .* uint8(~mask) + color(3)*uint8(mask)));
+    RGB(:,:,1) = uint8(0.25*RGB(:,:,1) + 0.75*( RGB(:,:,1) .* uint8(~mask) + color(1)*uint8(mask)));
+    RGB(:,:,2) = uint8(0.25*RGB(:,:,2) + 0.75*( RGB(:,:,2) .* uint8(~mask) + color(2)*uint8(mask)));
+    RGB(:,:,3) = uint8(0.25*RGB(:,:,3) + 0.75*( RGB(:,:,3) .* uint8(~mask) + color(3)*uint8(mask)));
     
 end
     
@@ -43,6 +48,7 @@ function props = parseParams(v)
 % default:
 props = struct(...
     'BG','RGB',...
+    'BGbw',1,...
     'verbose', 0, ...
     'perim', 0 ... % 0: solid, >0: line width
     );
@@ -54,6 +60,8 @@ for i = 1:numel(v)
     
     if (strcmp(v{i}, 'BG'))
         props.BG = v{i+1};
+    elseif (strcmp(v{i}, 'BGbw'))
+        props.BGbw = v{i+1};
     elseif (strcmp(v{i}, 'range'))
         props.range = v{i+1};
     elseif (strcmp(v{i}, 'masks'))

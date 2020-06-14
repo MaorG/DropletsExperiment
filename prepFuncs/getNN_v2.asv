@@ -3,8 +3,8 @@ function [res] = getNN_v2(data, parameters)
 props = parseParams(parameters);
 
 try
-    static = data.(props.static);
-    dynamic = data.(props.dynamic);
+    static = data.(props.static)>0;
+    dynamic = data.(props.dynamic)>0;
 catch
     res = [];
     return;
@@ -94,6 +94,19 @@ for ri = 1:repeats
     %allRndDD(ri).bins = allRndDD(ri).bins * pixelSize;
 end
 res.allRndDistances = allRndDistances;
+
+fns = fieldnames(data.parameters);
+paramNames = []
+for i = 1:numel(fns)
+    param = data.parameters.(fns{i});
+    if isnumeric(param)
+        param = num2str(param);
+    end
+    paramNames = [paramNames ' ' param]
+end
+    
+res.name = paramNames;
+
 %res.allRndDD = allRndDD ;
 
 end
@@ -289,6 +302,12 @@ else
         
         distances = [distances, cellDistances'];
     end
+    maxd_exist = max(staticDistMap(:));
+    maxd_cell = max(distances);
+    
+    distances = distances*maxd_cell./max_exist;
+    
+    disp(max(staticDistMap(:)*0.16));
 end
 
 
@@ -506,9 +525,9 @@ function exportRandomizations(data, props, ri, dynamicRandomized)
         else
             randomizationType = 'obj'
         end
-        randomizationType = [randomizationType, '_', nuprops.
+        randomizationType = [randomizationType, '_', num2str(props.staticOverlap)]
         
-        randomizationName = [randomizationName, 'r_', num2str(ri)];
+        randomizationName = [randomizationName ' ' , randomizationType, ' r_', num2str(ri)];
         randomizationDst = [props.exportRandomizationsDirName, randomizationName, '.tif']
         imwrite(dynamicRandomized,randomizationDst)
         
