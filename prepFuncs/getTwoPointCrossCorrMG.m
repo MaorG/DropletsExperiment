@@ -8,7 +8,7 @@ dr = props.dr;
 rolling = props.rolling;
 meanBinWin = props.meanBinWin;
 
-margin = 20;
+margin = props.margin;
 
 CC = bwconncomp(imageDynamic);
 rp = regionprops(CC, 'Centroid', 'PixelList', 'PixelIdxList', 'Area');
@@ -37,6 +37,7 @@ if verbose
 end
 
 CSRcorrfuns = []
+randomExample = [];
 for i = 1:repeats
     
     if (strcmp(props.random,'CSR'))
@@ -199,6 +200,8 @@ for i = 1:numel(v)
         props.staticOverlap = v{i+1};
     elseif (strcmp(v{i}, 'dynamicOverlap'))
         props.dynamicOverlap = v{i+1};
+    elseif (strcmp(v{i}, 'margin'))
+        props.margin = v{i+1};
     end
 end
 

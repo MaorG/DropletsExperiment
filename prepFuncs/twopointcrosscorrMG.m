@@ -1,7 +1,7 @@
 function [ allCorrC ] = twopointcrosscorrMG(w,h, x1,y1, x2, y2, dr, meanBinWin, rolling, margin)
 
 pixel2um = 0.16 
-
+%pixel2um = 1
 if rolling
     dr = dr/meanBinWin;
 end

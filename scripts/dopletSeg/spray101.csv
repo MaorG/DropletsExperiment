@@ -1,0 +1,31 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', 'C:\school\microscopy\', {'pixelSize' 1.5267}, {'name'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+name, drop_seg
+'d_1_h2o', 'virus\droplets - h20 - nkseg - filled.tif' 
+'d_2_SM', 'virus\droplets - SM - nkseg - filled.tif' 
+'d_3_saliva', 'virus\droplets - saliva - nkseg - filled.tif' 
+<prep>
+resName, funcName, parameters
+'dropMask', 'thresholdByValue', {'src' 'drop_seg' 'threshold' 5}
+
+
+<entities>
+targetName, resName, funcName, parameters
+'drops', '', 'createEntitiesFromSeg', {'seg' 'dropMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'drops', 'area', 'resFromRegions', {'regionProp' 'Area'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'dropSizeDistribution', 'aggrSizeDistribution', 'drops', {'aggrArea' 'area' 'bins_min' 1.25 'bins_max' 7 'bins_step' 0.25  'special' 'area2dia'}
+
+
+<output>
+stage, funcName, srcName, filter, hold, parameters
+
+#'analysis', 'displayPlot', 'dropSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1e2 1e6] 'ylim' [1e-1 1.2e1]}
+'analysis', 'displayPlot', 'dropSizeDistribution', {}, {'name'}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1e1 1e3] 'ylim' [1e-1 2e1]}

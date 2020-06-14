@@ -25,11 +25,17 @@ conf = '\\QNAP01\LongTerm\Maor\microbiota v3\wells\load_seg_2.csv'
 
 conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK_2.csv'
 %conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK.csv'
-%conf = 'C:\school\papers\microbiota\revision_2\scripts\figure 6 SMS.csv'
-%conf = 'D:\Maor\DropletsExperiment\scripts\microscales_v2\randomizations_plant.csv'
-%conf = 'D:\Maor\DropletsExperiment\scripts\microscales_v2\distance_threshold.csv'
+conf = 'C:\school\papers\microbiota\revision_2\scripts\figure 6 SMS.csv'
+conf = 'C:\school\papers\microbiota\revision_2\scripts\demo.csv'
 
-conf = '\\qnap01\LongTerm\Maor\microbiota v3\NN_TimeLapse.csv'
+conf = 'C:\school\papers\microbiota\revision_2\final figures\manual classification\RGB class masks.csv'
+
+%conf = 'C:\school\papers\microbiota\revision_2\scripts\p2pNN_daime_comaprison_generate_input.csv'
+
+%conf = 'C:\school\presentations\group\spatial analysis\analysis ctpc.csv'
+%conf = 'C:\school\presentations\group\spatial analysis\generate.csv'
+
+conf = 'C:\school\papers\microbiota\revision\manualInput_v2\flashbacks.csv'
 em.configure(conf);
 
 
@@ -39,4 +45,5 @@ em.doPrep();
 %em.doAnalysis();
 em.doOutput();
 
+%end
 

@@ -12,7 +12,7 @@ else
     end
 end
 
-if isfield(data,(props.src))
+if 1 || isfield(data,(props.src))
     src = data.(props.src);
 elseif ischar(data.properties.(props.src))
     src = data.(data.properties.(props.src));
