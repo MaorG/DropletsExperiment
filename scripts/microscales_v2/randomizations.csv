@@ -1,0 +1,58 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', 'D:\Maor\microbiota\revision_2\daima analysis\', {'pixelSize' 1}, {'name'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+name, pop2, pop1
+'A1_1', 'tiles\bactMask well A1 time 16 1 _tile001.tif', 'tiles\S02micro_f well A1 time 16 1 _tile001.tif'
+'A1_2', 'tiles\bactMask well A1 time 16 1 _tile002.tif', 'tiles\S02micro_f well A1 time 16 1 _tile002.tif'
+'A1_3', 'tiles\bactMask well A1 time 16 1 _tile003.tif', 'tiles\S02micro_f well A1 time 16 1 _tile003.tif'
+'A1_4', 'tiles\bactMask well A1 time 16 1 _tile004.tif', 'tiles\S02micro_f well A1 time 16 1 _tile004.tif'
+'A1_5', 'tiles\bactMask well A1 time 16 1 _tile005.tif', 'tiles\S02micro_f well A1 time 16 1 _tile005.tif'
+'A1_6', 'tiles\bactMask well A1 time 16 1 _tile006.tif', 'tiles\S02micro_f well A1 time 16 1 _tile006.tif'
+'A1_7', 'tiles\bactMask well A1 time 16 1 _tile007.tif', 'tiles\S02micro_f well A1 time 16 1 _tile007.tif'
+'A1_8', 'tiles\bactMask well A1 time 16 1 _tile008.tif', 'tiles\S02micro_f well A1 time 16 1 _tile008.tif'
+'A1_9', 'tiles\bactMask well A1 time 16 1 _tile009.tif', 'tiles\S02micro_f well A1 time 16 1 _tile009.tif'
+
+'A6_1', 'tiles\bactMask well A6 time 16 1 _tile001.tif', 'tiles\S02micro_f well A6 time 16 1 _tile001.tif'
+'A6_2', 'tiles\bactMask well A6 time 16 1 _tile002.tif', 'tiles\S02micro_f well A6 time 16 1 _tile002.tif'
+'A6_3', 'tiles\bactMask well A6 time 16 1 _tile003.tif', 'tiles\S02micro_f well A6 time 16 1 _tile003.tif'
+'A6_4', 'tiles\bactMask well A6 time 16 1 _tile004.tif', 'tiles\S02micro_f well A6 time 16 1 _tile004.tif'
+'A6_5', 'tiles\bactMask well A6 time 16 1 _tile005.tif', 'tiles\S02micro_f well A6 time 16 1 _tile005.tif'
+'A6_6', 'tiles\bactMask well A6 time 16 1 _tile006.tif', 'tiles\S02micro_f well A6 time 16 1 _tile006.tif'
+'A6_7', 'tiles\bactMask well A6 time 16 1 _tile007.tif', 'tiles\S02micro_f well A6 time 16 1 _tile007.tif'
+'A6_8', 'tiles\bactMask well A6 time 16 1 _tile008.tif', 'tiles\S02micro_f well A6 time 16 1 _tile008.tif'
+'A6_9', 'tiles\bactMask well A6 time 16 1 _tile009.tif', 'tiles\S02micro_f well A6 time 16 1 _tile009.tif'
+
+'C1_1', 'tiles\bactMask well C1 time 16 1 _tile001.tif', 'tiles\S02micro_f well C1 time 16 1 _tile001.tif'
+'C1_2', 'tiles\bactMask well C1 time 16 1 _tile002.tif', 'tiles\S02micro_f well C1 time 16 1 _tile002.tif'
+'C1_3', 'tiles\bactMask well C1 time 16 1 _tile003.tif', 'tiles\S02micro_f well C1 time 16 1 _tile003.tif'
+'C1_4', 'tiles\bactMask well C1 time 16 1 _tile004.tif', 'tiles\S02micro_f well C1 time 16 1 _tile004.tif'
+'C1_5', 'tiles\bactMask well C1 time 16 1 _tile005.tif', 'tiles\S02micro_f well C1 time 16 1 _tile005.tif'
+'C1_6', 'tiles\bactMask well C1 time 16 1 _tile006.tif', 'tiles\S02micro_f well C1 time 16 1 _tile006.tif'
+'C1_7', 'tiles\bactMask well C1 time 16 1 _tile007.tif', 'tiles\S02micro_f well C1 time 16 1 _tile007.tif'
+'C1_8', 'tiles\bactMask well C1 time 16 1 _tile008.tif', 'tiles\S02micro_f well C1 time 16 1 _tile008.tif'
+'C1_9', 'tiles\bactMask well C1 time 16 1 _tile009.tif', 'tiles\S02micro_f well C1 time 16 1 _tile009.tif'
+
+'D1_1', 'tiles\bactMask well D1 time 16 1 _tile001.tif', 'tiles\S02micro_f well D1 time 16 1 _tile001.tif'
+'D1_2', 'tiles\bactMask well D1 time 16 1 _tile002.tif', 'tiles\S02micro_f well D1 time 16 1 _tile002.tif'
+'D1_3', 'tiles\bactMask well D1 time 16 1 _tile003.tif', 'tiles\S02micro_f well D1 time 16 1 _tile003.tif'
+'D1_4', 'tiles\bactMask well D1 time 16 1 _tile004.tif', 'tiles\S02micro_f well D1 time 16 1 _tile004.tif'
+'D1_5', 'tiles\bactMask well D1 time 16 1 _tile005.tif', 'tiles\S02micro_f well D1 time 16 1 _tile005.tif'
+'D1_6', 'tiles\bactMask well D1 time 16 1 _tile006.tif', 'tiles\S02micro_f well D1 time 16 1 _tile006.tif'
+'D1_7', 'tiles\bactMask well D1 time 16 1 _tile007.tif', 'tiles\S02micro_f well D1 time 16 1 _tile007.tif'
+'D1_8', 'tiles\bactMask well D1 time 16 1 _tile008.tif', 'tiles\S02micro_f well D1 time 16 1 _tile008.tif'
+'D1_9', 'tiles\bactMask well D1 time 16 1 _tile009.tif', 'tiles\S02micro_f well D1 time 16 1 _tile009.tif'
+
+
+<prep>
+resName, funcName, parameters
+'NN_pixel_daim_0', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles rev\'}
+'NN_pixel_daim_1', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles rev\'}
+'NN_pixel_stat_0', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles rev\'}
+'NN_pixel_stat_1', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles rev\'}
+
+'NN_pixel_daim_0', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles\'}
+'NN_pixel_daim_1', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles\'}
+'NN_pixel_stat_0', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles\'}
+'NN_pixel_stat_1', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\randomized tiles\'}

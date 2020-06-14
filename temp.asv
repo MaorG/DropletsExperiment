@@ -29,7 +29,7 @@ conf = 'C:\school\papers\microbiota\revision\manualInput_v2\analysis_NK_2.csv'
 %conf = 'D:\Maor\DropletsExperiment\scripts\microscales_v2\randomizations_plant.csv'
 %conf = 'D:\Maor\DropletsExperiment\scripts\microscales_v2\distance_threshold.csv'
 
-conf = '\\qnap01\LongTerm\Maor\microbiota v3\NN_TimeLapse.csv'
+conf = '
 em.configure(conf);
 
 
@@ -37,6 +37,6 @@ em.doLoad();
 em.doPrep();
 %em.doEntities();
 %em.doAnalysis();
-em.doOutput();
+%em.doOutput();
 
 

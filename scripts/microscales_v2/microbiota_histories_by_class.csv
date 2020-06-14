@@ -102,4 +102,4 @@ stage, funcName, srcName, filter, hold, parameters
 #'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' '\\qnap01\LongTerm\Maor\microbiota v2\histories_temp_m_1_5'}
 
 #'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' 'D:\Maor\microbiota\revision_2\histories\'}
-'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' 'D:\Maor\microbiota\revision_2\histories_first200\' 'maxLines' 200}
+'data', 'exportNeighborsHistories', 'histories', {}, {}, {'outName' 'D:\Maor\microbiota\revision_2\histories_random_200\' 'maxLines' 200 'randomOrder' 1}

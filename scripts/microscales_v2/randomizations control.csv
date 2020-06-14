@@ -1,0 +1,47 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\', {'pixelSize' 1}, {'name'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+name, pop1
+'A4_1', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 001.tif'
+'A4_2', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 002.tif'
+'A4_3', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 003.tif'
+'A4_4', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 004.tif'
+'A4_5', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 005.tif'
+'A4_6', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 006.tif'
+'A4_7', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 007.tif'
+'A4_8', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 008.tif'
+'A4_9', 'masks\Control\tiles_cropped_converted\bactMask well A4 time 22 1 009.tif'
+'B2_1', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 001.tif'
+'B2_2', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 002.tif'
+'B2_3', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 003.tif'
+'B2_4', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 004.tif'
+'B2_5', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 005.tif'
+'B2_6', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 006.tif'
+'B2_7', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 007.tif'
+'B2_8', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 008.tif'
+'B2_9', 'masks\Control\tiles_cropped_converted\bactMask well B2 time 22 1 009.tif'
+'C4_1', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 001.tif'
+'C4_2', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 002.tif'
+'C4_3', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 003.tif'
+'C4_4', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 004.tif'
+'C4_5', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 005.tif'
+'C4_6', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 006.tif'
+'C4_7', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 007.tif'
+'C4_8', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 008.tif'
+'C4_9', 'masks\Control\tiles_cropped_converted\bactMask well C4 time 22 1 009.tif'
+'D2_1', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 001.tif'
+'D2_2', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 002.tif'
+'D2_3', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 003.tif'
+'D2_4', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 004.tif'
+'D2_5', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 005.tif'
+'D2_6', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 006.tif'
+'D2_7', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 007.tif'
+'D2_8', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 008.tif'
+'D2_9', 'masks\Control\tiles_cropped_converted\bactMask well D2 time 22 1 009.tif'
+
+
+<prep>
+resName, funcName, parameters
+'NN_pixel_stat_0', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' '\\qnap01\LongTerm\Maor\microbiota v3\masks\Control\tiles_cropped_randomized t22\'}

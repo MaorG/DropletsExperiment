@@ -20,10 +20,10 @@ well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, 
 
 <prep>
 resName, funcName, parameters
-#'BF', 'cropImage', {'src' 'BF' 'borders' 'cropRect'}
-#'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
-#'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'HRFThresh1'}
+'BF', 'cropImage', {'src' 'BF' 'borders' 'cropRect'}
+'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
+'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
+'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB' 'verbose' 0 'HRFThresh' 'HRFThresh1'}
 #'', 'ExportFields', {'Fields' {'@BF' '@GFP' '@RFP'} 'targetDir' 'tif\select' 'updatedLoad' 'load_fig5.csv'} 
 
 'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
@@ -41,9 +41,11 @@ resName, funcName, parameters
 'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
 
 
+'', 'ExportFields', {'Fields' {'@bactMask' '@microbiotaMask'} 'targetDir' 'masks\Control\full_cropped\' 'updatedLoad' 'tif\S3\load_S3.csv'} 
+
 ## analysis
-'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
-'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
+#'pc_r_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'CSR' 'dr' 4 'repeats' 100}
+#'pc_s_4', 'getTwoPointCorrMG', {'src' 'bactMask' 'random' 'shuffle' 'dr' 4 'repeats' 100}
 
 <entities>
 targetName, resName, funcName, parameters

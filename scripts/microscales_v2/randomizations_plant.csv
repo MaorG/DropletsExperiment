@@ -1,0 +1,58 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\QNAP01\LongTerm\Maor\microbiota v3\', {'pixelSize' 1}, {'name'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+<load>
+name, pop2, pop1
+'A1_1', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 001.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 001.tif'
+'A1_2', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 002.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 002.tif'
+'A1_3', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 003.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 003.tif'
+'A1_4', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 004.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 004.tif'
+'A1_5', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 005.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 005.tif'
+'A1_6', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 006.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 006.tif'
+'A1_7', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 007.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 007.tif'
+'A1_8', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 008.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 008.tif'
+'A1_9', 'masks\plant\tiles_cropped\bactMask well A1 time 16 1 009.tif', 'masks\plant\tiles_cropped\S02plant_f well A1 time 16 1 009.tif'
+
+'A6_1', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 001.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 001.tif'
+'A6_2', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 002.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 002.tif'
+'A6_3', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 003.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 003.tif'
+'A6_4', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 004.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 004.tif'
+'A6_5', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 005.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 005.tif'
+'A6_6', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 006.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 006.tif'
+'A6_7', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 007.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 007.tif'
+'A6_8', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 008.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 008.tif'
+'A6_9', 'masks\plant\tiles_cropped\bactMask well A6 time 16 1 009.tif', 'masks\plant\tiles_cropped\S02plant_f well A6 time 16 1 009.tif'
+
+'C1_1', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 001.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 001.tif'
+'C1_2', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 002.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 002.tif'
+'C1_3', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 003.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 003.tif'
+'C1_4', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 004.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 004.tif'
+'C1_5', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 005.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 005.tif'
+'C1_6', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 006.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 006.tif'
+'C1_7', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 007.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 007.tif'
+'C1_8', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 008.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 008.tif'
+'C1_9', 'masks\plant\tiles_cropped\bactMask well C1 time 16 1 009.tif', 'masks\plant\tiles_cropped\S02plant_f well C1 time 16 1 009.tif'
+
+'D1_1', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 001.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 001.tif'
+'D1_2', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 002.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 002.tif'
+'D1_3', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 003.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 003.tif'
+'D1_4', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 004.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 004.tif'
+'D1_5', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 005.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 005.tif'
+'D1_6', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 006.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 006.tif'
+'D1_7', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 007.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 007.tif'
+'D1_8', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 008.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 008.tif'
+'D1_9', 'masks\plant\tiles_cropped\bactMask well D1 time 16 1 009.tif', 'masks\plant\tiles_cropped\S02plant_f well D1 time 16 1 009.tif'
+
+
+<prep>
+resName, funcName, parameters
+#'NN_pixel_daim_0', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles rev\'}
+#'NN_pixel_daim_1', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles rev\'}
+'NN_pixel_stat_0', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles rev\'}
+#'NN_pixel_stat_1', 'getNN_v2',  {'dynamic' 'pop1' 'static' 'pop2' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles rev\'}
+
+#'NN_pixel_daim_0', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles\'}
+#'NN_pixel_daim_1', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0  'randomization' 'daime' 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles\'}
+'NN_pixel_stat_0', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 0 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles\'}
+#'NN_pixel_stat_1', 'getNN_v2',  {'dynamic' 'pop2' 'static' 'pop1' 'mode' 'pixels' 'staticOverlap' 1 'repeats' 5 'confidence' 0.01  'verbose' 0 'exportRandomizationsDirName' 'D:\Maor\microbiota\revision_2\daima analysis\vs plant\randomized tiles\'}

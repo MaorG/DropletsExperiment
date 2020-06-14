@@ -5,12 +5,15 @@ if (isempty(m))
 end
 props = parseParams(properties);
 
+if props.randomOrder
+   m.windows = m.windows(randperm(numel(m.windows)));
+end
 canvas = m.windows{1};
 
 for i = 1:numel(m.windows)
 %     info = [num2str(i) ' (' num2str(m.x(i)) ', ' num2str(m.y(i)) ')']
 %     position = [0,0];
-%     m.windows{i} = insertText(m.windows{i},position,info,'TextColor','white','FontSize',18, 'BoxColor', 'black');
+     m.windows{i} = insertText(m.windows{i},position,info,'TextColor','white','FontSize',18, 'BoxColor', 'black');
 %     position = [size(m.windows{i},2),0];
 %     m.windows{i} = insertText(m.windows{i},position,num2str(i),'TextColor','white','FontSize',18, 'BoxColor', 'black', 'AnchorPoint', 'RightTop');
 end
@@ -65,7 +68,8 @@ function props = parseParams(v)
 % default:
 props = struct(...
     'outName', 'histories', ...
-    'maxLines', inf...
+    'maxLines', inf, ...
+    'randomOrder', 0 ...
     );
 
 for i = 1:numel(v)
@@ -74,6 +78,8 @@ for i = 1:numel(v)
         props.outName = v{i+1};
     elseif (strcmp(v{i}, 'maxLines'))
         props.maxLines = v{i+1};
+    elseif (strcmp(v{i}, 'randomOrder'))
+        props.randomOrder = v{i+1};
     end
 end
 
