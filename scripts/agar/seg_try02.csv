@@ -1,0 +1,111 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\QNAP01\ShortTerm\agar\', {'pixelSize' 0.33}, {'anti' 'mode' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+
+name, anti, mode, time, DAPI, DAPIThresh, cropRect, DAPI_intensity,
+#'A1' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A2' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A3' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A3.tif'    ,      250, {'a' 8000 8500 9500 10500}
+'A4' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A4.tif'    ,      250, {8000 8500 9500 10500}, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\Export_IMG_A4.tif'
+#'A5' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A6' , 'amp2',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_A6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B1' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B2' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B3' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B4' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B5' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B6' , 'cb2',   'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_B6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C1' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C2' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C3' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C4' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C5' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C6' , 'cont',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_C6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D1' , 'amp20', 'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D2' , 'amp20', 'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D3' , 'amp20', 'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D4' , 'cb20',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D5' , 'cb20',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D6' , 'cb20',  'msw_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_MSW 12 hr_CFU\BG -_Export_D6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+
+#'A1' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A2' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+'A3' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A3.tif'    ,      250, {12000 12500 14500 15500}, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\Export_IMG_A3.tif'
+#'A4' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A5' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'A6' , 'amp2',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_A6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B1' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B2' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B3' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B4' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B5' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'B6' , 'cb2',   'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_B6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C1' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C2' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C3' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C4' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C5' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'C6' , 'cont',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_C6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D1' , 'amp20', 'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D1.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D2' , 'amp20', 'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D2.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D3' , 'amp20', 'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D3.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D4' , 'cb20',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D4.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D5' , 'cb20',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D5.tif'    ,      250, {'a' 5000 7000 5000 8000}
+#'D6' , 'cb20',  'bulk_stamp',  , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\BG -_Export_D6.tif'    ,      250, {'a' 5000 7000 5000 8000}
+
+
+
+#'A1' , 'amp2', 'msw_pipette',    , 12, 'P25082020 MSW and Bulk 12hr\P25082020_msw 12 hr tag_CFU\Export_IMG_A1.tif',      1000, {'a' 5000 7000 5000 8000}
+#'A2' , 'amp2', 'msw_pipette',    , 12, 'P25082020 MSW and Bulk 12hr\P25082020_msw 12 hr tag_CFU\Export_IMG_A2.tif',      1000, {'a' 5000 7000 5000 8000}
+#'A1' , 'amp2', 'bulk_stamp', , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\Export_IMG_A1.tif',      3000, {'a' 5000 7000 5000 8000}
+#'A2' , 'amp2', 'bulk_stamp', , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr_CFU001\Export_IMG_A2.tif',      3000, {'a' 5000 7000 5000 8000}
+#'A1' , 'amp2', 'bulk_pipette',   , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr tag_CFU001\Export_IMG_A1.tif',  3000, {'a' 5000 7000 5000 8000}
+#'A2' , 'amp2', 'bulk_pipette',   , 12, 'P25082020 MSW and Bulk 12hr\P25082020_BULK 12 hr tag_CFU001\Export_IMG_A2.tif',  3000, {'a' 5000 7000 5000 8000}
+
+
+
+
+<prep>
+resName, funcName, parameters
+'DAPIs',    'cropImage', {'src' 'DAPI'  'borders' 'cropRect'}
+'DAPI_intensity_s',    'cropImage', {'src' 'DAPI_intensity'  'borders' 'cropRect'}
+'liveMask_thresh', 'thresholdByValue', {'src' 'DAPIs' 'threshold'  'DAPIThresh'}
+
+
+'liveMask_huge', 'morphOp', {'src' 'liveMask_thresh' 'op' 'areaOpen' 'dist' 1000}
+'liveMask_small', 'morphOp', {'src' 'liveMask_thresh' 'op' 'areaOpen' 'dist' 0.5}
+
+'liveMask', 'booleanOp', {'src1' 'liveMask_thresh' 'src2' 'liveMask_huge' 'op' 'difference'}
+'liveMask', 'booleanOp', {'src1' 'liveMask' 'src2' 'liveMask_small' 'op' 'intersect'}
+
+'liveMask', 'morphOp', {'src' 'liveMask' 'op' 'close' 'dist'  0.33}
+
+
+'deadMask', 'thresholdByValue', {'src' 'DAPIs' 'threshold'  1000000}
+
+<entities>
+targetName, resName, funcName, parameters
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'liveMask' 'properties' {'Area' 'pixelIdxList' 'Centroid' 'BoundingBox' 'SubarrayIdx'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria', 'ldcount', 'liveDeadPixelCount', {'liveIntensity' 'liveMask' 'deadIntensity' 'deadMask'}
+#'bacteria', 'CFU', 'classifyCFU', {'mask' 'liveMask' 'intensity' 'DAPI_intensity_s'}
+'bacteria', 'CFU', 'classifyCFU', {'mask' 'liveMask' 'intensity' 'DAPIs'}
+
+
+<analysis>
+resName, funcName, entities, parameters
+'bacteriaSizeDistribution', 'aggrSizeDistribution', 'bacteria', {'aggrArea' 'area' 'bins_min' 0 'bins_max' 2 'bins_step' 0.5}
+'ld_live_count', 'liveDeadAntibiotics', 'bacteria', {'mode' 'liveCount'}
+
+
+
+<output> 
+stage, funcName, srcName, filter, hold, parameters
+'analysis', 'displayPlot', 'bacteriaSizeDistribution', {}, {}, {'xscale' 'log' 'yscale' 'log' 'xlim' [1 1e3] 'ylim' [1 2e3]}
+
+'analysis', 'displayErrorBars', 'ld_live_count', {}, {}, {'xscale' 'linear' 'yscale' 'linear'}
+
+

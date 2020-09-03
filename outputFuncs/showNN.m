@@ -211,7 +211,7 @@ if props.showAll
     plot(xq,sortedSortedY(margin,:)*factor,'k');
     plot(xq,sortedSortedY(end - margin + 1,:)*factor,'k');
 else 
-    meanY = median(sortedSortedY);
+    meanY = mean(sortedSortedY);
     errYbot = meanY - sortedSortedY(end - margin + 1,:);
     errYtop = sortedSortedY(margin,:) - meanY;
     

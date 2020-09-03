@@ -3,7 +3,7 @@ function displayErrorBars(m, parameters)
 props = parseParams(parameters);
 
 if(isfield(m, 'Yste'))
-    errorbar(m.X,m.Y,m.Yste)
+    errorbar(m.X,m.Y,m.Yste,'o-')
 else
     errorbar(m.X,m.Y,m.Yerr)
 end

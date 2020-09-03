@@ -50,9 +50,8 @@ yerr = deadSTD;
 y = y(timeOrder);
 
 
- h = errorbar(x, y, yerr, 'o-','LineWidth', 2)
- color = get(h, 'Color');
-%errorbar(x, y, yerr, 'go-','LineWidth', 2)
+% h = errorbar(x, y, yerr, 'o-','LineWidth', 2)
+% color = get(h, 'Color');
 
 
 y = live;
@@ -60,8 +59,8 @@ yerr = liveSTD;
 [x, timeOrder] = sort(x);
 y = y(timeOrder);
 
-errorbar(x, y, yerr, 'o--','LineWidth', 2, 'Color', color)
-%errorbar(x, y, yerr, 'ro-','LineWidth', 2)
+%errorbar(x, y, yerr, 'o--','LineWidth', 2, 'Color', color)
+errorbar(x, y, yerr, 'o-','LineWidth', 2)
 
 xlabel('time [hours]')
 %ylabel('fraction of area covered')

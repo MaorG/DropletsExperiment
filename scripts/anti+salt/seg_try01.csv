@@ -1,0 +1,60 @@
+<main>
+name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
+'microbiotaPaper', '\\qnap01\LongTerm\Tomer\', {'pixelSize' 0.16}, {'anti' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
+
+
+<load>
+
+name, anti, time, liveChannel, deadChannel, cropRect
+#'msw_XY23',  '16072020 kill curve 1 ul MIC 20\tif\fin\img_XY23_GFP.tif', '16072020 kill curve 1 ul MIC 20\tif\fin\img_XY23_RFP.tif', {'a' 5000 7000 7000 8000}
+
+'bulk_T01_XY02', 'amp', 01, '17072020 KILL CURVES BULK mic 20\tif\img_T01_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T01_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T02_XY02', 'amp', 02, '17072020 KILL CURVES BULK mic 20\tif\img_T02_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T02_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T03_XY02', 'amp', 03, '17072020 KILL CURVES BULK mic 20\tif\img_T03_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T03_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T04_XY02', 'amp', 04, '17072020 KILL CURVES BULK mic 20\tif\img_T04_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T04_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T06_XY02', 'amp', 06, '17072020 KILL CURVES BULK mic 20\tif\img_T06_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T06_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T08_XY02', 'amp', 08, '17072020 KILL CURVES BULK mic 20\tif\img_T08_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T08_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T10_XY02', 'amp', 10, '17072020 KILL CURVES BULK mic 20\tif\img_T10_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T10_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T13_XY02', 'amp', 13, '17072020 KILL CURVES BULK mic 20\tif\img_T13_XY02_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T13_XY02_RFP.tif', {'a' 5000 7000 7000 8000}
+
+'bulk_T01_XY10', 'cb', 01, '17072020 KILL CURVES BULK mic 20\tif\img_T01_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T01_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T02_XY10', 'cb', 02, '17072020 KILL CURVES BULK mic 20\tif\img_T02_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T02_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T03_XY10', 'cb', 03, '17072020 KILL CURVES BULK mic 20\tif\img_T03_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T03_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T04_XY10', 'cb', 04, '17072020 KILL CURVES BULK mic 20\tif\img_T04_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T04_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T06_XY10', 'cb', 06, '17072020 KILL CURVES BULK mic 20\tif\img_T06_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T06_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T08_XY10', 'cb', 08, '17072020 KILL CURVES BULK mic 20\tif\img_T08_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T08_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T10_XY10', 'cb', 10, '17072020 KILL CURVES BULK mic 20\tif\img_T10_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T10_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+'bulk_T13_XY10', 'cb', 13, '17072020 KILL CURVES BULK mic 20\tif\img_T13_XY10_DAPI.tif', '17072020 KILL CURVES BULK mic 20\tif\img_T13_XY10_RFP.tif', {'a' 5000 7000 7000 8000}
+
+
+
+
+<prep>
+resName, funcName, parameters
+'liveChannel_c',  'cropImage', {'src' 'liveChannel'  'borders' 'cropRect'}
+'deadChannel_c',  'cropImage', {'src' 'deadChannel'  'borders' 'cropRect'}
+'liveMask', 'getOptimalSegmentationFromBitmap2', {'imageName' 'liveChannel_c' 'minArea' 2 'maxArea' 40 'thresholds' [0.3]}
+'deadMask', 'getOptimalSegmentationFromBitmap2', {'imageName' 'deadChannel_c' 'minArea' 2 'maxArea' 40 'thresholds' [0.25]}
+'cellMask', 'booleanOp', {'src1' 'liveMask' 'src2' 'deadMask' 'op' 'union'}
+
+'liveMask', 'booleanOp', {'src1' 'liveMask' 'src2' 'deadMask' 'op' 'difference'}
+'LiveDeadMap', 'masks2Label', {'masks' {{'liveMask' 1} {'deadMask' 2}}}
+
+<entities>
+targetName, resName, funcName, parameters
+'bacteria', '', 'createEntitiesFromSeg', {'seg' 'cellMask' 'properties' {'Area' 'pixelIdxList' 'Centroid'} }
+'bacteria', 'area', 'resFromRegions', {'regionProp' 'Area'}
+'bacteria', 'ldcount', 'liveDeadPixelCount', {'liveIntensity' 'liveMask' 'deadIntensity' 'deadMask'}
+
+<analysis>
+resName, funcName, entities, parameters
+'ld_ratio', 'liveDeadAntibiotics', 'bacteria', {}
+'ld_live', 'liveDeadAntibiotics', 'bacteria', {'mode' 'live'}
+'ld_live_count', 'liveDeadAntibiotics', 'bacteria', {'mode' 'liveCount'}
+<output> 
+stage, funcName, srcName, filter, hold, parameters
+#'data', 'displayRGB', '', {}, {}, {'R' 'deadMask' 'Rscale' [0 2] 'G' '' 'Gscale' [0 2] 'B' 'liveMask' 'Bscale' [0 2] 'BG' ''}
+
+'analysis', 'displayErrorBars', 'ld_ratio', {}, {}, {'xscale' 'linear' 'yscale' 'linear' 'ylim' [0 1]}
+'analysis', 'displayErrorBars', 'ld_live', {}, {}, {'xscale' 'linear' 'yscale' 'linear'}
+

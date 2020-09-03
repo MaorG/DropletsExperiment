@@ -2,7 +2,6 @@
 name, rootDir, global, parameterSpace, load, prep, entities, analysis, output
 'microbiotaPaper', '\\qnap01\LongTerm\Maor\microbiota v3\', {'pixelSize' 0.16}, {'well' 'time'}, '<load>', '<prep>', '<entities>', '<analysis>', '<output>'
 
-
 <load>
 well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, HRFThresh1, cropRect
 'A1', 02, 'tif\long\img_T02_A1_BF.tif', 'tif\long\img_T02_A1_GFP.tif', 'tif\long\img_T02_A1_RFP.tif', 'tif\long\img_T02_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
@@ -17,17 +16,17 @@ well,time,BF,GFP,RFP, !RGB, bactChannel, otherChannel, bactThresh, otherThresh, 
 'A1', 20, 'tif\long\img_T20_A1_BF.tif', 'tif\long\img_T20_A1_GFP.tif', 'tif\long\img_T20_A1_RFP.tif', 'tif\long\img_T20_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
 'A1', 22, 'tif\long\img_T22_A1_BF.tif', 'tif\long\img_T22_A1_GFP.tif', 'tif\long\img_T22_A1_RFP.tif', 'tif\long\img_T22_A1_RGB.tif', 'RFP', 'GFP', 1500, 500                ,[10000 7000 4000] ,[]
 
-'A6', 02, 'tif\long\img_T02_A6_BF.tif', 'tif\long\img_T02_A6_GFP.tif', 'tif\long\img_T02_A6_RFP.tif', 'tif\long\img_T02_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 04, 'tif\long\img_T04_A6_BF.tif', 'tif\long\img_T04_A6_GFP.tif', 'tif\long\img_T04_A6_RFP.tif', 'tif\long\img_T04_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 06, 'tif\long\img_T06_A6_BF.tif', 'tif\long\img_T06_A6_GFP.tif', 'tif\long\img_T06_A6_RFP.tif', 'tif\long\img_T06_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 08, 'tif\long\img_T08_A6_BF.tif', 'tif\long\img_T08_A6_GFP.tif', 'tif\long\img_T08_A6_RFP.tif', 'tif\long\img_T08_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 10, 'tif\long\img_T10_A6_BF.tif', 'tif\long\img_T10_A6_GFP.tif', 'tif\long\img_T10_A6_RFP.tif', 'tif\long\img_T10_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 12, 'tif\long\img_T12_A6_BF.tif', 'tif\long\img_T12_A6_GFP.tif', 'tif\long\img_T12_A6_RFP.tif', 'tif\long\img_T12_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 14, 'tif\long\img_T14_A6_BF.tif', 'tif\long\img_T14_A6_GFP.tif', 'tif\long\img_T14_A6_RFP.tif', 'tif\long\img_T14_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 16, 'tif\long\img_T16_A6_BF.tif', 'tif\long\img_T16_A6_GFP.tif', 'tif\long\img_T16_A6_RFP.tif', 'tif\long\img_T16_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 18, 'tif\long\img_T18_A6_BF.tif', 'tif\long\img_T18_A6_GFP.tif', 'tif\long\img_T18_A6_RFP.tif', 'tif\long\img_T18_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 20, 'tif\long\img_T20_A6_BF.tif', 'tif\long\img_T20_A6_GFP.tif', 'tif\long\img_T20_A6_RFP.tif', 'tif\long\img_T20_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
-'A6', 22, 'tif\long\img_T22_A6_BF.tif', 'tif\long\img_T22_A6_GFP.tif', 'tif\long\img_T22_A6_RFP.tif', 'tif\long\img_T22_A6_RGB.tif', 'GFP', 'RFP', 1000, 1000               ,[5000 3500 2000] ,[]
+'A6', 02, 'tif\long\img_T02_A6_BF.tif', 'tif\long\img_T02_A6_GFP.tif', 'tif\long\img_T02_A6_RFP.tif', 'tif\long\img_T02_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 04, 'tif\long\img_T04_A6_BF.tif', 'tif\long\img_T04_A6_GFP.tif', 'tif\long\img_T04_A6_RFP.tif', 'tif\long\img_T04_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 06, 'tif\long\img_T06_A6_BF.tif', 'tif\long\img_T06_A6_GFP.tif', 'tif\long\img_T06_A6_RFP.tif', 'tif\long\img_T06_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 08, 'tif\long\img_T08_A6_BF.tif', 'tif\long\img_T08_A6_GFP.tif', 'tif\long\img_T08_A6_RFP.tif', 'tif\long\img_T08_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 10, 'tif\long\img_T10_A6_BF.tif', 'tif\long\img_T10_A6_GFP.tif', 'tif\long\img_T10_A6_RFP.tif', 'tif\long\img_T10_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 12, 'tif\long\img_T12_A6_BF.tif', 'tif\long\img_T12_A6_GFP.tif', 'tif\long\img_T12_A6_RFP.tif', 'tif\long\img_T12_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 14, 'tif\long\img_T14_A6_BF.tif', 'tif\long\img_T14_A6_GFP.tif', 'tif\long\img_T14_A6_RFP.tif', 'tif\long\img_T14_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 16, 'tif\long\img_T16_A6_BF.tif', 'tif\long\img_T16_A6_GFP.tif', 'tif\long\img_T16_A6_RFP.tif', 'tif\long\img_T16_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 18, 'tif\long\img_T18_A6_BF.tif', 'tif\long\img_T18_A6_GFP.tif', 'tif\long\img_T18_A6_RFP.tif', 'tif\long\img_T18_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 20, 'tif\long\img_T20_A6_BF.tif', 'tif\long\img_T20_A6_GFP.tif', 'tif\long\img_T20_A6_RFP.tif', 'tif\long\img_T20_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
+'A6', 22, 'tif\long\img_T22_A6_BF.tif', 'tif\long\img_T22_A6_GFP.tif', 'tif\long\img_T22_A6_RFP.tif', 'tif\long\img_T22_A6_RGB.tif', 'GFP', 'RFP', 1500, 800               ,[5000 3500 2000] ,[]
 
 'C1', 02, 'tif\long\img_T02_C1_BF.tif', 'tif\long\img_T02_C1_GFP.tif', 'tif\long\img_T02_C1_RFP.tif', 'tif\long\img_T02_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,[]
 'C1', 04, 'tif\long\img_T04_C1_BF.tif', 'tif\long\img_T04_C1_GFP.tif', 'tif\long\img_T04_C1_RFP.tif', 'tif\long\img_T04_C1_RGB.tif', 'RFP', 'GFP', [5000 2000], [1000 800]   ,[5000 3500 2000] ,[]
@@ -58,24 +57,39 @@ resName, funcName, parameters
 #'BF',  'cropImage', {'src' 'BF'  'borders' 'cropRect'}
 #'RFP', 'cropImage', {'src' 'RFP' 'borders' 'cropRect'}
 #'GFP', 'cropImage', {'src' 'GFP' 'borders' 'cropRect'}
-'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 0 'HRFThresh' 'HRFThresh1'}
-#'', 'ExportFields', {'Fields' {'@allMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
+#'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 0 'HRFThresh' 'HRFThresh1'}
+#
+#'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
+#'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
+#'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+#
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'open' 'dist' 0.4}
+#'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1.5}
+#
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
+#
+#
+#'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1.5}
+#'', 'ExportFields', {'Fields' {'@bactMask' '@microbiotaMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
 
-# check mode of morph op order
-# 1st
+'allMask', 'segmentObjectsHRF', {'src' 'BF' 'RGBsrc' 'RGB'  'verbose' 0 'HRFThresh' 'HRFThresh1'}
 'bactMask', 'classifyByFluorescenseTemp2', {'originalMask' 'allMask' 'RGBsrc' 'BF' 'verbose' 0}
 'bactMaskDilated', 'morphOp', {'src' 'bactMask' 'op' 'dilate' 'dist' 1}
-'microbiotaMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
-
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'close' 'dist' 1}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'open' 'dist' 0.4}
-'microbiotaMask', 'morphOp', {'src' 'microbiotaMask' 'op' 'areaOpen' 'dist' 1.5}
-
+'nonBactMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'areaOpen' 'dist' 0.5}
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'close' 'dist' 0.4}
+'nonBactMask', 'booleanOp', {'src1' 'allMask' 'src2' 'bactMaskDilated' 'op' 'difference'}
 'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'areaOpen' 'dist' 0.5}
-'bactMask', 'morphOp', {'src' 'bactMask' 'op' 'close' 'dist' 1}
 
-'', 'ExportFields', {'Fields' {'@bactMask' '@microbiotaMask'} 'targetDir' 'seg\objects' 'updatedLoad' 'loadSeg.csv'} 
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'areaOpen' 'dist' 1}
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'close' 'dist' 1}
+'nonBactMask', 'morphOp', {'src' 'nonBactMask' 'op' 'open' 'dist' 0.4}
+
+'', 'ExportFields', {'Fields' {'@allMask' '@bactMask' '@nonBactMask'} 'targetDir' 'seg\objects_v2' 'updatedLoad' 'loadSeg_v2'} 
+
 
 <entities>
 targetName, resName, funcName, parameters
